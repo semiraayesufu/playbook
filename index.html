@@ -7,7 +7,7 @@
 <title>The MBA Playbook</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,500..900,100&family=Schibsted+Grotesk:ital,wght@0,400;0,600;0,800;1,400&family=Caveat:wght@500;700&family=DM+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,500..900,100&family=Schibsted+Grotesk:ital,wght@0,400;0,600;0,800;1,400&family=Patrick+Hand&family=DM+Mono:wght@500&display=swap">
 <style>
 /* Direction: a visual-essay magazine. Cream paper, bold color block per playbook, hand-drawn sketches pinned like paper notes, sticky sketch that follows you through the tools. */
 :root{
@@ -15,7 +15,7 @@
   --line:#2B2620; --hl:rgba(255,206,58,.6); --hl-soft:rgba(255,206,58,.28); --pen:#2747C9;
   --f-display:'Fraunces',Georgia,'Times New Roman',serif;
   --f-body:'Schibsted Grotesk',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
-  --f-hand:'Caveat','Bradley Hand','Segoe Print',cursive;
+  --f-hand:'Patrick Hand','Segoe Print','Bradley Hand',cursive;
   --f-mono:'DM Mono',ui-monospace,Menlo,Consolas,monospace;
   --c:#2747C9; --cf:#fff;
   --shadow:0 1px 0 rgba(22,19,15,.06),0 10px 30px -12px rgba(22,19,15,.25);
@@ -46,7 +46,7 @@ button{font:inherit;color:inherit}
 :focus-visible{outline:2.5px solid var(--pen);outline-offset:3px;border-radius:6px}
 strong{font-weight:800}
 .mono{font-family:var(--f-mono);font-size:.82em;letter-spacing:.02em}
-.hand{font-family:var(--f-hand);font-weight:700}
+.hand{font-family:var(--f-hand);font-weight:400}
 .gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .in{max-width:1180px;margin:0 auto}
 
@@ -89,7 +89,7 @@ main{position:relative;z-index:2}
 
 .sec{padding-block:40px}
 .sechead{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1.5px solid var(--ink);padding-top:14px;margin-bottom:24px}
-.sechead .hand{font-size:24px;color:var(--pen)}
+.sechead .hand{font-size:20px;color:var(--pen)}
 .feed{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px 26px}
 @media (max-width:960px){.feed{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:600px){.feed{grid-template-columns:minmax(0,1fr)}}
@@ -105,7 +105,7 @@ main{position:relative;z-index:2}
 .story .meta .mono{color:var(--muted)}
 .story h3{font-size:25px;font-weight:800;line-height:1.08}
 .story p{margin:0;font-size:15.5px;color:var(--muted);line-height:1.5}
-.story .q{font-family:var(--f-hand);font-size:23px;color:var(--pen);line-height:1;font-weight:700}
+.story .q{font-family:var(--f-hand);font-size:20px;color:var(--pen);line-height:1.15;font-weight:400}
 
 .paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
 @media (max-width:960px){.paths{grid-template-columns:minmax(0,1fr)}}
@@ -138,7 +138,7 @@ footer{border-top:1.5px solid var(--ink);padding-block:22px 40px;font-size:14px;
 .hero .back:hover{opacity:1;text-decoration:underline}
 .hero .big{font-family:var(--f-display);font-weight:900;font-size:clamp(90px,20vw,240px);line-height:.8;position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:-18px;opacity:.16;letter-spacing:-.04em;pointer-events:none}
 .hero h1{font-size:clamp(44px,8vw,96px);font-weight:900;line-height:.95;margin-top:18px;max-width:14ch}
-.hero .hand{font-size:clamp(28px,3.6vw,40px);display:block;margin-top:10px;transform:rotate(-1.5deg);transform-origin:left}
+.hero .hand{font-size:clamp(23px,3vw,33px);display:block;margin-top:10px}
 .hero .lede{font-size:clamp(18px,2vw,21px);max-width:52ch;margin:22px 0 0;line-height:1.5}
 .hero .lede strong{background:rgba(255,255,255,.22);padding:0 .15em;border-radius:3px}
 .uses{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
@@ -157,7 +157,7 @@ footer{border-top:1.5px solid var(--ink);padding-block:22px 40px;font-size:14px;
 @media (max-width:600px){.pin svg{min-width:520px}}
 .map summary{display:none}
 @media (max-width:600px){.map summary{display:flex;align-items:center;justify-content:space-between;cursor:pointer;list-style:none;font-weight:800;font-size:15px;padding:12px 14px;border:1.5px solid var(--ink);border-radius:6px;background:var(--sheet)}.map summary::-webkit-details-marker{display:none}.map summary::after{content:'+';font-family:var(--f-mono);font-size:18px}.map[open] summary::after{content:'−'}.map[open] summary{margin-bottom:18px}.nowon{display:none!important}}
-.pin .hint{font-family:var(--f-hand);font-size:17px;color:var(--muted);padding:0 4px 4px}
+.pin .hint{font-family:var(--f-hand);font-size:15px;color:var(--muted);padding:0 4px 4px}
 .nowon{margin-top:10px;display:flex;gap:8px;align-items:baseline;font-size:13px}
 .nowon .mono{color:var(--muted)}
 .nowon b{font-family:var(--f-display);font-size:16px}
@@ -173,10 +173,10 @@ footer{border-top:1.5px solid var(--ink);padding-block:22px 40px;font-size:14px;
 .sk .accent path,.sk path.accent{stroke:var(--pen)}
 .sk .band{fill:var(--hl-soft)}
 .sk text{font-family:var(--f-hand);fill:var(--ink)}
-.sk .t{font-size:23px;font-weight:700}
-.sk .s{font-size:17.5px;fill:var(--muted)}
-.sk .k{font-size:16px;fill:var(--muted)}
-.sk .note{font-size:19px;fill:var(--pen);font-weight:700}
+.sk .t{font-size:20px;font-weight:400}
+.sk .s{font-size:15px;fill:var(--muted)}
+.sk .k{font-size:14px;fill:var(--muted)}
+.sk .note{font-size:17px;fill:var(--pen);font-weight:400}
 
 .steps{display:flex;flex-direction:column;gap:0;min-width:0}
 .card{padding:26px 0 36px;border-top:1.5px solid var(--ink);opacity:.45;transition:opacity .35s;scroll-margin-top:90px}
@@ -205,14 +205,14 @@ footer{border-top:1.5px solid var(--ink);padding-block:22px 40px;font-size:14px;
 .nextblock .in{padding-block:46px;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
 .nextblock .kick{opacity:.85}
 .nextblock b{display:block;font-family:var(--f-display);font-size:clamp(38px,6vw,72px);font-weight:900;line-height:.95;font-variation-settings:'SOFT' 100;letter-spacing:-.02em}
-.nextblock .hand{font-size:28px}
+.nextblock .hand{font-size:23px}
 .nextblock:hover b{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:6px}
 
 
 /* glossary */
 .thumb.gl{background:var(--sheet)}
 .thumb.gl .az{font-family:var(--f-display);font-weight:900;font-size:clamp(64px,9vw,104px);line-height:.9;letter-spacing:-.04em;color:var(--ink);font-variation-settings:'SOFT' 100;transform:rotate(-4deg);text-align:center}
-.thumb.gl .az span{display:block;font-family:var(--f-hand);font-size:.32em;font-weight:700;letter-spacing:0;color:var(--pen);margin-top:6px}
+.thumb.gl .az span{display:block;font-family:var(--f-hand);font-size:.28em;font-weight:400;letter-spacing:0;color:var(--pen);margin-top:6px}
 .thumb.gl .num{color:var(--ink)}
 .gl-tools{display:flex;gap:12px;flex-wrap:wrap;align-items:center;padding-block:28px 6px}
 .gl-tools input{flex:1 1 260px;min-width:0;max-width:420px;padding:11px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--sheet);color:var(--ink);font:inherit;font-size:15.5px}
@@ -592,6 +592,7 @@ const GLOSS = [
  ['Operating margin','Operating profit divided by revenue. Profit from the core business before interest and taxes.'],
  ['Overhead','Ongoing costs of running a business that aren\'t tied to a specific product, such as rent, admin and utilities.'],
  ['p-value','The probability of seeing a result at least this strong if there were really no effect. Below 0.05 is usually treated as significant.'],
+ ['P&L (profit and loss statement)','The financial statement that shows revenue, costs and profit over a period, such as a quarter or a year. Also called the income statement.'],
  ['Pilot','A small, limited trial of a product with real customers before a full rollout.'],
  ['Pivot','A deliberate change in a startup\'s direction, such as its customer, product or business model, based on evidence.'],
  ['Positioning','The place you want your product to hold in customers\' minds compared with alternatives.'],
@@ -634,7 +635,7 @@ function flow(pid,title,stages){
   const p = PB.find(x=>x.id===pid), name = id => p.tools.find(t=>t.id===id).name;
   const n = stages.length, gap = 15, W = 720, cw = (W-gap*(n-1))/n, nodes = [], arrows = [];
   let most = 0;
-  const all = stages.flatMap(st=>st[2]).map(name), fs = Math.min(21, Math.min(...all.map(l => Math.max(17,(cw-38)/(l.length*0.40)))));
+  const all = stages.flatMap(st=>st[2]).map(name), fs = Math.min(19, Math.min(...all.map(l => Math.max(15,(cw-38)/(l.length*0.47)))));
   stages.forEach(([lab,sub,ids],i) => {
     const x = 20 + i*(cw+gap);
     nodes.push(['h'+i,x,20,cw,70,(i+1)+' '+lab,sub,ids[0],i===0]);
@@ -729,7 +730,7 @@ function drawSketch(key, onPick, mini){
     g.addEventListener('click',act); g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();act()}});
   };
   const top = 50; const root = el('g',{transform:`translate(0 ${top})`},svg);
-  text(svg,20,32,spec.title,'note','start').setAttribute('style','font-size:24px');
+  text(svg,20,32,spec.title,'note','start').setAttribute('style','font-size:21px');
   if (spec.lanes) spec.lanes.forEach(([x,y,w,h,lab]) => { const g = el('g',{},root); rect(g,x,y,w,h,{strokeLineDash:[7,6],strokeWidth:1.1}); text(g,x+16,y+26,lab,'k','start').setAttribute('style','font-size:19px;font-weight:700'); });
   if (spec.center) {
     const c = spec.center, cy = c.cy, dg = el('g',{},root);
@@ -758,10 +759,11 @@ function drawSketch(key, onPick, mini){
     const lines = (sub||'').split('\n').filter(Boolean);
     let ty = y + h/2 - (lines.length? (lines.length*20)/2 : -8) + (kicker? 10 : 4);
     if (kicker) text(g,x+w/2,y+26,kicker,'k');
-    if (fsz && (w-14)/(label.length*0.40) < fsz) {
+    const base = fsz || 20;
+    if ((w-16)/(label.length*0.47) < base && label.includes(' ')) {
       const words = label.split(' '); let best = 1, diff = 1e9;
       for (let k=1;k<words.length;k++){ const d = Math.abs(words.slice(0,k).join(' ').length - words.slice(k).join(' ').length); if (d<diff){diff=d;best=k;} }
-      const l1 = words.slice(0,best).join(' '), l2 = words.slice(best).join(' '), f2 = Math.min(fsz,(w-14)/(Math.max(l1.length,l2.length)*0.40));
+      const l1 = words.slice(0,best).join(' '), l2 = words.slice(best).join(' '), f2 = Math.min(base,(w-16)/(Math.max(l1.length,l2.length)*0.47));
       [l1,l2].forEach((l,k) => text(g,x+w/2,y+h/2-3+k*(f2+1)-(f2+1)/2+f2*0.35,l,'t').setAttribute('style','font-size:'+f2.toFixed(1)+'px;line-height:1'));
     } else { const lt = text(g,x+w/2,ty,label,'t'); if (fsz) lt.setAttribute('style','font-size:'+fsz.toFixed(1)+'px'); }
     lines.forEach((l,i) => { if (l.includes(' · ')) { const [a,b] = l.split(' · '); text(g,x+w/2,ty+22+i*20,a+'  ·  '+b,'s'); } else text(g,x+w/2,ty+22+i*20,l,'s'); });
@@ -805,7 +807,7 @@ function renderHome(){
   });
   const g = document.createElement('button'); g.className = 'story rv'; g.style.cssText = '--i:1';
   g.setAttribute('aria-label','Glossary: what does that word mean?');
-  g.innerHTML = `<div class="thumb gl"><span class="num">${pad(PB.length+1)}</span><div class="az">A–Z<span>margin, SG&amp;A, EBITDA…</span></div></div>
+  g.innerHTML = `<div class="thumb gl"><span class="num">${pad(PB.length+1)}</span><div class="az">A–Z<span>P&amp;L, SG&amp;A, EBITDA…</span></div></div>
     <div class="meta"><span class="mono">#${pad(PB.length+1)} · ${GLOSS.length} terms</span></div>
     <h3>Glossary</h3><span class="q">What does that word mean?</span>`;
   g.onclick = () => go('glossary');
