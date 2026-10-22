@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Nine playbooks of MBA tools for real business problems, with hand-drawn sketches.">
+<title>The MBA Playbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,500..900,100&family=Schibsted+Grotesk:ital,wght@0,400;0,600;0,800;1,400&family=Caveat:wght@500;700&family=DM+Mono:wght@500&display=swap">
+<style>
+/* Direction: a visual-essay magazine. Cream paper, bold color block per playbook, hand-drawn sketches pinned like paper notes, sticky sketch that follows you through the tools. */
+:root{
+  --paper:#FBF6EC; --sheet:#FFFDF8; --ink:#16130F; --muted:#6A6258; --rule:#E4DCCD;
+  --line:#2B2620; --hl:rgba(255,206,58,.6); --hl-soft:rgba(255,206,58,.28); --pen:#2747C9;
+  --f-display:'Fraunces',Georgia,'Times New Roman',serif;
+  --f-body:'Schibsted Grotesk',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-hand:'Caveat','Bradley Hand','Segoe Print',cursive;
+  --f-mono:'DM Mono',ui-monospace,Menlo,Consolas,monospace;
+  --c:#2747C9; --cf:#fff;
+  --shadow:0 1px 0 rgba(22,19,15,.06),0 10px 30px -12px rgba(22,19,15,.25);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#15130F; --sheet:#1E1B16; --ink:#F3EDE2; --muted:#ADA394; --rule:#353026;
+  --line:#E9E1D3; --hl:rgba(255,206,58,.42); --hl-soft:rgba(255,206,58,.18); --pen:#9DB0FF; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#15130F; --sheet:#1E1B16; --ink:#F3EDE2; --muted:#ADA394; --rule:#353026;
+  --line:#E9E1D3; --hl:rgba(255,206,58,.42); --hl-soft:rgba(255,206,58,.18); --pen:#9DB0FF; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:84px}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;margin:0;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+/* paper grain */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.35;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body::after{mix-blend-mode:screen;opacity:.2}}
+:root[data-theme="dark"] body::after{mix-blend-mode:screen;opacity:.2}
+.theme{all:unset;cursor:pointer;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--ink);display:grid;place-items:center;flex:none;background:var(--sheet)}
+.theme:hover{background:var(--hl-soft)}
+.theme svg{width:18px;height:18px;stroke:var(--ink);fill:none;stroke-width:2}
+.theme .moon{display:none}
+:root[data-theme="dark"] .theme .sun{display:none}:root[data-theme="dark"] .theme .moon{display:block}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme .sun{display:none}:root:not([data-theme="light"]) .theme .moon{display:block}}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2.5px solid var(--pen);outline-offset:3px;border-radius:6px}
+strong{font-weight:800}
+.mono{font-family:var(--f-mono);font-size:.82em;letter-spacing:.02em}
+.hand{font-family:var(--f-hand);font-weight:700}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.in{max-width:1180px;margin:0 auto}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1.5px solid var(--ink)}
+.top .in{display:flex;align-items:center;gap:14px;height:62px}
+.brand{all:unset;cursor:pointer;display:flex;align-items:center;gap:10px}
+.brand .dot{width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-family:var(--f-display);font-weight:900;font-size:15px;transform:rotate(-8deg)}
+.brand b{font-family:var(--f-display);font-weight:800;font-size:20px;letter-spacing:-.01em;font-variation-settings:'SOFT' 100}
+.search{margin-left:auto;position:relative;flex:0 1 300px}
+.search input{width:100%;padding:9px 12px 9px 36px;border:1.5px solid var(--ink);border-radius:999px;background:var(--sheet);color:var(--ink);font:inherit;font-size:15px}
+.search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--ink)}
+@media (max-width:640px){.top .in{height:auto;flex-wrap:wrap;padding-block:10px;gap:10px}.search{order:3;flex:1 1 100%}.brand b{font-size:18px}.theme{margin-left:auto}}
+.progress{position:fixed;left:0;top:env(safe-area-inset-top,0px);height:4px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:var(--c);z-index:25;pointer-events:none}
+
+/* type */
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;font-variation-settings:'SOFT' 100;letter-spacing:-.02em}
+h2{font-size:clamp(28px,3.6vw,40px);font-weight:800;line-height:1.05}
+.kick{font-family:var(--f-mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.muted{color:var(--muted)}
+main{position:relative;z-index:2}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(14px);animation:rise .6s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--i,0)*70ms)}
+@keyframes rise{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.rv{animation:none;opacity:1;transform:none}*{transition:none!important}}
+
+/* ---------- HOME ---------- */
+.mast{padding-block:56px 34px;position:relative}
+.mast h1{font-size:clamp(46px,9vw,112px);font-weight:900;line-height:.92;max-width:11ch}
+.mast h1 em{font-style:normal;background:linear-gradient(transparent 58%,var(--hl) 58%,var(--hl) 90%,transparent 90%)}
+.mast p.dek{font-size:clamp(18px,2.1vw,22px);max-width:40ch;margin:22px 0 0;line-height:1.45}
+.badges{position:absolute;right:0;top:44px;display:flex;flex-direction:column;gap:12px;align-items:flex-end}
+.badge{width:118px;height:118px;border-radius:50%;display:grid;place-items:center;text-align:center;border:1.5px solid #16130F;box-shadow:3px 3px 0 #16130F;color:#16130F;line-height:1.05;padding:12px}
+.badge b{display:block;font-family:var(--f-display);font-size:38px;font-weight:900}
+.badge span{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.badge:nth-child(1){background:#FFCE3A;transform:rotate(8deg)}
+.badge:nth-child(2){background:#FF8A7A;transform:rotate(-6deg);margin-right:60px}
+@media (max-width:900px){.badges{position:static;flex-direction:row;margin-top:26px;align-items:center}.badge{width:96px;height:96px}.badge b{font-size:30px}.badge:nth-child(2){margin-right:0}}
+
+.sec{padding-block:40px}
+.sechead{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1.5px solid var(--ink);padding-top:14px;margin-bottom:24px}
+.sechead .hand{font-size:24px;color:var(--pen)}
+.feed{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px 26px}
+@media (max-width:960px){.feed{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.feed{grid-template-columns:minmax(0,1fr)}}
+.story{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:10px;min-width:0}
+.thumb{aspect-ratio:4/3;background:var(--c);border-radius:4px;position:relative;overflow:hidden;display:grid;place-items:center;border:1.5px solid var(--ink)}
+.thumb .paper{width:84%;background:#FFFDF8;border-radius:3px;padding:6px;box-shadow:0 12px 24px -10px rgba(0,0,0,.45);transform:rotate(var(--tilt,-2deg));transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.thumb .paper svg{display:block;width:100%;height:auto;pointer-events:none}
+.thumb .paper .sk path{stroke:#2B2620}.thumb .paper .sk text{fill:#16130F}.thumb .paper .sk .s,.thumb .paper .sk .k{fill:#6A6258}.thumb .paper .sk .note{fill:#2747C9}
+.thumb .paper .sk .node .bg{fill:#FFFDF8}
+.thumb .num{position:absolute;left:10px;top:8px;font-family:var(--f-display);font-weight:900;font-size:30px;color:var(--cf);line-height:1}
+.story:hover .paper,.story:focus-visible .paper{transform:rotate(0deg) scale(1.04)}
+.story .meta{display:flex;gap:10px;align-items:baseline}
+.story .meta .mono{color:var(--muted)}
+.story h3{font-size:25px;font-weight:800;line-height:1.08}
+.story p{margin:0;font-size:15.5px;color:var(--muted);line-height:1.5}
+.story .q{font-family:var(--f-hand);font-size:23px;color:var(--pen);line-height:1;font-weight:700}
+
+.paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+@media (max-width:960px){.paths{grid-template-columns:minmax(0,1fr)}}
+.path{background:var(--sheet);border:1.5px solid var(--ink);border-radius:6px;padding:20px 20px 16px;box-shadow:4px 4px 0 var(--ink);display:flex;flex-direction:column;gap:10px}
+.path .hand{font-size:25px;color:var(--pen);line-height:1}
+.path h3{font-size:24px;font-weight:800}
+.path > p{margin:0;color:var(--muted);font-size:15px}
+.path ol{list-style:none;margin:6px 0 0;padding:0;counter-reset:s;display:grid;gap:0}
+.path li{counter-increment:s;display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px;align-items:baseline;padding:7px 0;border-top:1px dashed var(--rule)}
+.path li::before{content:counter(s,decimal-leading-zero);font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.path li button{all:unset;cursor:pointer;font-weight:800}
+.path li button:hover{background:var(--hl-soft)}
+.path li small{display:block;color:var(--muted);font-size:13.5px;font-weight:400}
+
+.rules{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;counter-reset:r;border-left:1.5px solid var(--ink)}
+@media (max-width:900px){.rules{grid-template-columns:minmax(0,1fr)}}
+.rules li{counter-increment:r;padding:18px 22px 22px;border-right:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);display:flex;flex-direction:column;gap:6px}
+.rules li:nth-child(-n+3){border-top:1.5px solid var(--ink)}
+@media (max-width:900px){.rules li:nth-child(-n+3){border-top:0}.rules li:first-child{border-top:1.5px solid var(--ink)}}
+.rules li::before{content:counter(r,decimal-leading-zero);font-family:var(--f-display);font-size:44px;font-weight:900;line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--ink)}
+.rules b{font-family:var(--f-display);font-size:21px;font-weight:800;line-height:1.15}
+.rules span{color:var(--muted);font-size:15.5px}
+
+footer{border-top:1.5px solid var(--ink);padding-block:22px 40px;font-size:14px;color:var(--muted);position:relative;z-index:2}
+
+/* ---------- PLAYBOOK (visual essay) ---------- */
+.hero{background:var(--c);color:var(--cf);border-bottom:1.5px solid var(--ink);position:relative;overflow:hidden}
+.hero .in{padding-block:54px 50px;position:relative}
+.hero .back{all:unset;cursor:pointer;font-family:var(--f-mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+.hero .back:hover{opacity:1;text-decoration:underline}
+.hero .big{font-family:var(--f-display);font-weight:900;font-size:clamp(90px,20vw,240px);line-height:.8;position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:-18px;opacity:.16;letter-spacing:-.04em;pointer-events:none}
+.hero h1{font-size:clamp(44px,8vw,96px);font-weight:900;line-height:.95;margin-top:18px;max-width:14ch}
+.hero .hand{font-size:clamp(28px,3.6vw,40px);display:block;margin-top:10px;transform:rotate(-1.5deg);transform-origin:left}
+.hero .lede{font-size:clamp(18px,2vw,21px);max-width:52ch;margin:22px 0 0;line-height:1.5}
+.hero .lede strong{background:rgba(255,255,255,.22);padding:0 .15em;border-radius:3px}
+.uses{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.uses span{border:1.5px solid currentColor;border-radius:999px;padding:5px 13px;font-size:14.5px}
+.uses .kick{border:0;padding:5px 4px 5px 0}
+
+.essay{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);gap:40px;align-items:start;padding-block:46px 20px}
+@media (max-width:960px){.essay{grid-template-columns:minmax(0,1fr);gap:22px}}
+.stage{position:sticky;top:calc(env(safe-area-inset-top,0px) + 82px)}
+@media (max-width:960px){.stage{position:relative;top:0}}
+.pin{background:var(--sheet);border:1.5px solid var(--ink);border-radius:4px;padding:12px 12px 6px;box-shadow:var(--shadow);transform:rotate(-.6deg);position:relative;
+  background-image:linear-gradient(var(--rule) 1px,transparent 1px);background-size:100% 28px;background-position:0 14px}
+.pin::before{content:"";position:absolute;top:-12px;left:50%;width:84px;height:22px;transform:translateX(-50%) rotate(2deg);background:var(--hl);opacity:.9;border-left:1px dashed rgba(0,0,0,.15);border-right:1px dashed rgba(0,0,0,.15)}
+.pin .scroll{overflow-x:auto}
+.pin svg{display:block;width:100%;height:auto}
+@media (max-width:600px){.pin svg{min-width:520px}}
+.map summary{display:none}
+@media (max-width:600px){.map summary{display:flex;align-items:center;justify-content:space-between;cursor:pointer;list-style:none;font-weight:800;font-size:15px;padding:12px 14px;border:1.5px solid var(--ink);border-radius:6px;background:var(--sheet)}.map summary::-webkit-details-marker{display:none}.map summary::after{content:'+';font-family:var(--f-mono);font-size:18px}.map[open] summary::after{content:'−'}.map[open] summary{margin-bottom:18px}.nowon{display:none!important}}
+.pin .hint{font-family:var(--f-hand);font-size:17px;color:var(--muted);padding:0 4px 4px}
+.nowon{margin-top:10px;display:flex;gap:8px;align-items:baseline;font-size:13px}
+.nowon .mono{color:var(--muted)}
+.nowon b{font-family:var(--f-display);font-size:16px}
+
+.sk path{stroke:var(--line);fill:none}
+.sk .node{cursor:pointer}
+.sk .node .hlr{fill:transparent;transition:fill .25s}
+.sk .node:hover .hlr,.sk .node:focus .hlr{fill:var(--hl-soft)}
+.sk .node.on .hlr{fill:var(--hl)}
+.sk .node.on path{stroke:var(--pen);stroke-width:2.2}
+.sk .node:focus{outline:none}
+.sk .node:focus path{stroke:var(--pen)}
+.sk .accent path,.sk path.accent{stroke:var(--pen)}
+.sk .band{fill:var(--hl-soft)}
+.sk text{font-family:var(--f-hand);fill:var(--ink)}
+.sk .t{font-size:23px;font-weight:700}
+.sk .s{font-size:17.5px;fill:var(--muted)}
+.sk .k{font-size:16px;fill:var(--muted)}
+.sk .note{font-size:19px;fill:var(--pen);font-weight:700}
+
+.steps{display:flex;flex-direction:column;gap:0;min-width:0}
+.card{padding:26px 0 36px;border-top:1.5px solid var(--ink);opacity:.45;transition:opacity .35s;scroll-margin-top:90px}
+.card.on,.card:focus-within{opacity:1}
+@media (max-width:960px){.card{opacity:1}}
+.card .head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 16px;align-items:baseline}
+.card .n{font-family:var(--f-display);font-weight:900;font-size:46px;line-height:.9;color:transparent;-webkit-text-stroke:1.5px var(--ink);grid-row:span 2}
+.card.on .n{color:var(--c);-webkit-text-stroke:1.5px var(--ink)}
+.card h3{font-size:clamp(26px,3vw,32px);font-weight:800;line-height:1.05}
+.card .what{font-size:17px;color:var(--muted);margin:0}
+.card .body{margin-top:18px;display:grid;gap:18px}
+.card h4{margin:0 0 8px;font-family:var(--f-mono);font-weight:500;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.card ol{margin:0;padding:0;list-style:none;counter-reset:st;display:grid;gap:10px}
+.card ol li{counter-increment:st;display:grid;grid-template-columns:26px minmax(0,1fr);gap:8px}
+.card ol li::before{content:counter(st);font-family:var(--f-mono);font-size:12px;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--ink);display:grid;place-items:center;margin-top:2px}
+.card ul{margin:0;padding-left:1.1em;display:grid;gap:6px}
+.card strong{background:linear-gradient(transparent 60%,var(--hl) 60%,var(--hl) 92%,transparent 92%)}
+.formula{font-family:var(--f-mono);font-size:15px;background:var(--ink);color:var(--paper);border-radius:4px;padding:12px 16px;overflow-x:auto;white-space:nowrap}
+.watch{border-left:4px solid #E5484D;padding:4px 0 4px 14px;font-size:16px}
+.watch b{font-family:var(--f-mono);font-weight:500;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:#E5484D;display:block}
+
+.after{padding-block:10px 40px;display:grid;gap:18px}
+.src{display:flex;flex-wrap:wrap;gap:8px}
+.src span{border:1.5px solid var(--ink);border-radius:999px;padding:5px 13px;font-size:14.5px;background:var(--sheet)}
+.nextblock{all:unset;cursor:pointer;display:block;background:var(--c);color:var(--cf);border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink)}
+.nextblock .in{padding-block:46px;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
+.nextblock .kick{opacity:.85}
+.nextblock b{display:block;font-family:var(--f-display);font-size:clamp(38px,6vw,72px);font-weight:900;line-height:.95;font-variation-settings:'SOFT' 100;letter-spacing:-.02em}
+.nextblock .hand{font-size:28px}
+.nextblock:hover b{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:6px}
+
+/* search */
+.results{display:grid;gap:10px;max-width:780px}
+.results button{all:unset;cursor:pointer;display:grid;gap:2px;padding:14px 16px;border:1.5px solid var(--ink);border-radius:6px;background:var(--sheet)}
+.results button:hover{box-shadow:3px 3px 0 var(--ink)}
+.results small{color:var(--muted)}
+
+</style>
+</head>
+<body>
+
+
+<div class="progress" id="progress"></div>
+<header class="top gut">
+  <div class="in">
+    <button class="brand" id="home-link" aria-label="The MBA Playbook home"><span class="dot" aria-hidden="true">M</span><b>The MBA Playbook</b></button>
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+      <input id="q" type="search" placeholder="Search tools, like VRIO or BATNA" aria-label="Search tools">
+    </div>
+    <button class="theme" id="theme" aria-label="Switch light or dark mode" title="Light or dark mode"><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+  </div>
+</header>
+
+<main id="view"></main>
+<footer class="gut"><div class="in">Compiled by Semira Yesufu from MBA coursework, cases and consulting projects at the Kelley School of Business, Indiana University.</div></footer>
+
+
+<script src="https://unpkg.com/roughjs@4.6.6/bundled/rough.js"></script>
+<script>
+/* ---------- CONTENT ---------- */
+const LAST_CHECKIN = '2026-10-22'; /* updated by the monthly check-in */
+const PB = [
+{id:'strategy',name:'Strategy',q:'Where should we play?',
+ idea:'Good strategy is a set of choices that reinforce each other, tested against what the company can actually execute. Work in three stages: **diagnose**, then **decide**, then **deliver**.',
+ use:['Sizing up a company, an industry or a competitor','Weighing an acquisition, partnership or new market','Turning a strategy into goals people can track'],
+ tools:[
+ {id:'vrio',name:'VRIO',what:'Tests whether a capability gives a lasting advantage.',
+  steps:['List the two or three capabilities that seem to drive the company\'s success.','Ask four questions of each, in order: **Valuable:** does it win customers or cut costs? **Rare:** do few competitors have it? **Costly to imitate:** would copying it take years, culture or secrets? **Organized:** do structure, incentives and processes capture the value?','Stop at the first "no." Where you stop tells you the kind of advantage.'],
+  read:['No to Valuable: a **disadvantage**','Valuable only: **parity**','Valuable and Rare: a **temporary advantage**','All four: a **sustained advantage**']},
+ {id:'steep',name:'STEEP',what:'Scans the outside forces a company can\'t control.',
+  steps:['Work through five lenses: **Socio-cultural** (values, demographics, behavior), **Technological**, **Economic** (rates, costs, currency, cycles), **Environmental** (climate rules, sustainability pressure) and **Political and legal** (regulation, trade, labor law).','List two or three trends under each, with evidence.','Mark each trend as an **opportunity** or a **threat**. These become the O and T of a SWOT.']},
+ {id:'five-forces',name:'Five Forces',what:'Shows how much profit an industry lets companies keep.',
+  steps:['Rate each force high, moderate or low, with a reason.','**Threat of new entrants:** how hard is it to get in (capital, brand, access)?','**Buyer power:** can customers switch easily or squeeze prices?','**Supplier power:** are key suppliers few and essential?','**Threat of substitutes:** can a different product meet the same need?','**Rivalry:** how fierce is competition (many players, high fixed costs, price wars)?'],
+  read:['The more forces rated high, the less profit is left in the industry.','Then ask where the company can position itself to escape the strongest forces.']},
+ {id:'swot',name:'SWOT',what:'Pulls the diagnosis together and turns it into options.',
+  steps:['Build **Strengths and Weaknesses** from VRIO and the Business Model Canvas.','Build **Opportunities and Threats** from STEEP and Five Forces.','Give every line evidence and a "so what."','Generate options by pairing them: use a strength to capture an opportunity, or fix a weakness a threat exposes.']},
+ {id:'bmc',name:'Business Model Canvas',what:'Maps how a company creates, delivers and captures value on one page.',
+  steps:['Fill nine boxes in a line or two each: **customer segments, value proposition, channels, customer relationships, revenue streams, key resources, key activities, key partners, cost structure**.','Mark each box as a strength or a weakness.','Look for the fragile box: the one the rest of the model depends on.']},
+ {id:'s-curve',name:'S-curve',what:'Shows when a growth engine is running out, so you can jump to the next one in time.',
+  steps:['Place the core business on its curve: slow start, fast growth, or flattening.','Name the emerging curve, where growth is moving.','Ask what the company lacks to win on that new curve, then choose to **build, partner or buy**.']},
+ {id:'make-buy',name:'Make or Buy',what:'Decides whether to own a supplier or partner (vertical integration) or contract with it.',
+  steps:['Score **how hard it is to write a complete contract**. Specific assets, high uncertainty and frequent dealings make it hard.','Score **how important it is to competitive advantage**.','Place it on the grid below.'],
+  read:['Both high: **own it**','Both low: **buy it** on the market','Mixed: use a **partnership or long-term contract**']},
+ {id:'hypothesis',name:'Hypothesis Testing',what:'Turns a big bet into a clear go, pivot or stop decision.',
+  steps:['Write the core hypothesis in one sentence: "Doing X is the best way to achieve Y."','List the conditions that must all be true, such as value created exceeds the price, regulators allow it, integration works, and alternatives are worse.','Name the data that would prove or disprove each condition.','Set the rule: all conditions hold, **go**. One fails, **pivot** to an alternative hypothesis.']},
+ {id:'ambidexterity',name:'Ambidexterity',what:'Runs the core business and a new venture at the same time without one starving the other.',
+  steps:['Give the new unit its **own structure** so it can move fast.','Give it **its own incentives**, tied to innovation milestones.','Have the leader **advocate visibly** and celebrate early wins.','Keep shared work where it helps, such as joint teams on bridge technologies.'],
+  watch:'The core business is the funding engine and can quietly starve the new unit of money and talent.'},
+ {id:'scorecard',name:'Balanced Scorecard',what:'Translates a strategy into goals and measures across four views.',
+  steps:['**Financial:** growth, margin, cash.','**Customer:** adoption, satisfaction, share.','**Internal process:** speed to market, quality, efficiency.','**Learning and growth:** talent, skills, culture.','Write two objectives per view, each with one measurable target.']}
+ ]},
+
+{id:'innovation',name:'Innovation & Entrepreneurship',q:'Is this idea worth building?',
+ idea:'Strong founders keep learning until they understand the problem well enough to build the right thing. **Validate before you scale**, and tie every round of spending to evidence.',
+ use:['Judging a startup, product idea or new venture','Choosing between technologies, partners or vendors','Deciding whether to keep going, pivot or stop'],
+ tools:[
+ {id:'problem',name:'Problem Framing',what:'Makes sure you\'re solving the right problem before designing a solution.',
+  steps:['Write the problem in one sentence: who has it, when, and what it costs them.','Talk to the people who have it. Ask how they handle it today.','Rewrite the sentence after each round of conversations. A change means you\'re learning.','Generate solutions only after the sentence stops changing.']},
+ {id:'tam-sam-som',name:'Market Sizing',what:'Estimates how big the opportunity is, from the whole market down to what you can win soon.',
+  formula:'TAM → SAM → SOM',
+  steps:['**TAM** (total addressable market): everyone who could use it × the value per unit.','**SAM** (serviceable market): the share your product and channels can actually serve.','**SOM** (obtainable market): what you can realistically win in the next few years. Build it bottom-up, segment by segment, with a volume logic for each.','Pick a **beachhead**: a small segment where a win creates proof that opens bigger ones.'],
+  watch:'Investors trust a bottom-up SOM far more than "1% of a huge market."'},
+ 
+{id:'validation',name:'Validation Ladder',what:'Proves customers will pay, in steps of rising commitment.',
+  steps:['**Interviews:** do they confirm the pain?','**Surveys:** how widespread is it?','**Letters of intent:** will they sign?','**Paid pilots:** will they pay at your price and terms?'],
+  watch:'Agreeing that a problem hurts is a weaker signal than paying to fix it. Test your real price and terms, because a long contract or a share of revenue is its own reason to say no.'},
+ {id:'plan-review',name:'Investor Readiness Check',what:'Reads your plan the way an investor will, before you pitch it.',
+  steps:['Score each area out of 10: **value proposition, market, go-to-market, operations, team, financials, risks, milestones and exit**.','Find the lowest score. That\'s where an investor will push.','Write the investor\'s biggest objection in one sentence, then your answer to it.','Give the plan an honest verdict: **ready, ready with conditions, or not yet**.'],
+  read:['Any area below 5 needs fixing before you pitch.','If you can\'t answer the main objection in two sentences, the plan isn\'t ready.']},
+ {id:'gates',name:'Spending Gates',what:'Makes each round of money earn the next one.',
+  steps:['Split the plan into stages instead of spending everything up front.','Before each stage, set the **milestone** that unlocks it, such as signed customers, a working prototype or a sales number.','Give each gate a **date, a number and a rule** for what happens if you miss it.','Spend only what the current stage needs.'],
+  watch:'Without gates, money gets spent before the idea is proven, and stopping feels impossible.'},
+ {id:'pivot',name:'Pivot Triggers',what:'Decides in advance what would make you change course.',
+  steps:['Pick the one or two numbers that would prove the plan wrong, such as customer sign-ups, usage or profit per customer.','Set the date you\'ll check them.','Write the fallback now, while you\'re calm. A cheaper or lighter version of the same idea is often the best one.'],
+  watch:'Decide the trigger before you start. Once you\'re invested, every miss starts to look like bad luck.'},
+ {id:'options',name:'Option Scorecard',what:'Compares technologies, partners or vendors fairly on the same scale.',
+  steps:['Describe each option in one plain sentence: what it does and for whom.','Rate each one from 1 to 5 on four lenses: **fit** (does it solve your problem?), **traction** (who already uses or buys it?), **legal and regulatory** (patents, approvals, compliance) and **cost and terms**.','Weight the lenses by what matters most to you.','Put the options side by side and pick the highest total, then sanity-check it.'],
+  read:['A low legal score can rule an option out on its own, whatever its total.','If two options tie, the one with more traction usually carries less risk.']},
+ {id:'recommend',name:'The Recommendation',what:'Ends the work with one clear decision.',
+  steps:['Name **one priority**.','Give a near-term action with a date.','Give the longer-term move.','If you recommend two tracks, explain why both, what each costs and what decides between them.']}
+ ]},
+
+{id:'finance',name:'Finance & Accounting',q:'Is it worth the money?',
+ idea:'Every money question comes down to **what it earns, what it costs and what could go wrong**. Pick the tool that matches your question, then test how much the answer moves when your assumptions change.',
+ use:['Someone wants to cut a product that "loses money"','You need to know how much to sell to stop losing money','You\'re deciding if a project, loan or acquisition is worth it','You want to know if a stock or bond is fairly priced'],
+ tools:[
+ {id:'contribution',name:'Contribution Margin',what:'Shows what a product really adds before fixed costs.',
+  formula:'Contribution = Sales − Variable costs',
+  steps:['Split costs into **variable** (materials, direct labor) and **fixed** (rent, depreciation, overhead).','Calculate contribution.','Ask which fixed costs would actually disappear if you cut the product. Usually few do.','Positive contribution with spare capacity: keep it for now. Revisit if a better use of the capacity appears.']},
+ {id:'break-even',name:'Break-even',what:'Tells you how much you need to sell to cover fixed costs.',
+  formula:'Break-even units = Fixed costs ÷ Contribution per unit',
+  steps:['Calculate contribution per unit.','Divide fixed costs by it.','Compare to current volume to see the gap.']},
+ {id:'dupont',name:'DuPont Analysis',what:'Breaks return on equity into the three things that drive it.',
+  formula:'ROE = Profit margin × Asset turnover × Equity multiplier',
+  steps:['**Profit margin** = net income ÷ revenue: how much of each sale you keep.','**Asset turnover** = revenue ÷ assets: how hard the assets work.','**Equity multiplier** = assets ÷ equity: how much debt boosts the return.'],
+  watch:'A high ROE built on leverage is riskier than one built on margin.'},
+ {id:'npv',name:'NPV and Sensitivity',what:'Shows whether a project creates value and how much room for error it has.',
+  formula:'NPV = Present value of future cash flows − Upfront cost',
+  steps:['Discount future cash flows at the required return.','Positive NPV creates value.','Build a grid that varies the two most uncertain inputs, such as upfront cost and yearly inflow.','Color it as a heat map to see where the project turns negative.']},
+ {id:'ddm',name:'Dividend Discount Model',what:'Values a mature, steady dividend-paying stock.',
+  formula:'Price = Next year\'s dividend ÷ (Cost of equity − Dividend growth)',
+  steps:['Get next year\'s dividend and the growth rate.','Get the cost of equity.','Calculate the price, then move growth by ±1% to test sensitivity.'],
+  watch:'It breaks for high-growth companies whose value isn\'t in near-term dividends.'},
+ {id:'bonds',name:'Bond Yield and Spread',what:'Tells you whether a bond pays enough for its risk.',
+  formula:'Spread = Bond yield to maturity − Treasury yield (same maturity)',
+  steps:['Calculate yield to maturity at today\'s price (Excel: YIELD).','Subtract the matching Treasury yield.','Compare the spread to an index for the same credit rating.']},
+ {id:'sharpe',name:'Sharpe Ratio',what:'Judges a return against the risk taken to earn it.',
+  formula:'Sharpe = (Portfolio return − Risk-free rate) ÷ Volatility',
+  steps:['Use monthly returns over several years.','Annualize return and volatility.','Calculate the ratio and compare it to a benchmark such as the S&P 500.'],
+  read:['Higher is better: more return for each unit of risk.','To raise it, add assets that don\'t move together. Diversifying cuts volatility without giving up much return.']},
+ {id:'affordability',name:'Debt Affordability',what:'Tests whether a person or business can safely carry a loan.',
+  steps:['Cap the payment at a share of income, such as 35% of gross income for a person, or a share of operating cash flow for a business.','Calculate the payment at today\'s rate.','Test rates 1% higher and lower to see if it still fits.','Name the trade-off: a smaller loan is safer and buys less.']},
+ {id:'buyout',name:'Buyout Returns',what:'Checks whether an acquisition returns enough to the investor.',
+  formula:'Enterprise value = Equity value + Net debt',
+  steps:['Find the entry enterprise value: what you pay for the whole company, including its debt.','Project EBITDA (operating earnings) five years out.','Apply an exit multiple and subtract the debt left at exit to get exit equity.','Divide exit equity by the equity you put in.','Name the levers that would grow EBITDA, such as new products, better margins or selling direct.'],
+  read:['Exit equity ÷ equity invested is your money multiple. Investors often look for about 2 to 3 times over five years.','If the return only works when you sell at a higher multiple than you paid, treat that as a risk.']}
+ ]},
+
+{id:'data',name:'Data & Research',q:'Can I trust this finding?',
+ idea:'A finding earns trust only after you know **who\'s in the data, who\'s missing and what else could explain it**.',
+ use:['Designing a survey or study','Someone hands you a striking statistic','Choosing which analysis to run'],
+ tools:[
+ {id:'process',name:'The 8-Step Research Process',what:'Takes you from a question to a decision.',
+  steps:['**Question:** what decision does this inform?','**Outcome:** what exactly are you measuring?','**Hypothesis:** what do you expect, and what\'s the null?','**Alternatives:** what else could explain the outcome?','**Measure:** units, time window, yes or no.','**Method:** the test that fits the question.','**Interpret:** size of the effect and significance, in plain words.','**Recommend:** what to do, and how sure you are.']},
+ {id:'methods',name:'Choosing a Method',what:'Matches the question to the right test.',
+  steps:['**Two groups\' averages:** t-test.','**Does a sample match the population, or are two categories related:** chi-square test.','**How several factors drive an outcome:** regression. Read coefficient direction and size, p-values (under 0.05 suggests a real effect) and R² (share of variation explained).','**Effect of an event:** event study, comparing returns before and after against the market.'],
+  watch:'A significant model can still explain little. A regression with R² of 0.20 leaves 80% of the variation unexplained.'},
+ {id:'representativeness',name:'Representativeness Check',what:'Finds out who\'s missing from the sample.',
+  steps:['Compare the sample\'s makeup to the population on key traits.','Run a chi-square test on each.','Flag any significant gap and caveat findings for that group.','Fix the gap with targeted outreach next time.']},
+ {id:'survey',name:'Survey Design',what:'Makes sure a survey can answer the question it\'s for.',
+  steps:['Ask the central question directly.','Use one scale throughout, and decide on purpose whether to include a neutral midpoint.','Add at least one open-ended question.','Measure willingness to pay directly if price matters.','Include the segments you\'ll want to compare.']},
+ {id:'qualitative',name:'Interviews and Focus Groups',what:'Learns how people solve the problem today before testing new ideas.',
+  steps:['Spend the first part on current behavior.','Then test concepts.','Expect the simplest concept that fits existing workflows to win.']},
+ {id:'pareto',name:'Pareto Analysis',what:'Finds the few causes driving most of the effect.',
+  steps:['Rank items by contribution: delay minutes, revenue, complaints.','Add a running total.','Find where it crosses 80%.','Act on those items first.']},
+ {id:'base-incremental',name:'Base vs. Incremental Sales',what:'Separates what sells anyway from what promotions add.',
+  steps:['Split sales into **base** and **incremental**.','Compare the store\'s trend to the market\'s.','If the category is flat while one brand drops, the store is shifting share between brands.']}
+ ]},
+
+{id:'marketing',name:'Marketing',q:'Who buys, and why us?',
+ idea:'Marketing decides **who you serve, what you promise them and how you reach them**. Understand the market, choose a target, build the offer, then launch with messages that answer real worries.',
+ use:['Positioning or launching a product','Pricing and picking channels','Extending a product line or entering a new market'],
+ tools:[
+ {id:'5cs',name:'The 5Cs',what:'Maps the situation before any plan.',
+  steps:['**Customers:** who they are, what they need, how they buy.','**Company:** your strengths and limits.','**Collaborators:** partners, suppliers, channels.','**Competitors:** direct, secondary and indirect.','**Context:** economic, regulatory, technology and social trends.']},
+ {id:'stp',name:'STP',what:'Chooses who to serve and how to stand out.',
+  steps:['**Segment** by geography, demographics, psychographics (values, motives), behavior and benefits sought.','**Target** the segments with the best mix of size, growth, fit and reach.','**Position** in one line using the template below.'],
+  formula:'For [target], [brand] is the [category] that [benefit], because [proof].'},
+ {id:'4ps',name:'The 4Ps',what:'Turns the position into a plan.',
+  steps:['**Product:** features, line, packaging.','**Price:** parity, premium or discount, and what it signals.','**Place:** channels.','**Promotion:** message and media.','Check that every P tells the same story as the position.'],
+  watch:'Going global, keep the brand consistent and adapt the 4Ps to each market\'s culture, income and channels.'},
+ {id:'plc',name:'Product Life Cycle',what:'Matches the move to the product\'s stage.',
+  steps:['**Introduction:** build awareness.','**Growth:** expand reach.','**Maturity:** differentiate, extend the line, find new uses.','**Decline:** harvest or reinvent.']},
+ {id:'line-extension',name:'Line Extension Math',what:'Checks whether a new product pays after it eats into the core.',
+  formula:'Incremental contribution = New product contribution − Extra SG&A − Launch marketing − Contribution lost from the core',
+  steps:['Estimate share and volume for the new product.','Subtract every new cost and the core sales it will take.','If the result is thin, test in a few markets first.','Use a different channel to protect the core product.']},
+ {id:'messaging',name:'Barrier-Based Messaging',what:'Writes one message for each reason people don\'t act.',
+  steps:['List the barriers between your audience and the action: usually **awareness, trust, cost and access**.','Write the worry in their words, such as "I\'ve never heard of this" or "Who sees my data?"','Write one plain message that answers each worry.','End every message with a clear next step.'],
+  watch:'Inform before you persuade. When trust is the barrier, pushy messages make it worse.'},
+ {id:'channel-mix',name:'Channel Mix',what:'Splits the budget by the job each channel does.',
+  steps:['Give each channel one **role**: capture demand, build awareness, build trust, or convert.','Set its **share of budget**.','Pick **one metric** per channel that matches its role, such as cost per sign-up for search or referrals for community partners.','Start with a lean test, then move money to the channels with the best results.']}
+
+ ]},
+
+{id:'b2b',name:'B2B Marketing',q:'How do businesses buy?',
+ idea:'Businesses buy as a **group**, on **risk and return**. Map everyone who decides, size the opportunity from the ground up, and make the economic value impossible to miss.',
+ use:['Selling a product or service to companies','Sizing a business-to-business opportunity','Planning outreach to a few high-value accounts'],
+ tools:[
+ {id:'committee',name:'Buying Committee Map',what:'Finds everyone who shapes a business purchase.',
+  steps:['List every role involved: operations, purchasing, finance, IT, legal, end users, the executive sponsor.','Mark the **champion** (carries your case inside), the **economic buyer** (signs off on ROI), the **technical buyer** (can veto on security or fit) and the **users**.','Write what each one fears and needs: reliability, total cost, ROI, compliance, ease of use.','Give each role its own message and proof, and give your champion the materials to sell for you.']},
+ {id:'critical-three',name:'The Critical Three',what:'Narrows a large buying group to the people who decide.',
+  steps:['From the full committee, pick the three roles whose "yes" moves the deal.','Write each one\'s top concern in a sentence.','Build your pitch so each concern gets an answer with evidence.']},
+ {id:'sizing',name:'Bottom-Up Opportunity Sizing',what:'Sizes a business opportunity from real units instead of industry totals.',
+  formula:'Opportunity = Price per unit × Units per customer × Number of customers',
+  steps:['Count units at one customer site by walking it or interviewing staff.','Price one unit.','Multiply by the number of sites or customers you can realistically reach.','State every assumption so a buyer can test it.']},
+ {id:'value-fast',name:'Economic Value Messaging',what:'Leads with what the buyer gains in money, time or risk.',
+  steps:['Translate features into outcomes: hours saved, costs cut, failures avoided.','Put the outcome first, on the first screen or first slide.','Back it with a quantified customer story.','State the value before asking for a click or a meeting.']},
+ {id:'outreach',name:'Persona-Based Outreach',what:'Reaches the right people at target accounts with messages built for their role.',
+  steps:['Pick target accounts, such as mid-size companies that adopt faster.','Research each account\'s pain points and buyer roles.','Draft a message per role: technical, economic, champion, governance.','Sequence outreach by journey stage, from first touch to demo.','Keep a person on every high-trust moment: referrals, demos and pricing talks.']},
+ {id:'channel',name:'Channel Incentives',what:'Keeps distributors and retailers pushing your product.',
+  steps:['Remember that a retailer or distributor is a customer too. It cares about its own margin.','When a channel cools on you, compare what it earns on your product with what it earns on rivals.','Check whether rivals are paying for promotions or shelf space you aren\'t.','Respond with better trade terms, exclusives or shared marketing.'],
+  watch:'When sales through a channel fall, check the channel\'s incentives before you assume shoppers lost interest.'}
+ ]},
+
+{id:'negotiation',name:'Negotiation & Persuasion',q:'How do I get to yes?',
+ idea:'Most of a negotiation happens **before you sit down**, and the relationship lasts longer than the deal.',
+ use:['Negotiating a salary, vendor contract or sale','Preparing for a hard conversation','Working across cultures'],
+ tools:[
+ {id:'four-numbers',name:'The Four Numbers',what:'The numbers to know before any negotiation.',
+  steps:['**BATNA:** your best alternative if the deal fails. It\'s your real source of power.','**Walkaway:** the worst deal you\'ll accept, set just better than your BATNA.','**Target:** an ambitious, defensible outcome.','**Opening:** your first offer, set above the target to leave room.','Estimate the same four for the other side. The overlap between the two walkaways is the **deal zone (ZOPA)**.']},
+ {id:'anchoring',name:'Anchoring',what:'Uses the first number to shape the range.',
+  steps:['Make the first offer when you can justify it.','Back it with two or three hard facts: investment made, revenue, past offers, the other side\'s deadline.','If they anchor first and it\'s extreme, don\'t counter it. Name it as off-base and reset with your facts.']},
+ {id:'dist-int',name:'Distributive vs. Integrative',what:'Tells you which game you\'re playing.',
+  steps:['**Distributive:** one issue, fixed pie. Claim value with anchors and careful concessions.','**Integrative:** several issues with different priorities. Trade what\'s cheap for you and valuable to them, such as payment terms, timing or support.','Most real deals have integrative room. Look for it.']},
+ {id:'concessions',name:'Concession Plan',what:'Decides what you\'ll give, in what order.',
+  steps:['Rank your issues by importance.','List what you\'ll concede, in order and in small steps.','List what you won\'t concede at all.','Never give a concession without getting something back.']},
+ {id:'power',name:'Sources of Power',what:'Maps leverage on both sides.',
+  steps:['**Legitimate:** facts and track record.','**Alternatives:** your BATNA.','**Time:** who needs the deal sooner.','**Information:** what each side knows.','Show your power through calm, unhurried behavior, and keep your deadline to yourself.']},
+ {id:'pre-table',name:'Win Before the Table',what:'Sets up the outcome before the meeting starts.',
+  steps:['Build the relationship early.','Build credibility through results.','Plan the numbers, strategy and approach.','Remember that signaling starts the moment you walk in: what you lead with and whether you\'re really listening.']},
+ {id:'intangibles',name:'Intangibles',what:'Prices what isn\'t money.',
+  steps:['Ask what the other person must prove internally.','Ask about their timing.','Ask what reputation is at stake.','Use these to close gaps that price alone can\'t.']},
+ {id:'ethics',name:'Ethics Line',what:'Separates tough tactics from deception.',
+  steps:['**Fine:** a high anchor, keeping your deadline private, firm bargaining.','**Out:** false promises, misrepresenting facts, gathering information improperly.'],
+  watch:'Trust is the most valuable and most fragile currency in a negotiation. Deception can win a round and lose the relationship, and it can carry legal risk.'},
+ {id:'culture',name:'Across Cultures',what:'Reads the other side\'s cultural defaults.',
+  steps:['Check three dimensions: **direct vs. indirect**, **independent vs. group-oriented**, **task-first vs. relationship-first**.','Directness can read as abrasive in indirect cultures.','Silence may mean the group hasn\'t agreed yet.','Invest in the relationship before pushing to tasks.']},
+ {id:'steady',name:'Staying Steady',what:'Keeps emotion from driving concessions.',
+  steps:['Pause before responding.','Name the emotion to yourself without letting it steer the reply.','Confirm you\'ve understood their point before making yours.','Cut filler words and check that your point landed.']}
+ ]},
+
+{id:'ai',name:'AI at Work',q:'How do I put AI to work?',
+ idea:'AI is fastest at **research, drafting and repetitive work**. People stay on judgment and anything that builds trust. Work through four stages: decide where AI fits, build it so it\'s reliable, get output you can check, then roll it out so people actually use it.',
+ use:['Your team loses hours to research, first drafts or copy-paste work','You\'re deciding whether an AI idea is worth building','You need AI answers you can trust and check','You\'re rolling out an AI tool and want people to use it'],
+ tools:[
+ {id:'hitl',name:'Human-in-the-Loop Map',what:'Splits a workflow between AI and people.',
+  steps:['Break the workflow into steps.','Tag each one: **research** (accounts, signals, sources), **drafting** (messages, summaries), **execution** (follow-ups, prep) or **trust moment** (demos, referrals, deals, decisions).','Let AI lead the first three.','Keep a person on every trust moment.','Add a review point before anything AI-made reaches a customer.']},
+ {id:'adoption',name:'AI Adoption Plan',what:'Rolls out AI in a team as a change-management project.',
+  steps:['**Start small:** one team or workflow where the friction is most visible.','**Research first:** ask how work really happens. "Walk me through a typical day. Where do things slow down? Where do you re-enter the same information?"','**Build momentum:** find champions, share small wins like time saved or errors avoided.','**Set guardrails:** data protection, access rules and a person reviewing AI output.','**Measure and scale:** document what worked and what didn\'t, assign owners, then expand.'],
+  watch:'People adopt AI when it removes a frustration they already feel. Mandates without that rarely stick.'},
+ {id:'fit-check',name:'AI Project Fit Check',what:'Tests whether an AI idea fits your needs and resources before you build.',
+  steps:['Answer six **needs** questions. **Scale:** how many users? **Customization:** how specialized must it be? **Interaction:** how will people use it? **Privacy:** how sensitive is the data? **Latency:** how fast must it respond? **Connectivity:** will it run online, offline or on a device?','Answer three **resource** questions: do you have the **people** with AI skills, the **money** and the **time**?','Pick the lightest option that meets the needs: an off-the-shelf app, a tuned existing model, or a custom build.'],
+  read:['High privacy or offline needs push toward smaller models running on your own systems or devices.','Few people and little time point to an existing tool before anything custom.'],
+  watch:'Most AI projects stall on data and people. Check that your data is accurate, complete and easy to reach before you pick a model.'},
+ {id:'two-way',name:'Top-Down Meets Bottom-Up',what:'Sets an AI strategy that leaders steer and employees actually use.',
+  steps:['**Top-down:** leaders set the vision and pick a few use cases with clear business value.','**Bottom-up:** employees find practical uses in their own work and feed back what helps.','Fund the basics: a **data strategy**, existing tools you already pay for and AI training.','Write **responsible AI** rules early: security, privacy and ethics.','**Measure impact** against business goals, then refine based on feedback and data.'],
+  watch:'A vision with no bottom-up experiments stays a slide. Experiments with no vision scatter into tools nobody maintains.'},
+ 
+{id:'prompting',name:'Prompting for Analysis',what:'Gets usable, checkable output.',
+  steps:['Give context: who you are and the goal.','Give the exact inputs: numbers, files.','State the task.','State the output format: table, chart, file name.','Build in steps: base case, then vary inputs, then visualize.','Ask it to show formulas.']},
+ {id:'prompt-patterns',name:'Prompt Patterns',what:'Gives you a menu of ways to ask, from quick to structured.',
+  steps:['**Zero-shot:** ask with no examples. Good for simple tasks.','**One-shot or few-shot:** show one or several examples of the output you want.','**Role:** assign a persona to set style, tone and focus.','**Chaining:** build the answer over a back-and-forth instead of one giant prompt.','**Chain-of-thought:** ask it to reason step by step, or show worked examples with the steps included.','**Metaprompting:** ask the AI to write or improve the prompt itself.','Save prompts that work as **templates** so the whole team reuses them.'],
+  read:['Wrong format: add an example.','Wrong tone: add a role.','Wrong logic: ask for the steps, then check them.']},
+ {id:'grounding',name:'Grounding and RAG',what:'Ties AI answers to your own documents so they stay accurate and current.',
+  steps:['**Ground** the model in verifiable sources: your files, policies, product data.','**Retrieve:** pull the most relevant passages for each question.','**Augment:** add those passages to the prompt.','**Generate:** have the model answer from them, and cite where each point came from.','**Iterate:** if the first search misses, let it search again.','Organize what you feed it: stable knowledge (policies, definitions) separate from project knowledge (this quarter, this client).'],
+  watch:'The answer can only be as good as what gets retrieved. Messy, outdated or duplicate documents produce confident wrong answers.'},
+ {id:'verify',name:'Verify the Output',what:'Catches confident mistakes.',
+  steps:['Recompute one or two numbers yourself.','Check that formulas match the method.','Ask for the assumptions.','Treat confident wording as a claim to check.']},
+ {id:'guardrails',name:'Guardrails in the Pipeline',what:'Builds checks into an AI product so mistakes get caught before users see them.',
+  steps:['**Before the model:** strip personal data such as emails, phone numbers and card numbers.','**In the prompt:** state the exact task, audience and difficulty level.','**After the model:** score confidence and show a "please verify" note when it\'s low.','**Check against the source:** if the output doesn\'t overlap with the input documents, warn the user.','**Filter** harmful or biased wording and regenerate if flagged.','Give users a **"report a wrong answer"** button and review every report.'],
+  watch:'Guardrails cost speed. Put the heaviest checks where an error would hurt most.'},
+ {id:'agents',name:'Agent Anatomy',what:'Explains what an AI agent is made of, so you can scope one.',
+  steps:['An agent pursues a **goal** by observing, reasoning and acting.','It has three parts: a **model** (the brain), a **reasoning loop** (observe, think, act, repeat) and **tools** (APIs, functions, data stores, plugins).','Choose the type: **deterministic** (fixed paths, predictable) or **generative** (natural language, flexible).','Decide its **autonomy**: suggest only, act after one-tap approval, or act alone.','List every tool it needs and what it is allowed to do with each.'],
+  read:['Money, health or anything hard to undo: keep a person approving each action.','Low-risk, repeatable tasks: more autonomy is fine.']},
+ {id:'north-star',name:'Outcome Metric for AI',what:'Picks one metric that shows the AI is actually helping.',
+  steps:['Define a **completed outcome** for the user: a task finished, a question resolved, a purchase made.','Check that it lines up value for the **user**, any **partners** and the **business** at the same time.','Prefer it over usage counts like daily users, which can grow while nobody gets helped.','Track supporting signals underneath: success rate, time saved, errors caught.']},
+ {id:'examiner',name:'AI as Examiner',what:'Uses AI to test what you know.',
+  steps:['Ask for higher-order questions: application, analysis, evaluation.','Have it ask one at a time and grade only after you answer all of them.','Review whatever you miss, then retest.']},
+ {id:'phases',name:'Phased Rollout',what:'Scales an AI tool without losing trust.',
+  steps:['**Prototype:** one narrow use, with a person reviewing every output.','**Integrate:** connect it to your real systems and data, and widen who uses it.','**Scale:** automate the parts that have proven reliable, then add new uses.','Put a cost and a success metric on each phase, and move on only when it\'s met.']},
+ {id:'risk',name:'Risk Scoring',what:'Decides which AI risks to fix before launch.',
+  steps:['List what could go wrong: wrong output, privacy, compliance, lost trust.','Score likelihood × impact, each from 1 to 5.','Mitigate anything scoring 20 or more before launch.']}
+ ]},
+
+{id:'leadership',name:'Career & Influence',q:'How do I land the role and grow in it?',
+ idea:'Careers move on **clear communication and real relationships**. Answer so people remember you, build relationships before you need them, and in a new role, make it easy for people to trust and back you.',
+ use:['You have an interview coming up','You want a network that doesn\'t feel transactional','You\'re starting a new job or internship','You need people to back your idea or your work'],
+ tools:[
+ {id:'interviews',name:'Interview Answers',what:'Structures answers so they land.',
+  steps:['**Behavioral questions:** STAR. Situation, task, action, result. Keep the situation short and the result specific.','**Product questions:** problem, users, constraints, solutions, trade-offs, recommendation.','**Lead with the answer:** give your recommendation first, keep context short, and group points in threes.','**Know your favorite product** and why. It comes up often in product interviews.','**Pace:** pause between each part, cut filler words, and check that each key point landed.']},
+ {id:'networking',name:'The Networking Loop',what:'Builds relationships that turn into advocacy.',
+  steps:['**Write your why**, tied to a long-term goal. Networking only to land a job feels transactional.','**Segment** like a marketer: executives (reach through referrals), recruiters and coordinators (they open the first door), and peers who share your background or path.','**Track** every conversation: role, details worth remembering, what they suggested.','**Follow up like a friend:** share what you found, celebrate their news, get curious about what matters to them, and tell them how things turned out.','**Advocacy follows:** referrals and intros come after you\'ve invested.'],
+  watch:'Quality beats volume. One good conversation tied to your goal is worth more than twenty.'},
+ {id:'thanks',name:'Thank-yous and Follow-ups',what:'Closes every conversation well.',
+  steps:['Send thank-you notes the same day or within 24 hours.','Name a specific moment you enjoyed.','About a week after an interview, follow up: what went well, your continued interest, a polite ask on next steps.','On LinkedIn, star key contacts and filter to Starred so nothing gets buried.']},
+ {id:'mentors',name:'Working with Mentors',what:'Makes mentorship a two-way relationship.',
+  steps:['Bring specific challenges and specific asks.','Offer something back: a perspective, a market you know, a skill.','Schedule the next meeting before the current one ends.']},
+ {id:'new-role',name:'Starting a New Role',what:'Sets up a strong first few months.',
+  steps:['Ask your manager what great looks like and what the team\'s goals are.','Set small, realistic weekly goals and check them honestly.','Update in three parts: **what I did, what\'s next, what\'s blocking me**.','Run important emails past a mentor before they go up.','Make time for people, including alumni at the company.']},
+ {id:'feedback',name:'Feedback and Hard Moments',what:'Keeps conversations productive under pressure.',
+  steps:['When you disagree, frame it around the shared goal and check for understanding.','When you get criticism, listen fully before responding.','When you feel pushed, pause, name the emotion to yourself, then respond.']},
+ {id:'stakeholders',name:'Lead with Their Value',what:'Gets alignment by showing each person what\'s in it for them.',
+  steps:['List every stakeholder.','Write what each one gains.','Think about the whole system around a product: payers, providers, regulators, users.']}
+ ]}
+];
+
+const RULES6 = [
+ ['Get the problem right first','Creativity aimed at the wrong problem builds an impressive wrong answer. Talk to the people who have it before you solve it.'],
+ ['Test before you scale','When smart people disagree, run a small test with clear rules to scale, change or stop. Let evidence settle it.'],
+ ['Pick a side','A recommendation that hedges leaves people without a decision. Name one path and price the alternative.'],
+ ['Know your numbers, and where they break','Look at contribution before cutting anything, run the sensitivity, and use a model that fits the company.'],
+ ['Find who decides and what they fear','Buyers, committees and negotiators all move on their own worries. Map them and answer each one.'],
+ ['Trust is the currency','It makes teams faster, deals last longer and AI safe to use. It is also the easiest thing to lose.']
+];
+const PATHS = [
+ {name:'Starting a business',q:'Where do I even begin?',blurb:'From a rough idea to a business you can test, price and pitch.',
+  steps:[['innovation.problem','name the real problem'],['innovation.validation','prove people will pay'],['innovation.tam-sam-som','size the market'],['marketing.5cs','map your market'],['marketing.stp','pick who you serve'],['marketing.4ps','set price and channels'],['finance.contribution','know what each sale earns'],['finance.break-even','find your break-even'],['innovation.gates','spend in stages'],['innovation.pivot','decide your pivot signal']]},
+ {name:'MBA crash course',q:'What does an MBA actually teach?',blurb:'One core tool from each discipline, in the order a business school would teach them.',
+  steps:[['strategy.vrio','strategy'],['strategy.five-forces','industry analysis'],['finance.dupont','reading financials'],['finance.npv','investment decisions'],['data.process','research and analytics'],['marketing.stp','marketing'],['negotiation.four-numbers','negotiation'],['innovation.plan-review','entrepreneurship'],['leadership.interviews','career']]},
+ {name:'Case interview prep',q:'How do consultants think?',blurb:'The frameworks that come up most when a business problem is thrown at you live.',
+  steps:[['strategy.five-forces','is the market attractive?'],['strategy.swot','what are the options?'],['finance.contribution','is it really unprofitable?'],['finance.break-even','how much must we sell?'],['marketing.line-extension','will a new product pay?'],['strategy.hypothesis','structure the answer'],['innovation.recommend','land one recommendation']]}
+];
+
+
+/* ---------- SKETCHES ---------- */
+/* node: [id,x,y,w,h,label,sub,target,hi,kicker] ; arrows: [x1,y1,x2,y2,bend] */
+/* flow(): stages left to right, one box per tool, so every tool in the playbook appears in its sketch */
+function flow(pid,title,stages){
+  const p = PB.find(x=>x.id===pid), name = id => p.tools.find(t=>t.id===id).name;
+  const n = stages.length, gap = 15, W = 720, cw = (W-gap*(n-1))/n, nodes = [], arrows = [];
+  let most = 0;
+  const all = stages.flatMap(st=>st[2]).map(name), fs = Math.min(21, Math.min(...all.map(l => Math.max(17,(cw-38)/(l.length*0.40)))));
+  stages.forEach(([lab,sub,ids],i) => {
+    const x = 20 + i*(cw+gap);
+    nodes.push(['h'+i,x,20,cw,70,(i+1)+' '+lab,sub,ids[0],i===0]);
+    ids.forEach((id,j) => nodes.push(['n'+i+'_'+j,x+12,118+j*54,cw-24,44,name(id),'',id,false,'',fs]));
+    if (i<n-1) arrows.push([x+cw+1,55,x+cw+gap-1,55,0]);
+    most = Math.max(most,ids.length);
+  });
+  return {h:118+most*54+6,title,nodes,arrows};
+}
+const SK = {
+ strategy:{h:400,title:'Diagnose, then decide, then deliver',
+  nodes:[
+   ['h1',20,20,230,70,'1 Diagnose','inside, then outside','vrio',true],
+   ['h2',265,20,230,70,'2 Decide','choose, then test it','s-curve'],
+   ['h3',510,20,230,70,'3 Deliver','make it real, track it','ambidexterity'],
+   ['a1',35,118,200,44,'VRIO','', 'vrio'],['a2',35,172,200,44,'STEEP','', 'steep'],['a3',35,226,200,44,'Five Forces','', 'five-forces'],['a4',35,280,200,44,'SWOT','', 'swot'],['a5',35,334,200,44,'Business Model Canvas','', 'bmc'],
+   ['b1',280,118,200,44,'S-curve','', 's-curve'],['b2',280,172,200,44,'Make or Buy','', 'make-buy'],['b3',280,226,200,44,'Hypothesis Testing','', 'hypothesis'],
+   ['c1',525,118,200,44,'Ambidexterity','', 'ambidexterity'],['c2',525,172,200,44,'Balanced Scorecard','', 'scorecard']],
+  arrows:[[250,55,263,55,0],[495,55,508,55,0]]},
+ innovation:flow('innovation','From a hunch to a decision you can fund',[
+   ['Frame','the right problem?',['problem','tam-sam-som']],
+   ['Prove','will people pay?',['validation','options']],
+   ['Fund','spend in stages',['plan-review','gates','pivot']],
+   ['Decide','land one answer',['recommend']]]),
+ finance:flow('finance','Pick the question, then the tool',[
+   ['Product','is it worth keeping?',['contribution','break-even']],
+   ['Company','is it healthy?',['dupont','affordability']],
+   ['Investment','is it worth the price?',['npv','buyout']],
+   ['Markets','what is it worth?',['ddm','bonds','sharpe']]]),
+ data:flow('data','Explore, collect, then analyze',[
+   ['Frame','question to decision',['process']],
+   ['Explore','how people act today',['qualitative']],
+   ['Collect','ask the right people',['survey','representativeness']],
+   ['Analyze','find the real driver',['methods','pareto','base-incremental']]]),
+ marketing:flow('marketing','Understand, choose, build, then launch',[
+   ['Understand','map the situation',['5cs']],
+   ['Choose','who, and why you',['stp']],
+   ['Build','the offer over time',['4ps','plc','line-extension']],
+   ['Launch','message and media',['messaging','channel-mix']]]),
+ b2b:flow('b2b','Find who decides, then show them the money',[
+   ['Map','who has to say yes?',['committee','critical-three']],
+   ['Size','is it worth chasing?',['sizing']],
+   ['Pitch','value they can count',['value-fast','outreach']],
+   ['Partner','sell through others',['channel']]]),
+ negotiation:flow('negotiation','Most of a negotiation happens before you sit down',[
+   ['Prepare','before the meeting',['pre-table','four-numbers','power','intangibles']],
+   ['Negotiate','at the table',['anchoring','dist-int','concessions']],
+   ['Hold steady','the whole way',['steady','ethics','culture']]]),
+ ai:flow('ai','Decide, build, use, then scale',[
+   ['Decide','is AI right here?',['fit-check','hitl','risk']],
+   ['Build','make it reliable',['grounding','agents','guardrails']],
+   ['Use','trust the output',['prompting','prompt-patterns','verify','examiner']],
+   ['Scale','get people using it',['two-way','adoption','phases','north-star']]]),
+ leadership:flow('leadership','Land the role, then grow in it',[
+   ['Get in','be remembered',['interviews','networking','thanks']],
+   ['Grow','show up well',['new-role','mentors','feedback','stakeholders']]])
+};
+
+/* cards follow the sketch, left to right */
+PB.forEach(p => { const order = []; (SK[p.id].nodes||[]).forEach(n => { if (n[7] && n[0][0]!=='h' && !order.includes(n[7])) order.push(n[7]); }); const rank = id => { const i = order.indexOf(id); return i<0 ? 999 : i; }; p.tools.sort((a,b) => rank(a.id)-rank(b.id)); });
+
+/* ---------- LOOK ---------- */
+const COL = {strategy:['#2747C9','#fff'],innovation:['#FF7A45','#16130F'],finance:['#1F8A5B','#fff'],data:['#6C4BD8','#fff'],marketing:['#E5484D','#fff'],b2b:['#0F7C86','#fff'],negotiation:['#FFC531','#16130F'],ai:['#16130F','#FBF6EC'],leadership:['#D9468B','#fff']};
+const TILT = ['-2.5deg','1.8deg','-1.2deg','2.4deg','-1.8deg','1.2deg','-2.2deg','2deg','-1.4deg'];
+const pad = n => String(n).padStart(2,'0');
+const colorVars = id => { const c = COL[id]||COL.strategy; return `--c:${c[0]};--cf:${c[1]}`; };
+
+/* ---------- RENDER HELPERS ---------- */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const md = s => esc(s).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+const plain = s => String(s).replace(/\*\*/g,'');
+const NS = 'http://www.w3.org/2000/svg';
+const el = (tag, attrs={}, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+const reduce = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function drawSketch(key, onPick, mini){
+  const spec = SK[key]; const W = 760, H = spec.h + 50;
+  const svg = el('svg',{viewBox:`0 0 ${W} ${H}`,class:'sk',role:'img','aria-label':spec.title});
+  if (mini) svg.setAttribute('aria-hidden','true');
+  const R = window.rough ? rough.svg(svg) : null;
+  let seed = 7;
+  const o = (extra={}) => Object.assign({roughness:1.3,bowing:1.2,strokeWidth:1.5,seed:seed++},extra);
+  const rect = (g,x,y,w,h,extra) => g.appendChild(R ? R.rectangle(x,y,w,h,o(extra)) : el('rect',{x,y,width:w,height:h,rx:6,fill:'none'}));
+  const path = (g,d,extra) => g.appendChild(R ? R.path(d,o(extra)) : el('path',{d,fill:'none'}));
+  const text = (g,x,y,t,cls,anchor='middle') => { const e = el('text',{x,y,class:cls,'text-anchor':anchor},g); e.textContent = t; return e; };
+  const arrow = (g,[x1,y1,x2,y2,b]) => { const mx=(x1+x2)/2 + b, my=(y1+y2)/2 - Math.abs(b)/2; path(g,`M${x1} ${y1} Q${mx} ${my} ${x2} ${y2}`); const a=Math.atan2(y2-my,x2-mx), L=10; path(g,`M${x2-L*Math.cos(a-0.45)} ${y2-L*Math.sin(a-0.45)} L${x2} ${y2} L${x2-L*Math.cos(a+0.45)} ${y2-L*Math.sin(a+0.45)}`); };
+  const wire = (g,label,target) => {
+    if (mini) return;
+    g.setAttribute('tabindex',0); g.setAttribute('role','button'); g.setAttribute('aria-label',label);
+    const act = () => onPick(target);
+    g.addEventListener('click',act); g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();act()}});
+  };
+  const top = 50; const root = el('g',{transform:`translate(0 ${top})`},svg);
+  text(svg,20,32,spec.title,'note','start').setAttribute('style','font-size:24px');
+  if (spec.lanes) spec.lanes.forEach(([x,y,w,h,lab]) => { const g = el('g',{},root); rect(g,x,y,w,h,{strokeLineDash:[7,6],strokeWidth:1.1}); text(g,x+16,y+26,lab,'k','start').setAttribute('style','font-size:19px;font-weight:700'); });
+  if (spec.center) {
+    const c = spec.center, cy = c.cy, dg = el('g',{},root);
+    (spec.nodes||[]).forEach(([id,x,y,w,h]) => { const mid = x < 380 && x+w > 380, nx = mid ? x+w/2 : (x < 380 ? x+w : x), ny = mid ? y : y+h/2, dx = nx-380, dy = ny-cy, k = 1/Math.sqrt((dx/122)**2+(dy/66)**2); if (k<1) path(dg,`M${nx} ${ny} L${380+dx*k} ${cy+dy*k}`,{strokeLineDash:[6,6],strokeWidth:1.1}); });
+    const g = el('g',{class:'node'+(mini?' on':''),'data-t':c.go},root);
+    el('ellipse',{cx:380,cy,rx:112,ry:58,class:'hlr'},g);
+    g.appendChild(R ? R.ellipse(380,cy,240,128,o()) : el('ellipse',{cx:380,cy,rx:120,ry:64,fill:'none'}));
+    text(g,380,cy-6,c.t,'t'); text(g,380,cy+22,c.s,'s');
+    wire(g,c.t,c.go);
+  }
+  if (spec.arrows) { const g = el('g',{},root); spec.arrows.forEach(a => arrow(g,a)); }
+  if (spec.line) {
+    const g = el('g',{class:'node','data-t':'four-numbers'},root); const ly = 104;
+    el('rect',{x:220,y:ly-18,width:340,height:36,class:'band'},g);
+    rect(g,220,ly-18,340,36,{strokeWidth:1.2}); g.lastChild.classList.add('accent');
+    text(g,330,ly-26,'deal zone (ZOPA)','note');
+    path(g,`M30 ${ly} L728 ${ly}`,{strokeWidth:1.6}); arrow(g,[700,ly,730,ly,0]);
+    text(g,728,ly+30,'better for you','k','end');
+    spec.marks.forEach(([x,lab,sub,up]) => { path(g,`M${x} ${ly-16} L${x} ${ly+16}`,{strokeWidth:2.4}); const ty = up ? ly-62 : ly+52; text(g,x,ty,lab,'t'); text(g,x,ty+22,sub,'s'); });
+    wire(g,'Open The Four Numbers','four-numbers');
+  }
+  (spec.nodes||[]).forEach(([id,x,y,w,h,label,sub,target,hi,kicker,fsz]) => {
+    const g = el('g',{class:'node'+(mini&&hi?' on':''),'data-t':target},root);
+    el('rect',{x:x+3,y:y+3,width:w-6,height:h-6,class:'hlr'},g);
+    rect(g,x,y,w,h);
+    const lines = (sub||'').split('\n').filter(Boolean);
+    let ty = y + h/2 - (lines.length? (lines.length*20)/2 : -8) + (kicker? 10 : 4);
+    if (kicker) text(g,x+w/2,y+26,kicker,'k');
+    if (fsz && (w-14)/(label.length*0.40) < fsz) {
+      const words = label.split(' '); let best = 1, diff = 1e9;
+      for (let k=1;k<words.length;k++){ const d = Math.abs(words.slice(0,k).join(' ').length - words.slice(k).join(' ').length); if (d<diff){diff=d;best=k;} }
+      const l1 = words.slice(0,best).join(' '), l2 = words.slice(best).join(' '), f2 = Math.min(fsz,(w-14)/(Math.max(l1.length,l2.length)*0.40));
+      [l1,l2].forEach((l,k) => text(g,x+w/2,y+h/2-3+k*(f2+1)-(f2+1)/2+f2*0.35,l,'t').setAttribute('style','font-size:'+f2.toFixed(1)+'px;line-height:1'));
+    } else { const lt = text(g,x+w/2,ty,label,'t'); if (fsz) lt.setAttribute('style','font-size:'+fsz.toFixed(1)+'px'); }
+    lines.forEach((l,i) => { if (l.includes(' · ')) { const [a,b] = l.split(' · '); text(g,x+w/2,ty+22+i*20,a+'  ·  '+b,'s'); } else text(g,x+w/2,ty+22+i*20,l,'s'); });
+    wire(g,'Open '+label,target);
+  });
+  (spec.notes||[]).forEach(([x,y,t,a]) => { const n = text(root,x,y,t,'note',a); if (t==='×') n.setAttribute('style','font-size:30px'); });
+  return svg;
+}
+
+/* ---------- VIEWS ---------- */
+const view = $('#view'), bar = $('#progress');
+let io = null, onScroll = null;
+function cleanup(){ if (io) { io.disconnect(); io = null; } if (onScroll) { removeEventListener('scroll',onScroll); onScroll = null; } bar.style.transform = 'scaleX(0)'; document.documentElement.style.removeProperty('--c'); }
+const toolCount = PB.reduce((n,p)=>n+p.tools.length,0);
+const teaser = p => plain(p.idea).split(/(?<=\.)\s/)[0];
+
+function renderHome(){
+  cleanup();
+  view.innerHTML = `
+  <section class="gut"><div class="in mast">
+    <div class="kick rv" style="--i:0">A field guide to business problems</div>
+    <h1 class="rv" style="--i:1">Business school, <em>sketched out.</em></h1>
+    <p class="dek rv" style="--i:2">Nine playbooks of MBA tools for real business problems.</p>
+    <div class="badges rv" style="--i:3" aria-hidden="true"><div class="badge"><div><b>${PB.length}</b><span>playbooks</span></div></div><div class="badge"><div><b>${toolCount}</b><span>tools</span></div></div></div>
+  </div></section>
+
+  <section class="gut sec"><div class="in">
+    <div class="sechead"><h2>The playbooks</h2><span class="hand">pick the question you're stuck on</span></div>
+    <div class="feed" id="feed"></div>
+  </div></section>`;
+  const feed = view.querySelector('#feed');
+  PB.forEach((p,i) => {
+    const b = document.createElement('button'); b.className = 'story rv'; b.style.cssText = colorVars(p.id)+`;--i:${i%3+1};--tilt:${TILT[i]}`;
+    b.setAttribute('aria-label',`${p.name}: ${p.q}`);
+    b.innerHTML = `<div class="thumb"><span class="num">${pad(i+1)}</span><div class="paper"></div></div>
+      <div class="meta"><span class="mono">#${pad(i+1)} · ${p.tools.length} tools</span></div>
+      <h3>${esc(p.name)}</h3><span class="q">${esc(p.q)}</span>`;
+    b.querySelector('.paper').appendChild(drawSketch(p.id,null,true));
+    b.onclick = () => go(p.id);
+    feed.appendChild(b);
+  });
+}
+
+function cardHTML(t,i){
+  return `<article class="card" id="t-${t.id}" data-t="${t.id}">
+   <div class="head"><span class="n">${pad(i+1)}</span><h3>${esc(t.name)}</h3><p class="what">${md(t.what)}</p></div>
+   <div class="body">
+    ${t.formula?`<div class="formula">${esc(t.formula)}</div>`:''}
+    <div><h4>How to use it</h4><ol>${t.steps.map(s=>`<li><span>${md(s)}</span></li>`).join('')}</ol></div>
+    ${t.read?`<div><h4>How to read it</h4><ul>${t.read.map(s=>`<li>${md(s)}</li>`).join('')}</ul></div>`:''}
+    ${t.watch?`<p class="watch"><b>Watch out</b>${md(t.watch)}</p>`:''}
+   </div></article>`;
+}
+
+function renderPlaybook(id,toolId){
+  cleanup();
+  const i = PB.findIndex(p=>p.id===id), p = PB[i], next = PB[(i+1)%PB.length];
+  document.documentElement.style.setProperty('--c',COL[id][0]);
+  view.innerHTML = `
+  <section class="hero gut" style="${colorVars(id)}"><div class="in">
+    <button class="back rv" style="--i:0" id="back">← All playbooks</button>
+    <div class="kick rv" style="--i:0;margin-top:22px">Playbook ${pad(i+1)} of ${pad(PB.length)}</div>
+    <h1 class="rv" style="--i:1">${esc(p.name)}</h1>
+    <span class="hand rv" style="--i:2">${esc(p.q)}</span>
+    <p class="lede rv" style="--i:3">${md(p.idea)}</p>
+    <div class="uses rv" style="--i:4"><span class="kick">Use it when</span>${p.use.map(u=>`<span>${esc(u)}</span>`).join('')}</div>
+    <div class="big" aria-hidden="true">${pad(i+1)}</div>
+  </div></section>
+
+  <section class="gut" style="${colorVars(id)}"><div class="in essay">
+    <div class="stage">
+      <details class="map" id="map"><summary>See the whole playbook on one page</summary><div class="pin"><div class="hint">Tap a box to jump to it.</div><div class="scroll" id="sk"></div></div></details>
+      <div class="nowon" aria-live="polite"><span class="mono">Now reading</span><b id="nowon">${esc(p.tools[0].name)}</b></div>
+    </div>
+    <div class="steps">${p.tools.map(cardHTML).join('')}</div>
+  </div></section>
+
+
+  <button class="nextblock gut" id="next" style="${colorVars(next.id)}"><div class="in"><div><span class="kick">Next playbook</span><b>${esc(next.name)}</b></div><span class="hand">${esc(next.q)} →</span></div></button>`;
+
+  const map = view.querySelector('#map'); if (!matchMedia('(max-width:600px)').matches) map.open = true;
+  const svg = drawSketch(id, tid => scrollToTool(tid));
+  view.querySelector('#sk').appendChild(svg);
+  view.querySelector('#back').onclick = () => go('');
+  view.querySelector('#next').onclick = () => go(next.id);
+
+  const cards = [...view.querySelectorAll('.card')], nowon = view.querySelector('#nowon');
+  const setActive = tid => {
+    cards.forEach(c => c.classList.toggle('on', c.dataset.t===tid));
+    const hasNode = svg.querySelector(`.node[data-t="${tid}"]`);
+    svg.querySelectorAll('.node').forEach(n => n.classList.toggle('on', hasNode ? n.dataset.t===tid : false));
+    const t = p.tools.find(x=>x.id===tid); if (t) nowon.textContent = t.name;
+  };
+  setActive(p.tools[0].id);
+  io = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting) setActive(e.target.dataset.t); }); }, {rootMargin:'-40% 0px -55% 0px'});
+  cards.forEach(c => io.observe(c));
+  onScroll = () => { const h = document.documentElement; const max = h.scrollHeight - innerHeight; bar.style.transform = `scaleX(${max>0?Math.min(1,scrollY/max):0})`; };
+  addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  if (toolId) requestAnimationFrame(()=>scrollToTool(toolId)); else window.scrollTo({top:0});
+}
+function scrollToTool(tid){
+  const t = document.getElementById('t-'+tid); if (!t) return;
+  t.scrollIntoView({behavior: reduce()?'auto':'smooth', block:'start'});
+}
+
+function renderSearch(q){
+  cleanup();
+  const s = q.toLowerCase(); const hits = [];
+  PB.forEach(p => p.tools.forEach(t => { const hay = [t.name,t.what,(t.steps||[]).join(' '),t.ex||'',t.formula||''].join(' ').toLowerCase(); if (hay.includes(s)) hits.push([p,t]); }));
+  view.innerHTML = `<section class="gut sec"><div class="in"><div class="sechead"><h2>${hits.length} ${hits.length===1?'tool':'tools'} for “${esc(q)}”</h2></div>
+   <div class="results">${hits.map(([p,t])=>`<button data-p="${p.id}" data-t="${t.id}"><b>${esc(t.name)}</b><small>${esc(p.name)} · ${md(t.what)}</small></button>`).join('') || '<p class="muted">No tools match. Try a framework name like SWOT, or a word like price.</p>'}</div></div></section>`;
+  view.querySelectorAll('.results button').forEach(b => b.onclick = () => { $('#q').value=''; go(b.dataset.p,b.dataset.t); });
+}
+function go(p,t){
+  const h = t ? `${p}.${t}` : (p||'');
+  try { history.replaceState(null,'',h?'#'+h:location.pathname); } catch(e){}
+  route(h);
+}
+function route(h){
+  const [p,t] = (h||'').split('.');
+  if (PB.some(x=>x.id===p)) renderPlaybook(p,t); else { renderHome(); window.scrollTo({top:0}); }
+}
+/* light / dark */
+(() => { const root = document.documentElement; let saved = null; try { saved = localStorage.getItem('pb-theme'); } catch(e){}
+  if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved);
+  $('#theme').onclick = () => { const cur = root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); const next = cur === 'dark' ? 'light' : 'dark'; root.setAttribute('data-theme', next); try { localStorage.setItem('pb-theme', next); } catch(e){} }; })();
+$('#home-link').onclick = () => { $('#q').value=''; go(''); };
+let st; $('#q').addEventListener('input', e => { clearTimeout(st); const v=e.target.value.trim(); st=setTimeout(()=> v ? renderSearch(v) : route(location.hash.slice(1)),120); });
+
+route(location.hash.slice(1));
+</script>
+
+</body>
+</html>
