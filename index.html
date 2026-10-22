@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Nine playbooks of MBA tools for real business problems, with hand-drawn sketches.">
+<meta name="description" content="Nine playbooks of MBA tools for real business problems, with hand-drawn sketches and a glossary.">
 <title>The MBA Playbook</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -208,6 +208,24 @@ footer{border-top:1.5px solid var(--ink);padding-block:22px 40px;font-size:14px;
 .nextblock .hand{font-size:28px}
 .nextblock:hover b{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:6px}
 
+
+/* glossary */
+.thumb.gl{background:var(--sheet)}
+.thumb.gl .az{font-family:var(--f-display);font-weight:900;font-size:clamp(64px,9vw,104px);line-height:.9;letter-spacing:-.04em;color:var(--ink);font-variation-settings:'SOFT' 100;transform:rotate(-4deg);text-align:center}
+.thumb.gl .az span{display:block;font-family:var(--f-hand);font-size:.32em;font-weight:700;letter-spacing:0;color:var(--pen);margin-top:6px}
+.thumb.gl .num{color:var(--ink)}
+.gl-tools{display:flex;gap:12px;flex-wrap:wrap;align-items:center;padding-block:28px 6px}
+.gl-tools input{flex:1 1 260px;min-width:0;max-width:420px;padding:11px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--sheet);color:var(--ink);font:inherit;font-size:15.5px}
+.letters{display:flex;flex-wrap:wrap;gap:4px}
+.letters a{font-family:var(--f-mono);font-size:13px;text-decoration:none;width:28px;height:28px;display:grid;place-items:center;border-radius:50%}
+.letters a:hover{background:var(--hl)}
+.gl-list{columns:2 340px;column-gap:44px;padding-block:18px 50px}
+.gl-group{break-inside:avoid-column;margin-bottom:22px}
+.gl-group h3{font-size:34px;font-weight:900;border-bottom:1.5px solid var(--ink);margin-bottom:10px;scroll-margin-top:90px}
+.gl-item{break-inside:avoid;padding:8px 0 12px;border-bottom:1px dashed var(--rule)}
+.gl-item b{font-family:var(--f-display);font-size:19px;font-weight:800;display:block;line-height:1.2}
+.gl-item p{margin:4px 0 0;font-size:16px;line-height:1.55}
+.gl-empty{color:var(--muted)}
 /* search */
 .results{display:grid;gap:10px;max-width:780px}
 .results button{all:unset;cursor:pointer;display:grid;gap:2px;padding:14px 16px;border:1.5px solid var(--ink);border-radius:6px;background:var(--sheet)}
@@ -225,7 +243,7 @@ footer{border-top:1.5px solid var(--ink);padding-block:22px 40px;font-size:14px;
     <button class="brand" id="home-link" aria-label="The MBA Playbook home"><span class="dot" aria-hidden="true">M</span><b>The MBA Playbook</b></button>
     <div class="search">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
-      <input id="q" type="search" placeholder="Search tools, like VRIO or BATNA" aria-label="Search tools">
+      <input id="q" type="search" placeholder="Search tools or terms, like BATNA" aria-label="Search tools and terms">
     </div>
     <button class="theme" id="theme" aria-label="Switch light or dark mode" title="Light or dark mode"><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
   </div>
@@ -245,29 +263,29 @@ const PB = [
  use:['Sizing up a company, an industry or a competitor','Weighing an acquisition, partnership or new market','Turning a strategy into goals people can track'],
  tools:[
  {id:'vrio',name:'VRIO',what:'Tests whether a capability gives a lasting advantage.',
-  steps:['List the two or three capabilities that seem to drive the company\'s success.','Ask four questions of each, in order: **Valuable:** does it win customers or cut costs? **Rare:** do few competitors have it? **Costly to imitate:** would copying it take years, culture or secrets? **Organized:** do structure, incentives and processes capture the value?','Stop at the first "no." Where you stop tells you the kind of advantage.'],
+  steps:['List the two or three **capabilities** that seem to drive the company\'s success. A capability can be a resource (a brand, a patent, a location) or something the company is good at doing (sourcing, design, service).','Test each one with four questions, in order. **Valuable:** does it help win customers or cut costs? **Rare:** do few competitors have it? **Costly to imitate:** would copying it take years, a special culture or secret know-how? **Organized:** are the company\'s structure, incentives and processes set up to make the most of it?','Stop at the first "no." How far a capability gets tells you how much advantage it gives, as shown below.','Look at how the capabilities work together. Several ordinary strengths that reinforce each other can be harder to copy than one standout strength.'],
   read:['No to Valuable: a **disadvantage**','Valuable only: **parity**','Valuable and Rare: a **temporary advantage**','All four: a **sustained advantage**']},
  {id:'steep',name:'STEEP',what:'Scans the outside forces a company can\'t control.',
-  steps:['Work through five lenses: **Socio-cultural** (values, demographics, behavior), **Technological**, **Economic** (rates, costs, currency, cycles), **Environmental** (climate rules, sustainability pressure) and **Political and legal** (regulation, trade, labor law).','List two or three trends under each, with evidence.','Mark each trend as an **opportunity** or a **threat**. These become the O and T of a SWOT.']},
+  steps:['Scan the world outside the company through five lenses. **Socio-cultural:** values, demographics and how people behave. **Technological:** new tools and platforms. **Economic:** interest rates, costs, currency and the business cycle. **Environmental:** climate rules and sustainability pressure. **Political and legal:** regulation, trade policy and labor law.','Under each lens, list two or three trends that actually affect this business, with a source or number for each. Skip trends that are true but irrelevant.','Label each trend an **opportunity** (it could help the company) or a **threat** (it could hurt it). These feed straight into the O and T of a SWOT.']},
  {id:'five-forces',name:'Five Forces',what:'Shows how much profit an industry lets companies keep.',
-  steps:['Rate each force high, moderate or low, with a reason.','**Threat of new entrants:** how hard is it to get in (capital, brand, access)?','**Buyer power:** can customers switch easily or squeeze prices?','**Supplier power:** are key suppliers few and essential?','**Threat of substitutes:** can a different product meet the same need?','**Rivalry:** how fierce is competition (many players, high fixed costs, price wars)?'],
+  steps:['Think of an industry\'s profit as a pie that five forces compete for. Rate each force high, moderate or low, and write one sentence on why.','**Threat of new entrants:** how easy is it for a newcomer to start competing? High startup costs, strong brands and hard-to-get licenses keep it low.','**Buyer power:** can customers easily switch or push prices down? Power is high when a few big buyers account for most sales.','**Supplier power:** do a few suppliers control something the industry can\'t do without? If so, they can raise prices and take profit.','**Threat of substitutes:** could customers meet the same need with a different kind of product? Video calls, for example, substitute for business travel.','**Rivalry:** how hard do existing competitors fight? Many similar players, high fixed costs and slow growth usually lead to price wars.'],
   read:['The more forces rated high, the less profit is left in the industry.','Then ask where the company can position itself to escape the strongest forces.']},
  {id:'swot',name:'SWOT',what:'Pulls the diagnosis together and turns it into options.',
-  steps:['Build **Strengths and Weaknesses** from VRIO and the Business Model Canvas.','Build **Opportunities and Threats** from STEEP and Five Forces.','Give every line evidence and a "so what."','Generate options by pairing them: use a strength to capture an opportunity, or fix a weakness a threat exposes.']},
+  steps:['Fill in **Strengths and Weaknesses** from inside the company. Your VRIO and Business Model Canvas work are the best sources.','Fill in **Opportunities and Threats** from outside the company. Pull them from your STEEP scan and Five Forces.','For every line, add evidence and a "so what": why does this matter for the decision you\'re facing?','Turn the grid into options by pairing items. Use a strength to capture an opportunity, or fix a weakness before a threat exploits it. A SWOT that doesn\'t end in options is just a list.']},
  {id:'bmc',name:'Business Model Canvas',what:'Maps how a company creates, delivers and captures value on one page.',
-  steps:['Fill nine boxes in a line or two each: **customer segments, value proposition, channels, customer relationships, revenue streams, key resources, key activities, key partners, cost structure**.','Mark each box as a strength or a weakness.','Look for the fragile box: the one the rest of the model depends on.']},
+  steps:['Describe how the business works in nine boxes, a line or two each. **Customer segments:** who you serve. **Value proposition:** what problem you solve for them. **Channels:** how you reach them. **Customer relationships:** how you keep them. **Revenue streams:** how money comes in. **Key resources, key activities and key partners:** what you need, do and rely on. **Cost structure:** where money goes.','Mark each box as a strength or a weakness.','Find the **fragile box**: the one the rest of the model depends on. If it broke, what else would fall over? That\'s where to focus first.']},
  {id:'s-curve',name:'S-curve',what:'Shows when a growth engine is running out, so you can jump to the next one in time.',
-  steps:['Place the core business on its curve: slow start, fast growth, or flattening.','Name the emerging curve, where growth is moving.','Ask what the company lacks to win on that new curve, then choose to **build, partner or buy**.']},
+  steps:['Most products and businesses grow in an S shape: a slow start, a fast climb, then a flattening as the market fills up. Place the company\'s main business on that curve.','If growth is flattening, name the next curve: the new technology, customer group or business model where growth is moving.','Ask what the company would need to win on that new curve that it doesn\'t have today, such as skills, content, customers or technology.','Decide how to get it: **build** it yourself (slow, full control), **partner** for it (faster, shared control) or **buy** a company that has it (fastest, most expensive).']},
  {id:'make-buy',name:'Make or Buy',what:'Decides whether to own a supplier or partner (vertical integration) or contract with it.',
-  steps:['Score **how hard it is to write a complete contract**. Specific assets, high uncertainty and frequent dealings make it hard.','Score **how important it is to competitive advantage**.','Place it on the grid below.'],
+  steps:['This tool decides whether to do something in-house (or own the supplier outright) or buy it from someone else.','Score **how hard it would be to write a complete contract** for it. Contracts get hard when the work needs specialized investment, when the future is uncertain, or when you deal with the supplier constantly.','Score **how important it is to your competitive advantage**. Is this part of why customers choose you?','Place it on the grid below. The harder it is to contract and the more it matters, the stronger the case for owning it.'],
   read:['Both high: **own it**','Both low: **buy it** on the market','Mixed: use a **partnership or long-term contract**']},
  {id:'hypothesis',name:'Hypothesis Testing',what:'Turns a big bet into a clear go, pivot or stop decision.',
-  steps:['Write the core hypothesis in one sentence: "Doing X is the best way to achieve Y."','List the conditions that must all be true, such as value created exceeds the price, regulators allow it, integration works, and alternatives are worse.','Name the data that would prove or disprove each condition.','Set the rule: all conditions hold, **go**. One fails, **pivot** to an alternative hypothesis.']},
+  steps:['Write the big bet as one testable sentence: "Doing X is the best way to achieve Y." For example, "Acquiring this company is the fastest way to enter mobile gaming."','List the **conditions** that all have to be true for the bet to pay off: the value created must exceed the price paid, regulators must allow it, the integration must work, and the alternatives must be worse.','For each condition, name the data that would prove or disprove it, and go get that data.','Agree on the decision rule before you look at the results. All conditions hold: **go**. One fails: **pivot** to the next-best option. Several fail: **stop**.']},
  {id:'ambidexterity',name:'Ambidexterity',what:'Runs the core business and a new venture at the same time without one starving the other.',
-  steps:['Give the new unit its **own structure** so it can move fast.','Give it **its own incentives**, tied to innovation milestones.','Have the leader **advocate visibly** and celebrate early wins.','Keep shared work where it helps, such as joint teams on bridge technologies.'],
+  steps:['Ambidexterity means running the established business and a new venture at the same time. The two need different things, so treat them differently.','Give the new unit its **own structure**, with its own team and fewer approval layers, so it can move fast.','Give it **its own incentives and metrics**, tied to learning and milestones. Judging a new venture on the core business\'s profit targets will kill it early.','Make sure a senior leader **visibly champions** it and celebrates early wins, so people see it\'s a priority.','Share what genuinely helps, such as customers, technology or brand, and keep everything else separate.'],
   watch:'The core business is the funding engine and can quietly starve the new unit of money and talent.'},
  {id:'scorecard',name:'Balanced Scorecard',what:'Translates a strategy into goals and measures across four views.',
-  steps:['**Financial:** growth, margin, cash.','**Customer:** adoption, satisfaction, share.','**Internal process:** speed to market, quality, efficiency.','**Learning and growth:** talent, skills, culture.','Write two objectives per view, each with one measurable target.']}
+  steps:['A Balanced Scorecard turns a strategy into a short set of goals across four views, so you don\'t track money alone.','**Financial:** how the strategy should show up in growth, margins and cash.','**Customer:** what customers should experience, measured by things like adoption, satisfaction or market share.','**Internal process:** what the company must do well, such as speed to market, quality or efficiency.','**Learning and growth:** the people, skills and culture needed to deliver it.','Write two objectives per view, each with one number and a date. If you can\'t measure it, rewrite it until you can.']}
  ]},
 
 {id:'innovation',name:'Innovation & Entrepreneurship',q:'Is this idea worth building?',
@@ -275,29 +293,29 @@ const PB = [
  use:['Judging a startup, product idea or new venture','Choosing between technologies, partners or vendors','Deciding whether to keep going, pivot or stop'],
  tools:[
  {id:'problem',name:'Problem Framing',what:'Makes sure you\'re solving the right problem before designing a solution.',
-  steps:['Write the problem in one sentence: who has it, when, and what it costs them.','Talk to the people who have it. Ask how they handle it today.','Rewrite the sentence after each round of conversations. A change means you\'re learning.','Generate solutions only after the sentence stops changing.']},
+  steps:['Write the problem in one sentence: **who** has it, **when** it shows up and **what it costs them** in time, money or frustration.','Talk to at least five to ten people who have the problem. Ask how they deal with it today and what they\'ve already tried. Listen more than you pitch.','Rewrite your sentence after each round of conversations. If it keeps changing, you\'re learning. That\'s good.','Only start designing solutions once the sentence stops changing. A clear problem makes good solutions much easier to spot.']},
  {id:'tam-sam-som',name:'Market Sizing',what:'Estimates how big the opportunity is, from the whole market down to what you can win soon.',
   formula:'TAM → SAM → SOM',
-  steps:['**TAM** (total addressable market): everyone who could use it × the value per unit.','**SAM** (serviceable market): the share your product and channels can actually serve.','**SOM** (obtainable market): what you can realistically win in the next few years. Build it bottom-up, segment by segment, with a volume logic for each.','Pick a **beachhead**: a small segment where a win creates proof that opens bigger ones.'],
+  steps:['Market sizing tells you how big the prize is, from the whole market down to what you can realistically win.','**TAM (total addressable market):** everyone who could ever use this kind of product, multiplied by what each would spend per year.','**SAM (serviceable available market):** the part of the TAM your product, location and channels can actually reach today.','**SOM (serviceable obtainable market):** what you can realistically win in the next two to three years. Build it bottom-up: count real customers in each segment and how much each would buy.','Pick a **beachhead**: one small segment you can win clearly. Winning it gives you proof, revenue and references that open the bigger segments.'],
   watch:'Investors trust a bottom-up SOM far more than "1% of a huge market."'},
  
 {id:'validation',name:'Validation Ladder',what:'Proves customers will pay, in steps of rising commitment.',
-  steps:['**Interviews:** do they confirm the pain?','**Surveys:** how widespread is it?','**Letters of intent:** will they sign?','**Paid pilots:** will they pay at your price and terms?'],
+  steps:['Validation means proving people will pay for your solution, using steps that ask for more commitment each time. Climb one rung before spending on the next.','**Interviews:** do people describe the problem without prompting, and does it really hurt?','**Surveys:** how many people have the problem, and which kinds of people have it most?','**Letters of intent:** will they sign a non-binding statement saying they plan to buy?','**Paid pilots:** will they pay your actual price, on your actual terms, for a small trial? This is the strongest signal you can get before launch.'],
   watch:'Agreeing that a problem hurts is a weaker signal than paying to fix it. Test your real price and terms, because a long contract or a share of revenue is its own reason to say no.'},
  {id:'plan-review',name:'Investor Readiness Check',what:'Reads your plan the way an investor will, before you pitch it.',
-  steps:['Score each area out of 10: **value proposition, market, go-to-market, operations, team, financials, risks, milestones and exit**.','Find the lowest score. That\'s where an investor will push.','Write the investor\'s biggest objection in one sentence, then your answer to it.','Give the plan an honest verdict: **ready, ready with conditions, or not yet**.'],
+  steps:['Read your business plan the way an investor will, before you pitch it.','Score each area out of 10: **value proposition, market, go-to-market** (how you\'ll reach and win customers), **operations, team, financials, risks, milestones** and **exit** (how investors eventually get their money back).','Find the lowest score. That\'s where an investor will push hardest.','Write the investor\'s biggest objection in one sentence, then your answer in two.','Give the plan an honest verdict: **ready, ready with conditions, or not yet**.'],
   read:['Any area below 5 needs fixing before you pitch.','If you can\'t answer the main objection in two sentences, the plan isn\'t ready.']},
  {id:'gates',name:'Spending Gates',what:'Makes each round of money earn the next one.',
-  steps:['Split the plan into stages instead of spending everything up front.','Before each stage, set the **milestone** that unlocks it, such as signed customers, a working prototype or a sales number.','Give each gate a **date, a number and a rule** for what happens if you miss it.','Spend only what the current stage needs.'],
+  steps:['Spending gates release money in stages, so each stage has to earn the next one. This limits how much you can lose if the idea doesn\'t work.','Split the plan into stages, such as prototype, first customers and expansion, instead of funding everything up front.','For each stage, set the **milestone** that unlocks the next round of money: a working prototype, a number of paying customers or a sales target.','Give each gate a **date, a number and a rule** for what happens if you miss it: try again once, change course or stop.','Spend only what the current stage needs.'],
   watch:'Without gates, money gets spent before the idea is proven, and stopping feels impossible.'},
  {id:'pivot',name:'Pivot Triggers',what:'Decides in advance what would make you change course.',
-  steps:['Pick the one or two numbers that would prove the plan wrong, such as customer sign-ups, usage or profit per customer.','Set the date you\'ll check them.','Write the fallback now, while you\'re calm. A cheaper or lighter version of the same idea is often the best one.'],
+  steps:['A pivot is a deliberate change of direction when the evidence says the current plan won\'t work. Deciding the triggers in advance keeps the call objective.','Pick the one or two numbers that would prove the plan wrong, such as customer sign-ups, how often customers use the product or profit per customer.','Set the date you\'ll check them and the level that counts as a miss.','Write the fallback plan now, while you\'re calm. A cheaper or simpler version of the same idea is often the best one.'],
   watch:'Decide the trigger before you start. Once you\'re invested, every miss starts to look like bad luck.'},
  {id:'options',name:'Option Scorecard',what:'Compares technologies, partners or vendors fairly on the same scale.',
-  steps:['Describe each option in one plain sentence: what it does and for whom.','Rate each one from 1 to 5 on four lenses: **fit** (does it solve your problem?), **traction** (who already uses or buys it?), **legal and regulatory** (patents, approvals, compliance) and **cost and terms**.','Weight the lenses by what matters most to you.','Put the options side by side and pick the highest total, then sanity-check it.'],
+  steps:['Use this when you have to choose between several technologies, partners or vendors and want to compare them fairly.','Describe each option in one plain sentence: what it does and who it\'s for. If you can\'t, you don\'t understand it well enough yet.','Rate each option from 1 to 5 on four lenses. **Fit:** does it solve your problem? **Traction:** who already uses or pays for it? **Legal and regulatory:** patents, approvals and compliance. **Cost and terms:** price, contract length and how much you depend on them.','Weight the lenses by what matters most to you, multiply and add up a total for each option.','Put the options side by side. Pick the top score, then sanity-check it: does the winner feel right, and if not, which weight is off?'],
   read:['A low legal score can rule an option out on its own, whatever its total.','If two options tie, the one with more traction usually carries less risk.']},
  {id:'recommend',name:'The Recommendation',what:'Ends the work with one clear decision.',
-  steps:['Name **one priority**.','Give a near-term action with a date.','Give the longer-term move.','If you recommend two tracks, explain why both, what each costs and what decides between them.']}
+  steps:['Every analysis should end in a decision someone can act on.','Name **one priority**: the single thing you recommend doing.','Give the **next action** with an owner and a date, so the recommendation turns into movement.','Give the **longer-term move** and what would need to be true for it.','If you truly recommend two paths, explain why both are needed, what each costs and what will decide between them later. Hedging without that reads as indecision.']}
  ]},
 
 {id:'finance',name:'Finance & Accounting',q:'Is it worth the money?',
@@ -306,33 +324,33 @@ const PB = [
  tools:[
  {id:'contribution',name:'Contribution Margin',what:'Shows what a product really adds before fixed costs.',
   formula:'Contribution = Sales − Variable costs',
-  steps:['Split costs into **variable** (materials, direct labor) and **fixed** (rent, depreciation, overhead).','Calculate contribution.','Ask which fixed costs would actually disappear if you cut the product. Usually few do.','Positive contribution with spare capacity: keep it for now. Revisit if a better use of the capacity appears.']},
+  steps:['Contribution margin shows how much each sale actually adds to the business before fixed costs. It\'s the right number to use when deciding whether to keep or cut a product.','Split costs in two. **Variable costs** rise and fall with each unit sold, like materials and packaging. **Fixed costs** stay the same whatever you sell, like rent, salaries and equipment.','Subtract the variable costs from sales. What\'s left is the contribution: the money this product brings in to help pay the fixed costs.','Before cutting a product that "loses money" on paper, ask which fixed costs would actually disappear if it were gone. Usually very few do, so cutting it can make overall profit worse.','If contribution is positive and you have spare capacity, keep the product for now. Revisit when a better use of that capacity comes along.']},
  {id:'break-even',name:'Break-even',what:'Tells you how much you need to sell to cover fixed costs.',
   formula:'Break-even units = Fixed costs ÷ Contribution per unit',
-  steps:['Calculate contribution per unit.','Divide fixed costs by it.','Compare to current volume to see the gap.']},
+  steps:['Break-even is the number of units you must sell to cover all your fixed costs. Below it you lose money; above it you make money.','Work out the **contribution per unit**: price minus variable cost per unit.','Divide total fixed costs by the contribution per unit. The answer is your break-even volume.','Compare it to what you sell today. The gap shows how far you are from profit, and whether price, cost or volume is the easiest lever to pull.']},
  {id:'dupont',name:'DuPont Analysis',what:'Breaks return on equity into the three things that drive it.',
   formula:'ROE = Profit margin × Asset turnover × Equity multiplier',
-  steps:['**Profit margin** = net income ÷ revenue: how much of each sale you keep.','**Asset turnover** = revenue ÷ assets: how hard the assets work.','**Equity multiplier** = assets ÷ equity: how much debt boosts the return.'],
+  steps:['Return on equity (ROE) measures how much profit a company earns for every dollar its owners have put in. DuPont analysis breaks it into three drivers so you can see where the return really comes from.','**Profit margin** = net income ÷ revenue. How much of each dollar of sales the company keeps as profit.','**Asset turnover** = revenue ÷ total assets. How much in sales the company generates from what it owns.','**Equity multiplier** = total assets ÷ equity. How much of the company is funded with borrowed money. Higher means more debt.','Multiply the three to get ROE. Compare each driver with a competitor\'s to see why one company earns more than another.'],
   watch:'A high ROE built on leverage is riskier than one built on margin.'},
  {id:'npv',name:'NPV and Sensitivity',what:'Shows whether a project creates value and how much room for error it has.',
   formula:'NPV = Present value of future cash flows − Upfront cost',
-  steps:['Discount future cash flows at the required return.','Positive NPV creates value.','Build a grid that varies the two most uncertain inputs, such as upfront cost and yearly inflow.','Color it as a heat map to see where the project turns negative.']},
+  steps:['Net present value (NPV) tells you whether an investment is worth more than it costs, once you account for the fact that money later is worth less than money today.','Estimate the cash the project will bring in each year.','**Discount** each year\'s cash back to today using your required return (the minimum return you\'d accept for this level of risk). Spreadsheets do this with the NPV function.','Subtract the upfront cost. A positive NPV means the project creates value; negative means it destroys value.','Test the answer. Build a grid that varies the two most uncertain inputs, such as upfront cost and yearly cash, and color it as a heat map to see where the project turns negative.']},
  {id:'ddm',name:'Dividend Discount Model',what:'Values a mature, steady dividend-paying stock.',
   formula:'Price = Next year\'s dividend ÷ (Cost of equity − Dividend growth)',
-  steps:['Get next year\'s dividend and the growth rate.','Get the cost of equity.','Calculate the price, then move growth by ±1% to test sensitivity.'],
+  steps:['The dividend discount model values a stock by the dividends it will pay its owners. It works best for mature, stable companies with steady dividends.','Find next year\'s expected **dividend per share** and a realistic long-term **growth rate** for it.','Find the **cost of equity**: the return investors expect for owning this stock, given its risk.','Divide next year\'s dividend by the cost of equity minus the growth rate. Compare the result with today\'s share price.','Change the growth rate by 1% up and down. Small changes can swing the value a lot, so treat the answer as a range.'],
   watch:'It breaks for high-growth companies whose value isn\'t in near-term dividends.'},
  {id:'bonds',name:'Bond Yield and Spread',what:'Tells you whether a bond pays enough for its risk.',
   formula:'Spread = Bond yield to maturity − Treasury yield (same maturity)',
-  steps:['Calculate yield to maturity at today\'s price (Excel: YIELD).','Subtract the matching Treasury yield.','Compare the spread to an index for the same credit rating.']},
+  steps:['This tells you whether a company\'s bond pays enough extra to make up for the risk of lending to that company.','Calculate the bond\'s **yield to maturity**: the yearly return you\'d earn if you bought at today\'s price and held it until it\'s repaid. In Excel, use the YIELD function.','Subtract the yield on a US Treasury bond that matures at about the same time. Treasuries are treated as risk-free, so the difference, called the **spread**, is your reward for taking on the company\'s risk.','Compare that spread with the average for bonds with the same **credit rating**. Higher than average may be a bargain or a warning sign; lower than average means you\'re being paid less for the risk.']},
  {id:'sharpe',name:'Sharpe Ratio',what:'Judges a return against the risk taken to earn it.',
   formula:'Sharpe = (Portfolio return − Risk-free rate) ÷ Volatility',
-  steps:['Use monthly returns over several years.','Annualize return and volatility.','Calculate the ratio and compare it to a benchmark such as the S&P 500.'],
+  steps:['The Sharpe ratio judges an investment\'s return against the risk taken to earn it, so you can compare portfolios fairly.','Gather monthly returns over several years.','Calculate the average yearly return and the **volatility** (how much returns swing up and down, measured as standard deviation).','Subtract the **risk-free rate** (what you\'d earn on Treasury bills) from the return, then divide by volatility.','Compare the ratio with a benchmark such as the S&P 500.'],
   read:['Higher is better: more return for each unit of risk.','To raise it, add assets that don\'t move together. Diversifying cuts volatility without giving up much return.']},
  {id:'affordability',name:'Debt Affordability',what:'Tests whether a person or business can safely carry a loan.',
-  steps:['Cap the payment at a share of income, such as 35% of gross income for a person, or a share of operating cash flow for a business.','Calculate the payment at today\'s rate.','Test rates 1% higher and lower to see if it still fits.','Name the trade-off: a smaller loan is safer and buys less.']},
+  steps:['This tests whether a person or business can safely take on a loan, including if interest rates move against them.','Set a ceiling for payments. For a person, lenders often cap payments at about 35% of gross income. For a business, compare payments with operating cash flow (the cash the business generates before financing).','Calculate the monthly payment at today\'s interest rate.','Recalculate with rates 1% higher and 1% lower to see if the payment still fits under the ceiling.','Name the trade-off: a smaller loan is safer but buys less.']},
  {id:'buyout',name:'Buyout Returns',what:'Checks whether an acquisition returns enough to the investor.',
   formula:'Enterprise value = Equity value + Net debt',
-  steps:['Find the entry enterprise value: what you pay for the whole company, including its debt.','Project EBITDA (operating earnings) five years out.','Apply an exit multiple and subtract the debt left at exit to get exit equity.','Divide exit equity by the equity you put in.','Name the levers that would grow EBITDA, such as new products, better margins or selling direct.'],
+  steps:['This checks whether buying a company, often with a lot of borrowed money, will return enough to the investors who put in their own cash (the equity).','Find the **entry enterprise value**: the price for the whole company, meaning its equity plus its debt, minus its cash.','Project **EBITDA** five years out. EBITDA is earnings before interest, taxes, depreciation and amortization, a rough measure of operating profit.','Multiply future EBITDA by an **exit multiple** (the price-to-EBITDA ratio you expect a buyer to pay) to get the exit value, then subtract the debt still owed to get exit equity.','Divide exit equity by the equity you put in. That\'s your money multiple.','List the specific moves that would grow EBITDA, such as new products, better margins or selling directly to customers.'],
   read:['Exit equity ÷ equity invested is your money multiple. Investors often look for about 2 to 3 times over five years.','If the return only works when you sell at a higher multiple than you paid, treat that as a risk.']}
  ]},
 
@@ -341,20 +359,20 @@ const PB = [
  use:['Designing a survey or study','Someone hands you a striking statistic','Choosing which analysis to run'],
  tools:[
  {id:'process',name:'The 8-Step Research Process',what:'Takes you from a question to a decision.',
-  steps:['**Question:** what decision does this inform?','**Outcome:** what exactly are you measuring?','**Hypothesis:** what do you expect, and what\'s the null?','**Alternatives:** what else could explain the outcome?','**Measure:** units, time window, yes or no.','**Method:** the test that fits the question.','**Interpret:** size of the effect and significance, in plain words.','**Recommend:** what to do, and how sure you are.']},
+  steps:['Use these eight steps whenever you need data to answer a business question, whether you\'re running a study or judging someone else\'s.','**Question:** what decision will this research inform?','**Outcome:** what exactly will you measure to answer it?','**Hypothesis:** what do you expect to find? The **null hypothesis** is the boring alternative, that there\'s no effect at all.','**Alternatives:** what else could explain the result? This is the step most people skip, and the one that catches most bad conclusions.','**Measure:** define units, time period and any yes-or-no cutoffs before collecting data.','**Method:** choose the test that fits the question (see Choosing a Method).','**Interpret and recommend:** say how big the effect is in plain words, how confident you are, and what to do about it.']},
  {id:'methods',name:'Choosing a Method',what:'Matches the question to the right test.',
-  steps:['**Two groups\' averages:** t-test.','**Does a sample match the population, or are two categories related:** chi-square test.','**How several factors drive an outcome:** regression. Read coefficient direction and size, p-values (under 0.05 suggests a real effect) and R² (share of variation explained).','**Effect of an event:** event study, comparing returns before and after against the market.'],
+  steps:['Match the question you\'re asking to the statistical test built for it.','**Comparing the averages of two groups**, like sales in stores with and without a promotion: use a **t-test**.','**Checking whether a sample matches a population, or whether two categories are related**, like region and product choice: use a **chi-square test**.','**Understanding how several factors together drive an outcome**, like price, ads and season on sales: use **regression**. Read the direction and size of each factor, its **p-value** (below 0.05 suggests the effect is real) and **R²** (the share of the ups and downs the model explains).','**Measuring the impact of a one-time event**, like an announcement, on a stock: use an **event study**, which compares returns before and after with the overall market.'],
   watch:'A significant model can still explain little. A regression with R² of 0.20 leaves 80% of the variation unexplained.'},
  {id:'representativeness',name:'Representativeness Check',what:'Finds out who\'s missing from the sample.',
-  steps:['Compare the sample\'s makeup to the population on key traits.','Run a chi-square test on each.','Flag any significant gap and caveat findings for that group.','Fix the gap with targeted outreach next time.']},
+  steps:['A sample is only useful if it looks like the group you want to learn about. This check finds out who is over- or under-represented.','Pick the traits that matter for your question, such as gender, region or company size, and find the real population\'s mix for each.','Compare your sample\'s mix with the population\'s. A **chi-square test** tells you whether a gap is big enough to be real rather than chance.','Where a gap is real, add a caveat to any finding about that group.','Fix the gap next time with targeted outreach to the under-represented group.']},
  {id:'survey',name:'Survey Design',what:'Makes sure a survey can answer the question it\'s for.',
-  steps:['Ask the central question directly.','Use one scale throughout, and decide on purpose whether to include a neutral midpoint.','Add at least one open-ended question.','Measure willingness to pay directly if price matters.','Include the segments you\'ll want to compare.']},
+  steps:['Write down the one decision the survey must inform, then ask the central question directly. It\'s surprisingly easy to forget.','Use the same rating scale throughout, and decide on purpose whether to include a neutral middle option. Leaving it out forces people to lean one way.','Add at least one open-ended question so people can tell you things you didn\'t think to ask.','If price matters to the decision, ask about **willingness to pay** directly.','Include the background questions (age, role, region) you\'ll need to compare groups later. You can\'t add them after the fact.']},
  {id:'qualitative',name:'Interviews and Focus Groups',what:'Learns how people solve the problem today before testing new ideas.',
-  steps:['Spend the first part on current behavior.','Then test concepts.','Expect the simplest concept that fits existing workflows to win.']},
+  steps:['Interviews and focus groups tell you how and why people behave the way they do. Use them before surveys or launches.','Spend the first part of every conversation on **current behavior**: how they solve the problem today, what tools they use and where it\'s painful.','Only then show your concepts and watch how they react.','Look for patterns across conversations rather than single quotes. Expect the simplest idea that fits people\'s existing routine to win.']},
  {id:'pareto',name:'Pareto Analysis',what:'Finds the few causes driving most of the effect.',
-  steps:['Rank items by contribution: delay minutes, revenue, complaints.','Add a running total.','Find where it crosses 80%.','Act on those items first.']},
+  steps:['The Pareto principle says a few causes usually drive most of the effect, often about 80% of results from 20% of causes. This finds those few.','List the causes and how much each contributes, such as delay minutes by reason, revenue by customer or complaints by issue.','Sort from largest to smallest and add a running total.','Find where the running total crosses about 80%. Everything above that line is your short list.','Fix those first. They give you the most improvement for the least effort.']},
  {id:'base-incremental',name:'Base vs. Incremental Sales',what:'Separates what sells anyway from what promotions add.',
-  steps:['Split sales into **base** and **incremental**.','Compare the store\'s trend to the market\'s.','If the category is flat while one brand drops, the store is shifting share between brands.']}
+  steps:['Use this to tell how much of your sales would happen anyway and how much your promotions actually add.','**Base sales** are what you\'d sell with no promotion. **Incremental sales** are the extra units a promotion brings in.','Compare your trend with the whole category\'s trend in the same store or market.','If the category is flat while your brand drops, shoppers haven\'t left the category. The store is shifting sales from you to rivals, often because it\'s promoting them instead.']}
  ]},
 
 {id:'marketing',name:'Marketing',q:'Who buys, and why us?',
@@ -362,23 +380,23 @@ const PB = [
  use:['Positioning or launching a product','Pricing and picking channels','Extending a product line or entering a new market'],
  tools:[
  {id:'5cs',name:'The 5Cs',what:'Maps the situation before any plan.',
-  steps:['**Customers:** who they are, what they need, how they buy.','**Company:** your strengths and limits.','**Collaborators:** partners, suppliers, channels.','**Competitors:** direct, secondary and indirect.','**Context:** economic, regulatory, technology and social trends.']},
+  steps:['Before any marketing plan, map the situation across five areas.','**Customers:** who they are, what they need and how they decide to buy.','**Company:** your strengths, limits and goals.','**Collaborators:** partners, suppliers and channels that help you reach customers.','**Competitors:** direct ones (same product), secondary ones (different product, same need) and indirect ones (competing for the same budget).','**Context:** economic, regulatory, technology and social trends that could change the picture.']},
  {id:'stp',name:'STP',what:'Chooses who to serve and how to stand out.',
-  steps:['**Segment** by geography, demographics, psychographics (values, motives), behavior and benefits sought.','**Target** the segments with the best mix of size, growth, fit and reach.','**Position** in one line using the template below.'],
+  steps:['STP stands for segment, target and position: decide who to serve and why they should pick you.','**Segment:** split the market into groups with different needs. Group them by geography, demographics, values and motives, behavior or the benefit they want.','**Target:** choose the segments with the best mix of size, growth, fit with your strengths and how easily you can reach them.','**Position:** write one sentence that says why your target should choose you, using the template above. If you can\'t fill in the "because," the position isn\'t real yet.'],
   formula:'For [target], [brand] is the [category] that [benefit], because [proof].'},
  {id:'4ps',name:'The 4Ps',what:'Turns the position into a plan.',
-  steps:['**Product:** features, line, packaging.','**Price:** parity, premium or discount, and what it signals.','**Place:** channels.','**Promotion:** message and media.','Check that every P tells the same story as the position.'],
+  steps:['The 4Ps turn your positioning into concrete decisions. Every P should tell the same story.','**Product:** features, the range you offer and packaging.','**Price:** above, at or below competitors. Price signals quality as much as it earns revenue.','**Place:** where and how people buy: online, in stores, through partners or a sales team.','**Promotion:** the message and where you say it.','Check the four against your positioning. A premium position with discount pricing, for example, confuses customers.'],
   watch:'Going global, keep the brand consistent and adapt the 4Ps to each market\'s culture, income and channels.'},
  {id:'plc',name:'Product Life Cycle',what:'Matches the move to the product\'s stage.',
-  steps:['**Introduction:** build awareness.','**Growth:** expand reach.','**Maturity:** differentiate, extend the line, find new uses.','**Decline:** harvest or reinvent.']},
+  steps:['Products move through four stages. The right marketing move depends on where yours is.','**Introduction:** few people know it exists. Focus on awareness and getting it tried.','**Growth:** sales are rising fast. Expand distribution and reach new customers before competitors catch up.','**Maturity:** growth slows and competition is fierce. Differentiate, launch variations or find new uses.','**Decline:** sales are falling. Cut costs and collect the remaining profit, or reinvent the product.']},
  {id:'line-extension',name:'Line Extension Math',what:'Checks whether a new product pays after it eats into the core.',
   formula:'Incremental contribution = New product contribution − Extra SG&A − Launch marketing − Contribution lost from the core',
-  steps:['Estimate share and volume for the new product.','Subtract every new cost and the core sales it will take.','If the result is thin, test in a few markets first.','Use a different channel to protect the core product.']},
+  steps:['A line extension is a new version of an existing product, like a light or flavored version. This checks whether it actually adds profit.','Estimate the new product\'s market share and volume, then its **contribution** (sales minus variable costs).','Subtract every new cost it creates: launch marketing and extra **SG&A** (selling, general and administrative costs such as sales staff and overhead).','Subtract **cannibalization**: the profit lost when existing customers switch from your core product to the new one.','If what\'s left is thin or negative, test in a few markets first, or sell it through a different channel to protect the core.']},
  {id:'messaging',name:'Barrier-Based Messaging',what:'Writes one message for each reason people don\'t act.',
-  steps:['List the barriers between your audience and the action: usually **awareness, trust, cost and access**.','Write the worry in their words, such as "I\'ve never heard of this" or "Who sees my data?"','Write one plain message that answers each worry.','End every message with a clear next step.'],
+  steps:['People rarely ignore a good offer for no reason. Something stops them. This writes one message for each of those barriers.','List the barriers between your audience and the action you want. The usual four are **awareness** (they haven\'t heard of it), **trust** (they doubt it), **cost** (too expensive or risky) and **access** (too hard to get).','Write each barrier as the worry in their own words, such as "I\'ve never heard of this" or "Who sees my data?"','Write one plain message that answers each worry directly.','End every message with one clear next step: sign up, call, visit or book.'],
   watch:'Inform before you persuade. When trust is the barrier, pushy messages make it worse.'},
  {id:'channel-mix',name:'Channel Mix',what:'Splits the budget by the job each channel does.',
-  steps:['Give each channel one **role**: capture demand, build awareness, build trust, or convert.','Set its **share of budget**.','Pick **one metric** per channel that matches its role, such as cost per sign-up for search or referrals for community partners.','Start with a lean test, then move money to the channels with the best results.']}
+  steps:['Channels are the places you reach people: search, social, email, events, partners, and so on. Each one is good at a different job.','Give each channel one **role**: capture people already looking (search), build awareness (social, video), build trust (community, referrals) or convert (email, sales).','Decide each channel\'s **share of the budget** based on that role.','Pick **one metric** per channel that matches its role, such as cost per sign-up for search or number of referrals for community partners.','Start small, compare results after a few weeks and move money toward what works.']}
 
  ]},
 
@@ -387,18 +405,18 @@ const PB = [
  use:['Selling a product or service to companies','Sizing a business-to-business opportunity','Planning outreach to a few high-value accounts'],
  tools:[
  {id:'committee',name:'Buying Committee Map',what:'Finds everyone who shapes a business purchase.',
-  steps:['List every role involved: operations, purchasing, finance, IT, legal, end users, the executive sponsor.','Mark the **champion** (carries your case inside), the **economic buyer** (signs off on ROI), the **technical buyer** (can veto on security or fit) and the **users**.','Write what each one fears and needs: reliability, total cost, ROI, compliance, ease of use.','Give each role its own message and proof, and give your champion the materials to sell for you.']},
+  steps:['When a business buys, a group decides. This maps everyone who can say yes or no.','List every role involved: operations, purchasing, finance, IT, legal, the people who\'ll use it and the executive sponsor.','Mark the key roles. The **champion** wants you to win and argues for you internally. The **economic buyer** controls the budget and signs off on return on investment. The **technical buyer** can veto on security or fit. **Users** live with the product every day.','For each role, write what they fear and what they need: reliability, total cost, return, compliance or ease of use.','Give each role its own message and proof, and give your champion ready-made material to sell for you when you\'re not in the room.']},
  {id:'critical-three',name:'The Critical Three',what:'Narrows a large buying group to the people who decide.',
-  steps:['From the full committee, pick the three roles whose "yes" moves the deal.','Write each one\'s top concern in a sentence.','Build your pitch so each concern gets an answer with evidence.']},
+  steps:['Big buying groups can have ten or more people. You can\'t win everyone equally, so focus.','From the full committee, pick the three roles whose "yes" actually moves the deal. Usually that\'s whoever owns the problem, whoever controls the money and whoever can block it.','Write each one\'s top concern in a single sentence.','Build your pitch so each of the three concerns gets a direct answer backed by evidence.']},
  {id:'sizing',name:'Bottom-Up Opportunity Sizing',what:'Sizes a business opportunity from real units instead of industry totals.',
   formula:'Opportunity = Price per unit × Units per customer × Number of customers',
-  steps:['Count units at one customer site by walking it or interviewing staff.','Price one unit.','Multiply by the number of sites or customers you can realistically reach.','State every assumption so a buyer can test it.']},
+  steps:['This sizes a business opportunity by counting real units, which buyers and investors trust far more than a slice of an industry total.','Count how many units one customer would need. Visit a site, walk it or interview staff.','Put a price on one unit.','Multiply price × units per customer × the number of customers you can realistically reach.','Write down every assumption so a buyer or investor can check it and adjust it.']},
  {id:'value-fast',name:'Economic Value Messaging',what:'Leads with what the buyer gains in money, time or risk.',
-  steps:['Translate features into outcomes: hours saved, costs cut, failures avoided.','Put the outcome first, on the first screen or first slide.','Back it with a quantified customer story.','State the value before asking for a click or a meeting.']},
+  steps:['Business buyers care about outcomes, so lead with what they gain in money, time or reduced risk.','Translate each feature into an outcome: hours saved, costs cut, failures avoided, revenue gained.','Put the biggest outcome first: the first line of the email, the top of the website, the first slide.','Back it with a number from a real customer: how much they saved or gained, and how fast.','State the value before asking for anything, whether it\'s a click, a call or a meeting.']},
  {id:'outreach',name:'Persona-Based Outreach',what:'Reaches the right people at target accounts with messages built for their role.',
-  steps:['Pick target accounts, such as mid-size companies that adopt faster.','Research each account\'s pain points and buyer roles.','Draft a message per role: technical, economic, champion, governance.','Sequence outreach by journey stage, from first touch to demo.','Keep a person on every high-trust moment: referrals, demos and pricing talks.']},
+  steps:['Persona-based outreach means writing to each person at a target company in terms of their own job and worries.','Pick your target accounts. Look for companies that feel the problem most and can move quickly.','Research each account: its current challenges and who plays each buying role.','Write a different message for each role, such as technical, financial, champion and compliance.','Plan the sequence, from first contact through to a demo, and keep a real person on every high-trust moment: introductions, demos and pricing conversations.']},
  {id:'channel',name:'Channel Incentives',what:'Keeps distributors and retailers pushing your product.',
-  steps:['Remember that a retailer or distributor is a customer too. It cares about its own margin.','When a channel cools on you, compare what it earns on your product with what it earns on rivals.','Check whether rivals are paying for promotions or shelf space you aren\'t.','Respond with better trade terms, exclusives or shared marketing.'],
+  steps:['Distributors and retailers sit between you and the end customer, and they\'re customers too. They push the products that earn them the most.','When a channel partner cools on you, compare what they earn selling your product with what they earn selling rivals\'.','Check whether rivals are paying for promotions, displays or shelf space that you aren\'t.','Respond with better trade terms (discounts, payment terms), exclusives or shared marketing that makes your product worth their effort.'],
   watch:'When sales through a channel fall, check the channel\'s incentives before you assume shoppers lost interest.'}
  ]},
 
@@ -407,26 +425,26 @@ const PB = [
  use:['Negotiating a salary, vendor contract or sale','Preparing for a hard conversation','Working across cultures'],
  tools:[
  {id:'four-numbers',name:'The Four Numbers',what:'The numbers to know before any negotiation.',
-  steps:['**BATNA:** your best alternative if the deal fails. It\'s your real source of power.','**Walkaway:** the worst deal you\'ll accept, set just better than your BATNA.','**Target:** an ambitious, defensible outcome.','**Opening:** your first offer, set above the target to leave room.','Estimate the same four for the other side. The overlap between the two walkaways is the **deal zone (ZOPA)**.']},
+  steps:['Before any negotiation, whether it\'s salary, a contract or a sale, know four numbers.','**BATNA** (best alternative to a negotiated agreement): what you\'ll do if this deal falls through. A strong BATNA is your real source of power.','**Walkaway:** the worst deal you\'ll accept. Set it just better than your BATNA.','**Target:** an ambitious outcome you can justify with facts.','**Opening:** your first offer, set beyond your target to leave room to move.','Estimate the same four for the other side. The overlap between your walkaway and theirs is the **ZOPA** (zone of possible agreement), where a deal can happen.']},
  {id:'anchoring',name:'Anchoring',what:'Uses the first number to shape the range.',
-  steps:['Make the first offer when you can justify it.','Back it with two or three hard facts: investment made, revenue, past offers, the other side\'s deadline.','If they anchor first and it\'s extreme, don\'t counter it. Name it as off-base and reset with your facts.']},
+  steps:['The first number on the table pulls the final outcome toward it. That\'s anchoring.','Make the first offer when you know enough to justify it.','Back it with two or three hard facts: what you\'ve invested, market data, past offers or the other side\'s deadline.','If they anchor first and the number is extreme, don\'t negotiate from it. Say plainly that it\'s off base, and reset the conversation with your own facts.']},
  {id:'dist-int',name:'Distributive vs. Integrative',what:'Tells you which game you\'re playing.',
-  steps:['**Distributive:** one issue, fixed pie. Claim value with anchors and careful concessions.','**Integrative:** several issues with different priorities. Trade what\'s cheap for you and valuable to them, such as payment terms, timing or support.','Most real deals have integrative room. Look for it.']},
+  steps:['Figure out what kind of negotiation you\'re in, because the tactics differ.','**Distributive:** one issue, usually price, and a fixed pie. Whatever one side gains, the other loses. Use strong anchors and small, careful concessions.','**Integrative:** several issues that each side values differently, like price, timing, payment terms and support. Trade what\'s cheap for you but valuable to them.','Most real deals have integrative room. Ask questions to find out what the other side cares about most, then build trades around it.']},
  {id:'concessions',name:'Concession Plan',what:'Decides what you\'ll give, in what order.',
-  steps:['Rank your issues by importance.','List what you\'ll concede, in order and in small steps.','List what you won\'t concede at all.','Never give a concession without getting something back.']},
+  steps:['Plan what you\'ll give up before you sit down, so you don\'t give away value in the heat of the moment.','Rank every issue by how much it matters to you.','List what you\'re willing to concede, in what order and in small steps. Big early concessions signal there\'s much more to give.','List what you won\'t concede at all.','Never give something without getting something back. "If you can do X, I can do Y."']},
  {id:'power',name:'Sources of Power',what:'Maps leverage on both sides.',
-  steps:['**Legitimate:** facts and track record.','**Alternatives:** your BATNA.','**Time:** who needs the deal sooner.','**Information:** what each side knows.','Show your power through calm, unhurried behavior, and keep your deadline to yourself.']},
+  steps:['Power in a negotiation comes from several sources. Map them for both sides.','**Legitimacy:** facts, standards, precedent and your track record.','**Alternatives:** your BATNA. The side with the better fallback can walk away.','**Time:** whoever needs the deal sooner has less power.','**Information:** what each side knows about the other\'s needs and limits.','Show your power through calm, unhurried behavior, and keep your own deadline to yourself.']},
  {id:'pre-table',name:'Win Before the Table',what:'Sets up the outcome before the meeting starts.',
-  steps:['Build the relationship early.','Build credibility through results.','Plan the numbers, strategy and approach.','Remember that signaling starts the moment you walk in: what you lead with and whether you\'re really listening.']},
+  steps:['Much of a negotiation\'s outcome is set before the meeting starts.','Build the relationship early, before there\'s anything to negotiate.','Build credibility through results, so your word carries weight.','Prepare your numbers, your strategy and how you\'ll open.','Remember that signals start the moment you walk in: what you lead with, how you listen and how relaxed you seem.']},
  {id:'intangibles',name:'Intangibles',what:'Prices what isn\'t money.',
-  steps:['Ask what the other person must prove internally.','Ask about their timing.','Ask what reputation is at stake.','Use these to close gaps that price alone can\'t.']},
+  steps:['Not everything in a deal is about money. Intangibles can close gaps that price can\'t.','Ask what the other person needs to show their boss or team to count this as a win.','Ask about their timing and any pressures they\'re under.','Ask whose reputation is at stake, and how.','Use what you learn to offer things that cost you little but matter to them, like a quick start, public credit or a favorable announcement.']},
  {id:'ethics',name:'Ethics Line',what:'Separates tough tactics from deception.',
-  steps:['**Fine:** a high anchor, keeping your deadline private, firm bargaining.','**Out:** false promises, misrepresenting facts, gathering information improperly.'],
+  steps:['Know where tough negotiating ends and deception begins.','**Acceptable:** an ambitious opening, keeping your deadline or walkaway private, and holding firm.','**Not acceptable:** making promises you won\'t keep, misstating facts, or getting information through improper means.','When unsure, ask whether you\'d be comfortable if the other side later learned exactly what you did.'],
   watch:'Trust is the most valuable and most fragile currency in a negotiation. Deception can win a round and lose the relationship, and it can carry legal risk.'},
  {id:'culture',name:'Across Cultures',what:'Reads the other side\'s cultural defaults.',
-  steps:['Check three dimensions: **direct vs. indirect**, **independent vs. group-oriented**, **task-first vs. relationship-first**.','Directness can read as abrasive in indirect cultures.','Silence may mean the group hasn\'t agreed yet.','Invest in the relationship before pushing to tasks.']},
+  steps:['People from different cultures bring different default expectations to a negotiation. Reading them avoids needless friction.','Check three dimensions. **Direct vs. indirect:** is disagreement said plainly or implied? **Individual vs. group:** does one person decide, or the group? **Task-first vs. relationship-first:** do people want to get to business or get to know you first?','Adjust your style. Directness can feel rude in indirect cultures, and silence may simply mean the group hasn\'t agreed yet.','In relationship-first cultures, invest time in the relationship before pushing on the deal.']},
  {id:'steady',name:'Staying Steady',what:'Keeps emotion from driving concessions.',
-  steps:['Pause before responding.','Name the emotion to yourself without letting it steer the reply.','Confirm you\'ve understood their point before making yours.','Cut filler words and check that your point landed.']}
+  steps:['Emotions make people concede too much or walk away too soon. These habits keep you steady.','Pause before you respond, even for a few seconds.','Name the emotion to yourself ("I\'m feeling pressured") without letting it drive your reply.','Repeat back the other side\'s point before making yours, so they feel heard and you gain time.','Speak in short, clear sentences, cut filler words and check that your key point landed.']}
  ]},
 
 {id:'ai',name:'AI at Work',q:'How do I put AI to work?',
@@ -434,42 +452,42 @@ const PB = [
  use:['Your team loses hours to research, first drafts or copy-paste work','You\'re deciding whether an AI idea is worth building','You need AI answers you can trust and check','You\'re rolling out an AI tool and want people to use it'],
  tools:[
  {id:'hitl',name:'Human-in-the-Loop Map',what:'Splits a workflow between AI and people.',
-  steps:['Break the workflow into steps.','Tag each one: **research** (accounts, signals, sources), **drafting** (messages, summaries), **execution** (follow-ups, prep) or **trust moment** (demos, referrals, deals, decisions).','Let AI lead the first three.','Keep a person on every trust moment.','Add a review point before anything AI-made reaches a customer.']},
+  steps:['Human-in-the-loop means deciding which steps AI can handle and where a person must stay involved.','Break the workflow into its individual steps.','Tag each step: **research** (gathering information), **drafting** (first versions of messages or summaries), **execution** (follow-ups, scheduling, prep) or **trust moment** (anything where a customer\'s or colleague\'s trust is on the line: demos, deals, decisions, sensitive messages).','Let AI lead research, drafting and execution.','Keep a person on every trust moment, and add a human review before anything AI-made reaches a customer.']},
  {id:'adoption',name:'AI Adoption Plan',what:'Rolls out AI in a team as a change-management project.',
-  steps:['**Start small:** one team or workflow where the friction is most visible.','**Research first:** ask how work really happens. "Walk me through a typical day. Where do things slow down? Where do you re-enter the same information?"','**Build momentum:** find champions, share small wins like time saved or errors avoided.','**Set guardrails:** data protection, access rules and a person reviewing AI output.','**Measure and scale:** document what worked and what didn\'t, assign owners, then expand.'],
+  steps:['Rolling out AI is a change in how people work, so treat it like any other change project.','**Start small:** pick one team or workflow where the frustration is most visible.','**Learn first:** ask how work really happens. "Walk me through a typical day. Where do things slow down? Where do you retype the same information?"','**Build momentum:** find enthusiastic early users and share small wins like time saved or errors avoided.','**Set guardrails:** decide how data is protected, who has access and who reviews AI output.','**Measure and expand:** write down what worked and what didn\'t, assign owners, then roll out further.'],
   watch:'People adopt AI when it removes a frustration they already feel. Mandates without that rarely stick.'},
  {id:'fit-check',name:'AI Project Fit Check',what:'Tests whether an AI idea fits your needs and resources before you build.',
-  steps:['Answer six **needs** questions. **Scale:** how many users? **Customization:** how specialized must it be? **Interaction:** how will people use it? **Privacy:** how sensitive is the data? **Latency:** how fast must it respond? **Connectivity:** will it run online, offline or on a device?','Answer three **resource** questions: do you have the **people** with AI skills, the **money** and the **time**?','Pick the lightest option that meets the needs: an off-the-shelf app, a tuned existing model, or a custom build.'],
+  steps:['Before building anything with AI, check that the idea fits what you need and what you have.','Answer six **needs** questions. **Scale:** how many people will use it? **Customization:** how specialized must it be for your business? **Interaction:** will people chat with it, or will it run in the background? **Privacy:** how sensitive is the data? **Speed:** how quickly must it respond? **Connectivity:** will it run online, offline or on a device?','Answer three **resource** questions: do you have people with AI skills, enough budget and enough time?','Choose the lightest option that meets the needs: an off-the-shelf AI tool, an existing model adjusted with your data, or a custom build.'],
   read:['High privacy or offline needs push toward smaller models running on your own systems or devices.','Few people and little time point to an existing tool before anything custom.'],
   watch:'Most AI projects stall on data and people. Check that your data is accurate, complete and easy to reach before you pick a model.'},
  {id:'two-way',name:'Top-Down Meets Bottom-Up',what:'Sets an AI strategy that leaders steer and employees actually use.',
-  steps:['**Top-down:** leaders set the vision and pick a few use cases with clear business value.','**Bottom-up:** employees find practical uses in their own work and feed back what helps.','Fund the basics: a **data strategy**, existing tools you already pay for and AI training.','Write **responsible AI** rules early: security, privacy and ethics.','**Measure impact** against business goals, then refine based on feedback and data.'],
+  steps:['The strongest AI strategies combine direction from leaders with ideas from the people doing the work.','**From the top:** leaders set the vision and choose a few use cases with clear business value.','**From the ground up:** employees try AI in their own work and share what helps.','Invest in the basics: clean, accessible data, tools you already pay for and training.','Set **responsible AI** rules early, covering security, privacy and fairness.','**Measure impact** against business goals, then keep refining based on what you learn.'],
   watch:'A vision with no bottom-up experiments stays a slide. Experiments with no vision scatter into tools nobody maintains.'},
  
 {id:'prompting',name:'Prompting for Analysis',what:'Gets usable, checkable output.',
-  steps:['Give context: who you are and the goal.','Give the exact inputs: numbers, files.','State the task.','State the output format: table, chart, file name.','Build in steps: base case, then vary inputs, then visualize.','Ask it to show formulas.']},
+  steps:['A good analysis prompt reads like a clear brief to a capable colleague.','Give context: who you are, what decision you\'re making and why it matters.','Give the exact inputs: the numbers, files or data to use.','State the task in one sentence.','Say what you want back: a table, a chart, a short memo, a file name.','Ask for it in stages, starting with a base case, then variations, then a visual, and ask it to show its formulas so you can check them.']},
  {id:'prompt-patterns',name:'Prompt Patterns',what:'Gives you a menu of ways to ask, from quick to structured.',
-  steps:['**Zero-shot:** ask with no examples. Good for simple tasks.','**One-shot or few-shot:** show one or several examples of the output you want.','**Role:** assign a persona to set style, tone and focus.','**Chaining:** build the answer over a back-and-forth instead of one giant prompt.','**Chain-of-thought:** ask it to reason step by step, or show worked examples with the steps included.','**Metaprompting:** ask the AI to write or improve the prompt itself.','Save prompts that work as **templates** so the whole team reuses them.'],
+  steps:['Different tasks call for different ways of asking. Pick from this menu.','**Zero-shot:** just ask, with no examples. Fine for simple tasks.','**One-shot or few-shot:** show one or a few examples of the output you want. Best when format matters.','**Role:** tell it who to act as, such as "a CFO reviewing this budget," to set tone and focus.','**Chaining:** break a big task into a series of smaller prompts, using each answer in the next.','**Step-by-step reasoning:** ask it to work through the problem step by step. Useful for logic and math.','**Prompt improvement:** ask the AI to rewrite or improve your prompt, then use the better version. Save prompts that work as templates for your team.'],
   read:['Wrong format: add an example.','Wrong tone: add a role.','Wrong logic: ask for the steps, then check them.']},
  {id:'grounding',name:'Grounding and RAG',what:'Ties AI answers to your own documents so they stay accurate and current.',
-  steps:['**Ground** the model in verifiable sources: your files, policies, product data.','**Retrieve:** pull the most relevant passages for each question.','**Augment:** add those passages to the prompt.','**Generate:** have the model answer from them, and cite where each point came from.','**Iterate:** if the first search misses, let it search again.','Organize what you feed it: stable knowledge (policies, definitions) separate from project knowledge (this quarter, this client).'],
+  steps:['Grounding ties an AI\'s answers to your own trusted documents, so it answers from your facts. **RAG** (retrieval-augmented generation) is the most common way to do it.','Collect the sources it should rely on: policies, product information, past work. Keep them current and remove duplicates.','**Retrieve:** for each question, the system finds the most relevant passages from those sources.','**Augment:** those passages are added to the prompt.','**Generate:** the AI answers using them, ideally citing which source each point came from.','Organize sources in two groups: stable knowledge that rarely changes (definitions, policies) and project knowledge that changes often (this quarter, this client).'],
   watch:'The answer can only be as good as what gets retrieved. Messy, outdated or duplicate documents produce confident wrong answers.'},
  {id:'verify',name:'Verify the Output',what:'Catches confident mistakes.',
-  steps:['Recompute one or two numbers yourself.','Check that formulas match the method.','Ask for the assumptions.','Treat confident wording as a claim to check.']},
+  steps:['AI can sound confident and still be wrong. Build a quick check into every important use.','Recompute one or two numbers yourself.','Check that the formulas or method match what you asked for.','Ask it to list its assumptions, and check them.','Treat any confident claim as something to verify, especially names, dates, quotes and figures.']},
  {id:'guardrails',name:'Guardrails in the Pipeline',what:'Builds checks into an AI product so mistakes get caught before users see them.',
-  steps:['**Before the model:** strip personal data such as emails, phone numbers and card numbers.','**In the prompt:** state the exact task, audience and difficulty level.','**After the model:** score confidence and show a "please verify" note when it\'s low.','**Check against the source:** if the output doesn\'t overlap with the input documents, warn the user.','**Filter** harmful or biased wording and regenerate if flagged.','Give users a **"report a wrong answer"** button and review every report.'],
+  steps:['Guardrails are checks built into an AI product so mistakes get caught before users see them.','**Before the AI sees anything:** strip out personal data like emails, phone numbers and card numbers.','**In the instructions:** state the exact task, audience and level of detail.','**After it answers:** check its confidence, and show a "please verify" note when it\'s low.','**Against the source:** if the answer doesn\'t match the documents it was given, warn the user.','Filter harmful or biased language, and give users a "report a wrong answer" button whose reports someone actually reviews.'],
   watch:'Guardrails cost speed. Put the heaviest checks where an error would hurt most.'},
  {id:'agents',name:'Agent Anatomy',what:'Explains what an AI agent is made of, so you can scope one.',
-  steps:['An agent pursues a **goal** by observing, reasoning and acting.','It has three parts: a **model** (the brain), a **reasoning loop** (observe, think, act, repeat) and **tools** (APIs, functions, data stores, plugins).','Choose the type: **deterministic** (fixed paths, predictable) or **generative** (natural language, flexible).','Decide its **autonomy**: suggest only, act after one-tap approval, or act alone.','List every tool it needs and what it is allowed to do with each.'],
+  steps:['An AI agent works toward a goal by taking actions on its own, such as searching, booking or updating records. Scoping one well starts with its parts.','Define the **goal**: what does a finished task look like?','Name its three parts. The **model** is the AI that reasons. The **reasoning loop** is how it works: observe, think, act, repeat. **Tools** are what it can use to act, such as search, a calendar, a database or another app.','Choose the type. **Rule-based** agents follow fixed paths and are predictable. **Generative** agents decide their own steps and are more flexible but less predictable.','Decide how much **autonomy** it gets: only suggest, act after a person approves, or act alone.','List every tool it can touch and exactly what it\'s allowed to do with each.'],
   read:['Money, health or anything hard to undo: keep a person approving each action.','Low-risk, repeatable tasks: more autonomy is fine.']},
  {id:'north-star',name:'Outcome Metric for AI',what:'Picks one metric that shows the AI is actually helping.',
-  steps:['Define a **completed outcome** for the user: a task finished, a question resolved, a purchase made.','Check that it lines up value for the **user**, any **partners** and the **business** at the same time.','Prefer it over usage counts like daily users, which can grow while nobody gets helped.','Track supporting signals underneath: success rate, time saved, errors caught.']},
+  steps:['Pick one metric that shows the AI is genuinely helping people.','Define a **completed outcome** for the user: a task finished, a question resolved, a purchase made.','Check that it reflects value for the **user**, for any **partners** and for the **business** at the same time.','Prefer it over usage counts like logins or messages sent, which can grow while nobody is actually helped.','Track a few supporting numbers underneath it, such as success rate, time saved and errors caught.']},
  {id:'examiner',name:'AI as Examiner',what:'Uses AI to test what you know.',
-  steps:['Ask for higher-order questions: application, analysis, evaluation.','Have it ask one at a time and grade only after you answer all of them.','Review whatever you miss, then retest.']},
+  steps:['AI is a good study partner for learning a new field quickly.','Paste in your notes or source material and ask for questions that test application and judgment, beyond simple recall.','Have it ask one question at a time, and hold off on feedback until you\'ve answered them all.','Review what you missed, study those areas, then ask for a new set of questions.']},
  {id:'phases',name:'Phased Rollout',what:'Scales an AI tool without losing trust.',
-  steps:['**Prototype:** one narrow use, with a person reviewing every output.','**Integrate:** connect it to your real systems and data, and widen who uses it.','**Scale:** automate the parts that have proven reliable, then add new uses.','Put a cost and a success metric on each phase, and move on only when it\'s met.']},
+  steps:['Scaling AI in phases lets you build trust before you build reach.','**Prototype:** one narrow use, with a person reviewing every output.','**Integrate:** connect it to your real systems and data, and widen the group using it.','**Scale:** automate the parts that have proven reliable, then add new uses.','Put a cost and a success measure on each phase, and move on only when it\'s met.']},
  {id:'risk',name:'Risk Scoring',what:'Decides which AI risks to fix before launch.',
-  steps:['List what could go wrong: wrong output, privacy, compliance, lost trust.','Score likelihood × impact, each from 1 to 5.','Mitigate anything scoring 20 or more before launch.']}
+  steps:['Score AI risks before launch so you fix the serious ones first.','List what could go wrong: wrong or made-up answers, privacy leaks, breaking a regulation or losing users\' trust.','Score each risk on **likelihood** and **impact**, each from 1 to 5, then multiply.','Fix anything scoring 20 or more before launch, and assign an owner to watch the rest.']}
  ]},
 
 {id:'leadership',name:'Career & Influence',q:'How do I land the role and grow in it?',
@@ -477,20 +495,20 @@ const PB = [
  use:['You have an interview coming up','You want a network that doesn\'t feel transactional','You\'re starting a new job or internship','You need people to back your idea or your work'],
  tools:[
  {id:'interviews',name:'Interview Answers',what:'Structures answers so they land.',
-  steps:['**Behavioral questions:** STAR. Situation, task, action, result. Keep the situation short and the result specific.','**Product questions:** problem, users, constraints, solutions, trade-offs, recommendation.','**Lead with the answer:** give your recommendation first, keep context short, and group points in threes.','**Know your favorite product** and why. It comes up often in product interviews.','**Pace:** pause between each part, cut filler words, and check that each key point landed.']},
+  steps:['Structure keeps your answers clear under pressure and easy to remember.','**Behavioral questions** ("Tell me about a time..."): use **STAR**. Situation, task, action, result. Keep the situation short, spend most of your time on what you did, and end with a specific result.','**Product or case questions:** walk through the problem, the users, the constraints, possible solutions, the trade-offs and your recommendation.','**Lead with the answer:** give your recommendation first, keep context brief and group supporting points in threes.','**Mind your pace:** pause between parts, cut filler words and check that each key point landed.']},
  {id:'networking',name:'The Networking Loop',what:'Builds relationships that turn into advocacy.',
-  steps:['**Write your why**, tied to a long-term goal. Networking only to land a job feels transactional.','**Segment** like a marketer: executives (reach through referrals), recruiters and coordinators (they open the first door), and peers who share your background or path.','**Track** every conversation: role, details worth remembering, what they suggested.','**Follow up like a friend:** share what you found, celebrate their news, get curious about what matters to them, and tell them how things turned out.','**Advocacy follows:** referrals and intros come after you\'ve invested.'],
+  steps:['Good networking is about relationships that last, which is why it works best started well before you need anything.','**Know your why:** tie your outreach to a longer-term goal. Reaching out only when you need a job feels transactional.','**Segment** like a marketer: senior leaders (reach them through introductions), recruiters and coordinators (they open the first door) and peers who share your background or path.','**Keep notes** after every conversation: their role, details worth remembering and what they suggested.','**Follow up like a friend:** share something useful, celebrate their news and tell them how their advice turned out.','**Advocacy follows:** referrals and introductions come naturally once you\'ve invested in the relationship.'],
   watch:'Quality beats volume. One good conversation tied to your goal is worth more than twenty.'},
  {id:'thanks',name:'Thank-yous and Follow-ups',what:'Closes every conversation well.',
-  steps:['Send thank-you notes the same day or within 24 hours.','Name a specific moment you enjoyed.','About a week after an interview, follow up: what went well, your continued interest, a polite ask on next steps.','On LinkedIn, star key contacts and filter to Starred so nothing gets buried.']},
+  steps:['How you close a conversation is often what people remember.','Send a thank-you note the same day, or within 24 hours.','Mention one specific moment or idea from the conversation, so it\'s clearly personal.','About a week after an interview, follow up: what you enjoyed, your continued interest and a polite question about next steps.','On LinkedIn, star your key contacts and filter by Starred so their updates don\'t get buried.']},
  {id:'mentors',name:'Working with Mentors',what:'Makes mentorship a two-way relationship.',
-  steps:['Bring specific challenges and specific asks.','Offer something back: a perspective, a market you know, a skill.','Schedule the next meeting before the current one ends.']},
+  steps:['Mentorship works best as a two-way relationship you actively manage.','Bring a specific challenge and a specific ask to each conversation, rather than "any advice?"','Offer something back: a perspective they don\'t have, knowledge of a market, or a skill.','Book the next conversation before the current one ends.']},
  {id:'new-role',name:'Starting a New Role',what:'Sets up a strong first few months.',
-  steps:['Ask your manager what great looks like and what the team\'s goals are.','Set small, realistic weekly goals and check them honestly.','Update in three parts: **what I did, what\'s next, what\'s blocking me**.','Run important emails past a mentor before they go up.','Make time for people, including alumni at the company.']},
+  steps:['The first few months in a new role set how people see you. Make them deliberate.','Ask your manager what great looks like in this role and what the team is trying to achieve this year.','Set small, realistic weekly goals and review them honestly each week.','Send short updates in three parts: **what I did, what\'s next and what\'s blocking me**.','Ask a trusted colleague to review important emails before they go to senior people.','Make time to meet people across the organization, including alumni from your school.']},
  {id:'feedback',name:'Feedback and Hard Moments',what:'Keeps conversations productive under pressure.',
-  steps:['When you disagree, frame it around the shared goal and check for understanding.','When you get criticism, listen fully before responding.','When you feel pushed, pause, name the emotion to yourself, then respond.']},
+  steps:['Hard conversations go better with a plan.','**When you disagree:** frame it around the goal you share, then check you\'ve understood their view before giving yours.','**When you get criticism:** listen fully, thank them and ask one clarifying question before responding.','**When you feel pushed:** pause, name the emotion to yourself, then respond calmly. It\'s fine to say you\'ll come back to it.']},
  {id:'stakeholders',name:'Lead with Their Value',what:'Gets alignment by showing each person what\'s in it for them.',
-  steps:['List every stakeholder.','Write what each one gains.','Think about the whole system around a product: payers, providers, regulators, users.']}
+  steps:['People back ideas when they can see what\'s in it for them. Lead with their value.','List everyone affected by your idea or decision, including people outside your team.','For each, write what they gain and what they worry about losing.','Shape your message to each person around their gain, and address their worry directly.','Look at the whole system around a product: the people who pay, use, approve and deliver it all need a reason to say yes.']}
  ]}
 ];
 
@@ -511,6 +529,103 @@ const PATHS = [
   steps:[['strategy.five-forces','is the market attractive?'],['strategy.swot','what are the options?'],['finance.contribution','is it really unprofitable?'],['finance.break-even','how much must we sell?'],['marketing.line-extension','will a new product pay?'],['strategy.hypothesis','structure the answer'],['innovation.recommend','land one recommendation']]}
 ];
 
+
+/* playbook order on the home page */
+const ORDER = ['strategy','innovation','finance','ai','marketing','data','b2b','negotiation','leadership'];
+PB.sort((a,b) => ORDER.indexOf(a.id) - ORDER.indexOf(b.id));
+
+/* ---------- GLOSSARY ---------- */
+const GLOSS = [
+ ['Acquisition premium','The amount a buyer pays above a company\'s market value to win control of it.'],
+ ['Agent (AI)','An AI system that works toward a goal by taking actions, such as searching, booking or updating records, often over several steps.'],
+ ['Anchor','The first number put on the table in a negotiation. It tends to pull the final outcome toward it.'],
+ ['Asset turnover','Revenue divided by total assets. It shows how much in sales a company generates from what it owns.'],
+ ['Assets','Everything a company owns that has value: cash, inventory, equipment, buildings, patents.'],
+ ['Basis point','One hundredth of a percentage point. 50 basis points equals 0.5%.'],
+ ['BATNA','Best alternative to a negotiated agreement. What you will do if this deal falls through. The better it is, the more power you have.'],
+ ['Beachhead','A small, specific market segment a startup targets first, to win clearly before expanding.'],
+ ['Bias (in data)','A systematic error that makes results lean one way, for example when some groups are missing from a survey.'],
+ ['Break-even','The point where total revenue equals total costs, so you neither make nor lose money.'],
+ ['Burn rate','How much cash a company spends each month beyond what it brings in.'],
+ ['Buying committee','The group of people inside a business who together decide on a purchase.'],
+ ['Cannibalization','Sales a new product takes away from a company\'s existing products instead of from competitors.'],
+ ['Cash flow','The cash actually moving in and out of a business over a period, as opposed to profit on paper.'],
+ ['Champion','A person inside a customer\'s organization who wants your product and argues for it internally.'],
+ ['Channel','A route to reach or sell to customers, such as search ads, a retailer, a distributor or a sales team.'],
+ ['Chi-square test','A statistical test that checks whether two categories are related, or whether a sample matches a population.'],
+ ['COGS (cost of goods sold)','The direct costs of making the products a company sold, such as materials and factory labor.'],
+ ['Competitive advantage','Something that lets a company win customers or earn higher profits than rivals over time.'],
+ ['Contribution margin','Sales minus variable costs. The money each sale brings in to help pay fixed costs and then profit.'],
+ ['Cost of equity','The return shareholders expect for the risk of owning a company\'s stock.'],
+ ['Credit rating','A grade from agencies such as S&P or Moody\'s showing how likely a borrower is to repay. AAA is safest.'],
+ ['Discount rate','The rate used to convert future money into today\'s value. Higher risk means a higher rate.'],
+ ['Diversification','Spreading investments across assets that don\'t move together, so one loss doesn\'t sink the whole portfolio.'],
+ ['Dividend','A share of profits a company pays out to its shareholders, usually in cash.'],
+ ['EBITDA','Earnings before interest, taxes, depreciation and amortization. A rough measure of operating profit, often used to value companies.'],
+ ['Economic buyer','The person in a buying committee who controls the budget and gives final approval.'],
+ ['Enterprise value','The value of a whole company: its equity plus its debt, minus its cash.'],
+ ['Equity','The owners\' stake in a company: what would be left if all debts were paid. Also called shareholders\' equity.'],
+ ['Equity multiplier','Total assets divided by equity. It shows how much of the company is funded with debt.'],
+ ['Exit','How investors eventually get their money back, usually through a sale of the company or a stock market listing.'],
+ ['Exit multiple','The price a future buyer is expected to pay, expressed as a multiple of EBITDA or earnings.'],
+ ['Fixed costs','Costs that stay the same whatever you sell, such as rent, salaries and insurance.'],
+ ['Go-to-market','The plan for how a product reaches and wins its first customers: who, where, what price and through which channels.'],
+ ['Grounding (AI)','Tying an AI\'s answers to trusted sources such as your own documents, so it answers from facts instead of guessing.'],
+ ['Gross margin','Revenue minus cost of goods sold, as a share of revenue. What\'s left after making the product.'],
+ ['Hallucination (AI)','When an AI states something false or made up as if it were true.'],
+ ['Human in the loop','A design where a person reviews or approves AI output at key points before it takes effect.'],
+ ['Hypothesis','A testable statement of what you expect to be true. The null hypothesis is that there is no effect.'],
+ ['Incremental sales','The extra sales caused by a promotion or change, beyond what would have sold anyway.'],
+ ['IP (intellectual property)','Creations a company can legally protect, such as patents, trademarks and copyrights.'],
+ ['IRR (internal rate of return)','The yearly return an investment earns over its life. Compared with the return you require to decide if it\'s worth it.'],
+ ['KPI (key performance indicator)','A number that tracks progress toward an important goal.'],
+ ['Letter of intent','A short, usually non-binding document in which a customer or partner states they plan to buy or partner.'],
+ ['Leverage','Using borrowed money to fund a business or investment. It magnifies both gains and losses.'],
+ ['Line extension','A new version of an existing product, such as a new flavor, size or light version.'],
+ ['LLM (large language model)','The type of AI behind tools like ChatGPT and Claude, trained on large amounts of text to understand and write language.'],
+ ['Margin','The share of revenue left as profit at a given level. Gross, operating and net margin each subtract more costs.'],
+ ['Market share','A company\'s sales as a percentage of all sales in its market.'],
+ ['Net income','Profit after every cost, including interest and taxes. Also called net profit or the bottom line.'],
+ ['Net margin','Net income divided by revenue. How much of each dollar of sales becomes final profit.'],
+ ['North star metric','The single number that best shows a product is delivering real value to its users.'],
+ ['NPV (net present value)','The value today of all future cash an investment will bring in, minus what it costs. Positive means it creates value.'],
+ ['Operating margin','Operating profit divided by revenue. Profit from the core business before interest and taxes.'],
+ ['Overhead','Ongoing costs of running a business that aren\'t tied to a specific product, such as rent, admin and utilities.'],
+ ['p-value','The probability of seeing a result at least this strong if there were really no effect. Below 0.05 is usually treated as significant.'],
+ ['Pilot','A small, limited trial of a product with real customers before a full rollout.'],
+ ['Pivot','A deliberate change in a startup\'s direction, such as its customer, product or business model, based on evidence.'],
+ ['Positioning','The place you want your product to hold in customers\' minds compared with alternatives.'],
+ ['Prompt','The instructions and information you give an AI tool to get a response.'],
+ ['R² (R-squared)','The share of the ups and downs in an outcome that a model explains. 0.20 means it explains 20%.'],
+ ['RAG (retrieval-augmented generation)','A way to make AI answer from your documents: it retrieves relevant passages and adds them to the prompt before answering.'],
+ ['Regression','A statistical method that estimates how several factors together affect an outcome.'],
+ ['Representative sample','A sample whose makeup matches the population you want to learn about.'],
+ ['Revenue','All the money a company brings in from sales before any costs are subtracted. Also called sales or the top line.'],
+ ['Risk-free rate','The return on an investment considered to have no risk, usually US Treasury bills.'],
+ ['ROE (return on equity)','Net income divided by shareholders\' equity. How much profit a company earns on the owners\' money.'],
+ ['ROI (return on investment)','The gain from an investment relative to its cost, usually shown as a percentage.'],
+ ['Segment','A group of customers with similar needs or behavior that can be targeted the same way.'],
+ ['Sensitivity analysis','Changing key assumptions one at a time to see how much the result moves.'],
+ ['SG&A','Selling, general and administrative expenses: the costs of running the business that aren\'t part of making the product, such as sales staff, marketing, offices and admin.'],
+ ['Spread','The difference between two yields or prices, for example a company bond\'s yield minus a Treasury\'s.'],
+ ['STAR method','A way to answer behavioral interview questions: situation, task, action, result.'],
+ ['Statistical significance','When a result is unlikely to be due to chance alone, usually judged by a p-value below 0.05.'],
+ ['Substitute','A different kind of product that meets the same need, such as video calls instead of business travel.'],
+ ['Synergy','Extra value created when two companies combine, through cost savings or new revenue neither could get alone.'],
+ ['t-test','A statistical test that checks whether the averages of two groups are really different.'],
+ ['TAM, SAM, SOM','Total addressable market (everyone who could buy), serviceable available market (who you can reach) and serviceable obtainable market (what you can realistically win).'],
+ ['Traction','Evidence that customers want a product, such as users, revenue or growth.'],
+ ['Treasury','A bond issued by the US government. Treated as the benchmark for a risk-free return.'],
+ ['Unit economics','The revenue and costs tied to a single unit or customer. Shows whether each sale makes or loses money.'],
+ ['Valuation','An estimate of what a company or asset is worth.'],
+ ['Value proposition','The specific benefit a product delivers to a customer, and why it beats the alternatives.'],
+ ['Variable costs','Costs that rise and fall with each unit sold, such as materials, packaging and shipping.'],
+ ['Vertical integration','Owning more steps of your supply chain, such as a manufacturer buying its supplier or its distributor.'],
+ ['Volatility','How much an investment\'s returns swing up and down, usually measured as standard deviation.'],
+ ['Walkaway point','The worst deal you\'ll accept in a negotiation. Anything worse and you leave.'],
+ ['Yield to maturity','The yearly return you earn on a bond if you buy it at today\'s price and hold it until it\'s repaid.'],
+ ['ZOPA','Zone of possible agreement. The range between two sides\' walkaway points where a deal can happen.']
+];
 
 /* ---------- SKETCHES ---------- */
 /* node: [id,x,y,w,h,label,sub,target,hi,kicker] ; arrows: [x1,y1,x2,y2,bend] */
@@ -688,6 +803,43 @@ function renderHome(){
     b.onclick = () => go(p.id);
     feed.appendChild(b);
   });
+  const g = document.createElement('button'); g.className = 'story rv'; g.style.cssText = '--i:1';
+  g.setAttribute('aria-label','Glossary: what does that word mean?');
+  g.innerHTML = `<div class="thumb gl"><span class="num">${pad(PB.length+1)}</span><div class="az">A–Z<span>margin, SG&amp;A, EBITDA…</span></div></div>
+    <div class="meta"><span class="mono">#${pad(PB.length+1)} · ${GLOSS.length} terms</span></div>
+    <h3>Glossary</h3><span class="q">What does that word mean?</span>`;
+  g.onclick = () => go('glossary');
+  feed.appendChild(g);
+}
+
+function renderGlossary(q){
+  cleanup();
+  const terms = [...GLOSS].sort((a,b)=>a[0].localeCompare(b[0]));
+  const letters = [...new Set(terms.map(t=>t[0][0].toUpperCase()))];
+  view.innerHTML = `
+  <section class="hero gut" style="--c:var(--ink);--cf:var(--paper)"><div class="in">
+    <button class="back rv" style="--i:0" id="back">← All playbooks</button>
+    <div class="kick rv" style="--i:0;margin-top:22px">Section ${pad(PB.length+1)}</div>
+    <h1 class="rv" style="--i:1">Glossary</h1>
+    <span class="hand rv" style="--i:2">What does that word mean?</span>
+    <p class="lede rv" style="--i:3">Plain definitions of the business terms used across the playbooks, from <strong>margin</strong> to <strong>ZOPA</strong>.</p>
+    <div class="big" aria-hidden="true">A–Z</div>
+  </div></section>
+  <section class="gut"><div class="in">
+    <div class="gl-tools"><input id="gl-q" type="search" placeholder="Find a term, like EBITDA" aria-label="Find a term"><nav class="letters" aria-label="Jump to letter">${letters.map(l=>`<a href="#" data-l="${l}">${l}</a>`).join('')}</nav></div>
+    <div class="gl-list" id="gl-list"></div>
+  </div></section>`;
+  const list = view.querySelector('#gl-list'), inp = view.querySelector('#gl-q');
+  const draw = v => {
+    const s = v.trim().toLowerCase();
+    const hits = terms.filter(([t,d]) => !s || t.toLowerCase().includes(s) || d.toLowerCase().includes(s));
+    const groups = {}; hits.forEach(h => { const l = h[0][0].toUpperCase(); (groups[l] = groups[l] || []).push(h); });
+    list.innerHTML = Object.keys(groups).map(l => `<div class="gl-group"><h3 id="gl-${l}">${l}</h3>${groups[l].map(([t,d])=>`<div class="gl-item"><b>${esc(t)}</b><p>${esc(d)}</p></div>`).join('')}</div>`).join('') || '<p class="gl-empty">No terms match. Try a shorter word.</p>';
+  };
+  inp.oninput = () => draw(inp.value); inp.value = q||''; draw(inp.value);
+  view.querySelector('#back').onclick = () => go('');
+  view.querySelectorAll('.letters a').forEach(a => a.onclick = e => { e.preventDefault(); inp.value=''; draw(''); const h = document.getElementById('gl-'+a.dataset.l); if (h) h.scrollIntoView({behavior: reduce()?'auto':'smooth'}); });
+  window.scrollTo({top:0});
 }
 
 function cardHTML(t,i){
@@ -757,9 +909,11 @@ function renderSearch(q){
   cleanup();
   const s = q.toLowerCase(); const hits = [];
   PB.forEach(p => p.tools.forEach(t => { const hay = [t.name,t.what,(t.steps||[]).join(' '),t.ex||'',t.formula||''].join(' ').toLowerCase(); if (hay.includes(s)) hits.push([p,t]); }));
-  view.innerHTML = `<section class="gut sec"><div class="in"><div class="sechead"><h2>${hits.length} ${hits.length===1?'tool':'tools'} for “${esc(q)}”</h2></div>
+  const gh = GLOSS.filter(([t,d]) => t.toLowerCase().includes(s));
+  view.innerHTML = `<section class="gut sec"><div class="in">${gh.length?`<div class="sechead"><h2>In the glossary</h2></div><div class="results" style="margin-bottom:34px">${gh.map(([t,d])=>`<button data-g="${esc(t)}"><b>${esc(t)}</b><small>${esc(d)}</small></button>`).join('')}</div>`:''}<div class="sechead"><h2>${hits.length} ${hits.length===1?'tool':'tools'} for “${esc(q)}”</h2></div>
    <div class="results">${hits.map(([p,t])=>`<button data-p="${p.id}" data-t="${t.id}"><b>${esc(t.name)}</b><small>${esc(p.name)} · ${md(t.what)}</small></button>`).join('') || '<p class="muted">No tools match. Try a framework name like SWOT, or a word like price.</p>'}</div></div></section>`;
-  view.querySelectorAll('.results button').forEach(b => b.onclick = () => { $('#q').value=''; go(b.dataset.p,b.dataset.t); });
+  view.querySelectorAll('.results button[data-p]').forEach(b => b.onclick = () => { $('#q').value=''; go(b.dataset.p,b.dataset.t); });
+  view.querySelectorAll('.results button[data-g]').forEach(b => b.onclick = () => { $('#q').value=''; try { history.replaceState(null,'','#glossary'); } catch(e){} renderGlossary(b.dataset.g); });
 }
 function go(p,t){
   const h = t ? `${p}.${t}` : (p||'');
@@ -768,7 +922,7 @@ function go(p,t){
 }
 function route(h){
   const [p,t] = (h||'').split('.');
-  if (PB.some(x=>x.id===p)) renderPlaybook(p,t); else { renderHome(); window.scrollTo({top:0}); }
+  if (p==='glossary') renderGlossary(); else if (PB.some(x=>x.id===p)) renderPlaybook(p,t); else { renderHome(); window.scrollTo({top:0}); }
 }
 /* light / dark */
 (() => { const root = document.documentElement; let saved = null; try { saved = localStorage.getItem('pb-theme'); } catch(e){}
