@@ -141,9 +141,13 @@ footer{border-top:1.5px solid var(--ink);padding-block:22px 40px;font-size:14px;
 .hero .hand{font-size:clamp(23px,3vw,33px);display:block;margin-top:10px}
 .hero .lede{font-size:clamp(18px,2vw,21px);max-width:52ch;margin:22px 0 0;line-height:1.5}
 .hero .lede strong{background:rgba(255,255,255,.22);padding:0 .15em;border-radius:3px}
-.uses{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-.uses span{border:1.5px solid currentColor;border-radius:999px;padding:5px 13px;font-size:14.5px}
-.uses .kick{border:0;padding:5px 4px 5px 0}
+.uses{margin-top:30px;max-width:900px;position:relative;z-index:1}
+.uses .kick{display:block;margin-bottom:12px;opacity:.85}
+.uses ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;counter-reset:u}
+@media (max-width:640px){.uses ol{grid-template-columns:minmax(0,1fr)}}
+.uses li{counter-increment:u;display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start;padding:13px 16px 14px;border-radius:10px;
+  background:color-mix(in srgb,var(--cf) 12%,transparent);border:1.5px solid color-mix(in srgb,var(--cf) 35%,transparent);font-size:16px;line-height:1.4}
+.uses li::before{content:counter(u);font-family:var(--f-mono);font-size:12px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--cf);color:var(--c);margin-top:-1px}
 
 .essay{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);gap:40px;align-items:start;padding-block:46px 20px}
 @media (max-width:960px){.essay{grid-template-columns:minmax(0,1fr);gap:22px}}
@@ -866,7 +870,7 @@ function renderPlaybook(id,toolId){
     <h1 class="rv" style="--i:1">${esc(p.name)}</h1>
     <span class="hand rv" style="--i:2">${esc(p.q)}</span>
     <p class="lede rv" style="--i:3">${md(p.idea)}</p>
-    <div class="uses rv" style="--i:4"><span class="kick">Use it when</span>${p.use.map(u=>`<span>${esc(u)}</span>`).join('')}</div>
+    <div class="uses rv" style="--i:4"><span class="kick">Use it when</span><ol>${p.use.map(u=>`<li>${esc(u)}</li>`).join('')}</ol></div>
     <div class="big" aria-hidden="true">${pad(i+1)}</div>
   </div></section>
 
