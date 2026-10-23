@@ -25,7 +25,7 @@
   --c:#141414; --cf:#fff;
   --side:256px;
   --t:clamp(18px,16px + .4vw,20px);
-  --u:clamp(15px,14px + .25vw,16px);
+  --u:clamp(14px,13px + .25vw,15px);
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#0C0C0C; --surface:#171717; --surface-2:#202020; --ink:#EDEDEC; --muted:rgba(255,255,255,.55); --faint:rgba(255,255,255,.32); --rule:rgba(255,255,255,.09);
@@ -301,7 +301,7 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
 .top .about-link{all:unset;cursor:pointer;font-size:var(--u);color:var(--muted);display:none;padding:6px 4px}
 .top .about-link:hover{color:var(--ink)}
 body.reading .top .about-link{display:inline-flex}
-.side-foot .credit{all:unset;cursor:pointer;color:inherit}.side-foot .credit:hover{color:var(--ink)}
+.side-foot .credit{color:inherit;text-decoration:underline;text-underline-offset:2px;text-decoration-color:var(--faint)}.side-foot .credit:hover{color:var(--ink)}
 @media (max-width:1023px){.top .about-link{display:inline-flex}}
 @media (max-width:720px){.ab-hero{grid-template-columns:minmax(0,1fr);gap:28px;padding-top:24px}.pol.big{max-width:240px;margin:12px auto 0}.chap{grid-template-columns:minmax(0,1fr);gap:10px;padding-block:32px}.chap .when{position:static;flex-direction:row;align-items:baseline;gap:10px}.stats-row{grid-template-columns:repeat(2,minmax(0,1fr))}.pol.small{float:none;margin:8px auto 22px}}
 
@@ -453,7 +453,7 @@ h1,h2,h3,.hero h1,.ab-intro h1,.intro h1,.card h3,.chap h2,.nextblock b,.sechead
   <nav class="navgroup" id="nav-pb" aria-label="Playbooks"></nav>
   <nav class="navgroup" id="nav-ref" aria-label="Reference"></nav>
   <div class="side-foot">
-    <button class="credit" id="credit-link" type="button">Compiled by Semira Yesufu · Kelley School of Business</button>
+    <span>Compiled by <a class="credit" href="https://www.linkedin.com/in/semirayesufu" target="_blank" rel="noopener">Semira Yesufu</a></span>
   </div>
 </aside>
 <div class="main">
@@ -1377,7 +1377,7 @@ function route(h){
   if (p==='glossary') renderGlossary(); else if (p==='about') renderAbout(); else if (PB.some(x=>x.id===p)) renderPlaybook(p,t); else { renderHome(); window.scrollTo({top:0}); }
 }
 /* light / dark */
-$('#about-link').onclick = $('#credit-link').onclick = () => go('about');
+$('#about-link').onclick = () => go('about');
 $('#home-link').onclick = $('#home-link-m').onclick = () => { $('#q').value=''; homeFilter='all'; go(''); };
 let st; $('#q').addEventListener('input', e => { clearTimeout(st); const v=e.target.value.trim(); st=setTimeout(()=> v ? renderSearch(v) : route(location.hash.slice(1)),120); });
 
