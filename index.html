@@ -832,7 +832,7 @@ function drawSketch(key, onPick, mini){
     wire(g,'Open The Four Numbers','four-numbers');
   }
   (spec.nodes||[]).forEach(([id,x,y,w,h,label,sub,target,hi,kicker,fsz]) => {
-    const g = el('g',{class:'node'+(mini&&hi?' on':''),'data-t':target},root);
+    const g = el('g',{class:'node','data-t':target},root);
     el('rect',{x:x+3,y:y+3,width:w-6,height:h-6,class:'hlr'},g);
     rect(g,x,y,w,h);
     const lines = (sub||'').split('\n').filter(Boolean);
@@ -1010,7 +1010,7 @@ function renderAbout(){
         <h1 class="rv" style="--i:1">Hi, I'm <span class="scribble">Semira<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 13 C 50 5, 110 4, 197 9 M 12 17 C 70 11, 130 12, 188 14"/></svg></span>.</h1>
         <span class="hand rv" style="--i:2">but my real gees call me Big Sem</span>
         <p class="rv" style="--i:3">I'm an MBA candidate at Indiana University's Kelley School of Business. Prior to business school, I worked in product management and design across fintech, e-commerce and enterprise. Most recently, I spent an amazing summer as an AI Strategist intern at The New York Times.</p>
-        <p class="rv" style="--i:4">I love building practical things that help people do more, including</p>
+        <p class="rv" style="--i:4">I love building practical things that help people do more and be more, including</p>
         <ul class="ab-list rv" style="--i:4"><li>Notion templates for productivity and career growth</li><li>Articles on navigating life as an immigrant, a hijabi and an ambitious woman in her 20s</li><li>AI literacy and tech programs for underrepresented women in Nigeria, through my nonprofit, Path4Her</li></ul>
         <p class="rv" style="--i:5">The MBA Playbook is the newest of these. Here's how it came to be.</p>
       </div>
