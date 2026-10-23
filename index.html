@@ -25,6 +25,7 @@
   --c:#141414; --cf:#fff;
   --side:256px;
   --t:clamp(16px,14px + .4vw,18px);
+  --r:calc(var(--t) + 2px);
   --u:clamp(13.5px,12.5px + .25vw,14.5px);
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
@@ -410,7 +411,7 @@ body.reading .top .about-link{display:inline-flex}
 .gl-group h3{font-size:34px;font-weight:600;letter-spacing:-.03em;line-height:1;margin:0;padding-top:10px;position:sticky;top:170px;align-self:start}
 .gl-item{display:grid;grid-template-columns:minmax(150px,240px) minmax(0,1fr);gap:4px 28px;padding:12px 0 14px;border-top:1px solid var(--rule)}
 .gl-item:first-of-type{border-top:0}
-.gl-item b{font-size:calc(var(--t) + .5px);font-weight:600;line-height:1.4}
+.gl-item b{font-size:var(--r);font-weight:600;line-height:1.4}
 .gl-item p{margin:0;font-size:15px;line-height:1.55;color:var(--muted);max-width:68ch}
 .gl-empty{color:var(--muted);padding-top:20px}
 @media (max-width:1023px){.gl-tools{position:static;border-bottom:0}.gl-group h3{position:static}.gl-group{scroll-margin-top:80px}}
@@ -418,19 +419,8 @@ body.reading .top .about-link{display:inline-flex}
 
 /* titles in Fraunces, body in Source Serif 4, notes in Patrick Hand */
 .side,.top,.filters,.stats,.story .meta,.share,.ab-btn,.results,.nowon,.card .n,.gl-tools,.crumb,.back,.nextblock,.pill,.chip,.navgroup,.search input,button{font-family:var(--f-ui)}
-.card .what{font-size:calc(var(--t) + 1px)}
-.card .def{font-size:calc(var(--t) + 3px);line-height:1.6}
-.card ol>li{font-size:calc(var(--t) + 3px);line-height:1.6}
-.card ul{font-size:calc(var(--t) + 2px)}
-.card ul.sub{font-size:calc(var(--t) + 2px)}
-.watch{font-size:var(--t)}
-.hero .lede{font-size:calc(var(--t) + 3px)}
-.uses li{font-size:calc(var(--t) - 1px)}
-.fig figcaption{font-size:calc(var(--t) - 1.5px)}
-.gl-item p{font-size:calc(var(--t) + 1px)}
-.ab-intro p,.ab-list,.chap p{font-size:calc(var(--t) + 3px);line-height:1.6}
-.ab-credits p,.ab-credits ul{font-size:calc(var(--t) + 3px);line-height:1.6}
-.share p{font-size:calc(var(--t) - 1px)}
+/* one reading size for all body text, on every page */
+.card .what,.card .def,.card ol>li,.card ul,.card ul.sub,.watch,.hero .lede,.uses li,.fig figcaption,.gl-item p,.intro p,.ab-intro p,.ab-list,.chap p,.ab-credits p,.ab-credits ul,.share p{font-size:var(--r);line-height:1.6}
 .peek p{font-family:var(--f-body);font-size:calc(var(--t) - 1.5px)}
 .stk,.stk.pill,.stk.circle,.stk.rect{font-family:var(--f-hand);font-weight:400}
 .pol img{image-rendering:auto}
@@ -1008,7 +998,7 @@ function renderAbout(){
       ${pol(ABOUT_IMG.hi,'Photo of Semira Yesufu smiling','',-2.5,'big',
         stk('Class of<br>2027','circle p','--r:12deg;top:-22px;right:-30px')+
         stk('proudly Naija 🇳🇬','pill g','--r:-8deg;bottom:46px;left:-38px')+
-        stk('🏅 3x hackathon champ','pill b','--r:5deg;bottom:-16px;right:-24px'))}
+        stk('🏅 3x case champ','pill b','--r:5deg;bottom:-16px;right:-24px'))}
       <div class="ab-intro">
         <span class="kick rv" style="--i:0">About</span>
         <h1 class="rv" style="--i:1">Hi, I'm <span class="scribble">Semira<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 13 C 50 5, 110 4, 197 9 M 12 17 C 70 11, 130 12, 188 14"/></svg></span>.</h1>
