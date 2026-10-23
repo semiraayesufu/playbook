@@ -439,6 +439,17 @@ h1,h2,h3,.hero h1,.ab-intro h1,.intro h1,.card h3,.chap h2,.nextblock b,.sechead
 .pol.big::after{content:"";position:absolute;inset:12px 12px 52px 12px;z-index:2;pointer-events:none;border-radius:1px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px;opacity:.38;mix-blend-mode:overlay;animation:grainpos 1.4s steps(7) infinite}
 @keyframes grainpos{0%,100%{background-position:0 0}14%{background-position:-38px 22px}28%{background-position:27px -41px}42%{background-position:-55px -13px}57%{background-position:44px 35px}71%{background-position:-19px 58px}85%{background-position:61px -6px}}
 @media (prefers-reduced-motion:reduce){.pol.big::after{animation:none}}
+/* about photo in dark mode: Instagram-style true black */
+:root[data-theme="dark"] .pol.big{background:#000;border-radius:12px;box-shadow:0 0 0 1px #262626,0 24px 48px -24px rgba(0,0,0,.9)}
+:root[data-theme="dark"] .pol.big img{border-radius:6px}
+:root[data-theme="dark"] .pol.big::after{border-radius:6px;opacity:.22}
+:root[data-theme="dark"] .pol.big .tape{background:rgba(255,214,90,.28)}
+@media (prefers-color-scheme:dark){
+:root:not([data-theme="light"]) .pol.big{background:#000;border-radius:12px;box-shadow:0 0 0 1px #262626,0 24px 48px -24px rgba(0,0,0,.9)}
+:root:not([data-theme="light"]) .pol.big img{border-radius:6px}
+:root:not([data-theme="light"]) .pol.big::after{border-radius:6px;opacity:.22}
+:root:not([data-theme="light"]) .pol.big .tape{background:rgba(255,214,90,.28)}
+}
 /* film grain over the whole page */
 body::after{content:"";position:fixed;inset:-120px;z-index:50;pointer-events:none;animation:grain 1.4s steps(7) infinite;will-change:transform;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:220px;opacity:.18;mix-blend-mode:multiply}
 :root[data-theme="dark"] body::after{opacity:.12;mix-blend-mode:screen}
