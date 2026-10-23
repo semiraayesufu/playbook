@@ -1208,7 +1208,6 @@ function renderHome(){
     <div class="intro">
       <div><h1 class="rv" style="--i:0">Business school, <em>sketched out.</em></h1>
 </div>
-      <div class="stats rv" style="--i:2"><span class="chip"><b>${PB.length}</b> playbooks</span><span class="chip"><b>${toolCount}</b> tools</span><span class="chip"><b>${GLOSS.length}</b> terms</span></div>
     </div>
     <div class="filters" role="toolbar" aria-label="Filter playbooks">${GROUPS.map(([k,l])=>`<button class="pill" data-f="${k}" aria-pressed="${k===homeFilter}">${l}</button>`).join('')}</div>
     <div class="feed" id="feed"></div>
