@@ -134,7 +134,8 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
 .thumb .paper{width:94%;background:var(--polaroid);border-radius:6px;padding:4px;box-shadow:0 1px 2px rgba(0,0,0,.06),0 10px 28px -14px rgba(0,0,0,.35);transform:translateY(6px);transition:transform .25s var(--ease)}
 .story:hover .paper,.story:focus-visible .paper{transform:translateY(-2px) scale(1.025)}
 .thumb .paper svg{display:block;width:100%;height:auto;pointer-events:none}
-.thumb .paper .sk path{stroke:var(--line)}.thumb .paper .sk text{fill:var(--ink)}.thumb .paper .sk .s,.thumb .paper .sk .k{fill:var(--muted)}.thumb .paper .sk .note{fill:var(--pen)}
+.thumb .paper{background:#FFFFFF}
+.thumb .paper .sk path{stroke:#2B2620}.thumb .paper .sk text{fill:#141414}.thumb .paper .sk .s,.thumb .paper .sk .k{fill:rgba(0,0,0,.52)}.thumb .paper .sk .note{fill:#2747C9}
 .thumb .num{position:absolute;left:10px;top:10px;font-family:var(--f-mono);font-size:11px;height:22px;padding:0 8px;border-radius:999px;display:grid;place-items:center;background:var(--c);color:var(--cf)}
 .thumb .go{position:absolute;right:10px;bottom:10px;width:32px;height:32px;border-radius:50%;background:#141414;color:#fff;display:grid;place-items:center;opacity:0;transform:translateY(4px) scale(.9);transition:opacity .15s var(--ease),transform .15s var(--ease)}
 .thumb .go svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
@@ -166,7 +167,7 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
 .peek,:root[data-theme="dark"] .peek{padding:10px;align-items:flex-end;background:rgba(255,255,255,.18);backdrop-filter:blur(9px) saturate(1.3);-webkit-backdrop-filter:blur(9px) saturate(1.3);box-shadow:none}
 :root[data-theme="dark"] .peek{background:rgba(0,0,0,.28)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .peek{background:rgba(0,0,0,.28);backdrop-filter:blur(9px) saturate(1.3);-webkit-backdrop-filter:blur(9px) saturate(1.3);box-shadow:none}}
-.peek p{flex:1;min-height:50%;display:flex;align-items:flex-end;padding:14px 54px 14px 16px;border-radius:12px;color:var(--ink);
+.peek p{flex:0 0 100%;max-width:100%;padding:14px 54px 14px 16px;border-radius:12px;color:var(--ink);
   background:linear-gradient(150deg,rgba(255,255,255,.62),rgba(255,255,255,.26) 55%,rgba(255,255,255,.44));
   backdrop-filter:blur(12px) saturate(1.6);-webkit-backdrop-filter:blur(12px) saturate(1.6);
   box-shadow:0 14px 30px -18px rgba(0,0,0,.4);
@@ -659,6 +660,7 @@ const GLOSS = [
  ['Break-even','The point where total revenue equals total costs, so you neither make nor lose money.'],
  ['Burn rate','How much cash a company spends each month beyond what it brings in.'],
  ['Buying committee','The group of people inside a business who together decide on a purchase.'],
+ ['CAGR (compound annual growth rate)','The steady yearly growth rate that would take a number from its starting value to its ending value over a period. It smooths out ups and downs, so you can compare growth across different spans of time.'],
  ['Cannibalization','Sales a new product takes away from a company\'s existing products instead of from competitors.'],
  ['Cash flow','The cash actually moving in and out of a business over a period, as opposed to profit on paper.'],
  ['Champion','A person inside a customer\'s organization who wants your product and argues for it internally.'],
@@ -900,6 +902,9 @@ const FIG_ALT = {
  'five-forces':'Four forces pressing on rivalry in the middle',
  's-curve':'A growth curve flattening while a second curve starts to climb',
  'break-even':'Revenue line crossing the total cost line at the break-even point',
+ 'contribution':'A bridge from sales down to profit: variable costs come off first, leaving contribution, then fixed costs come off',
+ 'dupont':'A tree splitting return on equity into profit margin, asset turnover and equity multiplier',
+ 'buyout':'A bridge from exit value, minus remaining debt, to the equity investors get back, compared with the cash they put in',
  'plc':'Sales over time through introduction, growth, maturity and decline',
  'four-numbers':'A number line showing both sides\' walkaway points and the ZOPA between them',
  'make-buy':'A two by two grid deciding own it, partner or buy it',
@@ -915,6 +920,9 @@ const FIG_CAP = {
  'five-forces':'Four outside pressures push on the competition in the middle. Each one takes a share of the industry\'s profit.',
  's-curve':'The black curve is today\'s business. The blue curve is the next one. Start it before the first curve flattens.',
  'break-even':'Total cost starts at your fixed costs and rises with each unit. Revenue starts at zero and rises faster. Where the lines cross, you stop losing money.',
+ 'contribution':'Start from sales. Take off the costs that come with each sale, and what remains is the contribution. Fixed costs come out of that pool, whether or not the product exists. Cut a product with positive contribution, and the fixed costs stay while the contribution goes.',
+ 'dupont':'ROE is the product of the three boxes. Compare each box with a competitor to see whether a higher return comes from pricing power, hard-working assets or extra debt.',
+ 'buyout':'Read left to right. The exit value is the future EBITDA times the exit multiple. Pay off the remaining debt, and the rest is the investors\' exit equity. Divide it by what they put in to get the money multiple.',
  'plc':'Sales rise, peak and fall over time. The dotted lines mark where one stage ends and the next begins.',
  'four-numbers':'Picture yourself as the seller: you want a higher number and the buyer wants a lower one. A deal can only happen in the overlap between the two walkaway points.',
  'make-buy':'Move right as the activity gets harder to put in a contract, and up as it matters more to why customers choose you.',
@@ -959,6 +967,37 @@ function drawFig(id){
      curve(sig(60,280,200,130)); curve(sig(250,270,200,175),{stroke:BLUE,strokeWidth:2});
      T(150,92,'today\'s business',{a:'middle'}); T(410,40,'next curve',{a:'end',c:BLUE});
      arrow(300,100,318,76,BLUE); T(300,118,'jump here',{c:BLUE,s:16});
+   },
+   'contribution'(){
+     const b=(x,y0,y1,f,t,sub)=>{ box(x,Math.min(y0,y1),84,Math.abs(y1-y0),f); T(x+42,214,t,{s:14,w:700}); if(sub) T(x+42,230,sub,{s:13,c:'#6A6258'}); };
+     line(24,196,548,196);
+     b(36,196,40,{fill:'#FFFFFF',fillStyle:'solid'},'sales');
+     b(140,40,118,{fill:'#C9C2B8',fillStyle:'hachure'},'variable costs','come with each sale');
+     b(244,196,118,fill,'contribution','what is left');
+     b(348,118,172,{fill:'#C9C2B8',fillStyle:'hachure'},'fixed costs','stay anyway');
+     b(452,196,172,{fill:'#FFFFFF',fillStyle:'solid'},'profit');
+     [[120,40],[224,118],[328,118],[432,172]].forEach(([x,y])=>line(x,y,x+20,y,{strokeLineDash:[3,4],stroke:'#8A8178'}));
+     T(494,60,'contribution pays',{s:14,c:BLUE,w:700}); T(494,78,'the fixed bills first',{s:14,c:BLUE});
+   },
+   'dupont'(){
+     box(205,18,150,50,fill); T(280,40,'ROE',{w:700,s:17}); T(280,58,'return on equity',{s:13,c:'#6A6258'});
+     [[100,'Profit margin','net income ÷ revenue','how much of each $ you keep'],[280,'Asset turnover','revenue ÷ assets','how hard assets work'],[460,'Equity multiplier','assets ÷ equity','how much is borrowed']].forEach(([x,t,f,m],i)=>{
+       box(x-82,110,164,78,{}); T(x,134,t,{w:700,s:15}); T(x,154,f,{s:13,c:'#6A6258'}); T(x,174,m,{s:13,c:BLUE});
+       line(280,68,x,110);
+     });
+     T(190,156,'×',{s:20,c:'#6A6258'}); T(370,156,'×',{s:20,c:'#6A6258'});
+     T(280,220,'multiply the three to get ROE',{s:14,c:'#6A6258'});
+   },
+   'buyout'(){
+     line(30,196,540,196);
+     const b=(x,y0,y1,f,t,sub)=>{ box(x,Math.min(y0,y1),98,Math.abs(y1-y0),f); T(x+49,214,t,{s:14,w:700}); if(sub) T(x+49,230,sub,{s:13,c:'#6A6258'}); };
+     b(40,196,30,{fill:'#FFFFFF',fillStyle:'solid'},'exit value','EBITDA × multiple');
+     b(165,30,110,{fill:'#C9C2B8',fillStyle:'hachure'},'debt left','paid off first');
+     b(290,196,110,fill,'exit equity','what investors get');
+     b(415,196,150,{fill:'#FFFFFF',fillStyle:'solid'},'cash put in','at the start');
+     line(138,30,165,30,{strokeLineDash:[3,4],stroke:'#8A8178'}); line(263,110,290,110,{strokeLineDash:[3,4],stroke:'#8A8178'});
+     arrow(405,140,470,140,BLUE); T(437,128,'÷',{s:16,c:BLUE});
+     T(464,70,'money multiple =',{s:14,c:BLUE,w:700}); T(464,88,'exit equity ÷ cash in',{s:13,c:BLUE});
    },
    'break-even'(){
      axes('units sold','$');
@@ -1271,7 +1310,7 @@ function renderHome(){
     </div>
     <div class="filters" role="toolbar" aria-label="Filter playbooks">${GROUPS.map(([k,l])=>`<button class="pill" data-f="${k}" aria-pressed="${k===homeFilter}">${l}</button>`).join('')}</div>
     <div class="feed" id="feed"></div>
-    ${SUBMIT_URL ? `<div class="share"><div><b>Learned something useful in business school, or from years of solving business problems?</b><p>Share your insights.</p></div><a href="${SUBMIT_URL}" target="_blank" rel="noopener">Share an insight ${ARROW}</a></div>` : ''}
+    ${SUBMIT_URL ? `<div class="share"><div><b>Picked up something useful, in business school or from years of solving business problems?</b><p>Share your insights.</p></div><a href="${SUBMIT_URL}" target="_blank" rel="noopener">Share an insight ${ARROW}</a></div>` : ''}
   </div></section>`;
   const feed = view.querySelector('#feed');
   PB.forEach((p,i) => {
