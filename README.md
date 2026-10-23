@@ -2,7 +2,7 @@
 
 Business school, sketched out.
 
-The MBA Playbook turns what you learn in an MBA into tools you can use on real business problems. Each tool explains what it is, when to use it and the steps to apply it, in plain language.
+The MBA Playbook turns what you learn in an MBA into tools you can use on real business problems. Each tool explains what it is, when to use it and the steps to apply it.
 
 **Live site:** https://semiraayesufu.github.io/playbook/
 
@@ -15,10 +15,6 @@ The MBA Playbook turns what you learn in an MBA into tools you can use on real b
 - **Search.** Find any tool or term from the top of the page.
 
 The playbook keeps growing as new tools and playbooks are added.
-
-## How it's built
-
-A single static page, `index.html`, hosted on GitHub Pages. To run it locally, open `index.html` in a browser.
 
 ## About
 
