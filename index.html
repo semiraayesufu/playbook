@@ -1254,7 +1254,7 @@ function renderHome(){
     </div>
     <div class="filters" role="toolbar" aria-label="Filter playbooks">${GROUPS.map(([k,l])=>`<button class="pill" data-f="${k}" aria-pressed="${k===homeFilter}">${l}</button>`).join('')}</div>
     <div class="feed" id="feed"></div>
-    ${SUBMIT_URL ? `<div class="share"><div><b>Learned something useful in business school, or from years of running a business?</b><p>Share your insights.</p></div><a href="${SUBMIT_URL}" target="_blank" rel="noopener">Share a learning ${ARROW}</a></div>` : ''}
+    ${SUBMIT_URL ? `<div class="share"><div><b>Learned something useful in business school, or from years of solving business problems?</b><p>Share your insights.</p></div><a href="${SUBMIT_URL}" target="_blank" rel="noopener">Share a learning ${ARROW}</a></div>` : ''}
   </div></section>`;
   const feed = view.querySelector('#feed');
   PB.forEach((p,i) => {
