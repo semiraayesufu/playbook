@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Nine playbooks of MBA tools for real business problems, with hand-drawn sketches and a glossary.">
+<meta name="description" content="Playbooks of MBA tools for real business problems, with hand-drawn sketches and a glossary.">
 <title>The MBA Playbook</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -132,7 +132,7 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
 .story .meta{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
 .story h3{font-size:14px;font-weight:500;letter-spacing:-.01em;line-height:1.3}
 .story .meta .mono{color:var(--faint);white-space:nowrap}
-.story .q{font-size:13px;color:var(--muted);line-height:1.35;margin-top:-6px}
+.story .q{font-family:var(--f-hand);font-size:18px;color:var(--pen);line-height:1.2;margin-top:-6px}
 .thumb.gl{background:var(--surface)}
 .story:hover .thumb.gl{background:var(--surface-2)}
 .thumb.gl .az{font-weight:700;font-size:clamp(56px,7vw,84px);line-height:.9;letter-spacing:-.06em;color:var(--ink);text-align:center}
@@ -252,7 +252,6 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
   <nav class="navgroup" id="nav-pb" aria-label="Playbooks"></nav>
   <nav class="navgroup" id="nav-ref" aria-label="Reference"></nav>
   <div class="side-foot">
-    <div class="side-card">A field guide to business problems, for people without an MBA.<div class="stats" id="side-stats"></div></div>
     <div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><span>Light or dark</span><button class="theme" data-theme-toggle aria-label="Switch light or dark mode"><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button></div>
     <span>Compiled by Semira Yesufu · Kelley School of Business</span>
   </div>
@@ -270,7 +269,6 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
     </div>
   </header>
   <main id="view"></main>
-  <footer class="gut"><div class="in">Compiled by Semira Yesufu from MBA coursework at the Kelley School of Business, Indiana University.</div></footer>
 </div>
 <script src="https://unpkg.com/roughjs@4.6.6/bundled/rough.js"></script>
 <script>
@@ -550,7 +548,7 @@ const PATHS = [
 
 
 /* playbook order on the home page */
-const ORDER = ['strategy','innovation','finance','ai','marketing','data','b2b','negotiation','leadership'];
+const ORDER = ['ai','strategy','innovation','finance','marketing','data','b2b','negotiation','leadership'];
 PB.sort((a,b) => ORDER.indexOf(a.id) - ORDER.indexOf(b.id));
 
 /* ---------- GLOSSARY ---------- */
@@ -799,7 +797,7 @@ function cleanup(){ if (io) { io.disconnect(); io = null; } if (onScroll) { remo
 const toolCount = PB.reduce((n,p)=>n+p.tools.length,0);
 const teaser = p => plain(p.idea).split(/(?<=\.)\s/)[0];
 
-const GROUPS = [['all','All',null],['grow','Strategy & growth',['strategy','innovation','marketing','b2b']],['numbers','Numbers & data',['finance','data']],['ai','AI',['ai']],['people','People',['negotiation','leadership']],['ref','Reference',['glossary']]];
+const GROUPS = [['all','All',null],['ai','AI',['ai']],['grow','Strategy & growth',['strategy','innovation','marketing','b2b']],['numbers','Numbers & data',['finance','data']],['people','People',['negotiation','leadership']],['ref','Reference',['glossary']]];
 let homeFilter = 'all';
 const ARROW = '<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 function renderHome(){
@@ -808,7 +806,7 @@ function renderHome(){
   <section class="gut"><div class="in">
     <div class="intro">
       <div><h1 class="rv" style="--i:0">Business school, <em>sketched out.</em></h1>
-      <p class="rv" style="--i:1">Nine playbooks of MBA tools for real business problems.</p></div>
+</div>
       <div class="stats rv" style="--i:2"><span class="chip"><b>${PB.length}</b> playbooks</span><span class="chip"><b>${toolCount}</b> tools</span><span class="chip"><b>${GLOSS.length}</b> terms</span></div>
     </div>
     <div class="filters" role="toolbar" aria-label="Filter playbooks">${GROUPS.map(([k,l])=>`<button class="pill" data-f="${k}" aria-pressed="${k===homeFilter}">${l}</button>`).join('')}</div>
@@ -841,7 +839,7 @@ function setNav(active){
 }
 function setCrumb(name){
   const c = $('#crumb');
-  if (!name) { c.innerHTML = '<b>Playbooks</b><span>Nine playbooks of MBA tools for real business problems</span>'; return; }
+  if (!name) { c.innerHTML = '<b>Playbooks</b><span>Business school tools for real problems</span>'; return; }
   c.innerHTML = `<button id="crumb-home">Playbooks</button><span>/</span><b style="color:var(--ink)">${esc(name)}</b>`;
   c.querySelector('#crumb-home').onclick = () => go('');
 }
@@ -965,7 +963,6 @@ function route(h){
 $('#home-link').onclick = $('#home-link-m').onclick = () => { $('#q').value=''; homeFilter='all'; go(''); };
 let st; $('#q').addEventListener('input', e => { clearTimeout(st); const v=e.target.value.trim(); st=setTimeout(()=> v ? renderSearch(v) : route(location.hash.slice(1)),120); });
 
-$('#side-stats').innerHTML = `<span class="chip"><b>${PB.length}</b> playbooks</span><span class="chip"><b>${toolCount}</b> tools</span>`;
 route(location.hash.slice(1));
 </script>
 
