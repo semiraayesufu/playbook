@@ -169,10 +169,10 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
 .peek p{flex:1;min-height:50%;display:flex;align-items:flex-end;padding:14px 54px 14px 16px;border-radius:12px;color:var(--ink);
   background:linear-gradient(150deg,rgba(255,255,255,.62),rgba(255,255,255,.26) 55%,rgba(255,255,255,.44));
   backdrop-filter:blur(12px) saturate(1.6);-webkit-backdrop-filter:blur(12px) saturate(1.6);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.95),inset 0 0 0 1px rgba(255,255,255,.6),0 14px 30px -18px rgba(0,0,0,.45);
+  box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.85),inset 0 2px 6px rgba(255,255,255,.7),0 0 10px rgba(255,255,255,.35),0 14px 30px -18px rgba(0,0,0,.45);
   transform:scale(.98);transition:transform .25s var(--ease)}
-:root[data-theme="dark"] .peek p{background:linear-gradient(150deg,rgba(60,60,60,.62),rgba(18,18,18,.34) 55%,rgba(40,40,40,.5));box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 0 0 1px rgba(255,255,255,.1),0 14px 30px -18px rgba(0,0,0,.7)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .peek p{background:linear-gradient(150deg,rgba(60,60,60,.62),rgba(18,18,18,.34) 55%,rgba(40,40,40,.5));box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 0 0 1px rgba(255,255,255,.1),0 14px 30px -18px rgba(0,0,0,.7)}}
+:root[data-theme="dark"] .peek p{background:linear-gradient(150deg,rgba(60,60,60,.62),rgba(18,18,18,.34) 55%,rgba(40,40,40,.5));box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.45),inset 0 2px 6px rgba(255,255,255,.18),0 0 10px rgba(255,255,255,.12),0 14px 30px -18px rgba(0,0,0,.7)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .peek p{background:linear-gradient(150deg,rgba(60,60,60,.62),rgba(18,18,18,.34) 55%,rgba(40,40,40,.5));box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.45),inset 0 2px 6px rgba(255,255,255,.18),0 0 10px rgba(255,255,255,.12),0 14px 30px -18px rgba(0,0,0,.7)}}
 .story:hover .peek p,.story:focus-visible .peek p{transform:none}
 .story:hover .go{z-index:2}
 .thumb .num{transition:opacity .15s var(--ease);z-index:3}
@@ -436,7 +436,7 @@ body.reading .top .about-link{display:inline-flex}
 .side,.top,.filters,.stats,.story .meta,.share,.ab-btn,.results,.nowon,.card .n,.gl-tools,.crumb,.back,.nextblock,.pill,.chip,.navgroup,.search input,button{font-family:var(--f-ui)}
 /* one reading size for all body text, on every page */
 .card .what,.card .def,.card ol>li,.card ul,.card ul.sub,.watch,.hero .lede,.uses li,.fig figcaption,.gl-item p,.intro p,.ab-intro p,.ab-list,.chap p,.ab-credits p,.ab-credits ul,.share p{font-size:var(--r);line-height:1.6}
-.peek p{font-family:var(--f-body);font-size:calc(var(--t) - 1.5px)}
+.peek p{font-family:var(--f-body);font-size:14px;line-height:1.45}
 .stk,.stk.pill,.stk.circle,.stk.rect{font-family:var(--f-hand);font-weight:400}
 .pol img{image-rendering:auto}
 /* weights and spacing */
