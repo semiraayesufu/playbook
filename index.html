@@ -1045,8 +1045,8 @@ function renderAbout(){
       <div class="ab-intro">
         <span class="kick rv" style="--i:0">About</span>
         <h1 class="rv" style="--i:1">Hi, I'm <span class="scribble">Semira<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 13 C 50 5, 110 4, 197 9 M 12 17 C 70 11, 130 12, 188 14"/></svg></span>.</h1>
-        <span class="hand rv" style="--i:2">but my real gees call me Big Sem</span>
-        <p class="rv" style="--i:3">I'm an MBA candidate at Indiana University's Kelley School of Business. Prior to business school, I worked in product management and design across fintech, e-commerce and enterprise. Most recently, I spent an amazing summer as an AI Strategist intern at The New York Times.</p>
+        <span class="hand rv" style="--i:2">but my real G's call me Big Sem</span>
+        <p class="rv" style="--i:3">I'm an MBA candidate at the Kelley School of Business. Before business school, I worked in product management and design across fintech, e-commerce and enterprise. Most recently, I spent an amazing summer as an AI Strategist intern at The New York Times.</p>
         <p class="rv" style="--i:4">I love building practical things that help people do more and be more, including</p>
         <ul class="ab-list rv" style="--i:4"><li>Notion templates for productivity and career growth</li><li>Articles on navigating life as an immigrant, a hijabi and an ambitious woman in her 20s</li><li>AI literacy and tech programs for underrepresented women in Nigeria, through my nonprofit, Path4Her</li></ul>
         <p class="rv" style="--i:5">The MBA Playbook is the newest of these. Here's how it came to be.</p>
@@ -1058,7 +1058,7 @@ function renderAbout(){
       <div class="what">
         <h2>It started as a Notion page.</h2>
         <p>When I began my MBA, I opened a Notion page called Coursework and made it home for everything I learned, from each course and project to every lesson worth keeping. Semester by semester, it became a running archive of business school.</p>
-        <p>I also wanted that archive to outlast the program. Paper notes fade, wear out and go missing, and I want these lessons within reach for years to come.</p>
+        <p>Over time, I kept wondering how to make that archive last, so every lesson stays within reach long after the program ends. I also wanted it to keep growing with what other people learn, too.</p>
         <figure class="pol wide" style="--tilt:1.2deg"><span class="tape" aria-hidden="true"></span>
           <div class="np" role="img" aria-label="Recreation of the Coursework page in Notion, listing fall 2025 courses">
             <div class="np-cover"></div>
@@ -1080,7 +1080,7 @@ function renderAbout(){
       <div class="when"><span class="yr">Along the way</span><span class="hand">the questions</span></div>
       <div class="what">
         <h2>Then the same questions kept coming.</h2>
-        <p>Friends and colleagues often came to me with a business problem they were stuck on. Others asked bigger questions. What do you actually learn in business school? And is it worth it?</p>
+        <p>Start business school, and people start bringing you their business problems, the same way everyone asks a medical student about their symptoms. Some days it was “How do I solve this?” Other days it was “How do I enter this market?”</p><p>Online, I kept running into a different question: what do they even teach in an MBA, and is it worth it?</p>
         ${pol(null,'questions','me, most weeks',-1.2,'wide sketchy',
           stk('ask me anything (business)','pill y','--r:-6deg;top:-18px;left:-14px')+
           stk('frameworks<br>&gt; vibes','circle b','--r:10deg;bottom:30px;right:-26px'))}
@@ -1088,12 +1088,12 @@ function renderAbout(){
     </article>
 
     <article class="chap">
-      <div class="when"><span class="yr">Fall 2026</span><span class="hand">the playbook</span></div>
+      <div class="when"><span class="yr">Fall 2026</span><span class="hand">the light bulb</span></div>
       <div class="what">
-        <h2>So I turned my notes into a playbook.</h2>
-        <p>My notes could answer those questions for far more people than I could ever reach one conversation at a time. The MBA Playbook gives anyone a clear look at what business school teaches, with each tool rewritten so you can use it on your own problems.</p>
-        <p>It's also my quiet insurance policy against ever forgetting what I learned.</p>
-        ${pol(null,'notes','from scattered notes to one playbook',1.2,'wide sketchy')}
+        <h2>Then came the light bulb moment.</h2>
+        <p>What if I turned my notes into a playbook? And what if anyone could add what they've learned, from business school or from running a business, so it becomes a living archive of how to solve business problems well?</p>
+        <p>That's how The MBA Playbook came to be. Every tool is rewritten in plain language, so you can use it on your own problems.</p>
+        ${pol(null,'notes','from my notes to a living playbook',1.2,'wide sketchy',stk('💡 light bulb moment','pill y','--r:-6deg;top:-18px;left:-14px'))}
         <div class="stk-row">${stk('free for everyone ♥','pill p inline','--r:-6deg')}${stk(`${toolCount} tools & counting`,'pill g inline','--r:4deg')}${stk('sketched by hand ✎','pill v inline','--r:-3deg')}</div>
       </div>
     </article>
@@ -1101,8 +1101,8 @@ function renderAbout(){
     <article class="chap">
       <div class="when"><span class="yr">What's next</span><span class="hand">your turn</span></div>
       <div class="what">
-        <h2>Help it keep growing.</h2>
-        <p>The playbook gets better with every lesson someone adds. If a tool or idea has stuck with you, from business school or from years of solving business problems, share it through Share an insight. I built a simple system behind that button, so rest assured your insight will find its way into the playbook.</p>
+        <h2>Now it's your turn.</h2>
+        <p>The playbook started with my notes. Now it grows with yours. If a tool or idea has stuck with you, from business school or from years of solving business problems, share it through Share an insight. Every insight you add helps the next person facing the same problem.</p>
         <div class="ab-ctas">
           ${stk('psst… share yours! ↓','pill y inline','--r:-4deg')}
           <div class="btns">
@@ -1200,10 +1200,10 @@ function drawQuestions(){
   const wrap = document.createElement('div');
   wrap.innerHTML = `<svg viewBox="0 0 560 340" class="ill" role="img" aria-label="Line drawing of Semira thinking, surrounded by speech bubbles full of business questions">
     <path class="k n" d="M20 320 L540 320"/>
-    ${illBubble(118,62,200,58,['What do you even','learn in business school?'],196,110)}
+    ${illBubble(118,62,200,58,['What do they even','teach in an MBA?'],196,110)}
     ${illBubble(446,58,150,52,['Is an MBA','worth it?'],370,104)}
-    ${illBubble(104,196,152,52,['How should I','price this?'],196,206)}
-    ${illBubble(458,190,160,52,['Should we cut','this product?'],366,200)}
+    ${illBubble(104,196,152,52,['How do I','solve this?'],196,206)}
+    ${illBubble(458,190,160,52,['How do I enter','this market?'],366,200)}
     ${illDoc(214,262,-14,'')}${illDoc(370,268,11,'')}
     <text x="280" y="40" text-anchor="middle" class="pen" style="font-size:28px">?  ?  ?</text>
     ${illPerson(280,318,'think')}
@@ -1212,7 +1212,7 @@ function drawQuestions(){
 }
 function drawNotes(){
   const wrap = document.createElement('div');
-  wrap.innerHTML = `<svg viewBox="0 0 560 320" class="ill" role="img" aria-label="Line drawing of floating course notes flowing into an open playbook, with Semira waving beside it">
+  wrap.innerHTML = `<svg viewBox="0 0 560 320" class="ill" role="img" aria-label="Line drawing of floating course notes flowing into an open playbook, with a light bulb above Semira as she waves">
     <path class="k n" d="M20 300 L540 300"/>
     ${illDoc(62,70,-12,'Finance')}${illDoc(138,52,9,'Strategy')}${illDoc(86,160,6,'Marketing')}${illDoc(168,140,-8,'Data')}${illDoc(120,240,-4,'Negotiation')}
     <path class="k n" d="M200 150 C 214 126, 230 168, 246 146" stroke-dasharray="2 7"/><path class="k n" d="M236 141 L248 145 L241 156"/>
@@ -1228,6 +1228,7 @@ function drawNotes(){
       <text x="0" y="96" text-anchor="middle" style="font-size:16px">The MBA Playbook</text>
     </g>
     ${illPerson(500,298,'wave').replace('translate(500 298)','translate(500 298) scale(.62)')}
+    <g transform="translate(500 104)"><path class="k hl" d="M0 -22 C -14 -22 -20 -10 -16 0 C -13 7 -8 10 -8 16 L8 16 C 8 10 13 7 16 0 C 20 -10 14 -22 0 -22 Z"/><path class="k n" d="M-7 21 L7 21 M-5 26 L5 26"/><path class="k n" d="M0 -32 L0 -40 M-20 -26 L-26 -32 M20 -26 L26 -32 M-26 -8 L-34 -8 M26 -8 L34 -8"/></g>
   </svg>`;
   return wrap.firstElementChild;
 }
