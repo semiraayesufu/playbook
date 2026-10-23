@@ -436,9 +436,11 @@ h1,h2,h3,.hero h1,.ab-intro h1,.intro h1,.card h3,.chap h2,.nextblock b,.sechead
 .pol.big{padding:12px 12px 52px;border-radius:2px}
 .pol.big img{aspect-ratio:1/1;object-fit:cover;object-position:50% 4%;border-radius:1px}
 /* film grain over the whole page */
-body::after{content:"";position:fixed;inset:0;z-index:50;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:220px;opacity:.18;mix-blend-mode:multiply}
+body::after{content:"";position:fixed;inset:-120px;z-index:50;pointer-events:none;animation:grain 1.4s steps(7) infinite;will-change:transform;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:220px;opacity:.18;mix-blend-mode:multiply}
 :root[data-theme="dark"] body::after{opacity:.12;mix-blend-mode:screen}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body::after{opacity:.12;mix-blend-mode:screen}}
+@keyframes grain{0%,100%{transform:translate(0,0)}14%{transform:translate(-38px,22px)}28%{transform:translate(27px,-41px)}42%{transform:translate(-55px,-13px)}57%{transform:translate(44px,35px)}71%{transform:translate(-19px,58px)}85%{transform:translate(61px,-6px)}}
+@media (prefers-reduced-motion:reduce){body::after{animation:none}}
 </style>
 </head>
 <body>
