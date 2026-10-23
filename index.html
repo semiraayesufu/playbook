@@ -191,7 +191,7 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
 .uses li{position:relative}
 .uses li::before{content:"";width:22px;height:22px;border-radius:50%;background:var(--c)}
 .uses li::after{content:"";position:absolute;left:5px;top:5px;width:12px;height:12px;background:var(--cf);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/contain no-repeat}
-.essay{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);gap:40px;align-items:start;padding-block:34px 20px}
+.essay{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:40px;align-items:start;padding-block:34px 20px}
 @media (max-width:960px){.essay{grid-template-columns:minmax(0,1fr);gap:18px}}
 .stage{position:sticky;top:calc(env(safe-area-inset-top,0px) + 72px)}
 @media (max-width:960px){.stage{position:relative;top:0}}
@@ -200,12 +200,12 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
 .pin svg{display:block;width:100%;height:auto}
 .pin .sk path{stroke:#2B2620}.pin .sk text{fill:#16130F}.pin .sk .s,.pin .sk .k{fill:#6A6258}.pin .sk .note{fill:#2747C9}
 @media (max-width:600px){.pin svg{min-width:520px}}
-.pin .hint{font-size:12px;color:var(--muted);padding:0 2px 8px}
+.pin .hint{font-size:13.5px;color:var(--muted);padding:0 2px 8px}
 .map summary{display:none}
 @media (max-width:600px){.map summary{display:flex;align-items:center;justify-content:space-between;cursor:pointer;list-style:none;font-weight:500;font-size:14px;padding:12px 14px;border-radius:12px;background:var(--surface)}.map summary::-webkit-details-marker{display:none}.map summary::after{content:'+';font-family:var(--f-mono);font-size:16px}.map[open] summary::after{content:'−'}.map[open] summary{margin-bottom:10px}.nowon{display:none!important}}
-.nowon{margin-top:10px;display:flex;gap:8px;align-items:baseline;font-size:12px}
+.nowon{margin-top:12px;display:flex;gap:8px;align-items:baseline;font-size:13px}
 .nowon .mono{color:var(--faint)}
-.nowon b{font-size:13px;font-weight:500}
+.nowon b{font-size:14.5px;font-weight:500}
 
 .sk path{stroke:var(--line);fill:none}
 .sk .node{cursor:pointer}
@@ -264,22 +264,23 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
 .results small{color:var(--muted);font-size:13px}
 
 /* ---------- glossary ---------- */
-.gl-tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding-block:22px 4px}
-.gl-tools input{flex:1 1 240px;min-width:0;max-width:380px;height:34px;padding:0 14px;border:0;border-radius:999px;background:var(--surface);color:var(--ink);font:inherit;font-size:13px}
+.gl-tools{position:sticky;top:calc(env(safe-area-inset-top,0px) + 56px);z-index:5;background:var(--bg);display:flex;flex-direction:column;gap:10px;padding-block:18px 12px;border-bottom:1px solid var(--rule)}
+.gl-tools input{width:100%;max-width:420px;height:38px;padding:0 16px;border:0;border-radius:999px;background:var(--surface);color:var(--ink);font:inherit;font-size:14px}
 .letters{display:flex;flex-wrap:wrap;gap:2px}
-.letters a{font-family:var(--f-mono);font-size:12px;text-decoration:none;width:26px;height:26px;display:grid;place-items:center;border-radius:50%;color:var(--muted);transition:background-color .12s var(--ease),color .12s var(--ease)}
-.letters a:hover{background:var(--surface);color:var(--ink)}
-.gl-list{columns:2 320px;column-gap:40px;padding-block:16px 40px}
-.gl-group{break-inside:avoid-column;margin-bottom:18px}
-.gl-group h3{font-size:22px;font-weight:600;padding-bottom:6px;border-bottom:1px solid var(--rule);margin-bottom:6px;scroll-margin-top:84px}
-.gl-item{break-inside:avoid;padding:8px 0 10px;border-bottom:1px solid var(--rule)}
-.gl-item b{font-size:15px;font-weight:600;display:block;line-height:1.3}
-.gl-item p{margin:3px 0 0;font-size:14.5px;line-height:1.55;color:var(--muted)}
-.gl-empty{color:var(--muted)}
+.letters a,.letters span{font-family:var(--f-mono);font-size:13px;text-decoration:none;width:28px;height:28px;display:grid;place-items:center;border-radius:8px;color:var(--ink);transition:background-color .12s var(--ease)}
+.letters a:hover{background:var(--surface)}
+.letters span{color:var(--faint)}
+.gl-list{padding-block:8px 48px}
+.gl-group{display:grid;grid-template-columns:72px minmax(0,1fr);gap:0 8px;padding-top:22px;border-bottom:1px solid var(--rule);scroll-margin-top:146px}
+.gl-group h3{font-size:34px;font-weight:600;letter-spacing:-.03em;line-height:1;margin:0;padding-top:10px;position:sticky;top:170px;align-self:start}
+.gl-item{display:grid;grid-template-columns:minmax(150px,240px) minmax(0,1fr);gap:4px 28px;padding:12px 0 14px;border-top:1px solid var(--rule)}
+.gl-item:first-of-type{border-top:0}
+.gl-item b{font-size:15.5px;font-weight:600;line-height:1.4}
+.gl-item p{margin:0;font-size:15px;line-height:1.55;color:var(--muted);max-width:68ch}
+.gl-empty{color:var(--muted);padding-top:20px}
+@media (max-width:1023px){.gl-tools{position:static;border-bottom:0}.gl-group h3{position:static}.gl-group{scroll-margin-top:80px}}
+@media (max-width:640px){.gl-group{grid-template-columns:minmax(0,1fr)}.gl-group h3{font-size:28px;padding:0 0 6px}.gl-item{grid-template-columns:minmax(0,1fr)}}
 </style>
-</head>
-<body>
-
 
 <div class="progress" id="progress"></div>
 <aside class="side" aria-label="Browse">
@@ -379,31 +380,31 @@ const PB = [
   steps:['Contribution margin shows how much each sale actually adds to the business before fixed costs. It\'s the right number to use when deciding whether to keep or cut a product.','Split costs in two. **Variable costs** rise and fall with each unit sold, like materials and packaging. **Fixed costs** stay the same whatever you sell, like rent, salaries and equipment.','Subtract the variable costs from sales. What\'s left is the contribution: the money this product brings in to help pay the fixed costs.','Before cutting a product that "loses money" on paper, ask which fixed costs would actually disappear if it were gone. Usually very few do, so cutting it can make overall profit worse.','If contribution is positive and you have spare capacity, keep the product for now. Revisit when a better use of that capacity comes along.']},
  {id:'break-even',name:'Break-even',what:'Tells you how much you need to sell to cover fixed costs.',
   formula:'Break-even units = Fixed costs ÷ Contribution per unit',
-  steps:['Break-even is the number of units you must sell to cover all your fixed costs. Below it you lose money; above it you make money.','Work out the **contribution per unit**: price minus variable cost per unit.','Divide total fixed costs by the contribution per unit. The answer is your break-even volume.','Compare it to what you sell today. The gap shows how far you are from profit, and whether price, cost or volume is the easiest lever to pull.']},
+  steps:['Break-even is the number of units you must sell to cover all your fixed costs. Below it you lose money. Above it you make money.','Work out the **contribution per unit**: price minus variable cost per unit.','Divide total fixed costs by the contribution per unit. The answer is your break-even volume.','Compare it to what you sell today. The gap shows how far you are from profit, and whether price, cost or volume is the easiest lever to pull.']},
  {id:'dupont',name:'DuPont Analysis',what:'Breaks return on equity into the three things that drive it.',
   formula:'ROE = Profit margin × Asset turnover × Equity multiplier',
   steps:['Return on equity (ROE) measures how much profit a company earns for every dollar its owners have put in. DuPont analysis breaks it into three drivers so you can see where the return really comes from.','**Profit margin** = net income ÷ revenue. How much of each dollar of sales the company keeps as profit.','**Asset turnover** = revenue ÷ total assets. How much in sales the company generates from what it owns.','**Equity multiplier** = total assets ÷ equity. How much of the company is funded with borrowed money. Higher means more debt.','Multiply the three to get ROE. Compare each driver with a competitor\'s to see why one company earns more than another.'],
-  watch:'A high ROE built on leverage is riskier than one built on margin.'},
+  watch:'A high ROE built on **leverage** (borrowed money) is riskier than one built on margin, because debt magnifies losses as well as gains.'},
  {id:'npv',name:'NPV and Sensitivity',what:'Shows whether a project creates value and how much room for error it has.',
   formula:'NPV = Present value of future cash flows − Upfront cost',
-  steps:['Net present value (NPV) tells you whether an investment is worth more than it costs, once you account for the fact that money later is worth less than money today.','Estimate the cash the project will bring in each year.','**Discount** each year\'s cash back to today using your required return (the minimum return you\'d accept for this level of risk). Spreadsheets do this with the NPV function.','Subtract the upfront cost. A positive NPV means the project creates value; negative means it destroys value.','Test the answer. Build a grid that varies the two most uncertain inputs, such as upfront cost and yearly cash, and color it as a heat map to see where the project turns negative.']},
+  steps:['Net present value (NPV) tells you whether an investment is worth more than it costs, once you account for the fact that money later is worth less than money today.','Estimate the cash the project will bring in each year.','**Discount** each year\'s cash back to today using your required return (the minimum return you\'d accept for this level of risk). Spreadsheets do this with the NPV function.','Subtract the upfront cost. A positive NPV means the project creates value. A negative NPV means it destroys value.','Test the answer. Build a grid that varies the two most uncertain inputs, such as upfront cost and yearly cash, and color it as a heat map to see where the project turns negative.']},
  {id:'ddm',name:'Dividend Discount Model',what:'Values a mature, steady dividend-paying stock.',
   formula:'Price = Next year\'s dividend ÷ (Cost of equity − Dividend growth)',
   steps:['The dividend discount model values a stock by the dividends it will pay its owners. It works best for mature, stable companies with steady dividends.','Find next year\'s expected **dividend per share** and a realistic long-term **growth rate** for it.','Find the **cost of equity**: the return investors expect for owning this stock, given its risk.','Divide next year\'s dividend by the cost of equity minus the growth rate. Compare the result with today\'s share price.','Change the growth rate by 1% up and down. Small changes can swing the value a lot, so treat the answer as a range.'],
   watch:'It breaks for high-growth companies whose value isn\'t in near-term dividends.'},
  {id:'bonds',name:'Bond Yield and Spread',what:'Tells you whether a bond pays enough for its risk.',
   formula:'Spread = Bond yield to maturity − Treasury yield (same maturity)',
-  steps:['This tells you whether a company\'s bond pays enough extra to make up for the risk of lending to that company.','Calculate the bond\'s **yield to maturity**: the yearly return you\'d earn if you bought at today\'s price and held it until it\'s repaid. In Excel, use the YIELD function.','Subtract the yield on a US Treasury bond that matures at about the same time. Treasuries are treated as risk-free, so the difference, called the **spread**, is your reward for taking on the company\'s risk.','Compare that spread with the average for bonds with the same **credit rating**. Higher than average may be a bargain or a warning sign; lower than average means you\'re being paid less for the risk.']},
+  steps:['This tells you whether a company\'s bond pays enough extra to make up for the risk of lending to that company.','Calculate the bond\'s **yield to maturity**: the yearly return you\'d earn if you bought at today\'s price and held it until it\'s repaid. In Excel, use the YIELD function.','Subtract the yield on a US Treasury bond that matures at about the same time. Treasuries are treated as risk-free, so the difference, called the **spread**, is your reward for taking on the company\'s risk.','Compare that spread with the average for bonds with the same **credit rating**. Higher than average may be a bargain or a warning sign. Lower than average means you\'re being paid less for the risk.']},
  {id:'sharpe',name:'Sharpe Ratio',what:'Judges a return against the risk taken to earn it.',
   formula:'Sharpe = (Portfolio return − Risk-free rate) ÷ Volatility',
   steps:['The Sharpe ratio judges an investment\'s return against the risk taken to earn it, so you can compare portfolios fairly.','Gather monthly returns over several years.','Calculate the average yearly return and the **volatility** (how much returns swing up and down, measured as standard deviation).','Subtract the **risk-free rate** (what you\'d earn on Treasury bills) from the return, then divide by volatility.','Compare the ratio with a benchmark such as the S&P 500.'],
   read:['Higher is better: more return for each unit of risk.','To raise it, add assets that don\'t move together. Diversifying cuts volatility without giving up much return.']},
  {id:'affordability',name:'Debt Affordability',what:'Tests whether a person or business can safely carry a loan.',
-  steps:['This tests whether a person or business can safely take on a loan, including if interest rates move against them.','Set a ceiling for payments. For a person, lenders often cap payments at about 35% of gross income. For a business, compare payments with operating cash flow (the cash the business generates before financing).','Calculate the monthly payment at today\'s interest rate.','Recalculate with rates 1% higher and 1% lower to see if the payment still fits under the ceiling.','Name the trade-off: a smaller loan is safer but buys less.']},
+  steps:['This tests whether a person or business can safely take on a loan, including if interest rates move against them.','Set a ceiling for payments. For a person, lenders often cap all debt payments at about 36% of gross monthly income. For a business, compare payments with operating cash flow (the cash the business generates before financing).','Calculate the monthly payment at today\'s interest rate.','Recalculate with rates 1% higher and 1% lower to see if the payment still fits under the ceiling.','Name the trade-off: a smaller loan is safer but buys less.']},
  {id:'buyout',name:'Buyout Returns',what:'Checks whether an acquisition returns enough to the investor.',
   formula:'Enterprise value = Equity value + Net debt',
   steps:['This checks whether buying a company, often with a lot of borrowed money, will return enough to the investors who put in their own cash (the equity).','Find the **entry enterprise value**: the price for the whole company, meaning its equity plus its debt, minus its cash.','Project **EBITDA** five years out. EBITDA is earnings before interest, taxes, depreciation and amortization, a rough measure of operating profit.','Multiply future EBITDA by an **exit multiple** (the price-to-EBITDA ratio you expect a buyer to pay) to get the exit value, then subtract the debt still owed to get exit equity.','Divide exit equity by the equity you put in. That\'s your money multiple.','List the specific moves that would grow EBITDA, such as new products, better margins or selling directly to customers.'],
-  read:['Exit equity ÷ equity invested is your money multiple. Investors often look for about 2 to 3 times over five years.','If the return only works when you sell at a higher multiple than you paid, treat that as a risk.']}
+  read:['Investors often look for a money multiple of about 2 to 3 times over five years.','If the return only works when you sell at a higher multiple than you paid, treat that as a risk.']}
  ]},
 
 {id:'data',name:'Data & Research',q:'Can I trust this finding?',
@@ -424,7 +425,7 @@ const PB = [
  {id:'pareto',name:'Pareto Analysis',what:'Finds the few causes driving most of the effect.',
   steps:['The Pareto principle says a few causes usually drive most of the effect, often about 80% of results from 20% of causes. This finds those few.','List the causes and how much each contributes, such as delay minutes by reason, revenue by customer or complaints by issue.','Sort from largest to smallest and add a running total.','Find where the running total crosses about 80%. Everything above that line is your short list.','Fix those first. They give you the most improvement for the least effort.']},
  {id:'base-incremental',name:'Base vs. Incremental Sales',what:'Separates what sells anyway from what promotions add.',
-  steps:['Use this to tell how much of your sales would happen anyway and how much your promotions actually add.','**Base sales** are what you\'d sell with no promotion. **Incremental sales** are the extra units a promotion brings in.','Compare your trend with the whole category\'s trend in the same store or market.','If the category is flat while your brand drops, shoppers haven\'t left the category. The store is shifting sales from you to rivals, often because it\'s promoting them instead.']}
+  steps:['Use this to tell how much of your sales would happen anyway and how much your promotions actually add.','**Base sales** are what you\'d sell with no promotion. **Incremental sales** are the extra units a promotion brings in.','Compare your trend with the whole category\'s trend in the same store or market.','If the category is flat while your brand drops, shoppers haven\'t left the category. The store is shifting sales from you to rivals, often because it\'s promoting them instead.','If your brand and the category drop together, demand itself is falling. Promotions will buy only short-term volume, so look at price, product or new uses instead.']}
  ]},
 
 {id:'marketing',name:'Marketing',q:'Who buys, and why us?',
@@ -462,7 +463,7 @@ const PB = [
   steps:['Big buying groups can have ten or more people. You can\'t win everyone equally, so focus.','From the full committee, pick the three roles whose "yes" actually moves the deal. Usually that\'s whoever owns the problem, whoever controls the money and whoever can block it.','Write each one\'s top concern in a single sentence.','Build your pitch so each of the three concerns gets a direct answer backed by evidence.']},
  {id:'sizing',name:'Bottom-Up Opportunity Sizing',what:'Sizes a business opportunity from real units instead of industry totals.',
   formula:'Opportunity = Price per unit × Units per customer × Number of customers',
-  steps:['This sizes a business opportunity by counting real units, which buyers and investors trust far more than a slice of an industry total.','Count how many units one customer would need. Visit a site, walk it or interview staff.','Put a price on one unit.','Multiply price × units per customer × the number of customers you can realistically reach.','Write down every assumption so a buyer or investor can check it and adjust it.']},
+  steps:['This sizes a business opportunity by counting real units, which buyers and investors trust far more than a slice of an industry total.','Count how many units one customer would need, such as how many devices one hospital uses or how many licenses one team needs. Get a real number by visiting a site or interviewing staff.','Put a price on one unit.','Multiply price × units per customer × the number of customers you can realistically reach.','Write down every assumption so a buyer or investor can check it and adjust it.']},
  {id:'value-fast',name:'Economic Value Messaging',what:'Leads with what the buyer gains in money, time or risk.',
   steps:['Business buyers care about outcomes, so lead with what they gain in money, time or reduced risk.','Translate each feature into an outcome: hours saved, costs cut, failures avoided, revenue gained.','Put the biggest outcome first: the first line of the email, the top of the website, the first slide.','Back it with a number from a real customer: how much they saved or gained, and how fast.','State the value before asking for anything, whether it\'s a click, a call or a meeting.']},
  {id:'outreach',name:'Persona-Based Outreach',what:'Reaches the right people at target accounts with messages built for their role.',
@@ -488,7 +489,7 @@ const PB = [
   steps:['Power in a negotiation comes from several sources. Map them for both sides.','**Legitimacy:** facts, standards, precedent and your track record.','**Alternatives:** your BATNA. The side with the better fallback can walk away.','**Time:** whoever needs the deal sooner has less power.','**Information:** what each side knows about the other\'s needs and limits.','Show your power through calm, unhurried behavior, and keep your own deadline to yourself.']},
  {id:'pre-table',name:'Win Before the Table',what:'Sets up the outcome before the meeting starts.',
   steps:['Much of a negotiation\'s outcome is set before the meeting starts.','Build the relationship early, before there\'s anything to negotiate.','Build credibility through results, so your word carries weight.','Prepare your numbers, your strategy and how you\'ll open.','Remember that signals start the moment you walk in: what you lead with, how you listen and how relaxed you seem.']},
- {id:'intangibles',name:'Intangibles',what:'Prices what isn\'t money.',
+ {id:'intangibles',name:'Intangibles',what:'Uses what isn\'t money to close the gap on a deal.',
   steps:['Not everything in a deal is about money. Intangibles can close gaps that price can\'t.','Ask what the other person needs to show their boss or team to count this as a win.','Ask about their timing and any pressures they\'re under.','Ask whose reputation is at stake, and how.','Use what you learn to offer things that cost you little but matter to them, like a quick start, public credit or a favorable announcement.']},
  {id:'ethics',name:'Ethics Line',what:'Separates tough tactics from deception.',
   steps:['Know where tough negotiating ends and deception begins.','**Acceptable:** an ambitious opening, keeping your deadline or walkaway private, and holding firm.','**Not acceptable:** making promises you won\'t keep, misstating facts, or getting information through improper means.','When unsure, ask whether you\'d be comfortable if the other side later learned exactly what you did.'],
@@ -509,14 +510,14 @@ const PB = [
   steps:['Rolling out AI is a change in how people work, so treat it like any other change project.','**Start small:** pick one team or workflow where the frustration is most visible.','**Learn first:** ask how work really happens. "Walk me through a typical day. Where do things slow down? Where do you retype the same information?"','**Build momentum:** find enthusiastic early users and share small wins like time saved or errors avoided.','**Set guardrails:** decide how data is protected, who has access and who reviews AI output.','**Measure and expand:** write down what worked and what didn\'t, assign owners, then roll out further.'],
   watch:'People adopt AI when it removes a frustration they already feel. Mandates without that rarely stick.'},
  {id:'fit-check',name:'AI Project Fit Check',what:'Tests whether an AI idea fits your needs and resources before you build.',
-  steps:['Before building anything with AI, check that the idea fits what you need and what you have.','Answer six **needs** questions. **Scale:** how many people will use it? **Customization:** how specialized must it be for your business? **Interaction:** will people chat with it, or will it run in the background? **Privacy:** how sensitive is the data? **Speed:** how quickly must it respond? **Connectivity:** will it run online, offline or on a device?','Answer three **resource** questions: do you have people with AI skills, enough budget and enough time?','Choose the lightest option that meets the needs: an off-the-shelf AI tool, an existing model adjusted with your data, or a custom build.'],
+  steps:['Before building anything with AI, check that the idea fits what you need and what you have.','Answer six **needs** questions. **Scale:** how many people will use it? **Customization:** how specialized must it be for your business? **Interaction:** will people chat with it, or will it run in the background? **Privacy:** how sensitive is the data? **Speed:** how quickly must it respond? **Connectivity:** will it run online, offline or on a device?','Answer three **resource** questions: do you have people with AI skills, enough budget and enough time?','Choose the lightest option that meets the needs: an off-the-shelf AI tool, an existing model adjusted with your own data (often called fine-tuning), or a custom build.'],
   read:['High privacy or offline needs push toward smaller models running on your own systems or devices.','Few people and little time point to an existing tool before anything custom.'],
   watch:'Most AI projects stall on data and people. Check that your data is accurate, complete and easy to reach before you pick a model.'},
  {id:'two-way',name:'Top-Down Meets Bottom-Up',what:'Sets an AI strategy that leaders steer and employees actually use.',
   steps:['The strongest AI strategies combine direction from leaders with ideas from the people doing the work.','**From the top:** leaders set the vision and choose a few use cases with clear business value.','**From the ground up:** employees try AI in their own work and share what helps.','Invest in the basics: clean, accessible data, tools you already pay for and training.','Set **responsible AI** rules early, covering security, privacy and fairness.','**Measure impact** against business goals, then keep refining based on what you learn.'],
   watch:'A vision with no bottom-up experiments stays a slide. Experiments with no vision scatter into tools nobody maintains.'},
  
-{id:'prompting',name:'Prompting for Analysis',what:'Gets usable, checkable output.',
+{id:'prompting',name:'Prompting for Analysis',what:'Gets analysis from AI that you can use and check.',
   steps:['A good analysis prompt reads like a clear brief to a capable colleague.','Give context: who you are, what decision you\'re making and why it matters.','Give the exact inputs: the numbers, files or data to use.','State the task in one sentence.','Say what you want back: a table, a chart, a short memo, a file name.','Ask for it in stages, starting with a base case, then variations, then a visual, and ask it to show its formulas so you can check them.']},
  {id:'prompt-patterns',name:'Prompt Patterns',what:'Gives you a menu of ways to ask, from quick to structured.',
   steps:['Different tasks call for different ways of asking. Pick from this menu.','**Zero-shot:** just ask, with no examples. Fine for simple tasks.','**One-shot or few-shot:** show one or a few examples of the output you want. Best when format matters.','**Role:** tell it who to act as, such as "a CFO reviewing this budget," to set tone and focus.','**Chaining:** break a big task into a series of smaller prompts, using each answer in the next.','**Step-by-step reasoning:** ask it to work through the problem step by step. Useful for logic and math.','**Prompt improvement:** ask the AI to rewrite or improve your prompt, then use the better version. Save prompts that work as templates for your team.'],
@@ -524,7 +525,7 @@ const PB = [
  {id:'grounding',name:'Grounding and RAG',what:'Ties AI answers to your own documents so they stay accurate and current.',
   steps:['Grounding ties an AI\'s answers to your own trusted documents, so it answers from your facts. **RAG** (retrieval-augmented generation) is the most common way to do it.','Collect the sources it should rely on: policies, product information, past work. Keep them current and remove duplicates.','**Retrieve:** for each question, the system finds the most relevant passages from those sources.','**Augment:** those passages are added to the prompt.','**Generate:** the AI answers using them, ideally citing which source each point came from.','Organize sources in two groups: stable knowledge that rarely changes (definitions, policies) and project knowledge that changes often (this quarter, this client).'],
   watch:'The answer can only be as good as what gets retrieved. Messy, outdated or duplicate documents produce confident wrong answers.'},
- {id:'verify',name:'Verify the Output',what:'Catches confident mistakes.',
+ {id:'verify',name:'Verify the Output',what:'Catches confident AI mistakes before they reach anyone.',
   steps:['AI can sound confident and still be wrong. Build a quick check into every important use.','Recompute one or two numbers yourself.','Check that the formulas or method match what you asked for.','Ask it to list its assumptions, and check them.','Treat any confident claim as something to verify, especially names, dates, quotes and figures.']},
  {id:'guardrails',name:'Guardrails in the Pipeline',what:'Builds checks into an AI product so mistakes get caught before users see them.',
   steps:['Guardrails are checks built into an AI product so mistakes get caught before users see them.','**Before the AI sees anything:** strip out personal data like emails, phone numbers and card numbers.','**In the instructions:** state the exact task, audience and level of detail.','**After it answers:** check its confidence, and show a "please verify" note when it\'s low.','**Against the source:** if the answer doesn\'t match the documents it was given, warn the user.','Filter harmful or biased language, and give users a "report a wrong answer" button whose reports someone actually reviews.'],
@@ -588,6 +589,17 @@ PB.sort((a,b) => ORDER.indexOf(a.id) - ORDER.indexOf(b.id));
 
 /* ---------- GLOSSARY ---------- */
 const GLOSS = [
+ ['Willingness to pay','The highest price a customer would pay for a product. Asking about it directly helps set prices.'],
+ ['Standard deviation','A measure of how spread out numbers are around their average. In investing, it measures how much returns swing.'],
+ ['Required return','The minimum yearly return you\'d accept for an investment at its level of risk. Also called the hurdle rate.'],
+ ['Pareto principle','The pattern where a few causes drive most of the effect, often about 80% of results from 20% of causes. Also called the 80/20 rule.'],
+ ['Operating cash flow','The cash a business generates from its normal operations, before any borrowing or investing.'],
+ ['Net debt','A company\'s debt minus its cash.'],
+ ['Money multiple','What an investor gets back divided by what they put in. Turning $10 into $25 is a 2.5 times money multiple.'],
+ ['Fine-tuning (AI)','Training an existing AI model further on your own examples so it fits your task, style or data better.'],
+ ['Event study','A method that measures how a one-time event, such as an announcement, moved a stock by comparing its returns with the overall market before and after.'],
+ ['Depreciation','Spreading the cost of a physical asset, such as a machine or building, over the years it is used. It lowers reported profit without using cash.'],
+ ['Amortization','Spreading the cost of an intangible asset, such as a patent or software, over the years it is used.'],
  ['Acquisition premium','The amount a buyer pays above a company\'s market value to win control of it.'],
  ['Agent (AI)','An AI system that works toward a goal by taking actions, such as searching, booking or updating records, often over several steps.'],
  ['Anchor','The first number put on the table in a negotiation. It tends to pull the final outcome toward it.'],
@@ -687,15 +699,15 @@ function flow(pid,title,stages){
   const p = PB.find(x=>x.id===pid), name = id => p.tools.find(t=>t.id===id).name;
   const n = stages.length, gap = 15, W = 720, cw = (W-gap*(n-1))/n, nodes = [], arrows = [];
   let most = 0;
-  const all = stages.flatMap(st=>st[2]).map(name), fs = Math.min(19, Math.min(...all.map(l => Math.max(15,(cw-38)/(l.length*0.47)))));
+  const all = stages.flatMap(st=>st[2]).map(name), fs = Math.min(22, Math.min(...all.map(l => Math.max(17,(cw-30)/(l.length*0.47)))));
   stages.forEach(([lab,sub,ids],i) => {
     const x = 20 + i*(cw+gap);
     nodes.push(['h'+i,x,20,cw,70,(i+1)+' '+lab,sub,ids[0],i===0]);
-    ids.forEach((id,j) => nodes.push(['n'+i+'_'+j,x+12,118+j*54,cw-24,44,name(id),'',id,false,'',fs]));
+    ids.forEach((id,j) => nodes.push(['n'+i+'_'+j,x+8,118+j*60,cw-16,50,name(id),'',id,false,'',fs]));
     if (i<n-1) arrows.push([x+cw+1,55,x+cw+gap-1,55,0]);
     most = Math.max(most,ids.length);
   });
-  return {h:118+most*54+6,title,nodes,arrows};
+  return {h:118+most*60+6,title,nodes,arrows};
 }
 const SK = {
  strategy:{h:400,title:'Diagnose, then decide, then deliver',
@@ -892,7 +904,7 @@ function setCrumb(name){
 
 function renderGlossary(q){
   cleanup(); setNav('glossary'); setCrumb('Glossary');
-  const terms = [...GLOSS].sort((a,b)=>a[0].localeCompare(b[0]));
+  const terms = [...GLOSS].sort((a,b)=>a[0].localeCompare(b[0],'en',{sensitivity:'base'}));
   const letters = [...new Set(terms.map(t=>t[0][0].toUpperCase()))];
   view.innerHTML = `
   <section class="hero gut"><div class="in"><div class="block" style="--c:var(--ink);--cf:var(--bg)">
@@ -904,7 +916,7 @@ function renderGlossary(q){
     <div class="big" aria-hidden="true">A–Z</div>
   </div></div></section>
   <section class="gut"><div class="in">
-    <div class="gl-tools"><input id="gl-q" type="search" placeholder="Find a term, like EBITDA" aria-label="Find a term"><nav class="letters" aria-label="Jump to letter">${letters.map(l=>`<a href="#" data-l="${l}">${l}</a>`).join('')}</nav></div>
+    <div class="gl-tools"><input id="gl-q" type="search" placeholder="Find a term, like EBITDA" aria-label="Find a term"><nav class="letters" aria-label="Jump to letter">${'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(l=>letters.includes(l)?`<a href="#" data-l="${l}">${l}</a>`:`<span aria-hidden="true">${l}</span>`).join('')}</nav></div>
     <div class="gl-list" id="gl-list"></div>
   </div></section>`;
   const list = view.querySelector('#gl-list'), inp = view.querySelector('#gl-q');
@@ -912,7 +924,7 @@ function renderGlossary(q){
     const s = v.trim().toLowerCase();
     const hits = terms.filter(([t,d]) => !s || t.toLowerCase().includes(s) || d.toLowerCase().includes(s));
     const groups = {}; hits.forEach(h => { const l = h[0][0].toUpperCase(); (groups[l] = groups[l] || []).push(h); });
-    list.innerHTML = Object.keys(groups).map(l => `<div class="gl-group"><h3 id="gl-${l}">${l}</h3>${groups[l].map(([t,d])=>`<div class="gl-item"><b>${esc(t)}</b><p>${esc(d)}</p></div>`).join('')}</div>`).join('') || '<p class="gl-empty">No terms match. Try a shorter word.</p>';
+    list.innerHTML = Object.keys(groups).map(l => `<div class="gl-group" id="gl-${l}"><h3>${l}</h3><div>${groups[l].map(([t,d])=>`<div class="gl-item"><b>${esc(t)}</b><p>${esc(d)}</p></div>`).join('')}</div></div>`).join('') || '<p class="gl-empty">No terms match. Try a shorter word.</p>';
   };
   inp.oninput = () => draw(inp.value); inp.value = q||''; draw(inp.value);
   view.querySelector('#back').onclick = () => go('');
