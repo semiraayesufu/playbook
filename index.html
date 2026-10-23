@@ -1,20 +1,21 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
+<meta name="color-scheme" content="dark">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="Playbooks of MBA tools for real business problems, with hand-drawn sketches and a glossary.">
 <title>The MBA Playbook</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Patrick+Hand&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,500..700,0..100&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Patrick+Hand&family=DM+Mono:wght@400;500&display=swap">
 <style>
 /* Direction: a quiet, tool-like library (after recent.design). DM Sans at small sizes, white canvas, soft grey surfaces, rounded cards, pill filters, a sidebar for browsing, and quick 120ms transitions. Hand-drawn sketches and one color per playbook keep the personality. */
 :root{
   --bg:#FFFFFF; --surface:#F4F4F3; --surface-2:#ECECEA; --ink:#141414; --muted:rgba(0,0,0,.52); --faint:rgba(0,0,0,.3); --rule:rgba(0,0,0,.08);
   --line:#2B2620; --hl:rgba(255,206,58,.55); --hl-soft:rgba(255,206,58,.25); --pen:#2747C9;
   --paper:#FFFFFF; --sheet:#FFFFFF;
-  --f-display:'Newsreader','Iowan Old Style','Times New Roman',Georgia,serif;
+  --f-display:'Fraunces','Newsreader','Iowan Old Style','Times New Roman',Georgia,serif;
   --f-ui:'Newsreader','Iowan Old Style','Times New Roman',Georgia,serif;
   --f-body:'Newsreader','Iowan Old Style','Times New Roman',Georgia,serif;
   --f-old:'Newsreader','Iowan Old Style','Times New Roman',Georgia,serif;
@@ -42,7 +43,7 @@ strong{font-weight:600}
 .hand{font-family:var(--f-hand);font-weight:400}
 .kick{font-family:var(--f-mono);font-size:12px;letter-spacing:.02em;color:var(--muted)}
 .muted{color:var(--muted)}
-h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spacing:-.02em}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;font-variation-settings:"SOFT" 100;margin:0;text-wrap:balance;letter-spacing:-.02em}
 .rv{opacity:0;transform:translateY(8px);animation:rise .45s var(--ease) forwards;animation-delay:calc(var(--i,0)*50ms)}
 @keyframes rise{to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.rv{animation:none;opacity:1;transform:none}*{transition:none!important}}
@@ -450,7 +451,6 @@ h1,h2,h3,.hero h1,.ab-intro h1,.intro h1,.card h3,.chap h2,.nextblock b,.sechead
   <nav class="navgroup" id="nav-pb" aria-label="Playbooks"></nav>
   <nav class="navgroup" id="nav-ref" aria-label="Reference"></nav>
   <div class="side-foot">
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><span>Light or dark</span><button class="theme" data-theme-toggle aria-label="Switch light or dark mode"><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button></div>
     <button class="credit" id="credit-link" type="button">Compiled by Semira Yesufu · Kelley School of Business</button>
   </div>
 </aside>
@@ -464,7 +464,6 @@ h1,h2,h3,.hero h1,.ab-intro h1,.intro h1,.card h3,.chap h2,.nextblock b,.sechead
         <input id="q" type="search" placeholder="Search tools or terms" aria-label="Search tools and terms">
       </div>
       <button class="about-link" id="about-link" type="button">About</button>
-      <button class="theme" data-theme-toggle aria-label="Switch light or dark mode"><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
     </div>
   </header>
   <main id="view"></main>
@@ -1376,9 +1375,6 @@ function route(h){
   if (p==='glossary') renderGlossary(); else if (p==='about') renderAbout(); else if (PB.some(x=>x.id===p)) renderPlaybook(p,t); else { renderHome(); window.scrollTo({top:0}); }
 }
 /* light / dark */
-(() => { const root = document.documentElement; let saved = null; try { saved = localStorage.getItem('pb-theme'); } catch(e){}
-  if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved);
-  const toggle = () => { const cur = root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); const next = cur === 'dark' ? 'light' : 'dark'; root.setAttribute('data-theme', next); try { localStorage.setItem('pb-theme', next); } catch(e){} }; document.querySelectorAll('[data-theme-toggle]').forEach(b => b.onclick = toggle); })();
 $('#about-link').onclick = $('#credit-link').onclick = () => go('about');
 $('#home-link').onclick = $('#home-link-m').onclick = () => { $('#q').value=''; homeFilter='all'; go(''); };
 let st; $('#q').addEventListener('input', e => { clearTimeout(st); const v=e.target.value.trim(); st=setTimeout(()=> v ? renderSearch(v) : route(location.hash.slice(1)),120); });
