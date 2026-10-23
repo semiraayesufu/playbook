@@ -2,7 +2,7 @@
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
-<meta name="color-scheme" content="dark light">
+<meta name="color-scheme" content="dark">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="Playbooks of MBA tools for real business problems, with hand-drawn sketches and a glossary.">
 <title>The MBA Playbook</title>
@@ -455,7 +455,6 @@ body::after{content:"";position:fixed;inset:-120px;z-index:50;pointer-events:non
   <nav class="navgroup" id="nav-pb" aria-label="Playbooks"></nav>
   <nav class="navgroup" id="nav-ref" aria-label="Reference"></nav>
   <div class="side-foot">
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><span>Light or dark</span><button class="theme" data-theme-toggle aria-label="Switch light or dark mode"><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button></div>
     <span>Compiled by <a class="credit" href="https://www.linkedin.com/in/semirayesufu" target="_blank" rel="noopener">Semira Yesufu</a></span>
   </div>
 </aside>
@@ -469,7 +468,6 @@ body::after{content:"";position:fixed;inset:-120px;z-index:50;pointer-events:non
         <input id="q" type="search" placeholder="Search tools or terms" aria-label="Search tools and terms">
       </div>
       <button class="about-link" id="about-link" type="button">About</button>
-      <button class="theme" data-theme-toggle aria-label="Switch light or dark mode"><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
     </div>
   </header>
   <main id="view"></main>
@@ -1400,10 +1398,6 @@ function route(h){
   if (p==='glossary') renderGlossary(); else if (p==='about') renderAbout(); else if (PB.some(x=>x.id===p)) renderPlaybook(p,t); else { renderHome(); window.scrollTo({top:0}); }
 }
 /* light / dark */
-/* light / dark */
-(() => { const root = document.documentElement; let saved = null; try { saved = localStorage.getItem('pb-theme'); } catch(e){}
-  if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved);
-  const toggle = () => { const cur = root.getAttribute('data-theme'); const next = cur === 'dark' ? 'light' : 'dark'; root.setAttribute('data-theme', next); try { localStorage.setItem('pb-theme', next); } catch(e){} }; document.querySelectorAll('[data-theme-toggle]').forEach(b => b.onclick = toggle); })();
 $('#about-link').onclick = () => go('about');
 $('#home-link').onclick = $('#home-link-m').onclick = () => { $('#q').value=''; homeFilter='all'; go(''); };
 let st; $('#q').addEventListener('input', e => { clearTimeout(st); const v=e.target.value.trim(); st=setTimeout(()=> v ? renderSearch(v) : route(location.hash.slice(1)),120); });
