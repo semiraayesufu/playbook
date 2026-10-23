@@ -8,7 +8,7 @@
 <title>The MBA Playbook</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..700,0..100;1,9..144,400..700,0..100&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&family=Patrick+Hand&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..700,0..100;1,9..144,400..700,0..100&family=Work+Sans:ital,wght@0,300..700;1,300..700&family=Patrick+Hand&display=swap">
 <style>
 /* Direction: a quiet, tool-like library (after recent.design). DM Sans at small sizes, white canvas, soft grey surfaces, rounded cards, pill filters, a sidebar for browsing, and quick 120ms transitions. Hand-drawn sketches and one color per playbook keep the personality. */
 :root{
@@ -16,15 +16,15 @@
   --line:#2B2620; --hl:rgba(255,206,58,.55); --hl-soft:rgba(255,206,58,.25); --pen:#2747C9;
   --paper:#FFFFFF; --sheet:#FFFFFF;
   --f-display:'Fraunces','Iowan Old Style','Times New Roman',Georgia,serif;
-  --f-ui:'Source Serif 4','Iowan Old Style','Times New Roman',Georgia,serif;
-  --f-body:'Source Serif 4','Iowan Old Style','Times New Roman',Georgia,serif;
-  --f-old:'Source Serif 4','Iowan Old Style','Times New Roman',Georgia,serif;
+  --f-ui:'Work Sans',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  --f-body:'Work Sans',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  --f-old:'Work Sans',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;
   --f-hand:'Patrick Hand','Segoe Print','Bradley Hand',cursive;
-  --f-mono:'Source Serif 4','Iowan Old Style','Times New Roman',Georgia,serif;
+  --f-mono:'Work Sans',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;
   --ease:cubic-bezier(.2,0,0,1);
   --c:#141414; --cf:#fff;
   --side:256px;
-  --t:clamp(16px,14px + .4vw,18px);
+  --t:clamp(15px,13px + .4vw,17px);
   --r:calc(var(--t) + 1px);
   --u:clamp(13.5px,12.5px + .25vw,14.5px);
 }
@@ -143,7 +143,7 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
 .story .meta{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
 .story h3{font-size:calc(var(--t) - 1px);font-weight:500;letter-spacing:-.01em;line-height:1.3}
 .story .meta .mono{color:var(--faint);white-space:nowrap}
-.story .q{font-family:var(--f-hand);font-size:21px;color:var(--c);line-height:1.2;margin-top:-6px}
+.story .q{font-family:var(--f-body);font-size:calc(var(--t) + 1px);font-weight:500;color:var(--c);line-height:1.3;margin-top:-4px}
 :root[data-theme="dark"] .story .q{color:color-mix(in srgb,var(--c) 62%,#fff)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .story .q{color:color-mix(in srgb,var(--c) 62%,#fff)}}
 .thumb.gl{background:var(--surface)}
@@ -207,7 +207,7 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
 .hero .back:hover{opacity:1}
 .hero .kick{color:inherit;opacity:.7;display:block;margin-top:20px}
 .hero h1{font-size:clamp(28px,3.8vw,44px);font-weight:600;line-height:1;letter-spacing:-.045em;margin-top:8px;max-width:16ch}
-.hero .hand{font-size:clamp(20px,2vw,23px);display:block;margin-top:10px;opacity:.95}
+.hero .hand{font-family:var(--f-body);font-weight:500;font-size:calc(var(--t) + 2px);display:block;margin-top:10px;opacity:.95}
 .hero .lede{font-size:14px;max-width:60ch;margin:16px 0 0;line-height:1.55}
 .hero .lede strong{font-weight:600}
 .hero .big{position:absolute;right:clamp(16px,3vw,36px);top:clamp(14px,2.5vw,28px);font-family:var(--f-mono);font-size:13px;opacity:.7}
@@ -439,7 +439,7 @@ body.reading .top .about-link{display:inline-flex}
 @media (max-width:1023px){.gl-tools{position:static;border-bottom:0}.gl-group h3{position:static}.gl-group{scroll-margin-top:80px}}
 @media (max-width:640px){.gl-group{grid-template-columns:minmax(0,1fr)}.gl-group h3{font-size:28px;padding:0 0 6px}.gl-item{grid-template-columns:minmax(0,1fr)}}
 
-/* titles in Fraunces, body in Source Serif 4, notes in Patrick Hand */
+/* titles in Fraunces, body in Work Sans, notes in Patrick Hand */
 .side,.top,.filters,.stats,.story .meta,.share,.ab-btn,.results,.nowon,.card .n,.gl-tools,.crumb,.back,.nextblock,.pill,.chip,.navgroup,.search input,button{font-family:var(--f-ui)}
 /* one reading size for all body text, on every page */
 .card .what,.card .def,.card ol>li,.card ul,.card ul.sub,.watch,.hero .lede,.uses li,.fig figcaption,.gl-item p,.intro p,.ab-intro p,.ab-list,.chap p,.ab-credits p,.ab-credits ul,.share p{font-size:var(--r);line-height:1.6}
