@@ -63,6 +63,10 @@ h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spacing:
 .chip{display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 9px;border-radius:999px;background:var(--surface-2);font-size:12px;color:var(--ink);white-space:nowrap}
 .chip b{font-weight:600}
 .main{margin-left:var(--side);min-height:100vh;display:flex;flex-direction:column}
+body.reading .side{display:none}
+body.reading .main{margin-left:0}
+body.reading .top .mbrand{display:flex}
+body.reading .top .theme{display:grid}
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:15;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .top .in{display:flex;align-items:center;gap:12px;height:56px}
 .top .mbrand{display:none}
@@ -843,7 +847,7 @@ function drawFig(id){
 /* ---------- VIEWS ---------- */
 const view = $('#view'), bar = $('#progress');
 let io = null, onScroll = null;
-function cleanup(){ if (io) { io.disconnect(); io = null; } if (onScroll) { removeEventListener('scroll',onScroll); onScroll = null; } bar.style.transform = 'scaleX(0)'; document.documentElement.style.removeProperty('--c'); }
+function cleanup(){ document.body.classList.remove('reading'); if (io) { io.disconnect(); io = null; } if (onScroll) { removeEventListener('scroll',onScroll); onScroll = null; } bar.style.transform = 'scaleX(0)'; document.documentElement.style.removeProperty('--c'); }
 const toolCount = PB.reduce((n,p)=>n+p.tools.length,0);
 const teaser = p => plain(p.idea).split(/(?<=\.)\s/)[0];
 
@@ -949,7 +953,7 @@ function cardHTML(t,i){
 }
 
 function renderPlaybook(id,toolId){
-  cleanup(); setNav(id); setCrumb(PB.find(p=>p.id===id).name);
+  cleanup(); document.body.classList.add('reading'); setNav(id); setCrumb(PB.find(p=>p.id===id).name);
   const i = PB.findIndex(p=>p.id===id), p = PB[i], next = PB[(i+1)%PB.length];
   document.documentElement.style.setProperty('--c',COL[id][0]);
   view.innerHTML = `
