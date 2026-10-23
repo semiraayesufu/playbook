@@ -354,6 +354,13 @@ body.reading .top .about-link{display:inline-flex}
 .ill .k{stroke:var(--ink);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .ill .f{fill:var(--ink)}.ill .w{fill:var(--polaroid)}.ill .n{fill:none}
 .ill .hl{fill:#FFD95A}
+.ill .bulb .halo{fill:#FFD95A;opacity:0;transform-box:fill-box;transform-origin:center;animation:bulbHalo 1.8s ease-in-out infinite}
+.ill .bulb .rays{animation:bulbRays 1.8s ease-in-out infinite}
+.ill .bulb .glass{animation:bulbGlow 1.8s ease-in-out infinite}
+@keyframes bulbHalo{0%,100%{opacity:0;transform:scale(.7)}50%{opacity:.5;transform:scale(1.15)}}
+@keyframes bulbRays{0%,100%{opacity:.2}50%{opacity:1}}
+@keyframes bulbGlow{0%,100%{fill:#FFE79A}50%{fill:#FFC93C}}
+@media (prefers-reduced-motion:reduce){.ill .bulb *{animation:none!important}.ill .bulb .halo{opacity:.35}}
 .ill .dk{fill:#141414}.ill .wh{fill:#FFFFFF}.ill .fd{fill:#141414}
 .ill .ft{stroke:#141414;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .ill text{font-family:var(--f-hand);fill:var(--ink);font-size:15px}
@@ -1080,7 +1087,7 @@ function renderAbout(){
       <div class="when"><span class="yr">Along the way</span><span class="hand">the questions</span></div>
       <div class="what">
         <h2>Meanwhile, the questions kept coming.</h2>
-        <p>Word got out that I was in business school, and I quietly became everyone's free business hotline. Like a first-year med student fielding questions about every mystery rash, I got “How should I price this?”, “How do I enter this market?” and at least one “Quick question, should I quit my job and open a bakery?”</p><p>And every time I opened Instagram, someone was debating the same thing: is an MBA even worth it, and what do you guys actually learn in there?</p>
+        <p>Being in business school means you quietly become your friends' and family's favorite business hotline. Like a first-year med student fielding questions about every mystery rash, I got “How should I price this?”, “How do I enter this market?” and at least one “Quick question, should I quit my job and open a bakery?”</p><p>And every time I opened Instagram, someone was questioning the value of an MBA. Is it even worth it? What do you guys actually learn in there?</p>
         ${pol(null,'questions','me, most weeks',-1.2,'wide sketchy',
           stk('ask me anything (business)','pill y','--r:-6deg;top:-18px;left:-14px')+
           stk('free<br>consults?','circle b','--r:10deg;bottom:30px;right:-26px'))}
@@ -1093,7 +1100,7 @@ function renderAbout(){
       <div class="what">
         <h2>Then came the light bulb moment.</h2>
         <p>What if I turned my notes into a playbook, one I could search in seconds and share with anyone who asked? And what if other people could add what they've learned, from business school or from running a business, so it grows into a living archive of how to solve business problems?</p>
-        <p>That's how The MBA Playbook came to be. Every tool is rewritten in plain language, so you can use it on your own problems.</p>
+        <p>That's how The MBA Playbook came to be.</p>
         ${pol(null,'notes','from my notes to a living playbook',1.2,'wide sketchy',stk('💡 light bulb moment','pill y','--r:-6deg;top:-18px;left:-14px'))}
         <div class="stk-row">${stk('free for everyone ♥','pill p inline','--r:-6deg')}${stk(`${toolCount} tools & counting`,'pill g inline','--r:4deg')}${stk('sketched by hand ✎','pill v inline','--r:-3deg')}</div>
       </div>
@@ -1103,7 +1110,7 @@ function renderAbout(){
       <div class="when"><span class="yr">What's next</span><span class="hand">your turn</span></div>
       <div class="what">
         <h2>Now it's your turn.</h2>
-        <p>The playbook started with my notes. Now it grows with yours. If a tool or idea has stuck with you, from business school or from years of solving business problems, share it through Share an insight. Every insight you add helps the next person facing the same problem.</p>
+        <p>The playbook started with my notes. Now it grows with yours. If a tool or idea has stuck with you, from business school or from years of solving business problems, share it through Share an insight. Every insight you add helps the next person facing the same problem solve it.</p>
         <div class="ab-ctas">
           ${stk('psst… share yours! ↓','pill y inline','--r:-4deg')}
           <div class="btns">
@@ -1116,7 +1123,7 @@ function renderAbout(){
 
     <div class="ab-credits">
       <span class="kick">Credits</span>
-      <p>The MBA Playbook is a free, personal project. I wrote every explanation in my own words and refined them with Claude. The frameworks belong to the people who created them.</p>
+      <p>The MBA Playbook is a free, personal project, shaped with help from Claude. The frameworks themselves belong to the people who created them.</p>
       <ul>
         <li><b>Five Forces</b> by Michael Porter</li>
         <li><b>VRIO</b> by Jay Barney</li>
@@ -1229,7 +1236,7 @@ function drawNotes(){
       <text x="0" y="96" text-anchor="middle" style="font-size:16px">The MBA Playbook</text>
     </g>
     ${illPerson(500,298,'wave').replace('translate(500 298)','translate(500 298) scale(.62)')}
-    <g transform="translate(500 104)"><path class="k hl" d="M0 -22 C -14 -22 -20 -10 -16 0 C -13 7 -8 10 -8 16 L8 16 C 8 10 13 7 16 0 C 20 -10 14 -22 0 -22 Z"/><path class="k n" d="M-7 21 L7 21 M-5 26 L5 26"/><path class="k n" d="M0 -32 L0 -40 M-20 -26 L-26 -32 M20 -26 L26 -32 M-26 -8 L-34 -8 M26 -8 L34 -8"/></g>
+    <g class="bulb" transform="translate(500 104)"><circle class="halo" cx="0" cy="-4" r="28"/><path class="k hl glass" d="M0 -22 C -14 -22 -20 -10 -16 0 C -13 7 -8 10 -8 16 L8 16 C 8 10 13 7 16 0 C 20 -10 14 -22 0 -22 Z"/><path class="k n" d="M-7 21 L7 21 M-5 26 L5 26"/><path class="k n rays" d="M0 -32 L0 -40 M-20 -26 L-26 -32 M20 -26 L26 -32 M-26 -8 L-34 -8 M26 -8 L34 -8"/></g>
   </svg>`;
   return wrap.firstElementChild;
 }
