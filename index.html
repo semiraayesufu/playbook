@@ -435,14 +435,14 @@ h1,h2,h3,.hero h1,.ab-intro h1,.intro h1,.card h3,.chap h2,.nextblock b,.sechead
 .pill,.chip,.about-link,.ab-btn,.share a,.hero .back{font-weight:600}
 .pol.big{padding:12px 12px 52px;border-radius:2px}
 .pol.big img{aspect-ratio:1/1;object-fit:cover;object-position:50% 4%;border-radius:1px}
-/* grain over the about photo */
-.pol.big::after{content:"";position:absolute;inset:12px 12px 52px 12px;z-index:2;pointer-events:none;border-radius:1px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px;opacity:.38;mix-blend-mode:overlay;animation:grainpos 1.4s steps(7) infinite}
+/* grit over the about photo */
+.pol.big::after{content:"";position:absolute;inset:12px 12px 52px 12px;z-index:2;pointer-events:none;border-radius:1px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.42' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -30 0 0 0 9.6'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");background-size:200px;opacity:.32;animation:grainpos 1.4s steps(7) infinite}
 @keyframes grainpos{0%,100%{background-position:0 0}14%{background-position:-38px 22px}28%{background-position:27px -41px}42%{background-position:-55px -13px}57%{background-position:44px 35px}71%{background-position:-19px 58px}85%{background-position:61px -6px}}
 @media (prefers-reduced-motion:reduce){.pol.big::after{animation:none}}
-/* film grain over the whole page */
-body::after{content:"";position:fixed;inset:-120px;z-index:50;pointer-events:none;animation:grain 1.4s steps(7) infinite;will-change:transform;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:220px;opacity:.18;mix-blend-mode:multiply}
-:root[data-theme="dark"] body::after{opacity:.12;mix-blend-mode:screen}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body::after{opacity:.12;mix-blend-mode:screen}}
+/* gritty texture over the whole page */
+body::after{content:"";position:fixed;inset:-120px;z-index:50;pointer-events:none;animation:grain 1.4s steps(7) infinite;will-change:transform;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='g' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.38' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -30 0 0 0 9.6'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");background-size:240px;opacity:.17}
+:root[data-theme="dark"] body::after{opacity:.15;filter:invert(1)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body::after{opacity:.15;filter:invert(1)}}
 @keyframes grain{0%,100%{transform:translate(0,0)}14%{transform:translate(-38px,22px)}28%{transform:translate(27px,-41px)}42%{transform:translate(-55px,-13px)}57%{transform:translate(44px,35px)}71%{transform:translate(-19px,58px)}85%{transform:translate(61px,-6px)}}
 @media (prefers-reduced-motion:reduce){body::after{animation:none}}
 </style>
