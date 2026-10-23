@@ -2,7 +2,7 @@
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
-<meta name="color-scheme" content="dark">
+<meta name="color-scheme" content="dark light">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="Playbooks of MBA tools for real business problems, with hand-drawn sketches and a glossary.">
 <title>The MBA Playbook</title>
@@ -24,7 +24,7 @@
   --ease:cubic-bezier(.2,0,0,1);
   --c:#141414; --cf:#fff;
   --side:256px;
-  --t:clamp(17px,15px + .4vw,19px);
+  --t:clamp(16px,14px + .4vw,18px);
   --u:clamp(13.5px,12.5px + .25vw,14.5px);
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
@@ -418,17 +418,17 @@ body.reading .top .about-link{display:inline-flex}
 
 /* titles in Fraunces, body in Source Serif 4, notes in Patrick Hand */
 .side,.top,.filters,.stats,.story .meta,.share,.ab-btn,.results,.nowon,.card .n,.gl-tools,.crumb,.back,.nextblock,.pill,.chip,.navgroup,.search input,button{font-family:var(--f-ui)}
-.card .what{font-size:var(--t)}
-.card .def{font-size:calc(var(--t) + 1px);line-height:1.6}
-.card ol>li{font-size:calc(var(--t) + 1px);line-height:1.6}
-.card ul{font-size:var(--t)}
-.card ul.sub{font-size:var(--t)}
+.card .what{font-size:calc(var(--t) + 1px)}
+.card .def{font-size:calc(var(--t) + 3px);line-height:1.6}
+.card ol>li{font-size:calc(var(--t) + 3px);line-height:1.6}
+.card ul{font-size:calc(var(--t) + 2px)}
+.card ul.sub{font-size:calc(var(--t) + 2px)}
 .watch{font-size:var(--t)}
-.hero .lede{font-size:calc(var(--t) + 1px)}
+.hero .lede{font-size:calc(var(--t) + 3px)}
 .uses li{font-size:calc(var(--t) - 1px)}
 .fig figcaption{font-size:calc(var(--t) - 1.5px)}
-.gl-item p{font-size:var(--t)}
-.ab-intro p,.ab-list,.chap p{font-size:calc(var(--t) + 1.5px);line-height:1.6}
+.gl-item p{font-size:calc(var(--t) + 1px)}
+.ab-intro p,.ab-list,.chap p{font-size:calc(var(--t) + 3px);line-height:1.6}
 .ab-credits p,.ab-credits ul{font-size:calc(var(--t) - 2px)}
 .share p{font-size:calc(var(--t) - 1px)}
 .peek p{font-family:var(--f-body);font-size:calc(var(--t) - 1.5px)}
@@ -454,6 +454,7 @@ h1,h2,h3,.hero h1,.ab-intro h1,.intro h1,.card h3,.chap h2,.nextblock b,.sechead
   <nav class="navgroup" id="nav-pb" aria-label="Playbooks"></nav>
   <nav class="navgroup" id="nav-ref" aria-label="Reference"></nav>
   <div class="side-foot">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><span>Light or dark</span><button class="theme" data-theme-toggle aria-label="Switch light or dark mode"><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button></div>
     <span>Compiled by <a class="credit" href="https://www.linkedin.com/in/semirayesufu" target="_blank" rel="noopener">Semira Yesufu</a></span>
   </div>
 </aside>
@@ -467,6 +468,7 @@ h1,h2,h3,.hero h1,.ab-intro h1,.intro h1,.card h3,.chap h2,.nextblock b,.sechead
         <input id="q" type="search" placeholder="Search tools or terms" aria-label="Search tools and terms">
       </div>
       <button class="about-link" id="about-link" type="button">About</button>
+      <button class="theme" data-theme-toggle aria-label="Switch light or dark mode"><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
     </div>
   </header>
   <main id="view"></main>
@@ -1378,6 +1380,10 @@ function route(h){
   if (p==='glossary') renderGlossary(); else if (p==='about') renderAbout(); else if (PB.some(x=>x.id===p)) renderPlaybook(p,t); else { renderHome(); window.scrollTo({top:0}); }
 }
 /* light / dark */
+/* light / dark */
+(() => { const root = document.documentElement; let saved = null; try { saved = localStorage.getItem('pb-theme'); } catch(e){}
+  if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved);
+  const toggle = () => { const cur = root.getAttribute('data-theme'); const next = cur === 'dark' ? 'light' : 'dark'; root.setAttribute('data-theme', next); try { localStorage.setItem('pb-theme', next); } catch(e){} }; document.querySelectorAll('[data-theme-toggle]').forEach(b => b.onclick = toggle); })();
 $('#about-link').onclick = () => go('about');
 $('#home-link').onclick = $('#home-link-m').onclick = () => { $('#q').value=''; homeFilter='all'; go(''); };
 let st; $('#q').addEventListener('input', e => { clearTimeout(st); const v=e.target.value.trim(); st=setTimeout(()=> v ? renderSearch(v) : route(location.hash.slice(1)),120); });
