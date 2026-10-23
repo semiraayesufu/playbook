@@ -138,6 +138,30 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
 .thumb.gl .az{font-weight:700;font-size:clamp(56px,7vw,84px);line-height:.9;letter-spacing:-.06em;color:var(--ink);text-align:center}
 .thumb.gl .az span{display:block;font-family:var(--f-hand);font-size:.27em;font-weight:400;letter-spacing:0;color:var(--pen);margin-top:10px}
 
+
+.peek{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;padding:16px;text-align:left;color:#fff;
+  background:linear-gradient(to top,rgba(10,10,10,.92) 0%,rgba(10,10,10,.78) 55%,rgba(10,10,10,.15) 100%);opacity:0;transform:translateY(6px);transition:opacity .2s var(--ease),transform .2s var(--ease);pointer-events:none}
+.story:hover .peek,.story:focus-visible .peek{opacity:1;transform:none;transition-delay:.18s}
+.peek p{margin:0;font-size:13.5px;line-height:1.45;max-width:36ch}
+.peek .tl{display:flex;flex-wrap:wrap;gap:4px;padding-right:40px}
+.peek .tl span{font-size:11px;height:20px;padding:0 7px;border-radius:999px;background:rgba(255,255,255,.16);display:inline-flex;align-items:center;white-space:nowrap}
+.peek .lab{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;opacity:.6}
+@media (hover:none){.peek{display:none}}
+.story:hover .go{z-index:2;background:#fff;color:#141414}
+.thumb .num{transition:opacity .15s var(--ease)}
+.story:hover .num{opacity:0;transition-delay:.18s}
+.thumb .go{z-index:2}
+/* sound toggle */
+.snd{all:unset;cursor:pointer;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;flex:none;background:var(--surface);transition:background-color .12s var(--ease)}
+.snd:hover{background:var(--surface-2)}
+.snd svg{width:16px;height:16px;stroke:var(--ink);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.snd .on{display:none}
+.snd[aria-pressed="true"] .on{display:block}.snd[aria-pressed="true"] .off{display:none}
+.snd[aria-pressed="true"]{background:var(--ink)}.snd[aria-pressed="true"] svg{stroke:var(--bg)}
+.side .snd{width:30px;height:30px}
+.top .snd{display:none}
+@media (max-width:1023px){.top .snd{display:grid}}
+
 /* ---------- playbook ---------- */
 .hero{padding-top:8px}
 .hero .block{background:var(--c);color:var(--cf);border-radius:18px;box-shadow:inset 0 0 0 1px var(--rule);padding:clamp(22px,4vw,44px);position:relative;overflow:hidden}
@@ -149,13 +173,14 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
 .hero .lede{font-size:clamp(15.5px,1.6vw,17px);max-width:60ch;margin:16px 0 0;line-height:1.55}
 .hero .lede strong{background:color-mix(in srgb,var(--cf) 18%,transparent);padding:0 .2em;border-radius:4px;font-weight:600}
 .hero .big{position:absolute;right:clamp(16px,3vw,36px);top:clamp(14px,2.5vw,28px);font-family:var(--f-mono);font-size:13px;opacity:.7}
-.uses{margin-top:26px;max-width:900px;position:relative}
-.uses .kick{display:block;margin:0 0 10px;opacity:.75}
-.uses ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;counter-reset:u}
+.uses{margin-top:28px;max-width:920px;position:relative;border-top:1px solid color-mix(in srgb,var(--cf) 28%,transparent);padding-top:18px}
+.uses .kick{display:block;margin:0 0 12px;font-family:var(--f-hand);font-size:20px;letter-spacing:0;opacity:.95}
+.uses ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 28px}
 @media (max-width:640px){.uses ol{grid-template-columns:minmax(0,1fr)}}
-.uses li{counter-increment:u;display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:start;padding:11px 14px 12px;border-radius:12px;background:color-mix(in srgb,var(--cf) 13%,transparent);font-size:14.5px;line-height:1.4}
-.uses li::before{content:counter(u);font-family:var(--f-mono);font-size:11px;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:var(--cf);color:var(--c);margin-top:0}
-
+.uses li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;align-items:start;font-size:15px;line-height:1.45}
+.uses li{position:relative}
+.uses li::before{content:"";width:22px;height:22px;border-radius:50%;background:var(--cf)}
+.uses li::after{content:"";position:absolute;left:5px;top:5px;width:12px;height:12px;background:var(--c);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/contain no-repeat}
 .essay{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);gap:40px;align-items:start;padding-block:34px 20px}
 @media (max-width:960px){.essay{grid-template-columns:minmax(0,1fr);gap:18px}}
 .stage{position:sticky;top:calc(env(safe-area-inset-top,0px) + 72px)}
@@ -252,6 +277,7 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
   <nav class="navgroup" id="nav-pb" aria-label="Playbooks"></nav>
   <nav class="navgroup" id="nav-ref" aria-label="Reference"></nav>
   <div class="side-foot">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><span>Sound</span><button class="snd" data-sound-toggle aria-pressed="false" aria-label="Turn interface sounds on or off"><svg class="off" viewBox="0 0 24 24"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M22 9l-6 6M16 9l6 6"/></svg><svg class="on" viewBox="0 0 24 24"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg></button></div>
     <div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><span>Light or dark</span><button class="theme" data-theme-toggle aria-label="Switch light or dark mode"><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button></div>
     <span>Compiled by Semira Yesufu · Kelley School of Business</span>
   </div>
@@ -265,6 +291,7 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
         <input id="q" type="search" placeholder="Search tools or terms" aria-label="Search tools and terms">
       </div>
+      <button class="snd" data-sound-toggle aria-pressed="false" aria-label="Turn interface sounds on or off"><svg class="off" viewBox="0 0 24 24"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M22 9l-6 6M16 9l6 6"/></svg><svg class="on" viewBox="0 0 24 24"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg></button>
       <button class="theme" data-theme-toggle aria-label="Switch light or dark mode"><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
     </div>
   </header>
@@ -305,7 +332,7 @@ const PB = [
   steps:['A Balanced Scorecard turns a strategy into a short set of goals across four views, so you don\'t track money alone.','**Financial:** how the strategy should show up in growth, margins and cash.','**Customer:** what customers should experience, measured by things like adoption, satisfaction or market share.','**Internal process:** what the company must do well, such as speed to market, quality or efficiency.','**Learning and growth:** the people, skills and culture needed to deliver it.','Write two objectives per view, each with one number and a date. If you can\'t measure it, rewrite it until you can.']}
  ]},
 
-{id:'innovation',name:'Innovation & Entrepreneurship',q:'Is this idea worth building?',
+{id:'innovation',name:'Entrepreneurial Innovation',q:'Is this idea worth building?',
  idea:'Strong founders keep learning until they understand the problem well enough to build the right thing. **Validate before you scale**, and tie every round of spending to evidence.',
  use:['Judging a startup, product idea or new venture','Choosing between technologies, partners or vendors','Deciding whether to keep going, pivot or stop'],
  tools:[
@@ -816,7 +843,8 @@ function renderHome(){
   PB.forEach((p,i) => {
     const b = document.createElement('button'); b.className = 'story rv'; b.dataset.id = p.id; b.style.cssText = colorVars(p.id)+`;--i:${i%4+2}`;
     b.setAttribute('aria-label',`${p.name}: ${p.q}`);
-    b.innerHTML = `<div class="thumb"><span class="num">${pad(i+1)}</span><div class="paper"></div><span class="go" aria-hidden="true">${ARROW}</span></div>
+    const more = p.tools.length>5 ? `<span>+${p.tools.length-5} more</span>` : '';
+    b.innerHTML = `<div class="thumb"><span class="num">${pad(i+1)}</span><div class="paper"></div><div class="peek" aria-hidden="true"><span class="lab">Overview</span><p>${esc(teaser(p))}</p><div class="tl">${p.tools.slice(0,5).map(t=>`<span>${esc(t.name)}</span>`).join('')}${more}</div></div><span class="go" aria-hidden="true">${ARROW}</span></div>
       <div class="meta"><h3>${esc(p.name)}</h3><span class="mono">${p.tools.length} tools</span></div><span class="q">${esc(p.q)}</span>`;
     b.querySelector('.paper').appendChild(drawSketch(p.id,null,true));
     b.onclick = () => go(p.id);
@@ -824,7 +852,7 @@ function renderHome(){
   });
   const g = document.createElement('button'); g.className = 'story rv'; g.dataset.id = 'glossary'; g.style.cssText = '--i:3';
   g.setAttribute('aria-label','Glossary: what does that word mean?');
-  g.innerHTML = `<div class="thumb gl"><span class="num">${pad(PB.length+1)}</span><div class="az">A–Z<span>P&amp;L, SG&amp;A, EBITDA…</span></div><span class="go" aria-hidden="true">${ARROW}</span></div>
+  g.innerHTML = `<div class="thumb gl"><span class="num">${pad(PB.length+1)}</span><div class="az">A–Z<span>P&amp;L, SG&amp;A, EBITDA…</span></div><div class="peek" aria-hidden="true"><span class="lab">Overview</span><p>Plain definitions of the business terms used across the playbooks, from P&amp;L to ZOPA.</p></div><span class="go" aria-hidden="true">${ARROW}</span></div>
     <div class="meta"><h3>Glossary</h3><span class="mono">${GLOSS.length} terms</span></div><span class="q">What does that word mean?</span>`;
   g.onclick = () => go('glossary');
   feed.appendChild(g);
@@ -896,7 +924,7 @@ function renderPlaybook(id,toolId){
     <h1 class="rv" style="--i:1">${esc(p.name)}</h1>
     <span class="hand rv" style="--i:2">${esc(p.q)}</span>
     <p class="lede rv" style="--i:3">${md(p.idea)}</p>
-    <div class="uses rv" style="--i:4"><span class="kick">Use it when</span><ol>${p.use.map(u=>`<li>${esc(u)}</li>`).join('')}</ol></div>
+    <div class="uses rv" style="--i:4"><span class="kick">Use it when…</span><ol>${p.use.map(u=>`<li>${esc(u)}</li>`).join('')}</ol></div>
     <div class="big" aria-hidden="true">${pad(i+1)} / ${pad(PB.length)}</div>
   </div></div></section>
 
@@ -962,6 +990,40 @@ function route(h){
   const toggle = () => { const cur = root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); const next = cur === 'dark' ? 'light' : 'dark'; root.setAttribute('data-theme', next); try { localStorage.setItem('pb-theme', next); } catch(e){} }; document.querySelectorAll('[data-theme-toggle]').forEach(b => b.onclick = toggle); })();
 $('#home-link').onclick = $('#home-link-m').onclick = () => { $('#q').value=''; homeFilter='all'; go(''); };
 let st; $('#q').addEventListener('input', e => { clearTimeout(st); const v=e.target.value.trim(); st=setTimeout(()=> v ? renderSearch(v) : route(location.hash.slice(1)),120); });
+
+/* ---------- sound ---------- */
+const Sound = (() => {
+  let on = false, ctx = null, last = 0;
+  try { on = localStorage.getItem('pb-sound') === 'on'; } catch(e){}
+  const ac = () => { if (!ctx) { const C = window.AudioContext || window.webkitAudioContext; if (!C) return null; ctx = new C(); } if (ctx.state === 'suspended') ctx.resume(); return ctx; };
+  const tone = (f1, f2, dur, vol, type='sine', delay=0) => {
+    const c = ac(); if (!c) return; const t = c.currentTime + delay;
+    const o = c.createOscillator(), g = c.createGain();
+    o.type = type; o.frequency.setValueAtTime(f1, t); if (f2) o.frequency.exponentialRampToValueAtTime(f2, t + dur);
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + 0.008); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g).connect(c.destination); o.start(t); o.stop(t + dur + 0.02);
+  };
+  const play = kind => {
+    if (!on || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const now = performance.now(); if (kind === 'hover' && now - last < 60) return; last = now;
+    if (kind === 'hover') tone(1400, 1700, 0.05, 0.018);
+    else if (kind === 'tick') tone(900, 700, 0.06, 0.035, 'triangle');
+    else if (kind === 'open') { tone(520, 780, 0.12, 0.05, 'sine'); tone(780, 1040, 0.14, 0.035, 'sine', 0.06); }
+    else if (kind === 'back') tone(700, 440, 0.12, 0.04, 'sine');
+    else if (kind === 'toggle') tone(660, 990, 0.09, 0.04, 'triangle');
+  };
+  const sync = () => document.querySelectorAll('[data-sound-toggle]').forEach(b => b.setAttribute('aria-pressed', on));
+  const toggle = () => { on = !on; try { localStorage.setItem('pb-sound', on ? 'on' : 'off'); } catch(e){} sync(); if (on) play('toggle'); };
+  return { play, toggle, sync };
+})();
+document.querySelectorAll('[data-sound-toggle]').forEach(b => b.onclick = Sound.toggle); Sound.sync();
+document.addEventListener('pointerover', e => { if (e.pointerType !== 'mouse') return; const t = e.target.closest('.story,.pill,.navgroup button,.nextblock,.results button,.sk .node'); if (t && !t.contains(e.relatedTarget)) Sound.play('hover'); });
+document.addEventListener('click', e => {
+  const t = e.target.closest('button,a'); if (!t || t.matches('[data-sound-toggle]')) return;
+  if (t.matches('.story,.nextblock,.navgroup button,.results button')) Sound.play('open');
+  else if (t.matches('.back,#crumb-home,.brand')) Sound.play('back');
+  else Sound.play('tick');
+}, true);
 
 route(location.hash.slice(1));
 </script>
