@@ -231,10 +231,10 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
 .sk .accent path,.sk path.accent{stroke:#2747C9}
 .sk .band{fill:rgba(255,206,58,.25)}
 .sk text{font-family:var(--f-hand)}
-.sk .t{font-size:20px;font-weight:400}
-.sk .s{font-size:15px}
-.sk .k{font-size:14px}
-.sk .note{font-size:17px;font-weight:400}
+.sk .t{font-size:24px;font-weight:400}
+.sk .s{font-size:17px}
+.sk .k{font-size:17px}
+.sk .note{font-size:20px;font-weight:400}
 
 .steps{display:flex;flex-direction:column;min-width:0}
 .card{padding:22px 0 28px;border-top:1px solid var(--rule);scroll-margin-top:84px}
@@ -708,26 +708,36 @@ function flow(pid,title,stages){
   const p = PB.find(x=>x.id===pid), name = id => p.tools.find(t=>t.id===id).name;
   const n = stages.length, gap = 15, W = 720, cw = (W-gap*(n-1))/n, nodes = [], arrows = [];
   let most = 0;
-  const all = stages.flatMap(st=>st[2]).map(name), fs = Math.min(20, Math.min(...all.map(l => Math.max(16,(cw-30)/(l.length*0.47)))));
   stages.forEach(([lab,sub,ids],i) => {
     const x = 20 + i*(cw+gap);
-    nodes.push(['h'+i,x,20,cw,70,(i+1)+' '+lab,sub,ids[0],i===0]);
-    ids.forEach((id,j) => nodes.push(['n'+i+'_'+j,x+8,118+j*60,cw-16,50,name(id),'',id,false,'',fs]));
+    nodes.push(['h'+i,x,20,cw,80,(i+1)+' '+lab,sub,ids[0],i===0]);
+    ids.forEach((id,j) => nodes.push(['n'+i+'_'+j,x+8,128+j*70,cw-16,60,name(id),'',id,false,'']));
     if (i<n-1) arrows.push([x+cw+1,55,x+cw+gap-1,55,0]);
     most = Math.max(most,ids.length);
   });
-  return {h:118+most*60+6,title,nodes,arrows};
+  return {h:128+most*70+6,title,nodes,arrows};
+}
+/* biggest size (up to cap) at which a label fits a box width, on one line or split over two */
+function fitLabel(label, w, cap){
+  const est = l => l.length*0.43, one = {size:Math.min(cap, w/est(label)), lines:[label]};
+  const parts = label.match(/[^\s-]+-?/g) || [label]; let best = one;
+  for (let k=1;k<parts.length;k++){
+    const join = a => a.reduce((s,t,i) => s + (i && !a[i-1].endsWith('-') ? ' ' : '') + t, '');
+    const lines = [join(parts.slice(0,k)), join(parts.slice(k))], size = Math.min(cap, w/Math.max(...lines.map(est)));
+    if (size > best.size + .5) best = {size, lines};
+  }
+  return best;
 }
 const SK = {
- strategy:{h:400,title:'Diagnose, then decide, then deliver',
+ strategy:{h:500,title:'Diagnose, then decide, then deliver',
   nodes:[
-   ['h1',20,20,230,70,'1 Diagnose','inside, then outside','vrio',true],
-   ['h2',265,20,230,70,'2 Decide','choose, then test it','s-curve'],
-   ['h3',510,20,230,70,'3 Deliver','make it real, track it','ambidexterity'],
-   ['a1',35,118,200,44,'VRIO','', 'vrio'],['a2',35,172,200,44,'STEEP','', 'steep'],['a3',35,226,200,44,'Five Forces','', 'five-forces'],['a4',35,280,200,44,'SWOT','', 'swot'],['a5',35,334,200,44,'Business Model Canvas','', 'bmc'],
-   ['b1',280,118,200,44,'S-curve','', 's-curve'],['b2',280,172,200,44,'Make or Buy','', 'make-buy'],['b3',280,226,200,44,'Hypothesis Testing','', 'hypothesis'],
-   ['c1',525,118,200,44,'Ambidexterity','', 'ambidexterity'],['c2',525,172,200,44,'Balanced Scorecard','', 'scorecard']],
-  arrows:[[250,55,263,55,0],[495,55,508,55,0]]},
+   ['h1',20,20,230,80,'1 Diagnose','inside, then outside','vrio',true],
+   ['h2',265,20,230,80,'2 Decide','choose, then test it','s-curve'],
+   ['h3',510,20,230,80,'3 Deliver','make it real, track it','ambidexterity'],
+   ['a1',35,128,200,64,'VRIO','', 'vrio'],['a2',35,200,200,64,'STEEP','', 'steep'],['a3',35,272,200,64,'Five Forces','', 'five-forces'],['a4',35,344,200,64,'SWOT','', 'swot'],['a5',35,416,200,64,'Business Model Canvas','', 'bmc'],
+   ['b1',280,128,200,64,'S-curve','', 's-curve'],['b2',280,200,200,64,'Make or Buy','', 'make-buy'],['b3',280,272,200,64,'Hypothesis Testing','', 'hypothesis'],
+   ['c1',525,128,200,64,'Ambidexterity','', 'ambidexterity'],['c2',525,200,200,64,'Balanced Scorecard','', 'scorecard']],
+  arrows:[[250,60,263,60,0],[495,60,508,60,0]]},
  innovation:flow('innovation','From a hunch to a decision you can fund',[
    ['Frame','the right problem?',['problem','tam-sam-som']],
    ['Prove','will people pay?',['validation','options']],
@@ -767,6 +777,10 @@ const SK = {
    ['Grow','show up well',['new-role','mentors','feedback','stakeholders']]])
 };
 
+/* every tool box in a sketch shares one label size */
+/* (a rare very long word may go a little smaller rather than pull the whole sketch down) */
+Object.values(SK).forEach(spec => { const tools = (spec.nodes||[]).filter(n => n[0][0]!=='h' && !n[10]); if (!tools.length) return; const fits = tools.map(n => fitLabel(n[5], n[3]-12, 24).size), ok = fits.filter(f => f >= 19), f = Math.min(...(ok.length ? ok : fits)); tools.forEach((n,i) => n[10] = Math.min(f, fits[i])); });
+
 /* cards follow the sketch, left to right */
 PB.forEach(p => { const order = []; (SK[p.id].nodes||[]).forEach(n => { if (n[7] && n[0][0]!=='h' && !order.includes(n[7])) order.push(n[7]); }); const rank = id => { const i = order.indexOf(id); return i<0 ? 999 : i; }; p.tools.sort((a,b) => rank(a.id)-rank(b.id)); });
 
@@ -803,7 +817,7 @@ function drawSketch(key, onPick, mini){
     g.addEventListener('click',act); g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();act()}});
   };
   const top = 50; const root = el('g',{transform:`translate(0 ${top})`},svg);
-  text(svg,20,32,spec.title,'note','start').setAttribute('style','font-size:21px');
+  text(svg,20,32,spec.title,'note','start').setAttribute('style','font-size:25px');
   if (spec.lanes) spec.lanes.forEach(([x,y,w,h,lab]) => { const g = el('g',{},root); rect(g,x,y,w,h,{strokeLineDash:[7,6],strokeWidth:1.1}); text(g,x+16,y+26,lab,'k','start').setAttribute('style','font-size:19px;font-weight:700'); });
   if (spec.center) {
     const c = spec.center, cy = c.cy, dg = el('g',{},root);
@@ -830,16 +844,12 @@ function drawSketch(key, onPick, mini){
     el('rect',{x:x+3,y:y+3,width:w-6,height:h-6,class:'hlr'},g);
     rect(g,x,y,w,h);
     const lines = (sub||'').split('\n').filter(Boolean);
-    let ty = y + h/2 - (lines.length? (lines.length*20)/2 : -8) + (kicker? 10 : 4);
-    if (kicker) text(g,x+w/2,y+26,kicker,'k');
-    const base = fsz || 20;
-    if ((w-16)/(label.length*0.47) < base && label.includes(' ')) {
-      const words = label.split(' '); let best = 1, diff = 1e9;
-      for (let k=1;k<words.length;k++){ const d = Math.abs(words.slice(0,k).join(' ').length - words.slice(k).join(' ').length); if (d<diff){diff=d;best=k;} }
-      const l1 = words.slice(0,best).join(' '), l2 = words.slice(best).join(' '), f2 = Math.min(base,(w-16)/(Math.max(l1.length,l2.length)*0.47));
-      [l1,l2].forEach((l,k) => text(g,x+w/2,y+h/2-3+k*(f2+1)-(f2+1)/2+f2*0.35,l,'t').setAttribute('style','font-size:'+f2.toFixed(1)+'px;line-height:1'));
-    } else { const lt = text(g,x+w/2,ty,label,'t'); if (fsz) lt.setAttribute('style','font-size:'+fsz.toFixed(1)+'px'); }
-    lines.forEach((l,i) => { if (l.includes(' · ')) { const [a,b] = l.split(' · '); text(g,x+w/2,ty+22+i*20,a+'  ·  '+b,'s'); } else text(g,x+w/2,ty+22+i*20,l,'s'); });
+    let ty = y + h/2 - (lines.length? (lines.length*24)/2 : -9) + (kicker? 10 : 5);
+    if (kicker) text(g,x+w/2,y+28,kicker,'k');
+    const fit = fitLabel(label, w-12, fsz || 24);
+    if (lines.length) { const lt = text(g,x+w/2,ty,label,'t'); if (fsz) lt.setAttribute('style','font-size:'+fsz.toFixed(1)+'px'); }
+    else fit.lines.forEach((l,k,a) => text(g,x+w/2,y+h/2+(k-(a.length-1)/2)*(fit.size+2)+fit.size*0.35,l,'t').setAttribute('style','font-size:'+fit.size.toFixed(1)+'px'));
+    lines.forEach((l,i) => { if (l.includes(' · ')) { const [a,b] = l.split(' · '); text(g,x+w/2,ty+26+i*22,a+'  ·  '+b,'s'); } else text(g,x+w/2,ty+26+i*22,l,'s'); });
     wire(g,'Open '+label,target);
   });
   (spec.notes||[]).forEach(([x,y,t,a]) => { const n = text(root,x,y,t,'note',a); if (t==='×') n.setAttribute('style','font-size:30px'); });
