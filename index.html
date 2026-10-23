@@ -8,7 +8,7 @@
 <title>The MBA Playbook</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..700,0..100;1,9..144,400..700,0..100&family=Patrick+Hand&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..700,0..100;1,9..144,400..700,0..100&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&family=Patrick+Hand&display=swap">
 <style>
 /* Direction: a quiet, tool-like library (after recent.design). DM Sans at small sizes, white canvas, soft grey surfaces, rounded cards, pill filters, a sidebar for browsing, and quick 120ms transitions. Hand-drawn sketches and one color per playbook keep the personality. */
 :root{
@@ -16,11 +16,11 @@
   --line:#2B2620; --hl:rgba(255,206,58,.55); --hl-soft:rgba(255,206,58,.25); --pen:#2747C9;
   --paper:#FFFFFF; --sheet:#FFFFFF;
   --f-display:'Fraunces','Iowan Old Style','Times New Roman',Georgia,serif;
-  --f-ui:'Fraunces','Iowan Old Style','Times New Roman',Georgia,serif;
-  --f-body:'Fraunces','Iowan Old Style','Times New Roman',Georgia,serif;
-  --f-old:'Fraunces','Iowan Old Style','Times New Roman',Georgia,serif;
+  --f-ui:'Source Serif 4','Iowan Old Style','Times New Roman',Georgia,serif;
+  --f-body:'Source Serif 4','Iowan Old Style','Times New Roman',Georgia,serif;
+  --f-old:'Source Serif 4','Iowan Old Style','Times New Roman',Georgia,serif;
   --f-hand:'Patrick Hand','Segoe Print','Bradley Hand',cursive;
-  --f-mono:'Fraunces','Iowan Old Style','Times New Roman',Georgia,serif;
+  --f-mono:'Source Serif 4','Iowan Old Style','Times New Roman',Georgia,serif;
   --ease:cubic-bezier(.2,0,0,1);
   --c:#141414; --cf:#fff;
   --side:256px;
@@ -35,7 +35,7 @@
   --line:#E9E1D3; --hl:rgba(255,206,58,.4); --hl-soft:rgba(255,206,58,.16); --pen:#9DB0FF; --paper:#0C0C0C; --sheet:#171717; color-scheme:dark}
 *{box-sizing:border-box}
 html{scroll-padding-top:76px;-webkit-text-size-adjust:100%}
-body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:var(--t);font-variation-settings:"SOFT" 100;line-height:1.55;margin:0;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:var(--t);line-height:1.55;margin:0;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
 a{color:inherit}
 button{font:inherit;color:inherit}
@@ -45,7 +45,7 @@ strong{font-weight:600}
 .hand{font-family:var(--f-hand);font-weight:400}
 .kick{font-family:var(--f-mono);font-size:12px;letter-spacing:.02em;color:var(--muted)}
 .muted{color:var(--muted)}
-h1,h2,h3{font-family:var(--f-display);font-weight:600;margin:0;text-wrap:balance;letter-spacing:-.02em}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;font-variation-settings:"SOFT" 100;margin:0;text-wrap:balance;letter-spacing:-.02em}
 .rv{opacity:0;transform:translateY(8px);animation:rise .45s var(--ease) forwards;animation-delay:calc(var(--i,0)*50ms)}
 @keyframes rise{to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.rv{animation:none;opacity:1;transform:none}*{transition:none!important}}
@@ -416,7 +416,7 @@ body.reading .top .about-link{display:inline-flex}
 @media (max-width:1023px){.gl-tools{position:static;border-bottom:0}.gl-group h3{position:static}.gl-group{scroll-margin-top:80px}}
 @media (max-width:640px){.gl-group{grid-template-columns:minmax(0,1fr)}.gl-group h3{font-size:28px;padding:0 0 6px}.gl-item{grid-template-columns:minmax(0,1fr)}}
 
-/* everything in Fraunces except the handwriting */
+/* titles in Fraunces, body in Source Serif 4, notes in Patrick Hand */
 .side,.top,.filters,.stats,.story .meta,.share,.ab-btn,.results,.nowon,.card .n,.gl-tools,.crumb,.back,.nextblock,.pill,.chip,.navgroup,.search input,button{font-family:var(--f-ui)}
 .card .what{font-size:var(--t)}
 .card .def{font-size:calc(var(--t) + 1px);line-height:1.6}
@@ -434,7 +434,7 @@ body.reading .top .about-link{display:inline-flex}
 .peek p{font-family:var(--f-body);font-size:calc(var(--t) - 1.5px)}
 .stk,.stk.pill,.stk.circle,.stk.rect{font-family:var(--f-hand);font-weight:400}
 .pol img{image-rendering:auto}
-/* two fonts: Fraunces + Patrick Hand */
+/* weights and spacing */
 h1,h2,h3,.hero h1,.ab-intro h1,.intro h1,.card h3,.chap h2,.nextblock b,.sechead h2,.story h3,.gl-group h3,.thumb.gl .az{letter-spacing:-.012em}
 .hero h1,.ab-intro h1,.intro h1{font-weight:500}
 .card h3,.chap h2,.nextblock b{font-weight:600}
