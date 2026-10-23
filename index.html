@@ -178,16 +178,16 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
 .hero .back{all:unset;cursor:pointer;font-size:13px;opacity:.8;display:inline-flex;align-items:center;gap:6px}
 .hero .back:hover{opacity:1}
 .hero .kick{color:inherit;opacity:.7;display:block;margin-top:20px}
-.hero h1{font-size:clamp(30px,4.6vw,52px);font-weight:600;line-height:1;letter-spacing:-.045em;margin-top:8px;max-width:16ch}
-.hero .hand{font-size:clamp(18px,2.1vw,23px);display:block;margin-top:10px;opacity:.95}
-.hero .lede{font-size:clamp(14.5px,1.4vw,15.5px);max-width:60ch;margin:16px 0 0;line-height:1.55}
-.hero .lede strong{background:color-mix(in srgb,var(--c) 20%,transparent);padding:0 .2em;border-radius:4px;font-weight:600}
+.hero h1{font-size:clamp(28px,3.8vw,44px);font-weight:600;line-height:1;letter-spacing:-.045em;margin-top:8px;max-width:16ch}
+.hero .hand{font-size:clamp(17px,1.8vw,20px);display:block;margin-top:10px;opacity:.95}
+.hero .lede{font-size:14px;max-width:60ch;margin:16px 0 0;line-height:1.55}
+.hero .lede strong{font-weight:600}
 .hero .big{position:absolute;right:clamp(16px,3vw,36px);top:clamp(14px,2.5vw,28px);font-family:var(--f-mono);font-size:13px;opacity:.7}
 .uses{margin-top:28px;max-width:920px;position:relative;border-top:1px solid color-mix(in srgb,var(--c) 30%,transparent);padding-top:18px}
-.uses .kick{display:block;margin:0 0 12px;font-family:var(--f-hand);font-size:18px;letter-spacing:0;opacity:.95}
+.uses .kick{display:block;margin:0 0 12px;font-family:var(--f-hand);font-size:17px;letter-spacing:0;opacity:.95}
 .uses ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 28px}
 @media (max-width:640px){.uses ol{grid-template-columns:minmax(0,1fr)}}
-.uses li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;align-items:start;font-size:14px;line-height:1.45}
+.uses li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;align-items:start;font-size:13.5px;line-height:1.45}
 .uses li{position:relative}
 .uses li::before{content:"";width:22px;height:22px;border-radius:50%;background:var(--c)}
 .uses li::after{content:"";position:absolute;left:5px;top:5px;width:12px;height:12px;background:var(--cf);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/contain no-repeat}
@@ -223,31 +223,33 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
 .sk .note{font-size:17px;font-weight:400}
 
 .steps{display:flex;flex-direction:column;min-width:0}
-.card{padding:24px 0 30px;border-top:1px solid var(--rule);opacity:.42;transition:opacity .3s var(--ease);scroll-margin-top:84px}
+.card{padding:22px 0 28px;border-top:1px solid var(--rule);scroll-margin-top:84px}
 .card:first-child{border-top:0;padding-top:4px}
-.card.on,.card:focus-within{opacity:1}
 @media (max-width:960px){.card{opacity:1}}
 .card .head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;align-items:center}
 .card .n{font-family:var(--f-mono);font-size:11px;height:22px;padding:0 8px;border-radius:999px;display:grid;place-items:center;background:var(--surface);color:var(--muted);transition:background-color .2s var(--ease),color .2s var(--ease)}
 .card.on .n{background:var(--c);color:var(--cf)}
-.card h3{font-size:clamp(18px,1.9vw,21px);font-weight:600;line-height:1.15;letter-spacing:-.025em}
-.card .what{grid-column:2;font-size:14px;color:var(--muted);margin:0}
+.card h3{font-size:clamp(17px,1.6vw,19px);font-weight:600;line-height:1.15;letter-spacing:-.025em}
+.card .what{grid-column:2;font-size:13.5px;color:var(--muted);margin:0}
 .card .body{margin-top:16px;display:grid;gap:16px;padding-left:0}
 .card h4{margin:0 0 8px;font-family:var(--f-mono);font-weight:500;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--faint)}
 .card ol{margin:0;padding:0;list-style:none;counter-reset:st;display:grid;gap:10px}
-.card ol li{counter-increment:st;display:grid;grid-template-columns:24px minmax(0,1fr);gap:10px;font-size:14.5px;line-height:1.6}
+.card ol li{counter-increment:st;display:grid;grid-template-columns:24px minmax(0,1fr);gap:10px;font-size:14px;line-height:1.6}
 .card ol li::before{content:counter(st);font-family:var(--f-mono);font-size:11px;width:22px;height:22px;border-radius:50%;background:var(--surface);display:grid;place-items:center;margin-top:2px;color:var(--muted)}
-.card ul{margin:0;padding-left:1.1em;display:grid;gap:6px;font-size:14.5px}
-.card strong{background:color-mix(in srgb,var(--c) 14%,transparent);padding:0 .18em;border-radius:4px}
-.formula{font-family:var(--f-mono);font-size:12.5px;background:var(--surface);border-radius:10px;padding:12px 14px;overflow-x:auto;white-space:nowrap}
-.watch{background:color-mix(in srgb,#E5484D 8%,transparent);border-radius:10px;padding:12px 14px;font-size:14px;margin:0}
+.card ul{margin:0;padding-left:1.1em;display:grid;gap:6px;font-size:14px}
+.card strong{font-weight:600}
+.fig{margin:0;background:var(--surface);border-radius:12px;padding:10px}
+.fig svg{display:block;width:100%;max-width:560px;height:auto;background:#FFFFFF;border-radius:8px;margin:0 auto}
+.fig text{font-family:var(--f-hand)}
+.formula{font-family:var(--f-mono);font-size:12px;background:var(--surface);border-radius:10px;padding:12px 14px;overflow-x:auto;white-space:nowrap}
+.watch{background:color-mix(in srgb,#E5484D 8%,transparent);border-radius:10px;padding:12px 14px;font-size:13.5px;margin:0}
 .watch b{font-family:var(--f-mono);font-weight:500;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:#E5484D;display:block;margin-bottom:2px}
 
 .nextwrap{padding-block:10px 20px}
 .nextblock{all:unset;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;background:var(--surface);border-radius:16px;padding:22px 24px;transition:background-color .12s var(--ease);width:100%;box-sizing:border-box}
 .nextblock:hover{background:var(--surface-2)}
 .nextblock .kick{display:block;margin-bottom:4px}
-.nextblock b{display:block;font-size:clamp(18px,2.2vw,24px);font-weight:600;letter-spacing:-.03em}
+.nextblock b{display:block;font-size:clamp(17px,2vw,22px);font-weight:600;letter-spacing:-.03em}
 .nextblock .hand{font-size:18px;color:var(--muted)}
 .nextblock .arrow{width:40px;height:40px;border-radius:50%;background:var(--c);color:var(--cf);display:grid;place-items:center;flex:none;transition:transform .15s var(--ease)}
 .nextblock:hover .arrow{transform:translateX(3px)}
@@ -839,6 +841,131 @@ function drawSketch(key, onPick, mini){
   return svg;
 }
 
+/* ---------- CONCEPT SKETCHES (inside tool cards) ---------- */
+const FIG_ALT = {
+ 'tam-sam-som':'Three nested circles: TAM, SAM inside it, SOM inside that',
+ 'five-forces':'Four forces pressing on rivalry in the middle',
+ 's-curve':'A growth curve flattening while a second curve starts to climb',
+ 'break-even':'Revenue line crossing the total cost line at the break-even point',
+ 'plc':'Sales over time through introduction, growth, maturity and decline',
+ 'four-numbers':'A number line showing both sides\' walkaway points and the ZOPA between them',
+ 'make-buy':'A two by two grid deciding own it, partner or buy it',
+ 'pareto':'Bars sorted largest first with a running total crossing 80%',
+ 'vrio':'A staircase of four questions, each step giving more advantage',
+ 'npv':'Cash arriving each year, shrinking when converted to today\'s value',
+ 'validation':'A ladder of validation steps from interviews to paid pilots',
+ 'grounding':'Documents flowing through retrieve, augment and generate',
+ 'risk':'A five by five grid of likelihood and impact with the top corner marked fix first'
+};
+function drawFig(id){
+  if (!FIG_ALT[id] || !window.rough) return null;
+  const W = 560, H = 236, INK = '#2B2620', BLUE = '#2747C9', YEL = 'rgba(255,206,58,.75)';
+  const svg = el('svg',{viewBox:`0 0 ${W} ${H}`,class:'fg',role:'img','aria-label':FIG_ALT[id]});
+  const R = rough.svg(svg); let seed = 11;
+  const o = (x={}) => Object.assign({roughness:1.1,bowing:1,strokeWidth:1.5,stroke:INK,seed:seed++},x);
+  const add = n => svg.appendChild(n);
+  const line = (x1,y1,x2,y2,x) => add(R.line(x1,y1,x2,y2,o(x)));
+  const box = (x,y,w,h,f) => add(R.rectangle(x,y,w,h,o(f)));
+  const curve = (pts,x) => add(R.curve(pts,o(x)));
+  const T = (x,y,t,{s=17,a='middle',c='#16130F',w=400}={}) => { const e = el('text',{x,y,'text-anchor':a,fill:c,'font-size':s,'font-weight':w},svg); e.textContent = t; return e; };
+  const head = (x1,y1,x2,y2,c=INK) => { const a = Math.atan2(y2-y1,x2-x1), L = 10; line(x2,y2,x2-L*Math.cos(a-.45),y2-L*Math.sin(a-.45),{stroke:c}); line(x2,y2,x2-L*Math.cos(a+.45),y2-L*Math.sin(a+.45),{stroke:c}); };
+  const arrow = (x1,y1,x2,y2,c=INK) => { line(x1,y1,x2,y2,{stroke:c}); head(x1,y1,x2,y2,c); };
+  const axes = (xl,yl) => { arrow(50,205,530,205); arrow(50,205,50,18); T(530,226,xl,{a:'end',s:15,c:'#6A6258'}); const t = T(36,22,yl,{a:'end',s:15,c:'#6A6258'}); t.setAttribute('transform','rotate(-90 36 22)'); };
+  const fill = {fill:YEL,fillStyle:'solid'};
+  const S = {
+   'tam-sam-som'(){
+     add(R.circle(170,118,200,o())); add(R.circle(170,153,130,o())); add(R.circle(170,186,64,o(fill)));
+     T(170,40,'TAM',{w:700}); T(170,112,'SAM',{w:700}); T(170,192,'SOM',{w:700});
+     [[44,'everyone who could buy'],[112,'who you can reach today'],[188,'what you can win in 2 to 3 years']].forEach(([y,t])=>{ line(286,y-5,312,y-5); T(320,y,t,{a:'start'}); });
+   },
+   'five-forces'(){
+     box(205,92,150,50,fill); T(280,123,'Rivalry',{w:700});
+     box(205,10,150,46); T(280,39,'New entrants'); arrow(280,58,280,89);
+     box(205,180,150,46); T(280,209,'Substitutes'); arrow(280,178,280,145);
+     box(25,92,140,50); T(95,123,'Suppliers'); arrow(167,117,202,117);
+     box(395,92,140,50); T(465,123,'Buyers'); arrow(393,117,358,117);
+   },
+   's-curve'(){
+     axes('time','growth');
+     const sig = (x0,w,y0,h) => Array.from({length:22},(_,i)=>{const t=i/21;return [x0+t*w,y0-h/(1+Math.exp(-11*(t-.5)))];});
+     curve(sig(60,280,200,130)); curve(sig(250,270,200,175),{stroke:BLUE,strokeWidth:2});
+     T(150,92,'today\'s business',{a:'middle'}); T(410,40,'next curve',{a:'end',c:BLUE});
+     arrow(300,100,318,76,BLUE); T(300,118,'jump here',{c:BLUE,s:16});
+   },
+   'break-even'(){
+     axes('units sold','$');
+     line(50,150,525,150,{strokeLineDash:[6,6],stroke:'#8A8178'}); T(528,166,'fixed costs',{a:'end',s:15,c:'#6A6258'});
+     line(50,150,520,60); T(522,52,'total cost',{a:'end',s:16});
+     line(50,203,520,22,{stroke:BLUE,strokeWidth:2}); T(470,20,'revenue',{a:'end',c:BLUE,s:16});
+     add(R.circle(311,100,14,o({fill:YEL,fillStyle:'solid'}))); T(300,90,'break-even',{a:'end',w:700});
+     T(190,142,'loss',{s:15,c:'#6A6258'}); T(430,68,'profit',{s:15,c:'#6A6258'});
+   },
+   'plc'(){
+     axes('time','sales');
+     curve([[52,200],[120,188],[190,140],[260,70],[330,48],[400,62],[460,110],[522,170]],{strokeWidth:2});
+     [150,280,420].forEach(x=>line(x,30,x,203,{strokeLineDash:[5,6],stroke:'#8A8178'}));
+     [[100,'Introduction'],[215,'Growth'],[350,'Maturity'],[475,'Decline']].forEach(([x,t])=>T(x,24,t,{s:16,w:700}));
+   },
+   'four-numbers'(){
+     arrow(20,118,540,118); box(190,104,200,28,fill); T(290,124,'ZOPA',{w:700});
+     [190,390,120,455,60,515].forEach(x=>line(x,108,x,128));
+     T(190,92,'your walkaway',{c:BLUE,s:16}); T(455,92,'your target',{c:BLUE,s:16}); T(515,70,'your opening',{c:BLUE,s:16,a:'end'});
+     T(390,152,'their walkaway',{s:16}); T(120,152,'their target',{s:16}); T(40,174,'their opening',{s:16,a:'start'});
+     T(290,214,'A deal can only happen in the overlap.',{s:16,c:'#6A6258'});
+   },
+   'make-buy'(){
+     const x0=160,y0=12,s=190;
+     box(x0,y0,s,s); line(x0+s/2,y0,x0+s/2,y0+s); line(x0,y0+s/2,x0+s,y0+s/2);
+     box(x0+s/2+4,y0+4,s/2-8,s/2-8,fill);
+     T(x0+s*.75,y0+s*.25+6,'Own it',{w:700}); T(x0+s*.25,y0+s*.75+6,'Buy it',{w:700});
+     T(x0+s*.25,y0+s*.25,'Partner',{s:16}); T(x0+s*.25,y0+s*.25+18,'or long contract',{s:13,c:'#6A6258'});
+     T(x0+s*.75,y0+s*.75,'Partner',{s:16}); T(x0+s*.75,y0+s*.75+18,'or long contract',{s:13,c:'#6A6258'});
+     arrow(x0,y0+s+16,x0+s,y0+s+16); T(x0+s/2,y0+s+34,'harder to write a full contract',{s:15,c:'#6A6258'});
+     arrow(x0-16,y0+s,x0-16,y0); const t = T(x0-26,y0+s/2,'matters more to your edge',{s:15,c:'#6A6258'}); t.setAttribute('transform',`rotate(-90 ${x0-26} ${y0+s/2})`);
+   },
+   'pareto'(){
+     const v=[150,95,50,30,20,14,10,8], tot=v.reduce((a,b)=>a+b,0); let cum=0; const pts=[];
+     v.forEach((h,i)=>{ const x=70+i*56; box(x,205-h,42,h,i<3?fill:{}); cum+=h; pts.push([x+21,205-cum/tot*180]); });
+     line(50,205,530,205); curve(pts,{stroke:BLUE,strokeWidth:2});
+     line(50,205-.8*180,530,205-.8*180,{strokeLineDash:[6,6],stroke:'#8A8178'}); T(530,54,'80%',{a:'end',s:16,c:'#6A6258'});
+     T(400,226,'causes, biggest first',{s:15,c:'#6A6258'}); T(330,128,'fix these first',{a:'start',c:BLUE});
+     arrow(325,124,240,152,BLUE);
+   },
+   'vrio'(){
+     const labs=['Valuable?','Rare?','Costly to copy?','Organized?'], out=['parity','temporary edge','edge left unused','sustained edge'];
+     labs.forEach((l,i)=>{ const x=30+i*128, h=46+i*44; box(x,210-h,122,h,i===3?fill:{}); T(x+61,232-h+8,l,{s:16,w:700}); T(x+61,196-h,out[i],{s:15,c:BLUE}); });
+   },
+   'npv'(){
+     line(40,150,540,150);
+     box(52,150,28,58,{fill:'#C9C2B8',fillStyle:'hachure'}); T(88,200,'upfront cost',{a:'start',s:15});
+     [1,2,3,4].forEach(n=>{ const x=60+n*112, pv=84/Math.pow(1.18,n); box(x-30,150-84,26,84); box(x+2,150-pv,26,pv,fill); T(x,172,'year '+n,{s:15,c:'#6A6258'}); });
+     T(66,140,'today',{s:15,c:'#6A6258'});
+     box(330,8,16,16); T(352,21,'cash that year',{a:'start',s:15}); box(330,32,16,16,fill); T(352,45,'worth today',{a:'start',s:15});
+   },
+   'validation'(){
+     line(200,220,230,14,{strokeWidth:2}); line(330,220,360,14,{strokeWidth:2});
+     const r=[['Interviews',190],['Surveys',140],['Letters of intent',90],['Paid pilots',40]];
+     r.forEach(([t,y],i)=>{ const dx=(220-y)/206*30; line(200+dx,y,330+dx,y,i===3?{stroke:BLUE,strokeWidth:2.4}:{}); T(352+dx,y+5,t,{a:'start',w:i===3?700:400,c:i===3?BLUE:'#16130F'}); });
+     arrow(150,210,150,30,BLUE); const t=T(134,120,'more commitment',{s:15,c:BLUE}); t.setAttribute('transform','rotate(-90 134 120)');
+   },
+   'grounding'(){
+     [0,6,12].forEach(d=>box(14+d,70-d,78,96,{fill:'#FFFFFF',fillStyle:'solid'})); T(59,186,'your docs',{s:15});
+     const st=[['Retrieve','find passages'],['Augment','add to prompt'],['Generate','answer, cite']];
+     st.forEach(([a,b],i)=>{ const x=130+i*145; box(x,80,118,72,i===2?fill:{}); T(x+59,111,a,{w:700}); T(x+59,134,b,{s:15,c:'#6A6258'}); arrow(x-30,116,x-4,116); });
+   },
+   'risk'(){
+     const x0=150,y0=12,c=36;
+     for(let i=0;i<5;i++) for(let j=0;j<5;j++){ const L=i+1, I=5-j; box(x0+i*c,y0+j*c,c,c,L*I>=20?fill:{}); }
+     arrow(x0,y0+5*c+14,x0+5*c,y0+5*c+14); T(x0+2.5*c,y0+5*c+32,'likelihood',{s:15,c:'#6A6258'});
+     arrow(x0-14,y0+5*c,x0-14,y0); const t=T(x0-24,y0+2.5*c,'impact',{s:15,c:'#6A6258'}); t.setAttribute('transform',`rotate(-90 ${x0-24} ${y0+2.5*c})`);
+     T(360,50,'score = likelihood × impact',{a:'start',s:16}); T(360,82,'20 or more: fix',{a:'start',c:BLUE,w:700}); T(360,102,'before launch',{a:'start',c:BLUE,w:700});
+     arrow(356,78,x0+5*c+6,y0+c,BLUE);
+   }
+  };
+  S[id]();
+  return svg;
+}
+
 /* ---------- VIEWS ---------- */
 const view = $('#view'), bar = $('#progress');
 let io = null, onScroll = null;
@@ -938,6 +1065,7 @@ function cardHTML(t,i){
   return `<article class="card" id="t-${t.id}" data-t="${t.id}">
    <div class="head"><span class="n">${pad(i+1)}</span><h3>${esc(t.name)}</h3><p class="what">${md(t.what)}</p></div>
    <div class="body">
+    ${FIG_ALT[t.id]?`<figure class="fig" data-fig="${t.id}"></figure>`:''}
     ${t.formula?`<div class="formula">${esc(t.formula)}</div>`:''}
     <div><h4>How to use it</h4><ol>${t.steps.map(s=>`<li><span>${md(s)}</span></li>`).join('')}</ol></div>
     ${t.read?`<div><h4>How to read it</h4><ul>${t.read.map(s=>`<li>${md(s)}</li>`).join('')}</ul></div>`:''}
@@ -974,6 +1102,7 @@ function renderPlaybook(id,toolId){
   const map = view.querySelector('#map'); if (!matchMedia('(max-width:600px)').matches) map.open = true;
   const svg = drawSketch(id, tid => scrollToTool(tid));
   view.querySelector('#sk').appendChild(svg);
+  view.querySelectorAll('figure.fig').forEach(f => { const g = drawFig(f.dataset.fig); if (g) f.appendChild(g); else f.remove(); });
   view.querySelector('#back').onclick = () => go('');
   view.querySelector('#next').onclick = () => go(next.id);
 
