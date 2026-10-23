@@ -43,7 +43,7 @@ button{font:inherit;color:inherit}
 strong{font-weight:600}
 .mono{font-family:var(--f-mono);font-size:12px;letter-spacing:.01em}
 .hand{font-family:var(--f-hand);font-weight:400}
-.kick{font-family:var(--f-mono);font-size:12px;letter-spacing:.02em;color:var(--muted)}
+.kick{font-family:var(--f-mono);font-size:13px;letter-spacing:.02em;color:var(--muted)}
 .muted{color:var(--muted)}
 h1,h2,h3{font-family:var(--f-display);font-weight:600;font-variation-settings:"SOFT" 100;margin:0;text-wrap:balance;letter-spacing:-.02em}
 .rv{opacity:0;transform:translateY(8px);animation:rise .45s var(--ease) forwards;animation-delay:calc(var(--i,0)*50ms)}
@@ -264,7 +264,7 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
 .about{overflow-x:clip}
 .ab-hero{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:48px;align-items:center;padding-block:36px 24px}
 .ab-intro h1{font-size:clamp(28px,3.8vw,44px);font-weight:600;letter-spacing:-.04em;line-height:1.05;margin:10px 0 8px}
-.ab-intro .hand{display:block;font-size:clamp(20px,2vw,23px);color:var(--pen);margin-bottom:16px}
+.ab-intro .hand{display:block;font-size:21px;color:var(--pen);margin-bottom:16px}
 .ab-intro p{font-size:14px;line-height:1.6;margin:0 0 10px;max-width:46ch}
 .scribble{position:relative;white-space:nowrap}
 .scribble svg{position:absolute;left:-2%;bottom:-.18em;width:104%;height:.32em;overflow:visible}
@@ -284,14 +284,14 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
 .chap .when{position:sticky;top:84px;align-self:start;display:flex;flex-direction:column;gap:2px}
 .chap .yr{font-family:var(--f-mono);font-size:13px;color:var(--muted)}
 .chap .when .hand{font-size:21px;color:var(--pen)}
-.chap h2{font-size:clamp(17px,1.6vw,19px);font-weight:600;letter-spacing:-.03em;line-height:1.15;margin:0 0 14px}
+.chap h2{font-size:calc(var(--t) + 6px);font-weight:600;letter-spacing:-.03em;line-height:1.15;margin:0 0 14px}
 .chap p{font-size:14px;line-height:1.6;margin:0 0 12px;max-width:60ch}
 .stats-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:22px 0 4px}
 .stat{padding:14px 14px 12px;border:1.6px solid var(--ink);border-radius:255px 18px 225px 18px/18px 225px 18px 255px;display:flex;flex-direction:column;gap:2px}
 .stat b{font-family:var(--f-hand);font-weight:400;font-size:38px;line-height:1;color:var(--pen)}
 .stat span{font-size:calc(var(--t) - 3px);color:var(--muted);line-height:1.35}
 .ab-ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
-.ab-btn{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 18px;border-radius:999px;text-decoration:none;font-size:14px;font-weight:500;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink);transition:transform .12s var(--ease)}
+.ab-btn{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 18px;border-radius:999px;text-decoration:none;font-size:var(--u);font-weight:500;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink);transition:transform .12s var(--ease)}
 .ab-btn.solid{background:var(--ink);color:var(--bg);box-shadow:none}
 .ab-btn:hover{transform:translateY(-1px)}
 .ab-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
@@ -429,7 +429,7 @@ body.reading .top .about-link{display:inline-flex}
 .fig figcaption{font-size:calc(var(--t) - 1.5px)}
 .gl-item p{font-size:calc(var(--t) + 1px)}
 .ab-intro p,.ab-list,.chap p{font-size:calc(var(--t) + 3px);line-height:1.6}
-.ab-credits p,.ab-credits ul{font-size:calc(var(--t) - 2px)}
+.ab-credits p,.ab-credits ul{font-size:calc(var(--t) + 3px);line-height:1.6}
 .share p{font-size:calc(var(--t) - 1px)}
 .peek p{font-family:var(--f-body);font-size:calc(var(--t) - 1.5px)}
 .stk,.stk.pill,.stk.circle,.stk.rect{font-family:var(--f-hand);font-weight:400}
@@ -439,7 +439,7 @@ h1,h2,h3,.hero h1,.ab-intro h1,.intro h1,.card h3,.chap h2,.nextblock b,.sechead
 .hero h1,.ab-intro h1,.intro h1{font-weight:500}
 .card h3,.chap h2,.nextblock b{font-weight:600}
 .kick,.mono,.card h4,.watch b,.chap .yr,.card .n,.letters a,.letters span{letter-spacing:.04em}
-.card h4,.watch b{font-size:12px}
+.card h4,.watch b{font-size:13px}
 .formula{font-size:14px;font-style:italic}
 .pill,.chip,.about-link,.ab-btn,.share a,.hero .back{font-weight:600}
 .pol.big{padding:12px 12px 52px;border-radius:2px}
@@ -1008,7 +1008,7 @@ function renderAbout(){
       ${pol(ABOUT_IMG.hi,'Photo of Semira Yesufu smiling','',-2.5,'big',
         stk('Class of<br>2027','circle p','--r:12deg;top:-22px;right:-30px')+
         stk('proudly Naija 🇳🇬','pill g','--r:-8deg;bottom:46px;left:-38px')+
-        stk('🏅 hackathon champ','pill b','--r:5deg;bottom:-16px;right:-24px'))}
+        stk('🏅 3x hackathon champ','pill b','--r:5deg;bottom:-16px;right:-24px'))}
       <div class="ab-intro">
         <span class="kick rv" style="--i:0">About</span>
         <h1 class="rv" style="--i:1">Hi, I'm <span class="scribble">Semira<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 13 C 50 5, 110 4, 197 9 M 12 17 C 70 11, 130 12, 188 14"/></svg></span>.</h1>
