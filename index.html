@@ -126,12 +126,14 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
 .pill:hover{background:var(--surface-2)}
 .pill[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
 @media (max-width:600px){.filters{top:calc(env(safe-area-inset-top,0px) + 104px)}}
-.feed{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px 14px;padding-bottom:24px}
+.feed{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:30px 18px;padding-bottom:24px}
+.home .in{max-width:1400px}
+@media (min-width:1024px){.feed{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .story{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:9px;min-width:0}
 .story[hidden]{display:none}
 .thumb{position:relative;aspect-ratio:4/3;border-radius:14px;background:var(--surface);overflow:hidden;display:grid;place-items:center;transition:background-color .2s var(--ease)}
 .story:hover .thumb{background:color-mix(in srgb,var(--c) 10%,var(--surface))}
-.thumb .paper{width:84%;background:var(--polaroid);border-radius:6px;padding:6px;box-shadow:0 1px 2px rgba(0,0,0,.06),0 10px 28px -14px rgba(0,0,0,.35);transform:translateY(6px);transition:transform .25s var(--ease)}
+.thumb .paper{width:94%;background:var(--polaroid);border-radius:6px;padding:4px;box-shadow:0 1px 2px rgba(0,0,0,.06),0 10px 28px -14px rgba(0,0,0,.35);transform:translateY(6px);transition:transform .25s var(--ease)}
 .story:hover .paper,.story:focus-visible .paper{transform:translateY(-2px) scale(1.025)}
 .thumb .paper svg{display:block;width:100%;height:auto;pointer-events:none}
 .thumb .paper .sk path{stroke:var(--line)}.thumb .paper .sk text{fill:var(--ink)}.thumb .paper .sk .s,.thumb .paper .sk .k{fill:var(--muted)}.thumb .paper .sk .note{fill:var(--pen)}
@@ -1608,7 +1610,7 @@ const ARROW = '<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
 function renderHome(){
   cleanup(); setNav(null); setCrumb(null);
   view.innerHTML = `
-  <section class="gut"><div class="in">
+  <section class="gut home"><div class="in">
     <div class="intro">
       <div><h1 class="rv" style="--i:0">Business school, <em>sketched out.</em></h1>
 </div>
@@ -1812,9 +1814,11 @@ function renderSearch(q){
   const s = q.toLowerCase(); const hits = [];
   PB.forEach(p => p.tools.forEach(t => { const hay = [t.name,t.what,t.def||'',(t.steps||[]).flat(2).join(' '),t.ex||'',t.formula||''].join(' ').toLowerCase(); if (hay.includes(s)) hits.push([p,t]); }));
   const gh = GLOSS.filter(([t,d]) => t.toLowerCase().includes(s));
-  view.innerHTML = `<section class="gut sec"><div class="in">${gh.length?`<div class="sechead"><h2>In the glossary</h2></div><div class="results" style="margin-bottom:34px">${gh.map(([t,d])=>`<button data-g="${esc(t)}"><b>${esc(t)}</b><small>${esc(d)}</small></button>`).join('')}</div>`:''}<div class="sechead"><h2>${hits.length} ${hits.length===1?'tool':'tools'} for “${esc(q)}”</h2></div>
+  const ph = PB.filter(p => [p.name,p.q||'',plain(p.idea||'')].join(' ').toLowerCase().includes(s));
+  view.innerHTML = `<section class="gut sec"><div class="in">${ph.length?`<div class="sechead"><h2>Playbooks</h2></div><div class="results" style="margin-bottom:34px">${ph.map(p=>`<button data-pb="${p.id}"><b>${esc(p.name)}</b><small>${esc(p.q||'')}</small></button>`).join('')}</div>`:''}${gh.length?`<div class="sechead"><h2>In the glossary</h2></div><div class="results" style="margin-bottom:34px">${gh.map(([t,d])=>`<button data-g="${esc(t)}"><b>${esc(t)}</b><small>${esc(d)}</small></button>`).join('')}</div>`:''}<div class="sechead"><h2>${hits.length} ${hits.length===1?'tool':'tools'} for “${esc(q)}”</h2></div>
    <div class="results">${hits.map(([p,t])=>`<button data-p="${p.id}" data-t="${t.id}"><b>${esc(t.name)}</b><small>${esc(p.name)}. ${md(t.what)}</small></button>`).join('') || '<p class="muted">No tools match. Try a framework name like SWOT, or a word like price.</p>'}</div></div></section>`;
   view.querySelectorAll('.results button[data-p]').forEach(b => b.onclick = () => { $('#q').value=''; go(b.dataset.p,b.dataset.t); });
+  view.querySelectorAll('.results button[data-pb]').forEach(b => b.onclick = () => { $('#q').value=''; go(b.dataset.pb); });
   view.querySelectorAll('.results button[data-g]').forEach(b => b.onclick = () => { $('#q').value=''; try { history.replaceState(null,'','#glossary'); } catch(e){} renderGlossary(b.dataset.g); });
 }
 function go(p,t){
