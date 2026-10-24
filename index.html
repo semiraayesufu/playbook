@@ -1420,7 +1420,7 @@ function cardHTML(t,i){
     <div><h4>Steps</h4><ol>${t.steps.map(s=>Array.isArray(s)?`<li><span>${md(s[0])}<ul class="sub">${s[1].map(x=>`<li>${md(x)}</li>`).join('')}</ul></span></li>`:`<li><span>${md(s)}</span></li>`).join('')}</ol></div>
     ${t.example?`<div class="eg"><span class="lbl">In practice</span><p>${md(t.example)}</p></div>`:''}
      ${t.read?`<div><h4>Quick guide</h4><ul>${t.read.map(s=>`<li>${md(s)}</li>`).join('')}</ul></div>`:''}
-    ${t.watch?`<p class="watch"><b>Where it goes wrong</b>${md(t.watch)}</p>`:''}
+    ${t.watch?`<p class="watch"><b>Watch out</b>${md(t.watch)}</p>`:''}
    </div></article>`;
 }
 
