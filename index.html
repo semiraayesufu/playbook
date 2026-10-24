@@ -979,9 +979,13 @@ const FIG_ALT = {
  'viz-4':'A waterfall before and after. On the left, four plain bars from zero titled Membership 2025. On the right, the bars step from 61,000 through joins and cancellations to 58,900, with the title Still signing members, still shrinking',
  'committee':'Seven roles around a deal, with the champion, the economic buyer, the technical buyer and the users marked',
  'channel':'Two bars comparing what a distributor earns on your product against a rival, with the end-customer interest line flat above them',
+ 'b2b-proof':'A ladder of five rungs from thought leadership at the bottom to a paid pilot at the top, with the stage of the deal each rung serves written beside it',
+ 'route':'A grid with deal size up the side and complexity along the bottom. Self-serve in the small simple corner, field sales in the large complex corner, inside sales between, partners along the edge where you have no presence',
  'risk':'A five by five grid where each square shows likelihood times impact, shaded in three bands: fix before launch, plan and owner, keep an eye on it'
 };
 const FIG_CAP = {
+ 'b2b-proof':'Each rung costs more and convinces more. Thought leadership opens the door, a pilot closes it.',
+ 'route':'Match the route to the deal. The bigger and more complex the purchase, the more it needs a person in the room.',
  'committee':'Everyone who can say yes or no, and the four roles that matter most. Each one needs a different message.',
  'channel':'When sales through a partner fall and customer interest has not, look at what the partner earns.',
  'viz-3':'Seven slices ask the reader to compare angles and read a legend. Two slices and a title hand them the finding.',
@@ -1276,8 +1280,8 @@ function drawFig(id){
      const person=(x,y,sc=1)=>{ add(R.circle(x,y,16*sc,o())); line(x,y+8*sc,x,y+30*sc); line(x,y+14*sc,x-12*sc,y+26*sc); line(x,y+14*sc,x+12*sc,y+26*sc); line(x,y+30*sc,x-10*sc,y+48*sc); line(x,y+30*sc,x+10*sc,y+48*sc); };
      box(230,100,100,40,fill); T(280,118,'the deal',{w:700,s:14}); T(280,133,'yes or no',{s:11,c:'#6A6258'});
      const roles=[[90,30,'Champion','owns the problem',true],[280,22,'Economic buyer','owns the budget',true],[470,30,'Technical buyer','can block',true],[90,148,'Purchasing','wants three quotes',false],[470,148,'Finance','wants the payback',false],[280,156,'Users','use it every day',true]];
-     roles.forEach(([x,y,t,sub,key])=>{ person(x,y,.7); if(key){ add(R.circle(x,y,16*.7+7,o({stroke:BLUE,strokeWidth:1.2}))); } T(x,y+52,t,{s:12,w:key?700:400,c:key?BLUE:'#16130F'}); T(x,y+65,sub,{s:10.5,c:'#6A6258'}); });
-     [[118,64,228,110],[280,62,280,98],[442,64,332,110],[118,160,228,130],[442,160,332,130],[280,156,280,142]].forEach(([x1,y1,x2,y2])=>line(x1,y1,x2,y2,{strokeWidth:1,strokeLineDash:[4,4]}));
+     roles.forEach(([x,y,t,sub,key])=>{ person(x,y,.7); if(key){ add(R.circle(x,y,16*.7+7,o({stroke:BLUE,strokeWidth:1.2}))); } const side = t==='Economic buyer'; T(side?x+26:x,side?y+4:y+52,t,{s:12,w:key?700:400,c:key?BLUE:'#16130F',a:side?'start':'middle'}); T(side?x+26:x,side?y+18:y+65,sub,{s:10.5,c:'#6A6258',a:side?'start':'middle'}); });
+     [[118,64,228,110],[280,58,280,98],[442,64,332,110],[118,160,228,130],[442,160,332,130],[280,156,280,142]].forEach(([x1,y1,x2,y2])=>line(x1,y1,x2,y2,{strokeWidth:1,strokeLineDash:[4,4]}));
      T(20,16,'blue ring = the roles that decide',{a:'start',s:11,c:BLUE});
    },
    'channel'(){
@@ -1286,6 +1290,21 @@ function drawFig(id){
      box(260,205-125,90,125,fill); T(305,205-135,'rival, 25%',{s:13,w:700}); T(305,205-151,'+ co-marketing',{s:11,c:'#6A6258'});
      line(60,34,520,32,{stroke:BLUE,strokeWidth:1.6}); T(522,26,'customer interest, up 10%',{a:'end',s:12,c:BLUE});
      T(430,140,'the partner moved,',{s:13,c:'#6A6258'}); T(430,158,'the customers did not',{s:13,c:'#6A6258'});
+   },
+   'b2b-proof'(){
+     const rungs=[['Thought leadership','opens the door'],['Case studies','carry the middle'],['ROI calculator','their own number'],['Reference calls','peer to peer'],['Paid pilot','closes']];
+     line(150,206,150,26,{strokeWidth:2}); line(410,206,410,26,{strokeWidth:2});
+     rungs.forEach(([t,sub],i)=>{ const y=190-i*38; line(150,y,410,y,{strokeWidth:2}); T(280,y-8,t,{w:700,s:13}); T(430,y-4,sub,{a:'start',s:12,c:'#6A6258'}); });
+     arrow(90,196,90,36,BLUE); T(90,216,'cost and',{s:11.5,c:BLUE}); T(90,230,'conviction',{s:11.5,c:BLUE});
+   },
+   'route'(){
+     axes('complexity of the purchase','deal size');
+     box(60,120,170,80,{}); T(145,154,'Self-serve',{w:700,s:14}); T(145,172,'small and simple',{s:12,c:'#6A6258'});
+     box(240,120,170,80,{}); T(325,154,'Inside sales',{w:700,s:14}); T(325,172,'a conversation, no visit',{s:12,c:'#6A6258'});
+     box(240,30,170,80,{}); T(325,64,'Inside sales',{w:700,s:14}); T(325,82,'mid-size, some committee',{s:12,c:'#6A6258'});
+     box(420,30,110,80,fill); T(475,64,'Field sales',{w:700,s:14}); T(475,82,'large, many yeses',{s:12,c:'#6A6258'});
+     box(420,120,110,80,{}); T(475,154,'Partners',{w:700,s:14}); T(475,172,'where you have',{s:12,c:'#6A6258'}); T(475,186,'no presence',{s:12,c:'#6A6258'});
+     T(145,64,'Marketplaces',{s:13,c:'#6A6258'}); T(145,82,'budget already approved',{s:11.5,c:'#6A6258'});
    },
    'phases'(){
      const ph=[['Prototype','one task, reviewed'],['Integrate','real data, more users'],['Scale','automate the reliable']];
