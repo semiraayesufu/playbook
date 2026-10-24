@@ -308,6 +308,8 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
 .stat{padding:14px 14px 12px;border:1.6px solid var(--ink);border-radius:255px 18px 225px 18px/18px 225px 18px 255px;display:flex;flex-direction:column;gap:2px}
 .stat b{font-family:var(--f-hand);font-weight:400;font-size:38px;line-height:1;color:var(--pen)}
 .stat span{font-size:calc(var(--t) - 3px);color:var(--muted);line-height:1.35}
+.ab-intro .pull{font-size:19px;line-height:1.4;max-width:30ch;margin:4px 0 18px;letter-spacing:-.01em}
+.ab-list{list-style:none;padding:0;margin:0;max-width:60ch}.ab-list li{font:inherit;line-height:1.6;padding:8px 0;border-bottom:1px solid var(--rule)}.ab-list li:last-child{border-bottom:0}
 .ab-ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
 .ab-btn{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 18px;border-radius:999px;text-decoration:none;font-size:var(--u);font-weight:500;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink);transition:transform .12s var(--ease)}
 .ab-btn.solid{background:var(--ink);color:var(--bg);box-shadow:none}
@@ -1390,7 +1392,7 @@ function drawFig(id){
   return svg;
 }
 
-const ABOUT_IMG = {"hi": "semira.jpg?v=7"};
+const ABOUT_IMG = {"hi": "semira.jpg?v=8"};
 /* ---------- ABOUT ---------- */
 const LINKEDIN_URL = 'https://www.linkedin.com/in/semirayesufu';
 function renderAbout(){
@@ -1404,55 +1406,50 @@ function renderAbout(){
       <div class="ab-intro">
         <span class="kick rv" style="--i:0">About</span>
         <h1 class="rv" style="--i:1">Semira Yesufu</h1>
-        <span class="hand rv" style="--i:2">Product, strategy and venture</span>
-        <p class="rv" style="--i:3">I'm an MBA candidate at the Kelley School of Business and a Venture Fellow at The Heritage Group, where I do due diligence on hardtech companies. Before Kelley, I spent years in product management and design across fintech, e-commerce and enterprise software, and founded Path4Her, a technology literacy nonprofit for women in Nigeria.</p>
-        <p class="rv" style="--i:4">Since starting the MBA, I've worked as an AI Strategist at The New York Times, served as an Innovation Fellow at IU Innovates, where I assessed student start-ups and guided them through an MVP sprint, and led a due diligence engagement for Elevate Ventures. I build practical tools that help people do more. The MBA Playbook is the latest.</p>
+        <span class="hand rv" style="--i:2">MBA candidate, Kelley School of Business</span>
+        <p class="pull rv" style="--i:3">Most business questions have been answered before. The hard part is finding the answer when you need it.</p>
+        <a class="ab-btn rv" style="--i:4" href="${LINKEDIN_URL}" target="_blank" rel="noopener">LinkedIn ${ARROW}</a>
       </div>
     </div>
 
     <article class="chap">
-      <div class="when"><span class="yr">Fall 2025</span><span class="hand">the archive</span></div>
+      <div class="when"><span class="yr">01</span><span class="hand">Backstory</span></div>
       <div class="what">
-        <h2>It started as a Notion page.</h2>
-        <p>In my first semester I created a Notion page called Coursework and made it the home for everything I learned, one page per course and project. Semester by semester it became a running archive of business school.</p>
-        <p>As it filled up, I kept asking how to make the archive as useful as possible. Notes only earn their place if you can find the right one in seconds.</p>
-        <figure class="pol wide" style="--tilt:1.2deg"><span class="tape" aria-hidden="true"></span>
-          <div class="np" role="img" aria-label="Recreation of the Coursework page in Notion, listing fall 2025 courses">
-            <div class="np-cover"></div>
-            <div class="np-body">
-              <div class="np-title">Coursework</div>
-              <div class="np-desc">Notes, frameworks and lessons worth keeping, one page per course.</div>
-              <div class="np-group"><span class="np-tag np-blue">Fall 2025</span></div>
-              <div class="np-row np-head"><span>Aa Name</span><span>Playbook</span><span>Type</span><span>Status</span></div>
-              ${[['Managerial Accounting','Finance','g'],['Economics','Economics','n'],['Leadership & Career Development','Negotiation','y'],['Marketing Management','Marketing','p'],['Strategic Management','Strategy','b'],['Finance','Finance','g']].map(([n,pb,c])=>`<div class="np-row"><span class="np-name">${n}</span><span><span class="np-tag np-${c}">${pb}</span></span><span><span class="np-tag np-b">Course</span></span><span><span class="np-tag np-g">Done</span></span></div>`).join('')}
-            </div>
-          </div>
-          <figcaption>the Coursework page in Notion</figcaption>
-        </figure>
+        <p>I'm an MBA candidate at the Kelley School of Business and a Venture Fellow at The Heritage Group, where I do due diligence on hardtech companies.</p>
+        <p>Before Kelley, I spent years in product management and design across fintech, e-commerce and enterprise software. I also founded Path4Her, a technology literacy nonprofit for women in Nigeria.</p>
+        <p>At Kelley, I have worked as an AI Strategist at The New York Times, served as an Innovation Fellow at IU Innovates, where I assessed student start-ups and guided them through an MVP sprint, and led a due diligence engagement for Elevate Ventures.</p>
       </div>
     </article>
 
     <article class="chap">
-      <div class="when"><span class="yr">2026</span><span class="hand">the idea</span></div>
+      <div class="when"><span class="yr">02</span><span class="hand">The playbook</span></div>
       <div class="what">
-        <h2>The notes started answering other people's questions.</h2>
-        <p>Friends, family and founders I met through the MBA began bringing me their business questions. How to price a product. How to enter a market. And at least one “Should I quit my job and open a bakery?” The notes answered most of them.</p>
-        <p>If they could do that for the people around me, they could do it for anyone willing to look. I rewrote the notes as tools, each with the steps, a worked example and the mistakes to avoid, and organised them around the questions a business actually asks.</p>
-        <p>That is The MBA Playbook.</p>
+        <p>From my first semester I kept a Notion page called Coursework. It held my courses, my projects and the lessons from the business books I was reading.</p>
+        <p>I noticed I kept going back to it. Whenever I had a business question, or wanted a quick insight, the answer was usually already in my notes.</p>
+        <p>Around the same time I became the designated business hotline for friends, family and the founders I met through the MBA. How to price a product. How to enter a market. At least one “Should I quit my job and open a bakery?” The notes answered most of it.</p>
+        <p>The MBA Playbook is those notes, rewritten as tools anyone can use. Each one has the steps, a worked example and the mistakes to avoid, organised around the questions a business actually asks.</p>
       </div>
     </article>
 
     <article class="chap">
-      <div class="when"><span class="yr">Now</span><span class="hand">version one</span></div>
+      <div class="when"><span class="yr">03</span><span class="hand">I'm interested in</span></div>
       <div class="what">
-        <h2>This is version one.</h2>
-        <p>The playbook will keep growing as I learn more and as readers tell me what they wish was here. If a tool helped you, or one is missing, I'd like to hear it.</p>
-        <div class="ab-ctas">
-          <div class="btns">
-            ${SUBMIT_URL?`<a class="ab-btn solid" href="${SUBMIT_URL}" target="_blank" rel="noopener">Share an insight ${ARROW}</a>`:''}
-            <a class="ab-btn" href="${LINKEDIN_URL}" target="_blank" rel="noopener">Connect with me on LinkedIn ${ARROW}</a>
-          </div>
-        </div>
+        <ul class="ab-list">
+          <li>Applied AI inside the products people already use</li>
+          <li>Hardtech and the founders building it</li>
+          <li>Tools that make expertise reusable</li>
+          <li>Technology access for women in emerging markets</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="chap">
+      <div class="when"><span class="yr">04</span><span class="hand">What's next</span></div>
+      <div class="what">
+        <p>This is version one. The playbook will keep growing as I learn more and as readers tell me what they wish was here. If a tool helped you, or one is missing, I'd like to hear it.</p>
+        <div class="ab-ctas"><div class="btns">
+          <a class="ab-btn" href="${LINKEDIN_URL}" target="_blank" rel="noopener">Connect with me on LinkedIn ${ARROW}</a>
+        </div></div>
       </div>
     </article>
 
