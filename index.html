@@ -398,8 +398,7 @@ body.reading .top .about-link{display:inline-flex}
 .np-g{background:#2B593F;color:#D7F2E1}.np-b{background:#28456C;color:#D8E6F7}.np-y{background:#89632A;color:#FBEBCB}.np-p{background:#69314C;color:#F7DBE8}.np-n{background:#373737;color:#DADAD8}.np-blue{background:#28456C;color:#D8E6F7}
 @media (max-width:520px){.np-body{padding:14px 12px}.np-row{grid-template-columns:minmax(0,1.6fr) minmax(0,1.2fr) minmax(0,.8fr);}.np-row>span:nth-child(4){display:none}}
 .formula{font-family:var(--f-mono);font-size:12px;background:var(--surface);border-radius:10px;padding:12px 14px;overflow-x:auto;white-space:nowrap}
-.eg{background:var(--surface);border-left:3px solid var(--c,var(--pen));border-radius:10px;padding:12px 14px}.eg h4{margin-top:0}.eg p{margin:0;font-size:13.5px;line-height:1.55}
-.test{background:color-mix(in srgb,var(--pen) 9%,transparent);border-radius:10px;padding:12px 14px;font-size:13.5px;margin:0}.test b{font-family:var(--f-mono);font-weight:500;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--pen);display:block;margin-bottom:2px}
+.prose p{margin:0 0 10px}.prose p:last-child{margin-bottom:0}
 .watch{background:color-mix(in srgb,#E5484D 8%,transparent);border-radius:10px;padding:12px 14px;font-size:13.5px;margin:0}
 .watch b{font-family:var(--f-mono);font-weight:500;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:#E5484D;display:block;margin-bottom:2px}
 
@@ -444,7 +443,7 @@ body.reading .top .about-link{display:inline-flex}
 /* titles in Fraunces, body in Work Sans, notes in Patrick Hand */
 .side,.top,.filters,.stats,.story .meta,.share,.ab-btn,.results,.nowon,.card .n,.gl-tools,.crumb,.back,.nextblock,.pill,.chip,.navgroup,.search input,button{font-family:var(--f-ui)}
 /* one reading size for all body text, on every page */
-.card .what,.card .def,.card ol>li,.card ul,.card ul.sub,.watch,.hero .lede,.uses li,.fig figcaption,.gl-item p,.intro p,.ab-intro p,.ab-list,.chap p,.ab-credits p,.ab-credits ul,.share p{font-size:var(--r);line-height:1.6}
+.card .what,.card .def,.card .prose p,.card ol>li,.card ul,.card ul.sub,.watch,.hero .lede,.uses li,.fig figcaption,.gl-item p,.intro p,.ab-intro p,.ab-list,.chap p,.ab-credits p,.ab-credits ul,.share p{font-size:var(--r);line-height:1.6}
 .peek p{font-family:var(--f-body);font-size:14px;line-height:1.45}
 .stk,.stk.pill,.stk.circle,.stk.rect{font-family:var(--f-hand);font-weight:400}
 .pol img{image-rendering:auto}
@@ -1387,13 +1386,11 @@ function cardHTML(t,i){
   return `<article class="card" id="t-${t.id}" data-t="${t.id}">
    <div class="head"><span class="n">${pad(i+1)}</span><h3>${esc(t.name)}</h3><p class="what">${md(t.what)}</p></div>
    <div class="body">
-    ${t.def?`<div><h4>What it is</h4><p class="def">${md(t.def)}</p></div>`:''}
-     ${t.why?`<div><h4>Why it matters</h4><p class="def">${md(t.why)}</p></div>`:''}
+    ${t.def||t.why?`<div><h4>What it is</h4>${t.def?`<p class="def">${md(t.def)}</p>`:''}${t.why?`<p class="def" style="margin-top:10px">${md(t.why)}</p>`:''}</div>`:''}
     ${FIG_ALT[t.id]?`<figure class="fig" data-fig="${t.id}"><figcaption>${esc(FIG_CAP[t.id]||'')}</figcaption></figure>`:''}
     ${t.formula?`<div class="formula">${esc(t.formula)}</div>`:''}
     <div><h4>Steps</h4><ol>${t.steps.map(s=>Array.isArray(s)?`<li><span>${md(s[0])}<ul class="sub">${s[1].map(x=>`<li>${md(x)}</li>`).join('')}</ul></span></li>`:`<li><span>${md(s)}</span></li>`).join('')}</ol></div>
-    ${t.example?`<div class="eg"><h4>In practice</h4><p>${md(t.example)}</p></div>`:''}
-     ${t.test?`<p class="test"><b>A good test</b>${md(t.test)}</p>`:''}
+    ${t.example||t.test?`<div class="prose">${t.example?`<p>${md(t.example)}</p>`:''}${t.test?`<p><b>A good test:</b> ${md(t.test)}</p>`:''}</div>`:''}
      ${t.read?`<div><h4>Quick guide</h4><ul>${t.read.map(s=>`<li>${md(s)}</li>`).join('')}</ul></div>`:''}
     ${t.mistakes?`<div><h4>Common mistakes</h4><ul>${t.mistakes.map(s=>`<li>${md(s)}</li>`).join('')}</ul></div>`:''}
      ${t.watch?`<p class="watch"><b>Watch out</b>${md(t.watch)}</p>`:''}
