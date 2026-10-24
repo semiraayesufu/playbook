@@ -8,8 +8,6 @@ The MBA Playbook turns what business school teaches into tools you can use on re
 
 ## The playbooks
 
-Each playbook answers one question a business faces.
-
 | Playbook | The question |
 |---|---|
 | Applied AI | How do I use and build with AI? |
@@ -22,10 +20,7 @@ Each playbook answers one question a business faces.
 | Negotiation & Persuasion | How do I get to yes? |
 
 ## How each tool works
-
-Every tool follows the same shape.
-
-- **What it is**, in plain language, and why it matters.
+- **What it is**, in simple terms, and why it matters.
 - **Steps** you can follow in order, with the formula where there is one.
 - **In practice**, a worked example with the numbers laid out line by line. Each playbook follows one example company from tool to tool, so the figures connect.
 - **Watch out**, the mistake people make most often.
@@ -39,7 +34,7 @@ Every tool follows the same shape.
 
 ## How it is built
 
-The whole site is one HTML file with no build step. The sketches are drawn with [rough.js](https://roughjs.com). It works in light and dark mode and on mobile.
+The whole site is one HTML file with no build step. The sketches are drawn with [rough.js](https://roughjs.com).
 
 ## Credits
 
@@ -49,4 +44,4 @@ This is an independent project. It is not affiliated with or endorsed by Indiana
 
 ## About
 
-Built by [Semira Yesufu](https://www.linkedin.com/in/semirayesufu), MBA candidate at the Kelley School of Business. If a tool helped you, or one is missing, I'd like to hear it.
+Built by [Semira Yesufu](https://www.linkedin.com/in/semirayesufu), MBA candidate at the Kelley School of Business. 
