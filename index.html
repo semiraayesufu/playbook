@@ -13,7 +13,7 @@
 /* Direction: a quiet, tool-like library (after recent.design). DM Sans at small sizes, white canvas, soft grey surfaces, rounded cards, pill filters, a sidebar for browsing, and quick 120ms transitions. Hand-drawn sketches and one color per playbook keep the personality. */
 :root{
   --bg:#FFFFFF; --surface:#F4F4F3; --surface-2:#ECECEA; --ink:#141414; --muted:rgba(0,0,0,.52); --faint:rgba(0,0,0,.3); --rule:rgba(0,0,0,.08);
-  --line:#2B2620; --hl:rgba(255,206,58,.55); --hl-soft:rgba(255,206,58,.25); --pen:#2747C9;
+  --line:#2B2620; --hl:rgba(255,206,58,.55); --hl-soft:rgba(255,206,58,.25); --pen:#2747C9; --tpl:#8A6A3B; --mark:rgba(39,71,201,.16);
   --paper:#FFFFFF; --sheet:#FFFFFF;
   --f-display:'Fraunces','Iowan Old Style','Times New Roman',Georgia,serif;
   --f-ui:'Source Serif 4','Iowan Old Style','Times New Roman',Georgia,serif;
@@ -30,10 +30,10 @@
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#0C0C0C; --surface:#171717; --surface-2:#202020; --ink:#EDEDEC; --muted:rgba(255,255,255,.55); --faint:rgba(255,255,255,.32); --rule:rgba(255,255,255,.09);
-  --line:#E9E1D3; --hl:rgba(255,206,58,.4); --hl-soft:rgba(255,206,58,.16); --pen:#9DB0FF; --paper:#0C0C0C; --sheet:#171717; color-scheme:dark}}
+  --line:#E9E1D3; --hl:rgba(255,206,58,.4); --hl-soft:rgba(255,206,58,.16); --pen:#9DB0FF; --tpl:#CDAA6E; --mark:rgba(157,176,255,.26); --paper:#0C0C0C; --sheet:#171717; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0C0C0C; --surface:#171717; --surface-2:#202020; --ink:#EDEDEC; --muted:rgba(255,255,255,.55); --faint:rgba(255,255,255,.32); --rule:rgba(255,255,255,.09);
-  --line:#E9E1D3; --hl:rgba(255,206,58,.4); --hl-soft:rgba(255,206,58,.16); --pen:#9DB0FF; --paper:#0C0C0C; --sheet:#171717; color-scheme:dark}
+  --line:#E9E1D3; --hl:rgba(255,206,58,.4); --hl-soft:rgba(255,206,58,.16); --pen:#9DB0FF; --tpl:#CDAA6E; --mark:rgba(157,176,255,.26); --paper:#0C0C0C; --sheet:#171717; color-scheme:dark}
 *{box-sizing:border-box}
 html{scroll-padding-top:76px;-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:var(--t);line-height:1.55;margin:0;overflow-x:hidden;-webkit-font-smoothing:antialiased}
@@ -150,6 +150,7 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
 .story:hover .thumb.gl{background:var(--surface-2)}
 .thumb.gl .az{font-weight:700;font-size:clamp(56px,7vw,84px);line-height:.9;letter-spacing:-.06em;color:var(--ink);text-align:center}
 .thumb.gl .az span{display:block;font-family:var(--f-hand);font-size:.31em;font-weight:400;letter-spacing:0;color:var(--pen);margin-top:10px}
+.thumb.tp .az,.thumb.tp .az span{color:var(--tpl)}
 
 
 .peek{position:absolute;inset:0;border-radius:inherit;display:flex;align-items:flex-end;padding:16px 56px 16px 16px;text-align:left;color:var(--ink);
@@ -308,6 +309,7 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
 .stat{padding:14px 14px 12px;border:1.6px solid var(--ink);border-radius:255px 18px 225px 18px/18px 225px 18px 255px;display:flex;flex-direction:column;gap:2px}
 .stat b{font-family:var(--f-hand);font-weight:400;font-size:38px;line-height:1;color:var(--pen)}
 .stat span{font-size:calc(var(--t) - 3px);color:var(--muted);line-height:1.35}
+.about mark{background:linear-gradient(transparent 30%,var(--mark) 30%,var(--mark) 95%,transparent 95%);color:inherit;padding:0 3px;margin:0 -1px;border-radius:2px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
 .ab-intro .pull{font-size:19px;line-height:1.4;max-width:46ch;margin:4px 0 18px;letter-spacing:-.01em}
 .ab-list{list-style:none;padding:0;margin:0;max-width:60ch}.ab-list li{font:inherit;line-height:1.6;padding:8px 0;border-bottom:1px solid var(--rule)}.ab-list li:last-child{border-bottom:0}
 .ab-ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
@@ -1416,34 +1418,34 @@ function renderAbout(){
       <div class="when"><span class="yr">01</span><span class="hand">Backstory</span></div>
       <div class="what">
         <p>I have always been a technology geek. Leave me with a laptop and I can disappear for days. A new app, a new gadget, and these days a new AI model, still give me the thrill they did when I was a child. I want to open it, set it up my way and find out what it can do. That curiosity became a career. I studied computer science and went straight into building.</p>
-        <p>At Blue Fintech, a start-up in Nigeria, I was the first product hire, taking peer-to-peer mobile payments from an idea to 50,000 users. At Selar I designed experiences for 240,000 African creators selling digital products around the world.</p>
-        <p>Along the way I realised how few seats there are for women in technology, especially in Nigeria. The builder in me wanted to provide a solution, and I founded Path4Her, a technology and AI nonprofit that has empowered more than 2,000 women across five locations in Nigeria.</p>
-        <p>Product management and design taught me what to build and how to create the experience around it. I wanted to go deeper into the strategy that moves products, businesses and people at scale. That is why I came to business school, and so far it has been a fulfilling experience. I have worked at The New York Times as an AI Product Strategist, building a context layer of institutional knowledge that powers AI tools and AI-enabled workflows for the news app team. I was an Innovation Fellow at IU Innovates, working with student founders to turn their ideas into MVPs. Most recently I was a Venture Fellow at Elevate Ventures, doing commercial due diligence on an early-stage start-up.</p>
+        <p>At <mark>Blue Fintech</mark>, a start-up in Nigeria, I was the <mark>first product hire</mark>, taking peer-to-peer mobile payments from an idea to 50,000 users. At <mark>Selar</mark> I designed experiences for 240,000 African creators selling digital products around the world.</p>
+        <p>Along the way I realised how few seats there are for women in technology, especially in Nigeria. The builder in me wanted to provide a solution, and I founded <mark>Path4Her</mark>, a technology and AI nonprofit that has empowered more than 2,000 women across five locations in Nigeria.</p>
+        <p>Product management and design taught me what to build and how to create the experience around it. I wanted to go deeper into the strategy that moves products, businesses and people at scale. That is why I came to business school, and so far it has been a fulfilling experience. I have worked at <mark>The New York Times</mark> as an <mark>AI Product Strategist</mark>, building a context layer of institutional knowledge that powers AI tools and AI-enabled workflows for the news app team. I was an Innovation Fellow at <mark>IU Innovates</mark>, working with student founders to turn their ideas into MVPs. Most recently I was a Venture Fellow at <mark>Elevate Ventures</mark>, doing commercial due diligence on an early-stage start-up.</p>
       </div>
     </article>
 
     <article class="chap">
-      <div class="when"><span class="yr">02</span><span class="hand">The playbook</span></div>
-      <div class="what">
-        <p>From my first semester at business school I kept a Notion page called Coursework. It held my courses, my projects and the lessons from the business books I was reading.</p>
-        <p>Go to business school and you become the designated business hotline for friends, family and the student founders you meet along the way. How should I price this? Should I quit my job and open a bakery? My notes were my go-to answer.</p>
-        <p>The MBA Playbook is those notes, rewritten as tools anyone can use. Each one has the steps, a worked example and the mistakes to avoid, organised around the questions a business actually asks.</p>
-      </div>
-    </article>
-
-    <article class="chap">
-      <div class="when"><span class="yr">03</span><span class="hand">What I'm thinking about lately</span></div>
+      <div class="when"><span class="yr">02</span><span class="hand">What I'm passionate about lately</span></div>
       <div class="what">
         <ul class="ab-list">
           <li>Technology access for women in emerging markets</li>
           <li>Democratising access to AI. Who gets it, who is left out, and how to close that gap</li>
-          <li>Applied AI that makes people, products and workforces ten times more effective</li>
+          <li>Applied AI that makes people, products and workforces ten times more effective, with richer outputs</li>
           <li>Healthcare reimagined with AI</li>
-          <li>The future of media in the AI era</li>
+          <li>The future of marketing and media in the AI era</li>
           <li>Mobile money and financial inclusion in emerging markets</li>
           <li>The creator economy</li>
           <li>Afrobeats proved African talent can win the world and still be underpaid. How do African creators and start-ups turn the value they create into capital?</li>
         </ul>
+      </div>
+    </article>
+
+    <article class="chap">
+      <div class="when"><span class="yr">03</span><span class="hand">The playbook</span></div>
+      <div class="what">
+        <p>From my first semester at business school I kept a Notion page called Coursework. It held my courses, my projects and the lessons from the business books I was reading.</p>
+        <p>Go to business school and you become the designated business hotline for friends, family and the student founders you meet along the way. How should I price this? Should I quit my job and open a bakery? My notes were my go-to answer.</p>
+        <p>The MBA Playbook is those notes, rewritten as tools anyone can use. Each one has the steps, a worked example and the mistakes to avoid, organised around the questions a business actually asks.</p>
       </div>
     </article>
 
@@ -1594,7 +1596,7 @@ const teaser = p => { const ss = plain(p.idea).split(/(?<=\.)\s/); let t = ss[0]
 
 /* Public link to the Notion form "Share an insight" (Playbook Submissions). Leave empty to hide the invite. */
 const SUBMIT_URL = '';
-const GROUPS = [['all','All',null],['ai','AI',['ai']],['grow','Strategy & growth',['strategy','innovation','marketing','b2b']],['numbers','Numbers & data',['finance','data']],['people','People',['negotiation']],['ref','Reference',['glossary']]];
+const GROUPS = [['all','All',null],['ai','AI',['ai']],['grow','Strategy & growth',['strategy','innovation','marketing','b2b']],['numbers','Numbers & data',['finance','data']],['people','People',['negotiation']],['ref','Reference',['glossary','templates']]];
 let homeFilter = 'all';
 const ARROW = '<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 function renderHome(){
@@ -1626,13 +1628,20 @@ function renderHome(){
     <div class="meta"><h3>Glossary</h3><span class="mono">${GLOSS.length} terms</span></div><span class="q">What does that word mean?</span>`;
   g.onclick = () => go('glossary');
   feed.appendChild(g);
+  const tcount = Object.values(TEMPLATES).length;
+  const tp = document.createElement('button'); tp.className = 'story rv'; tp.dataset.id = 'templates'; tp.style.cssText = '--i:4';
+  tp.setAttribute('aria-label','Templates: take the tools with you');
+  tp.innerHTML = `<div class="thumb gl tp"><span class="num">${pad(PB.length+2)}</span><div class="az">.xlsx<span>formulas already built</span></div><div class="peek" aria-hidden="true"><p>The tools that run on numbers, as spreadsheets you can download and fill in with your own figures.</p></div><span class="go" aria-hidden="true">${ARROW}</span></div>
+    <div class="meta"><h3>Templates</h3><span class="mono">${tcount} spreadsheets</span></div><span class="q">Take the tools with you</span>`;
+  tp.onclick = () => go('templates');
+  feed.appendChild(tp);
   const apply = () => { const grp = GROUPS.find(x=>x[0]===homeFilter)[2]; feed.querySelectorAll('.story').forEach(c => c.hidden = !!grp && !grp.includes(c.dataset.id)); view.querySelectorAll('.pill').forEach(p => p.setAttribute('aria-pressed', p.dataset.f===homeFilter)); };
   view.querySelectorAll('.pill').forEach(p => p.onclick = () => { homeFilter = p.dataset.f; apply(); });
   apply();
 }
 function setNav(active){
   $('#nav-pb').innerHTML = '<span class="lab">Playbooks</span>' + PB.map(p => `<button data-go="${p.id}" style="${colorVars(p.id)}" ${p.id===active?'aria-current="page"':''}><span class="sw"></span>${esc(p.name)}</button>`).join('');
-  $('#nav-ref').innerHTML = `<span class="lab">Reference</span><button data-go="glossary" ${active==='glossary'?'aria-current="page"':''}><span class="sw" style="background:var(--ink)"></span>Glossary</button><button data-go="templates" ${active==='templates'?'aria-current="page"':''}><span class="sw" style="background:var(--muted)"></span>Templates</button><button data-go="about" ${active==='about'?'aria-current="page"':''}><span class="sw" style="background:var(--pen)"></span>About</button>`;
+  $('#nav-ref').innerHTML = `<span class="lab">Reference</span><button data-go="glossary" ${active==='glossary'?'aria-current="page"':''}><span class="sw" style="background:var(--ink)"></span>Glossary</button><button data-go="templates" ${active==='templates'?'aria-current="page"':''}><span class="sw" style="background:var(--tpl)"></span>Templates</button><button data-go="about" ${active==='about'?'aria-current="page"':''}><span class="sw" style="background:var(--pen)"></span>About</button>`;
   document.querySelectorAll('.side [data-go]').forEach(b => b.onclick = () => go(b.dataset.go));
   document.querySelectorAll('.side .navgroup').forEach(nav => {
     const dot = document.createElement('span'); dot.className = 'navdot'; nav.appendChild(dot);
@@ -1665,7 +1674,7 @@ const TEMPLATES = {
 function renderTemplates(){
   cleanup(); setNav('templates'); setCrumb('Templates');
   view.innerHTML = `
-  <section class="hero gut"><div class="in"><div class="block" style="--c:var(--ink);--cf:var(--bg)">
+  <section class="hero gut"><div class="in"><div class="block" style="--c:var(--tpl);--cf:#fff">
     <button class="back rv" style="--i:0" id="back">← All playbooks</button>
     <div class="kick rv" style="--i:0;margin-top:22px">Section ${pad(PB.length+2)}</div>
     <h1 class="rv" style="--i:1">Templates</h1>
