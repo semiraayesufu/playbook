@@ -126,14 +126,12 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
 .pill:hover{background:var(--surface-2)}
 .pill[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
 @media (max-width:600px){.filters{top:calc(env(safe-area-inset-top,0px) + 104px)}}
-.feed{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:30px 18px;padding-bottom:24px}
-.home .in{max-width:1240px}
-@media (min-width:1024px){.feed{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.feed{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px 14px;padding-bottom:24px}
 .story{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:9px;min-width:0}
 .story[hidden]{display:none}
 .thumb{position:relative;aspect-ratio:4/3;border-radius:14px;background:var(--surface);overflow:hidden;display:grid;place-items:center;transition:background-color .2s var(--ease)}
 .story:hover .thumb{background:color-mix(in srgb,var(--c) 10%,var(--surface))}
-.thumb .paper{width:94%;background:var(--polaroid);border-radius:6px;padding:4px;box-shadow:0 1px 2px rgba(0,0,0,.06),0 10px 28px -14px rgba(0,0,0,.35);transform:translateY(6px);transition:transform .25s var(--ease)}
+.thumb .paper{width:84%;background:var(--polaroid);border-radius:6px;padding:6px;box-shadow:0 1px 2px rgba(0,0,0,.06),0 10px 28px -14px rgba(0,0,0,.35);transform:translateY(6px);transition:transform .25s var(--ease)}
 .story:hover .paper,.story:focus-visible .paper{transform:translateY(-2px) scale(1.025)}
 .thumb .paper svg{display:block;width:100%;height:auto;pointer-events:none}
 .thumb .paper .sk path{stroke:var(--line)}.thumb .paper .sk text{fill:var(--ink)}.thumb .paper .sk .s,.thumb .paper .sk .k{fill:var(--muted)}.thumb .paper .sk .note{fill:var(--pen)}
@@ -143,6 +141,8 @@ footer{padding-block:28px 36px;font-size:12px;color:var(--faint)}
 .story:hover .go,.story:focus-visible .go{opacity:1;transform:none}
 @media (hover:none){.thumb .go{opacity:1;transform:none;width:28px;height:28px}}
 .story .meta{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.story .meta h3 .cn{display:inline-grid;place-items:center;vertical-align:2px;margin-right:8px;font-family:var(--f-ui);font-size:11px;font-weight:600;height:20px;padding:0 7px;border-radius:999px;background:var(--c,var(--ink));color:var(--cf,var(--bg))}
+.story[data-id="glossary"] .meta h3 .cn{background:var(--ink);color:var(--bg)}.story[data-id="templates"] .meta h3 .cn{background:var(--tpl);color:#fff}
 .story h3{font-size:calc(var(--t) - 1px);font-weight:500;letter-spacing:-.01em;line-height:1.3}
 .story .meta .mono{color:var(--faint);white-space:nowrap}
 .story .q{font-family:var(--f-hand);font-size:21px;color:var(--c);line-height:1.2;margin-top:-6px}
@@ -1404,7 +1404,7 @@ function renderAbout(){
         <span class="kick rv" style="--i:0">About</span>
         <h1 class="rv" style="--i:1">Semira Yesufu</h1>
         <span class="hand rv" style="--i:2">Product, strategy and venture</span>
-        <p class="pull rv" style="--i:3;font-style:italic">“A moving woman will surely meet her luck.”</p>
+        <p class="pull rv" style="--i:3;font-style:italic">“A moving woman will always meet her luck.”</p>
         <a class="ab-btn rv" style="--i:4" href="${LINKEDIN_URL}" target="_blank" rel="noopener">Connect with me on LinkedIn ${ARROW}</a>
       </div>
     </div>
@@ -1415,7 +1415,7 @@ function renderAbout(){
         <p>I have always been a technology geek. Leave me with a laptop and I can disappear for days. A new app, a new gadget, and these days a new AI model, still give me the thrill they did when I was a child. I want to open it, set it up my way and find out what it can do. That curiosity became a career. I studied computer science and went straight into building.</p>
         <p>At <mark>Blue Fintech</mark>, a start-up in Nigeria, I was the <mark>first product hire</mark>, taking <mark>peer-to-peer mobile payments</mark> from an idea to 50,000 users. At <mark>Selar</mark> I designed experiences for 240,000 African creators selling digital products and services globally.</p>
         <p>Along the way I realised how few seats there are for women in technology, especially in Nigeria. The builder in me wanted to provide a solution, and I founded <mark>Path4Her</mark>, a <mark>technology and AI literacy nonprofit</mark> that has empowered more than <mark>2,000 women</mark> across five locations in Nigeria.</p>
-        <p>My experience in <mark>product management and design</mark> taught me what to build and how to create a delightful experience around it. I wanted to go deeper into the strategy that moves products, businesses and people at scale. That hunger for growth led me to business school, and so far it has been a fulfilling experience. I have worked at <mark>The New York Times</mark> as an <mark>AI Product Strategist</mark>, building a context layer of institutional knowledge that powered AI-enabled workflows and tools for the news app team. <mark>Innovation Fellow</mark> at <mark>IU Innovates</mark>, working with student founders to turn their ideas into <mark>fundable MVPs</mark>. Most recently, Venture Fellow at <mark>Elevate Ventures</mark>, doing <mark>commercial due diligence</mark> on an early-stage start-up.</p>
+        <p>My experience in <mark>product management and design</mark> taught me what to build and how to create a delightful experience around it. I wanted to go deeper into the strategy that moves products, businesses and people at scale. That hunger for growth led me to business school, and so far it has been a fulfilling experience. I have worked at <mark>The New York Times</mark> as an <mark>AI Product Strategist</mark>, building a <mark>context layer</mark> of institutional knowledge that powered <mark>AI-enabled workflows</mark> and tools for the news app team. <mark>Innovation Fellow</mark> at <mark>IU Innovates</mark>, working with student founders to turn their ideas into <mark>fundable MVPs</mark>. Most recently, Venture Fellow at <mark>Elevate Ventures</mark>, doing <mark>commercial due diligence</mark> on an early-stage start-up.</p>
       </div>
     </article>
 
@@ -1610,7 +1610,7 @@ const ARROW = '<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
 function renderHome(){
   cleanup(); setNav(null); setCrumb(null);
   view.innerHTML = `
-  <section class="gut home"><div class="in">
+  <section class="gut"><div class="in">
     <div class="intro">
       <div><h1 class="rv" style="--i:0">Business school, <em>sketched out.</em></h1>
 </div>
@@ -1624,23 +1624,23 @@ function renderHome(){
     const b = document.createElement('button'); b.className = 'story rv'; b.dataset.id = p.id; b.style.cssText = colorVars(p.id)+`;--i:${i%4+2}`;
     b.setAttribute('aria-label',`${p.name}: ${p.q}`);
     const more = p.tools.length>5 ? `<span>+${p.tools.length-5} more</span>` : '';
-    b.innerHTML = `<div class="thumb"><span class="num">${pad(i+1)}</span><div class="paper"></div><div class="peek" aria-hidden="true"><p>${esc(teaser(p))}</p></div><span class="go" aria-hidden="true">${ARROW}</span></div>
-      <div class="meta"><h3>${esc(p.name)}</h3><span class="mono">${p.tools.length} tools</span></div><span class="q">${esc(p.q)}</span>`;
+    b.innerHTML = `<div class="thumb"><div class="paper"></div><div class="peek" aria-hidden="true"><p>${esc(teaser(p))}</p></div><span class="go" aria-hidden="true">${ARROW}</span></div>
+      <div class="meta"><h3><span class="cn">${pad(i+1)}</span>${esc(p.name)}</h3><span class="mono">${p.tools.length} tools</span></div><span class="q">${esc(p.q)}</span>`;
     b.querySelector('.paper').appendChild(drawSketch(p.id,null,true));
     b.onclick = () => go(p.id);
     feed.appendChild(b);
   });
   const g = document.createElement('button'); g.className = 'story rv'; g.dataset.id = 'glossary'; g.style.cssText = '--i:3';
   g.setAttribute('aria-label','Glossary: what does that word mean?');
-  g.innerHTML = `<div class="thumb gl"><span class="num">${pad(PB.length+1)}</span><div class="az">A–Z<span>P&amp;L, SG&amp;A, EBITDA…</span></div><div class="peek" aria-hidden="true"><p>Definitions of the business terms used across the playbooks, from P&amp;L to ZOPA.</p></div><span class="go" aria-hidden="true">${ARROW}</span></div>
-    <div class="meta"><h3>Glossary</h3><span class="mono">${GLOSS.length} terms</span></div><span class="q">What does that word mean?</span>`;
+  g.innerHTML = `<div class="thumb gl"><div class="az">A–Z<span>P&amp;L, SG&amp;A, EBITDA…</span></div><div class="peek" aria-hidden="true"><p>Definitions of the business terms used across the playbooks, from P&amp;L to ZOPA.</p></div><span class="go" aria-hidden="true">${ARROW}</span></div>
+    <div class="meta"><h3><span class="cn">${pad(PB.length+1)}</span>Glossary</h3><span class="mono">${GLOSS.length} terms</span></div><span class="q">What does that word mean?</span>`;
   g.onclick = () => go('glossary');
   feed.appendChild(g);
   const tcount = Object.values(TEMPLATES).length;
   const tp = document.createElement('button'); tp.className = 'story rv'; tp.dataset.id = 'templates'; tp.style.cssText = '--i:4';
   tp.setAttribute('aria-label','Templates: take the tools with you');
-  tp.innerHTML = `<div class="thumb gl tp"><span class="num">${pad(PB.length+2)}</span><div class="az">.xlsx<span>formulas already built</span></div><div class="peek" aria-hidden="true"><p>The tools that run on numbers, as spreadsheets you can download and fill in with your own figures.</p></div><span class="go" aria-hidden="true">${ARROW}</span></div>
-    <div class="meta"><h3>Templates</h3><span class="mono">${tcount} spreadsheets</span></div><span class="q">Take the tools with you</span>`;
+  tp.innerHTML = `<div class="thumb gl tp"><div class="az">.xlsx<span>formulas already built</span></div><div class="peek" aria-hidden="true"><p>The tools that run on numbers, as spreadsheets you can download and fill in with your own figures.</p></div><span class="go" aria-hidden="true">${ARROW}</span></div>
+    <div class="meta"><h3><span class="cn">${pad(PB.length+2)}</span>Templates</h3><span class="mono">${tcount} spreadsheets</span></div><span class="q">Take the tools with you</span>`;
   tp.onclick = () => go('templates');
   feed.appendChild(tp);
   const apply = () => { const grp = GROUPS.find(x=>x[0]===homeFilter)[2]; feed.querySelectorAll('.story').forEach(c => c.hidden = !!grp && !grp.includes(c.dataset.id)); view.querySelectorAll('.pill').forEach(p => p.setAttribute('aria-pressed', p.dataset.f===homeFilter)); };
@@ -1814,11 +1814,9 @@ function renderSearch(q){
   const s = q.toLowerCase(); const hits = [];
   PB.forEach(p => p.tools.forEach(t => { const hay = [t.name,t.what,t.def||'',(t.steps||[]).flat(2).join(' '),t.ex||'',t.formula||''].join(' ').toLowerCase(); if (hay.includes(s)) hits.push([p,t]); }));
   const gh = GLOSS.filter(([t,d]) => t.toLowerCase().includes(s));
-  const ph = PB.filter(p => [p.name,p.q||'',plain(p.idea||'')].join(' ').toLowerCase().includes(s));
-  view.innerHTML = `<section class="gut sec"><div class="in">${ph.length?`<div class="sechead"><h2>Playbooks</h2></div><div class="results" style="margin-bottom:34px">${ph.map(p=>`<button data-pb="${p.id}"><b>${esc(p.name)}</b><small>${esc(p.q||'')}</small></button>`).join('')}</div>`:''}${gh.length?`<div class="sechead"><h2>In the glossary</h2></div><div class="results" style="margin-bottom:34px">${gh.map(([t,d])=>`<button data-g="${esc(t)}"><b>${esc(t)}</b><small>${esc(d)}</small></button>`).join('')}</div>`:''}<div class="sechead"><h2>${hits.length} ${hits.length===1?'tool':'tools'} for “${esc(q)}”</h2></div>
+  view.innerHTML = `<section class="gut sec"><div class="in">${gh.length?`<div class="sechead"><h2>In the glossary</h2></div><div class="results" style="margin-bottom:34px">${gh.map(([t,d])=>`<button data-g="${esc(t)}"><b>${esc(t)}</b><small>${esc(d)}</small></button>`).join('')}</div>`:''}<div class="sechead"><h2>${hits.length} ${hits.length===1?'tool':'tools'} for “${esc(q)}”</h2></div>
    <div class="results">${hits.map(([p,t])=>`<button data-p="${p.id}" data-t="${t.id}"><b>${esc(t.name)}</b><small>${esc(p.name)}. ${md(t.what)}</small></button>`).join('') || '<p class="muted">No tools match. Try a framework name like SWOT, or a word like price.</p>'}</div></div></section>`;
   view.querySelectorAll('.results button[data-p]').forEach(b => b.onclick = () => { $('#q').value=''; go(b.dataset.p,b.dataset.t); });
-  view.querySelectorAll('.results button[data-pb]').forEach(b => b.onclick = () => { $('#q').value=''; go(b.dataset.pb); });
   view.querySelectorAll('.results button[data-g]').forEach(b => b.onclick = () => { $('#q').value=''; try { history.replaceState(null,'','#glossary'); } catch(e){} renderGlossary(b.dataset.g); });
 }
 function go(p,t){
