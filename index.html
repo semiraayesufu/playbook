@@ -1410,7 +1410,7 @@ function renderAbout(){
         <h1 class="rv" style="--i:1">Semira Yesufu</h1>
         <span class="hand rv" style="--i:2">Product, strategy and venture</span>
         <p class="pull rv" style="--i:3;font-style:italic">“A moving woman will always meet her luck.”</p>
-        <a class="ab-btn rv" style="--i:4" href="${LINKEDIN_URL}" target="_blank" rel="noopener">LinkedIn ${ARROW}</a>
+        <a class="ab-btn rv" style="--i:4" href="${LINKEDIN_URL}" target="_blank" rel="noopener">Connect with me on LinkedIn ${ARROW}</a>
       </div>
     </div>
 
@@ -1444,18 +1444,8 @@ function renderAbout(){
       <div class="when"><span class="yr">03</span><span class="hand">The playbook</span></div>
       <div class="what">
         <p>From my first day at business school I kept a Notion page that held my coursework, projects, and the lessons and insights from the business books I was reading.</p>
-        <p>Go to business school and you become the designated business hotline for friends, family and the student founders you meet along the way. How should I price this? Should I quit my job and open a bakery? More often than not, I found myself going back to my notes as the context for my recommendation.</p>
+        <p>Go to business school and you become the designated business hotline for friends, family and the student founders you meet along the way. How should I price this? Should I quit my job and open a bakery? More often than not, my answer started in my notes.</p>
         <p>The MBA Playbook is those notes, rewritten as tools anyone can use. Each one has the steps, a worked example and the mistakes to avoid, organised around the questions a business actually asks.</p>
-      </div>
-    </article>
-
-    <article class="chap">
-      <div class="when"><span class="yr">04</span><span class="hand">What's next</span></div>
-      <div class="what">
-        <p>This is version one. The playbook will keep growing as I learn more and as readers tell me what they wish was here. If a tool helped you, or one is missing, I'd like to hear it.</p>
-        <div class="ab-ctas"><div class="btns">
-          <a class="ab-btn" href="${LINKEDIN_URL}" target="_blank" rel="noopener">Connect with me on LinkedIn ${ARROW}</a>
-        </div></div>
       </div>
     </article>
 
@@ -1679,7 +1669,7 @@ function renderTemplates(){
     <div class="kick rv" style="--i:0;margin-top:22px">Section ${pad(PB.length+2)}</div>
     <h1 class="rv" style="--i:1">Templates</h1>
     <span class="hand rv" style="--i:2">Take the tools with you</span>
-    <p class="lede rv" style="--i:3">The tools that run on numbers, as <strong>spreadsheets</strong> with the formulas already built. Download one, replace the example figures with your own, and keep the file. More templates will follow as the playbook grows.</p>
+    <p class="lede rv" style="--i:3">Every tool in the playbook that runs on numbers, built as a <strong>spreadsheet</strong> you can use straight away. The formulas are in place and the example figures match the In practice sections. Download a file, replace the yellow cells with your own numbers, and the rest calculates.</p>
     <div class="big" aria-hidden="true">⇩</div>
   </div></div></section>
   <section class="gut"><div class="in tmpl">
@@ -1688,7 +1678,7 @@ function renderTemplates(){
       <div class="thead"><span class="n">${pad(i+1)}</span><h3>${esc(p.name)}</h3><span class="hand">${esc(p.q)}</span></div>
       <a class="tfile" href="${TEMPLATE_BASE}templates/${t.xls}"><span class="ticon">X</span><span><b>${t.xls.includes('calc')?'Calculators':'Worksheets'}</b><small>${esc(t.xlsWhat)} (.xlsx)</small></span>${ARROW}</a>
     </article>`; }).join('')}
-    <p class="tnote">The spreadsheets open in Excel, Google Sheets and Numbers. Yellow cells are inputs, blue cells calculate. Example figures match the In practice sections on the site.</p>
+    <p class="tnote">The spreadsheets open in Excel, Google Sheets and Numbers.</p>
   </div></section>`;
   view.querySelector('#back').onclick = () => go('');
   window.scrollTo({top:0});
