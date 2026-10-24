@@ -968,11 +968,13 @@ const FIG_ALT = {
  '5cs':'Five small drawings in a row. A group of people for customers, a building for the company, two parties shaking on a deal for collaborators, two figures facing off for competitors, and a globe for context',
  'viz':'Eight small charts in two rows, each labelled with the question it answers. Bars, line, pie, treemap, waterfall, scatter, histogram, heat map',
  'viz-2':'The same data twice. On the left, a cluttered chart with gridlines, a legend, identical bars and the title Cancellations by club. On the right, the bars sorted, one coloured, no gridlines, and the title says the finding',
- 'viz-3':'Two worked charts. A two-slice pie with the 40% slice coloured and titled with the finding, and a waterfall from 61,000 members through joins and cancellations to 58,900',
+ 'viz-3':'A pie before and after. On the left, seven slices in seven colours with a legend, titled Cancellation reasons. On the right, two slices, the 40% in blue, titled with the finding',
+ 'viz-4':'A waterfall before and after. On the left, four plain bars from zero titled Membership 2025. On the right, the bars step from 61,000 through joins and cancellations to 58,900, with the title Still signing members, still shrinking',
  'risk':'A five by five grid where each square shows likelihood times impact, shaded in three bands: fix before launch, plan and owner, keep an eye on it'
 };
 const FIG_CAP = {
- 'viz-3':'A pie earns its place with one slice that is the point. A waterfall earns its place when the steps are the story.',
+ 'viz-3':'Seven slices ask the reader to compare angles and read a legend. Two slices and a title hand them the finding.',
+ 'viz-4':'Four bars from zero hide the story. The waterfall shows the chain is still signing people up and still shrinking.',
  'viz-2':'Same numbers, two charts. The left one makes the reader do the work. The right one has already done it.',
  'viz':'Each question has a chart built for it. Pick that one, then colour the one thing that matters.',
  '5cs':'Five places to look before you plan. The two or three facts that matter most are what you carry into STP.',
@@ -1205,17 +1207,25 @@ function drawFig(id){
    },
    'viz-3'(){
      const GREY='#B8B0A4', BL='#2747C9';
-     // pie: 40% class access
-     T(140,30,'Four in ten cancellations are class access',{s:12.5,w:700});
-     const cxp=140, cyp=122, r=54;
-     add(R.circle(cxp,cyp,r*2,o({fill:GREY,fillStyle:'solid'})));
-     const a1=-Math.PI/2, a2=a1+Math.PI*2*0.4; const x1=cxp+r*Math.cos(a1), y1=cyp+r*Math.sin(a1), x2=cxp+r*Math.cos(a2), y2=cyp+r*Math.sin(a2);
-     add(R.path(`M${cxp} ${cyp} L${x1} ${y1} A${r} ${r} 0 0 1 ${x2} ${y2} Z`,o({fill:BL,fillStyle:'solid'})));
-     T(cxp+34,cyp-14,'40%',{s:15,w:700,c:'#FFFFFF'}); T(cxp-26,cyp+22,'60%',{s:13,c:'#16130F'});
-     T(140,204,'class access',{s:12,c:BL,w:700}); T(140,220,'everything else',{s:11.5,c:'#6A6258'});
+     const pie=(cx,cy,r,parts,fills)=>{ let a=-Math.PI/2; parts.forEach((f,i)=>{ const a2=a+Math.PI*2*f; add(R.path(`M${cx} ${cy} L${cx+r*Math.cos(a)} ${cy+r*Math.sin(a)} A${r} ${r} 0 ${f>.5?1:0} 1 ${cx+r*Math.cos(a2)} ${cy+r*Math.sin(a2)} Z`,o({fill:fills[i],fillStyle:'solid'}))); a=a2; }); };
+     T(140,26,'Before',{s:13,c:'#6A6258'}); T(140,46,'Cancellation reasons',{s:12.5,w:700});
+     pie(110,128,52,[.40,.20,.15,.10,.06,.05,.04],['#8A94B8','#C9A66B','#9BBF8A','#C98A8A','#B89BC9','#8ABFBF','#D6CFC3']);
+     ['class access','moved','price','facilities','staff','hours','other'].forEach((t,i)=>{ box(176,78+i*17,10,10,{fill:['#8A94B8','#C9A66B','#9BBF8A','#C98A8A','#B89BC9','#8ABFBF','#D6CFC3'][i],fillStyle:'solid'}); T(192,87+i*17,t,{a:'start',s:9.5,c:'#6A6258'}); });
+     T(140,212,'seven angles, one legend, no point',{s:11.5,c:'#6A6258'});
      line(280,20,280,226,{strokeWidth:1,strokeLineDash:[5,5]});
-     // waterfall: 61,000 → 58,900
-     T(420,30,'Still signing members, still shrinking',{s:12.5,w:700});
+     T(420,26,'After',{s:13,c:'#6A6258'}); T(420,46,'Four in ten cancellations are class access',{s:12.5,w:700});
+     pie(420,128,54,[.40,.60],[BL,GREY]);
+     T(454,116,'40%',{s:15,w:700,c:'#FFFFFF'}); T(394,150,'60%',{s:13,c:'#16130F'});
+     T(420,212,'one slice is the point',{s:11.5,c:'#6A6258'});
+   },
+   'viz-4'(){
+     const GREY='#B8B0A4', BL='#2747C9';
+     T(140,26,'Before',{s:13,c:'#6A6258'}); T(140,46,'Membership 2025',{s:12.5,w:700});
+     const vals=[61000,7100,9200,58900], labs=['start','joins','cancelled','end'];
+     vals.forEach((v,i)=>{ const x=52+i*48, h=v*0.0022; box(x,196-h,30,h,{fill:'#8A94B8',fillStyle:'solid'}); T(x+15,210,labs[i],{s:9.5,c:'#6A6258'}); });
+     line(44,196,240,196,{strokeWidth:1}); T(140,226,'four bars from zero, story hidden',{s:11.5,c:'#6A6258'});
+     line(280,20,280,226,{strokeWidth:1,strokeLineDash:[5,5]});
+     T(420,46,'Still signing members, still shrinking',{s:12.5,w:700}); T(420,26,'After',{s:13,c:'#6A6258'});
      const base=196, sc=0.0072, x0=316, bw=36, gap=18, floor=50000;
      const start=61000, joins=7100, canc=9200, end=start+joins-canc;
      const h=v=>(v-floor)*sc;
@@ -1591,7 +1601,7 @@ function cardHTML(t,i){
     ${FIG_ALT[t.id]?`<figure class="fig" data-fig="${t.id}"><figcaption>${esc(FIG_CAP[t.id]||'')}</figcaption></figure>`:''}
     ${t.formula?`<div class="formula">${esc(t.formula)}</div>`:''}
     <div><h4>Steps</h4><ol>${t.steps.map(s=>Array.isArray(s)?`<li><span>${md(s[0])}<ul class="sub">${s[1].map(x=>`<li>${md(x)}</li>`).join('')}</ul></span></li>`:`<li><span>${md(s)}</span></li>`).join('')}</ol></div>
-    ${['-2','-3'].map(k=>FIG_ALT[t.id+k]?`<figure class="fig" data-fig="${t.id}${k}"><figcaption>${esc(FIG_CAP[t.id+k]||'')}</figcaption></figure>`:'').join('')}
+    ${['-2','-3','-4'].map(k=>FIG_ALT[t.id+k]?`<figure class="fig" data-fig="${t.id}${k}"><figcaption>${esc(FIG_CAP[t.id+k]||'')}</figcaption></figure>`:'').join('')}
      ${t.example?`<div class="eg"><span class="lbl">In practice</span>${(Array.isArray(t.example)?t.example:[t.example]).map(x=>/ = /.test(x)&&x.length<160?`<code class="calc">${esc(x)}</code>`:`<p>${md(x)}</p>`).join('')}</div>`:''}
      ${t.read?`<div><h4>Quick guide</h4><ul>${t.read.map(s=>`<li>${md(s)}</li>`).join('')}</ul></div>`:''}
     ${t.watch?`<p class="watch"><b>Watch out</b>${md(t.watch)}</p>`:''}
