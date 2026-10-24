@@ -402,6 +402,20 @@ body.reading .top .about-link{display:inline-flex}
 @media (max-width:520px){.np-body{padding:14px 12px}.np-row{grid-template-columns:minmax(0,1.6fr) minmax(0,1.2fr) minmax(0,.8fr);}.np-row>span:nth-child(4){display:none}}
 .formula{font-family:var(--f-mono);font-size:12px;line-height:1.7;background:var(--surface);border-radius:10px;padding:12px 14px;overflow-x:auto;white-space:pre-line}
 .eg{background:color-mix(in srgb,var(--c,var(--pen)) 8%,transparent);border-radius:10px;padding:12px 14px;margin:0}.eg .lbl{font-family:var(--f-mono);font-weight:500;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--c,var(--pen));display:block;margin-bottom:2px}.eg p{margin:0}.eg p+p,.eg .calc+p{margin-top:8px}.eg .calc{display:block;font-family:var(--f-mono);font-size:12.5px;line-height:1.5;background:color-mix(in srgb,var(--c,var(--pen)) 14%,transparent);border-radius:8px;padding:8px 10px;margin:6px 0;white-space:pre-wrap}
+
+.tmpl{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;padding-block:8px 28px}
+.tcard{background:var(--surface);border-radius:16px;padding:18px 18px 14px;display:flex;flex-direction:column;gap:10px}
+.tcard .thead{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:center;margin-bottom:6px}
+.tcard .thead .n{font-family:var(--f-mono);font-size:11px;background:var(--c);color:var(--cf);border-radius:999px;width:26px;height:26px;display:grid;place-items:center}
+.tcard .thead h3{margin:0;font-size:18px;letter-spacing:-.02em}
+.tcard .thead .hand{grid-column:2;font-size:14px;color:var(--muted)}
+.tfile{display:grid;grid-template-columns:34px 1fr 18px;gap:12px;align-items:center;text-decoration:none;color:inherit;background:var(--bg);border-radius:12px;padding:10px 12px;transition:background-color .12s var(--ease)}
+.tfile:hover{background:color-mix(in srgb,var(--c) 10%,var(--bg))}
+.tfile b{display:block;font-size:14px}.tfile small{display:block;font-size:12px;color:var(--muted);line-height:1.35}
+.tfile .ticon{width:34px;height:34px;border-radius:9px;background:var(--c);color:var(--cf);display:grid;place-items:center;font-family:var(--f-mono);font-weight:600;font-size:13px}
+.tfile svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+.tlink{font-size:14px;color:var(--muted);margin:26px 0 0;padding-top:18px;border-top:1px solid var(--rule)}.tlink a,.tlink .linkbtn{all:unset;cursor:pointer;color:var(--c);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.tnote{grid-column:1/-1;font-size:13.5px;color:var(--muted);margin:4px 0 0}
 .watch{background:color-mix(in srgb,#E5484D 8%,transparent);border-radius:10px;padding:12px 14px;font-size:13.5px;margin:0}
 .watch b{font-family:var(--f-mono);font-weight:500;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:#E5484D;display:block;margin-bottom:2px}
 
@@ -1388,16 +1402,13 @@ function renderAbout(){
     <div class="ab-hero">
       ${pol(ABOUT_IMG.hi,'Short looping clip of Semira Yesufu smiling and swaying','',-2.5,'big',
         stk('Class of<br>2027','circle p','--r:12deg;top:-22px;right:-30px')+
-        stk('proudly Naija 🇳🇬','pill g','--r:-8deg;bottom:46px;left:-38px')+
         stk('🏆 3x case comp winner','pill b','--r:5deg;bottom:-16px;right:-24px'))}
       <div class="ab-intro">
         <span class="kick rv" style="--i:0">About</span>
         <h1 class="rv" style="--i:1">Hi, I'm <span class="scribble">Semira<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 13 C 50 5, 110 4, 197 9 M 12 17 C 70 11, 130 12, 188 14"/></svg></span>.</h1>
         <span class="hand rv" style="--i:2">but my real G's call me Big Sem</span>
         <p class="rv" style="--i:3">I'm an MBA candidate at the Kelley School of Business. Prior to business school, I worked in product management and design across fintech, e-commerce and enterprise. Most recently, I spent an amazing summer as an AI Strategist intern at The New York Times.</p>
-        <p class="rv" style="--i:4">I love building practical things that help people do more and be more. So far, that has looked like:</p>
-        <ul class="ab-list rv" style="--i:4"><li>Notion templates for productivity and career growth</li><li>Articles on navigating life as an ambitious hijabi in her 20s</li><li>AI literacy and tech programs for underrepresented women in Nigeria, through my nonprofit, Path4Her</li></ul>
-        <p class="rv" style="--i:5">The MBA Playbook is the newest of these. Here's how it came to be.</p>
+        <p class="rv" style="--i:4">I build practical things that help people do more. The MBA Playbook is the newest of them. Here's how it came to be.</p>
       </div>
     </div>
 
@@ -1406,7 +1417,7 @@ function renderAbout(){
       <div class="what">
         <h2>It started as a Notion page.</h2>
         <p>When I started my MBA, I created a Notion page called Coursework and made it home for everything I learned, from each course and project to every lesson worth keeping. Semester by semester, it became a running archive of business school.</p>
-        <p>The fuller it got, the more the optimizer in me started asking questions. What good is a page this full if I can't find what I need in seconds? And how do I turn it into a product people use?</p>
+        <p>The fuller it got, the more I asked what good a page this full was if I couldn't find what I needed in seconds.</p>
         <figure class="pol wide" style="--tilt:1.2deg"><span class="tape" aria-hidden="true"></span>
           <div class="np" role="img" aria-label="Recreation of the Coursework page in Notion, listing fall 2025 courses">
             <div class="np-cover"></div>
@@ -1419,31 +1430,19 @@ function renderAbout(){
             </div>
           </div>
           <figcaption>my Coursework page in Notion, where it all lives</figcaption>
-          ${stk('certified note hoarder','pill p','--r:6deg;top:-18px;right:-16px')}${stk('made in Notion ✎','rect v','--r:-7deg;top:52px;left:-24px')}
         </figure>
       </div>
     </article>
 
     <article class="chap">
-      <div class="when"><span class="yr">Along the way</span><span class="hand">the questions</span></div>
-      <div class="what">
-        <h2>Meanwhile, the questions kept coming.</h2>
-        <p>Being in business school means you quietly become your friends' and family's favorite business hotline. Like a first-year med student fielding questions about every mystery rash, I got “How should I price this?”, “How do I enter this market?” and at least one “Quick question, should I quit my job and open a bakery?”</p>
-        ${pol(null,'questions','me, most weeks',-1.2,'wide sketchy',
-          stk('ask me anything (business)','pill y','--r:-6deg;top:-18px;left:-14px')+
-          stk('free<br>consults?','circle b','--r:10deg;bottom:30px;right:-26px'))}
-        <p>Somewhere between all those questions, it clicked.</p>
-      </div>
-    </article>
-
-    <article class="chap">
-      <div class="when"><span class="yr">Fall 2026</span><span class="hand">the light bulb</span></div>
+      <div class="when"><span class="yr">Along the way</span><span class="hand">the light bulb</span></div>
       <div class="what">
         <h2>Then came the light bulb moment.</h2>
+        <p>By then I had also become my friends' and family's favourite business hotline. “How should I price this?”, “How do I enter this market?” and at least one “Should I quit my job and open a bakery?” The notes answered most of it.</p>
         <p>What if I turned my notes into a playbook, one I could search in seconds and share with anyone who asks? I also wondered if other people could add what they've learned, from business school or from running a business, and it would grow into a living archive of how to solve business problems.</p>
         <p>That's how The MBA Playbook came to be.</p>
         ${pol(null,'notes','from my notes to a living playbook',1.2,'wide sketchy',stk('💡 light bulb moment','pill y','--r:-6deg;top:-18px;left:-14px'))}
-        <div class="stk-row">${stk('free, always ♥','pill p inline','--r:-6deg')}${stk(`${toolCount} tools & growing`,'pill g inline','--r:4deg')}${stk('built from real notes ✎','pill v inline','--r:-3deg')}</div>
+        <div class="stk-row">${stk('free, always','pill p inline','--r:-4deg')}${stk(`${toolCount} tools & growing`,'pill g inline','--r:3deg')}</div>
       </div>
     </article>
 
@@ -1453,7 +1452,6 @@ function renderAbout(){
         <h2>Add your chapter.</h2>
         <p>The playbook started with my notes. Now it grows with yours. If a tool or idea has stuck with you, from business school or from years of solving business problems, share it through Share an insight. Every insight you add helps the next person facing the same problem solve it.</p>
         <div class="ab-ctas">
-          ${stk('psst… share yours! ↓','pill y inline','--r:-4deg')}
           <div class="btns">
             ${SUBMIT_URL?`<a class="ab-btn solid" href="${SUBMIT_URL}" target="_blank" rel="noopener">Share an insight ${ARROW}</a>`:''}
             <a class="ab-btn" href="${LINKEDIN_URL}" target="_blank" rel="noopener">Connect with me on LinkedIn ${ARROW}</a>
@@ -1462,24 +1460,32 @@ function renderAbout(){
       </div>
     </article>
 
-    <div class="ab-credits">
+    <div class="ab-credits" id="credits">
       <span class="kick">Credits</span>
-      <p>The MBA Playbook is a free, personal project, shaped with help from Claude. The frameworks themselves belong to the people who created them.</p>
+      <p>The MBA Playbook is a free, personal project by Semira Yesufu, shaped with help from Claude. The frameworks belong to the people who created them.</p>
       <ul>
         <li><b>Five Forces</b> by Michael Porter</li>
         <li><b>VRIO</b> by Jay Barney</li>
         <li><b>Business Model Canvas</b> by Alexander Osterwalder, Yves Pigneur and Strategyzer</li>
         <li><b>Balanced Scorecard</b> by Robert Kaplan and David Norton</li>
+        <li><b>Organizational ambidexterity</b> by Charles O'Reilly and Michael Tushman</li>
         <li><b>The 4Ps</b> by E. Jerome McCarthy</li>
         <li><b>STEEP</b>, adapted from Francis Aguilar's PEST scan</li>
-        <li><b>DuPont analysis</b>, developed inside the DuPont Company in the 1910s and usually credited to F. Donaldson Brown</li>
-        <li><b>Dividend discount model (growth version)</b> by Myron Gordon</li>
+        <li><b>Price thresholds</b> by Peter van Westendorp</li>
+        <li><b>Brand equity</b>, as framed by David Aaker and Kevin Lane Keller</li>
+        <li><b>DuPont analysis</b>, developed inside the DuPont Company and usually credited to F. Donaldson Brown</li>
+        <li><b>Dividend discount model</b> (growth version) by Myron Gordon</li>
         <li><b>Sharpe ratio</b> by William Sharpe</li>
-        <li><b>BATNA</b> by Roger Fisher and William Ury, in <i>Getting to Yes</i></li>
-        <li><b>Organizational ambidexterity</b> by Charles O'Reilly and Michael Tushman</li>
         <li><b>Pareto principle</b>, named for Vilfredo Pareto and applied to quality by Joseph Juran</li>
+        <li><b>Storytelling with Data</b> by Cole Nussbaumer Knaflic</li>
+        <li><b>The 40% product-market fit test</b> by Sean Ellis</li>
+        <li><b>16 Startup Metrics</b> by Andreessen Horowitz</li>
+        <li><b>Customer interview rules</b>, in the spirit of Rob Fitzpatrick's <i>The Mom Test</i></li>
+        <li><b>BATNA</b> by Roger Fisher and William Ury, in <i>Getting to Yes</i></li>
+        <li><b>Principles of persuasion</b> by Robert Cialdini</li>
+        <li><b>Product-led growth</b>, a term popularised by OpenView Partners</li>
       </ul>
-      <p>Other tools here, such as SWOT, STP, the 5Cs, TAM, SAM and SOM, and the STAR method, are widely taught and have no single creator.</p>
+      <p>Other tools here, such as SWOT, STP, the 5Cs, TAM, SAM and SOM, break-even and NPV, are widely taught and have no single creator. Company names appear only as public illustrations and imply no connection.</p>
       <p>Insights shared through the form are credited by first name only if the contributor chooses. Emails are used only to ask questions about a submission, and anyone can ask for their insight to be removed.</p>
       <p>Thank you to my professors and classmates at the Kelley School of Business, whose teaching shaped these notes. This is an independent project and isn't affiliated with or endorsed by Indiana University.</p>
     </div>
@@ -1630,7 +1636,7 @@ function renderHome(){
 }
 function setNav(active){
   $('#nav-pb').innerHTML = '<span class="lab">Playbooks</span>' + PB.map(p => `<button data-go="${p.id}" style="${colorVars(p.id)}" ${p.id===active?'aria-current="page"':''}><span class="sw"></span>${esc(p.name)}</button>`).join('');
-  $('#nav-ref').innerHTML = `<span class="lab">Reference</span><button data-go="glossary" ${active==='glossary'?'aria-current="page"':''}><span class="sw" style="background:var(--ink)"></span>Glossary</button><button data-go="about" ${active==='about'?'aria-current="page"':''}><span class="sw" style="background:var(--pen)"></span>About</button>`;
+  $('#nav-ref').innerHTML = `<span class="lab">Reference</span><button data-go="glossary" ${active==='glossary'?'aria-current="page"':''}><span class="sw" style="background:var(--ink)"></span>Glossary</button><button data-go="templates" ${active==='templates'?'aria-current="page"':''}><span class="sw" style="background:var(--muted)"></span>Templates</button><button data-go="about" ${active==='about'?'aria-current="page"':''}><span class="sw" style="background:var(--pen)"></span>About</button>`;
   document.querySelectorAll('.side [data-go]').forEach(b => b.onclick = () => go(b.dataset.go));
   document.querySelectorAll('.side .navgroup').forEach(nav => {
     const dot = document.createElement('span'); dot.className = 'navdot'; nav.appendChild(dot);
@@ -1645,6 +1651,43 @@ function setCrumb(name){
   if (!name) { c.innerHTML = '<b>Playbooks</b><span>Business school tools for real problems</span>'; return; }
   c.innerHTML = `<button id="crumb-home">Playbooks</button><span>/</span><b style="color:var(--ink)">${esc(name)}</b>`;
   c.querySelector('#crumb-home').onclick = () => go('');
+}
+
+
+/* ---------- TEMPLATES ---------- */
+const TEMPLATE_BASE = 'https://semiraayesufu.github.io/playbook/';
+const TEMPLATES = {
+  ai:         {doc:'ai-worksheet.docx',          xls:'ai-worksheets.xlsx',          xlsWhat:'Risk Scoring grid, AI Value Tree, Fit Check'},
+  strategy:   {doc:'strategy-worksheet.docx',    xls:'strategy-worksheets.xlsx',    xlsWhat:'Option Scorecard, SWOT, Hypothesis Test, Balanced Scorecard'},
+  innovation: {doc:'innovation-worksheet.docx',  xls:'innovation-calculators.xlsx', xlsWhat:'Market Sizing, Riskiest Assumption, Startup Metrics, Sizing the Raise, Investor Readiness, Spending Gates, Pivot Triggers'},
+  finance:    {doc:'finance-worksheet.docx',     xls:'finance-calculators.xlsx',    xlsWhat:'Contribution, Break-even, DuPont, NPV, Debt Affordability, Buyout, Dividend Discount, Bond Spread, Sharpe'},
+  marketing:  {doc:'marketing-worksheet.docx',   xls:'marketing-calculators.xlsx',  xlsWhat:'Pricing, Line Extension Math, Base vs Incremental, Channel Mix, Brand Equity'},
+  data:       {doc:'data-worksheet.docx',        xls:'data-worksheets.xlsx',        xlsWhat:'Pareto, Representativeness, Research Plan, Query Definition'},
+  b2b:        {doc:'b2b-worksheet.docx',         xls:'b2b-calculators.xlsx',        xlsWhat:'Bottom-Up Sizing, Economic Value and ROI, Buying Committee, Route to Market'},
+  negotiation:{doc:'negotiation-worksheet.docx', xls:'negotiation-worksheets.xlsx', xlsWhat:'Four Numbers, Concession Plan, Power Map'}
+};
+function renderTemplates(){
+  cleanup(); setNav('templates'); setCrumb('Templates');
+  view.innerHTML = `
+  <section class="hero gut"><div class="in"><div class="block" style="--c:var(--ink);--cf:var(--bg)">
+    <button class="back rv" style="--i:0" id="back">← All playbooks</button>
+    <div class="kick rv" style="--i:0;margin-top:22px">Section ${pad(PB.length+2)}</div>
+    <h1 class="rv" style="--i:1">Templates</h1>
+    <span class="hand rv" style="--i:2">Take the tools with you</span>
+    <p class="lede rv" style="--i:3">Every playbook as a <strong>worksheet</strong> you can fill in, and its numbers as a <strong>spreadsheet</strong> with the formulas already built. Download, replace the example figures with your own, and keep the file.</p>
+    <div class="big" aria-hidden="true">⇩</div>
+  </div></div></section>
+  <section class="gut"><div class="in tmpl">
+    ${PB.map((p,i)=>{ const t=TEMPLATES[p.id]; if(!t) return ''; return `
+    <article class="tcard" style="${colorVars(p.id)}">
+      <div class="thead"><span class="n">${pad(i+1)}</span><h3>${esc(p.name)}</h3><span class="hand">${esc(p.q)}</span></div>
+      <a class="tfile" href="${TEMPLATE_BASE}templates/${t.doc}"><span class="ticon">W</span><span><b>Worksheet</b><small>one page per tool, every step as a prompt (.docx)</small></span>${ARROW}</a>
+      <a class="tfile" href="${TEMPLATE_BASE}templates/${t.xls}"><span class="ticon">X</span><span><b>${t.xls.includes('calc')?'Calculators':'Worksheets'}</b><small>${esc(t.xlsWhat)} (.xlsx)</small></span>${ARROW}</a>
+    </article>`; }).join('')}
+    <p class="tnote">The worksheets open in Word, Google Docs and Pages. The spreadsheets open in Excel, Google Sheets and Numbers, and the yellow cells are the inputs. Example figures match the In practice sections on the site.</p>
+  </div></section>`;
+  view.querySelector('#back').onclick = () => go('');
+  window.scrollTo({top:0});
 }
 
 function renderGlossary(q){
@@ -1713,6 +1756,7 @@ function renderPlaybook(id,toolId){
       <div class="nowon" aria-live="polite"><span class="mono">Now reading</span><b id="nowon">${esc(p.tools[0].name)}</b></div>
     </div>
     <div class="steps">${p.tools.map(cardHTML).join('')}</div>
+    ${TEMPLATES[p.id]?`<p class="tlink">Take it with you. <a href="${TEMPLATE_BASE}templates/${TEMPLATES[p.id].doc}">Worksheet</a> and <a href="${TEMPLATE_BASE}templates/${TEMPLATES[p.id].xls}">spreadsheet</a> for this playbook, or see all <button class="linkbtn" data-go="templates">templates</button>.</p>`:''}
   </div></section>
 
 
@@ -1727,6 +1771,7 @@ function renderPlaybook(id,toolId){
   view.querySelectorAll('figure.fig').forEach(f => { const g = drawFig(f.dataset.fig); if (g) f.insertBefore(g, f.firstChild); else f.remove(); });
   view.querySelector('#back').onclick = () => go('');
   view.querySelector('#next').onclick = () => go(next.id);
+  view.querySelectorAll('.tlink [data-go]').forEach(b => b.onclick = () => go(b.dataset.go));
   view.querySelector('#prev').onclick = () => go(prev.id);
 
   const cards = [...view.querySelectorAll('.card')], nowon = view.querySelector('#nowon');
@@ -1769,7 +1814,7 @@ function go(p,t){
 }
 function route(h){
   const [p,t] = (h||'').split('.');
-  if (p==='glossary') renderGlossary(); else if (p==='about') renderAbout(); else if (PB.some(x=>x.id===p)) renderPlaybook(p,t); else { renderHome(); window.scrollTo({top:0}); }
+  if (p==='glossary') renderGlossary(); else if (p==='templates') renderTemplates(); else if (p==='about') renderAbout(); else if (PB.some(x=>x.id===p)) renderPlaybook(p,t); else { renderHome(); window.scrollTo({top:0}); }
 }
 /* light / dark */
 $('#about-link').onclick = () => go('about');
