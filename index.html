@@ -1447,10 +1447,10 @@ function renderAbout(){
     </article>
 
     <article class="chap">
-      <div class="when"><span class="yr">What's next</span><span class="hand">your chapter</span></div>
+      <div class="when"><span class="yr">What's next</span><span class="hand">it keeps growing</span></div>
       <div class="what">
-        <h2>Add your chapter.</h2>
-        <p>The playbook started with my notes. Now it grows with yours. If a tool or idea has stuck with you, from business school or from years of solving business problems, share it through Share an insight. Every insight you add helps the next person facing the same problem solve it.</p>
+        <h2>This is version one.</h2>
+        <p>The playbook started with my notes, and it will keep growing as I learn more and as people tell me what they wish was here. If a tool helped you, or one is missing, I'd like to hear it.</p>
         <div class="ab-ctas">
           <div class="btns">
             ${SUBMIT_URL?`<a class="ab-btn solid" href="${SUBMIT_URL}" target="_blank" rel="noopener">Share an insight ${ARROW}</a>`:''}
@@ -1486,7 +1486,6 @@ function renderAbout(){
         <li><b>Product-led growth</b>, a term popularised by OpenView Partners</li>
       </ul>
       <p>Other tools here, such as SWOT, STP, the 5Cs, TAM, SAM and SOM, break-even and NPV, are widely taught and have no single creator. Company names appear only as public illustrations and imply no connection.</p>
-      <p>Insights shared through the form are credited by first name only if the contributor chooses. Emails are used only to ask questions about a submission, and anyone can ask for their insight to be removed.</p>
       <p>Thank you to my professors and classmates at the Kelley School of Business, whose teaching shaped these notes. This is an independent project and isn't affiliated with or endorsed by Indiana University.</p>
     </div>
 
@@ -1597,7 +1596,7 @@ const toolCount = PB.reduce((n,p)=>n+p.tools.length,0);
 const teaser = p => { const ss = plain(p.idea).split(/(?<=\.)\s/); let t = ss[0]; for (let i = 1; i < ss.length && t.length < 90 && (t + ss[i]).length <= 175; i++) t += ' ' + ss[i]; return t; };
 
 /* Public link to the Notion form "Share an insight" (Playbook Submissions). Leave empty to hide the invite. */
-const SUBMIT_URL = 'https://mbaplaybook.notion.site/d5f9b87b35df4cd9b0b0912d5c86cc35';
+const SUBMIT_URL = '';
 const GROUPS = [['all','All',null],['ai','AI',['ai']],['grow','Strategy & growth',['strategy','innovation','marketing','b2b']],['numbers','Numbers & data',['finance','data']],['people','People',['negotiation']],['ref','Reference',['glossary']]];
 let homeFilter = 'all';
 const ARROW = '<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
@@ -1657,14 +1656,14 @@ function setCrumb(name){
 /* ---------- TEMPLATES ---------- */
 const TEMPLATE_BASE = 'https://semiraayesufu.github.io/playbook/';
 const TEMPLATES = {
-  ai:         {doc:'ai-worksheet.docx',          xls:'ai-worksheets.xlsx',          xlsWhat:'Risk Scoring grid, AI Value Tree, Fit Check'},
-  strategy:   {doc:'strategy-worksheet.docx',    xls:'strategy-worksheets.xlsx',    xlsWhat:'Option Scorecard, SWOT, Hypothesis Test, Balanced Scorecard'},
-  innovation: {doc:'innovation-worksheet.docx',  xls:'innovation-calculators.xlsx', xlsWhat:'Market Sizing, Riskiest Assumption, Startup Metrics, Sizing the Raise, Investor Readiness, Spending Gates, Pivot Triggers'},
-  finance:    {doc:'finance-worksheet.docx',     xls:'finance-calculators.xlsx',    xlsWhat:'Contribution, Break-even, DuPont, NPV, Debt Affordability, Buyout, Dividend Discount, Bond Spread, Sharpe'},
-  marketing:  {doc:'marketing-worksheet.docx',   xls:'marketing-calculators.xlsx',  xlsWhat:'Pricing, Line Extension Math, Base vs Incremental, Channel Mix, Brand Equity'},
-  data:       {doc:'data-worksheet.docx',        xls:'data-worksheets.xlsx',        xlsWhat:'Pareto, Representativeness, Research Plan, Query Definition'},
-  b2b:        {doc:'b2b-worksheet.docx',         xls:'b2b-calculators.xlsx',        xlsWhat:'Bottom-Up Sizing, Economic Value and ROI, Buying Committee, Route to Market'},
-  negotiation:{doc:'negotiation-worksheet.docx', xls:'negotiation-worksheets.xlsx', xlsWhat:'Four Numbers, Concession Plan, Power Map'}
+  innovation: {xls:'innovation-calculators.xlsx', xlsWhat:'Market Sizing, Riskiest Assumption, Startup Metrics, Sizing the Raise, Investor Readiness, Spending Gates, Pivot Triggers'},
+  finance:    {xls:'finance-calculators.xlsx',    xlsWhat:'Contribution, Break-even, DuPont, NPV, Debt Affordability, Buyout, Dividend Discount, Bond Spread, Sharpe'},
+  marketing:  {xls:'marketing-calculators.xlsx',  xlsWhat:'Pricing, Line Extension Math, Base vs Incremental, Channel Mix, Brand Equity'},
+  b2b:        {xls:'b2b-calculators.xlsx',        xlsWhat:'Bottom-Up Sizing, Economic Value and ROI, Buying Committee, Route to Market'},
+  ai:         {xls:'ai-worksheets.xlsx',          xlsWhat:'Risk Scoring grid, AI Value Tree, Fit Check'},
+  strategy:   {xls:'strategy-worksheets.xlsx',    xlsWhat:'Option Scorecard, SWOT, Hypothesis Test, Balanced Scorecard'},
+  negotiation:{xls:'negotiation-worksheets.xlsx', xlsWhat:'Four Numbers, Concession Plan, Power Map'},
+  data:       {xls:'data-worksheets.xlsx',        xlsWhat:'Pareto, Representativeness, Research Plan, Query Definition'}
 };
 function renderTemplates(){
   cleanup(); setNav('templates'); setCrumb('Templates');
@@ -1674,17 +1673,16 @@ function renderTemplates(){
     <div class="kick rv" style="--i:0;margin-top:22px">Section ${pad(PB.length+2)}</div>
     <h1 class="rv" style="--i:1">Templates</h1>
     <span class="hand rv" style="--i:2">Take the tools with you</span>
-    <p class="lede rv" style="--i:3">Every playbook as a <strong>worksheet</strong> you can fill in, and its numbers as a <strong>spreadsheet</strong> with the formulas already built. Download, replace the example figures with your own, and keep the file.</p>
+    <p class="lede rv" style="--i:3">The tools that run on numbers, as <strong>spreadsheets</strong> with the formulas already built. Download one, replace the example figures with your own, and keep the file. More templates will follow as the playbook grows.</p>
     <div class="big" aria-hidden="true">⇩</div>
   </div></div></section>
   <section class="gut"><div class="in tmpl">
     ${PB.map((p,i)=>{ const t=TEMPLATES[p.id]; if(!t) return ''; return `
     <article class="tcard" style="${colorVars(p.id)}">
       <div class="thead"><span class="n">${pad(i+1)}</span><h3>${esc(p.name)}</h3><span class="hand">${esc(p.q)}</span></div>
-      <a class="tfile" href="${TEMPLATE_BASE}templates/${t.doc}"><span class="ticon">W</span><span><b>Worksheet</b><small>one page per tool, every step as a prompt (.docx)</small></span>${ARROW}</a>
       <a class="tfile" href="${TEMPLATE_BASE}templates/${t.xls}"><span class="ticon">X</span><span><b>${t.xls.includes('calc')?'Calculators':'Worksheets'}</b><small>${esc(t.xlsWhat)} (.xlsx)</small></span>${ARROW}</a>
     </article>`; }).join('')}
-    <p class="tnote">The worksheets open in Word, Google Docs and Pages. The spreadsheets open in Excel, Google Sheets and Numbers, and the yellow cells are the inputs. Example figures match the In practice sections on the site.</p>
+    <p class="tnote">The spreadsheets open in Excel, Google Sheets and Numbers. Yellow cells are inputs, blue cells calculate. Example figures match the In practice sections on the site.</p>
   </div></section>`;
   view.querySelector('#back').onclick = () => go('');
   window.scrollTo({top:0});
@@ -1756,7 +1754,7 @@ function renderPlaybook(id,toolId){
       <div class="nowon" aria-live="polite"><span class="mono">Now reading</span><b id="nowon">${esc(p.tools[0].name)}</b></div>
     </div>
     <div class="steps">${p.tools.map(cardHTML).join('')}</div>
-    ${TEMPLATES[p.id]?`<p class="tlink">Take it with you. <a href="${TEMPLATE_BASE}templates/${TEMPLATES[p.id].doc}">Worksheet</a> and <a href="${TEMPLATE_BASE}templates/${TEMPLATES[p.id].xls}">spreadsheet</a> for this playbook, or see all <button class="linkbtn" data-go="templates">templates</button>.</p>`:''}
+    ${TEMPLATES[p.id]?`<p class="tlink">Take it with you. The <a href="${TEMPLATE_BASE}templates/${TEMPLATES[p.id].xls}">spreadsheet</a> for this playbook, or see all <button class="linkbtn" data-go="templates">templates</button>.</p>`:''}
   </div></section>
 
 
