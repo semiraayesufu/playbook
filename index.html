@@ -967,9 +967,11 @@ const FIG_ALT = {
  'base-incremental':'Weekly sales bars with a flat base line drawn across them. The part of the promotion week above the line is the incremental sales',
  '5cs':'Five small drawings in a row. A group of people for customers, a building for the company, two parties shaking on a deal for collaborators, two figures facing off for competitors, and a globe for context',
  'viz':'Five small charts in a row, each labelled with the question it answers. Bars for comparing, a line for change over time, a stacked bar for share, a scatter for a relationship, a histogram for spread',
+ 'viz-2':'The same data twice. On the left, a cluttered chart with gridlines, a legend, identical bars and the title Cancellations by club. On the right, the bars sorted, one coloured, no gridlines, and the title says the finding',
  'risk':'A five by five grid where each square shows likelihood times impact, shaded in three bands: fix before launch, plan and owner, keep an eye on it'
 };
 const FIG_CAP = {
+ 'viz-2':'Same numbers, two charts. The left one makes the reader do the work. The right one has already done it.',
  'viz':'Each question has a chart built for it. Pick that one, then colour the one thing that matters.',
  '5cs':'Five places to look before you plan. The two or three facts that matter most are what you carry into STP.',
  'stp':'Split the market, pick the group you can win, then write the sentence that group would repeat to a friend.',
@@ -1193,6 +1195,26 @@ function drawFig(id){
      line(cx[3]-44,150,cx[3]+44,150,{strokeWidth:1}); line(cx[3]-44,150,cx[3]-44,80,{strokeWidth:1}); [[-30,136],[-18,124],[-6,118],[6,108],[18,100],[30,94],[0,130],[24,112]].forEach(([dx,y])=>add(R.circle(cx[3]+dx,y,6,o(fill)))); lab(cx[3],'Relationship','a scatter');
      [8,20,38,48,36,18,8].forEach((h,i)=>box(cx[4]-42+i*12,150-h,12,h,i===3?fill:{})); lab(cx[4],'Spread','a histogram');
      T(286,36,'Start from the question',{w:700,s:15});
+   },
+   'viz-2'(){
+     const GREY='#B8B0A4';
+     // before: cluttered
+     T(140,26,'Before',{s:13,c:'#6A6258'}); T(140,48,'Cancellations by club',{s:13,w:700});
+     [70,95,120,145,170].forEach(y=>line(40,y,236,y,{stroke:'#D6CFC3',strokeWidth:.8}));
+     line(40,170,236,170,{strokeWidth:1}); line(40,60,40,170,{strokeWidth:1});
+     [[48,62],[76,30],[104,96],[132,44],[160,74],[188,110],[216,52]].forEach(([x,h],i)=>box(x,170-h,20,h,{fill:'#8A94B8',fillStyle:'solid'}));
+     T(140,186,'Club A   Club B   Club C   Club D   Club E   Club F   Club G',{s:9,c:'#6A6258'});
+     box(44,62,40,14); T(64,72,'legend',{s:8,c:'#6A6258'});
+     T(140,206,'reader has to find the point',{s:12,c:'#6A6258'});
+     // divider
+     line(280,20,280,216,{strokeWidth:1,strokeLineDash:[5,5]});
+     // after: sorted, one coloured, message as title
+     T(420,26,'After',{s:13,c:'#6A6258'}); T(420,48,'Club F loses twice as many members as the rest',{s:12.5,w:700});
+     line(320,170,520,170,{strokeWidth:1});
+     [[330,110],[358,96],[386,74],[414,62],[442,52],[470,44],[498,30]].forEach(([x,h],i)=>box(x,170-h,20,h,i===0?{fill:'#2747C9',fillStyle:'solid'}:{fill:GREY,fillStyle:'solid'}));
+     T(340,186,'F',{s:11,w:700,c:'#2747C9'}); T(420,186,'C   E   A   G   D   B',{s:11,c:'#6A6258'});
+     T(340,122,'31',{s:12,w:700,c:'#2747C9'});
+     T(420,206,'the title is the finding',{s:12,c:'#6A6258'});
    },
    'phases'(){
      const ph=[['Prototype','one task, reviewed'],['Integrate','real data, more users'],['Scale','automate the reliable']];
@@ -1534,7 +1556,8 @@ function cardHTML(t,i){
     ${FIG_ALT[t.id]?`<figure class="fig" data-fig="${t.id}"><figcaption>${esc(FIG_CAP[t.id]||'')}</figcaption></figure>`:''}
     ${t.formula?`<div class="formula">${esc(t.formula)}</div>`:''}
     <div><h4>Steps</h4><ol>${t.steps.map(s=>Array.isArray(s)?`<li><span>${md(s[0])}<ul class="sub">${s[1].map(x=>`<li>${md(x)}</li>`).join('')}</ul></span></li>`:`<li><span>${md(s)}</span></li>`).join('')}</ol></div>
-    ${t.example?`<div class="eg"><span class="lbl">In practice</span>${(Array.isArray(t.example)?t.example:[t.example]).map(x=>/ = /.test(x)&&x.length<160?`<code class="calc">${esc(x)}</code>`:`<p>${md(x)}</p>`).join('')}</div>`:''}
+    ${FIG_ALT[t.id+'-2']?`<figure class="fig" data-fig="${t.id}-2"><figcaption>${esc(FIG_CAP[t.id+'-2']||'')}</figcaption></figure>`:''}
+     ${t.example?`<div class="eg"><span class="lbl">In practice</span>${(Array.isArray(t.example)?t.example:[t.example]).map(x=>/ = /.test(x)&&x.length<160?`<code class="calc">${esc(x)}</code>`:`<p>${md(x)}</p>`).join('')}</div>`:''}
      ${t.read?`<div><h4>Quick guide</h4><ul>${t.read.map(s=>`<li>${md(s)}</li>`).join('')}</ul></div>`:''}
     ${t.watch?`<p class="watch"><b>Watch out</b>${md(t.watch)}</p>`:''}
    </div></article>`;
