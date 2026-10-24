@@ -410,6 +410,7 @@ body.reading .top .about-link{display:inline-flex}
 .nextblock .hand{font-size:21px;color:var(--muted)}
 .nextblock .arrow{width:40px;height:40px;border-radius:50%;background:var(--c);color:var(--cf);display:grid;place-items:center;flex:none;transition:transform .15s var(--ease)}
 .nextblock:hover .arrow{transform:translateX(3px)}
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:12px}.prevblock{justify-content:flex-start}.prevblock .arrow svg{transform:rotate(180deg)}.prevblock:hover .arrow{transform:translateX(-3px)}.nextblock:not(.prevblock){text-align:right}.nextblock:not(.prevblock)>div{margin-left:auto}@media (max-width:640px){.pn{grid-template-columns:1fr}}
 .nextblock .arrow svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
 
 /* ---------- search ---------- */
@@ -1475,7 +1476,7 @@ function cardHTML(t,i){
 
 function renderPlaybook(id,toolId){
   cleanup(); document.body.classList.add('reading'); setNav(id); setCrumb(PB.find(p=>p.id===id).name);
-  const i = PB.findIndex(p=>p.id===id), p = PB[i], next = PB[(i+1)%PB.length];
+  const i = PB.findIndex(p=>p.id===id), p = PB[i], next = PB[(i+1)%PB.length], prev = PB[(i-1+PB.length)%PB.length];
   document.documentElement.style.setProperty('--c',COL[id][0]);
   view.innerHTML = `
   <section class="hero gut"><div class="in"><div class="block" style="${colorVars(id)}">
@@ -1497,7 +1498,10 @@ function renderPlaybook(id,toolId){
   </div></section>
 
 
-  <section class="gut nextwrap"><div class="in"><button class="nextblock" id="next" style="${colorVars(next.id)}"><div><span class="kick">Next playbook</span><b>${esc(next.name)}</b><span class="hand">${esc(next.q)}</span></div><span class="arrow" aria-hidden="true">${ARROW}</span></button></div></section>`;
+  <section class="gut nextwrap"><div class="in pn">
+    <button class="nextblock prevblock" id="prev" style="${colorVars(prev.id)}"><span class="arrow" aria-hidden="true">${ARROW}</span><div><span class="kick">Previous playbook</span><b>${esc(prev.name)}</b><span class="hand">${esc(prev.q)}</span></div></button>
+    <button class="nextblock" id="next" style="${colorVars(next.id)}"><div><span class="kick">Next playbook</span><b>${esc(next.name)}</b><span class="hand">${esc(next.q)}</span></div><span class="arrow" aria-hidden="true">${ARROW}</span></button>
+  </div></section>`;
 
   const map = view.querySelector('#map'); if (!matchMedia('(max-width:600px)').matches) map.open = true;
   const svg = drawSketch(id, tid => scrollToTool(tid));
@@ -1505,6 +1509,7 @@ function renderPlaybook(id,toolId){
   view.querySelectorAll('figure.fig').forEach(f => { const g = drawFig(f.dataset.fig); if (g) f.insertBefore(g, f.firstChild); else f.remove(); });
   view.querySelector('#back').onclick = () => go('');
   view.querySelector('#next').onclick = () => go(next.id);
+  view.querySelector('#prev').onclick = () => go(prev.id);
 
   const cards = [...view.querySelectorAll('.card')], nowon = view.querySelector('#nowon');
   const setActive = tid => {
