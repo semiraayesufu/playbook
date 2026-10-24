@@ -1390,7 +1390,7 @@ function drawFig(id){
   return svg;
 }
 
-const ABOUT_IMG = {"hi": "semira.gif?v=5"};
+const ABOUT_IMG = {"hi": "semira.jpg?v=6"};
 /* ---------- ABOUT ---------- */
 const LINKEDIN_URL = 'https://www.linkedin.com/in/semirayesufu';
 function renderAbout(){
@@ -1400,14 +1400,14 @@ function renderAbout(){
   view.innerHTML = `
   <section class="gut about"><div class="in">
     <div class="ab-hero">
-      ${pol(ABOUT_IMG.hi,'Short looping clip of Semira Yesufu smiling and swaying','',-2.5,'big',
+      ${pol(ABOUT_IMG.hi,'Semira Yesufu, smiling, head tilted','',-2.5,'big',
         stk('Class of<br>2027','circle p','--r:12deg;top:-22px;right:-30px')+
         stk('🏆 3x case comp winner','pill b','--r:5deg;bottom:-16px;right:-24px'))}
       <div class="ab-intro">
         <span class="kick rv" style="--i:0">About</span>
         <h1 class="rv" style="--i:1">Hi, I'm <span class="scribble">Semira<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 13 C 50 5, 110 4, 197 9 M 12 17 C 70 11, 130 12, 188 14"/></svg></span>.</h1>
         <span class="hand rv" style="--i:2">but my real G's call me Big Sem</span>
-        <p class="rv" style="--i:3">I'm an MBA candidate at the Kelley School of Business. Prior to business school, I worked in product management and design across fintech, e-commerce and enterprise. Most recently, I spent an amazing summer as an AI Strategist intern at The New York Times.</p>
+        <p class="rv" style="--i:3">I'm an MBA candidate at the Kelley School of Business. Before business school I spent years in product management and design across fintech, e-commerce and enterprise, and founded a technology literacy nonprofit for women in Nigeria. Most recently I was an AI Strategist intern at The New York Times, and I now do venture due diligence on hardtech companies as an MBA fellow while I finish the degree.</p>
         <p class="rv" style="--i:4">I build practical things that help people do more. The MBA Playbook is the newest of them. Here's how it came to be.</p>
       </div>
     </div>
@@ -1423,7 +1423,7 @@ function renderAbout(){
             <div class="np-cover"></div>
             <div class="np-body">
               <div class="np-title">Coursework</div>
-              <div class="np-desc">Every course and project in my Kelley MBA. The shared version lives in <u>The MBA Playbook</u>.</div>
+              <div class="np-desc">Notes, frameworks and lessons worth keeping, one page per course.</div>
               <div class="np-group"><span class="np-tag np-blue">Fall 2025</span></div>
               <div class="np-row np-head"><span>Aa Name</span><span>Playbook</span><span>Type</span><span>Status</span></div>
               ${[['Managerial Accounting','Finance','g'],['Economics','Economics','n'],['Leadership & Career Development','Leadership & Career','y'],['Marketing Management','Marketing','p'],['Strategic Management','Strategy','b'],['Finance','Finance','g']].map(([n,pb,c])=>`<div class="np-row"><span class="np-name">${n}</span><span><span class="np-tag np-${c}">${pb}</span></span><span><span class="np-tag np-b">Course</span></span><span><span class="np-tag np-g">Done</span></span></div>`).join('')}
