@@ -4,7 +4,7 @@ Business school, sketched out.
 
 **Live site:** [semiraayesufu.github.io/playbook](https://semiraayesufu.github.io/playbook/)
 
-The MBA Playbook turns what business school teaches into tools you can use on real decisions. It started as my coursework notes from the Kelley School of Business, and it is now 81 tools across eight playbooks. It is free to use.
+The MBA Playbook turns what business school teaches into tools you can use on real decisions. It started as my coursework notes from the Kelley School of Business, and it is now 75 tools across eight playbooks. It is free to use.
 
 ## The playbooks
 
