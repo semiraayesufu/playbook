@@ -34,25 +34,19 @@ Each tool object in `index.html` has these fields, rendered in this order.
 | `name` | Title | The framework's common name |
 | `what` | Line under the title | One sentence, under 12 words, starts with a verb ("Tests whether…") |
 | `def` | What it is | Two or three sentences. What it is and where the name comes from |
-| `claim` | Bold takeaway | **The point of the tool as a statement, under 12 words.** Not a label. ("Most strengths can be copied by next year.") |
-| `why` | Paragraph under the claim | Why the tool matters and what goes wrong without it. Three to five sentences |
-| `ask` | Questions to ask | 3 short questions a reader asks before starting. Don't repeat the steps word for word |
+| `why` | Second paragraph of What it is | Why the tool matters and what goes wrong without it. Three to five sentences |
 | `steps` | Steps | Numbered actions, each starting with a verb. Sub-lists for options or criteria |
 | `example` | In practice | One running example per playbook, carried through every tool, with real numbers |
-| `outcome` | By the end | What the reader walks away with. Finishes the sentence "By the end you'll have…" or "…know…", written as a noun phrase |
 | `watch` | Watch out | The most common way the tool is misused, in one or two sentences |
-| `skip` | Skip it when | When not to use the tool, and which tool to use instead if there is one |
 
-`claim`, `ask`, `outcome` and `skip` are optional for backward compatibility, but every
-rewritten tool should have all four.
+Don't add takeaway, questions-to-ask, "By the end" or "Skip it when" sections. They were
+tried on Strategy and dropped.
 
 ## Borrowed from the PAIR Guidebook
 
-- **Headings that state the point.** The `claim` is a takeaway, not a topic.
-- **Guiding questions** before the method, so readers frame the problem first.
-- **A named outcome**, so every tool has a finish line.
+- **Lead with the point.** Open the `why` paragraph with its takeaway, not with background.
 - **Named dimensions.** Break a judgement into labelled factors with one sentence each.
-- **Balance.** Say when a tool fits and when another one fits better.
+- **Balance.** Say when a tool fits and when another one fits better, inside the existing fields.
 
 ## Not borrowed
 
