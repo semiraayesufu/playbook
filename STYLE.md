@@ -59,3 +59,5 @@ tried on Strategy and dropped.
   several times.
 - Keep these unless asked: 3-column homepage cards (`.home .in`, `.feed`), playbook search
   (`data-pb`), and the About quote "A moving woman will surely meet her luck."
+- A local Git check (`.git/hooks/pre-commit`, on Semira's Mac) refuses any commit of
+  `index.html` that is missing one of these. If it stops you, pull and reapply your edits.
